@@ -5,7 +5,8 @@
     %title Spectrum
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
-    = yield
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload"
+    = javascript_include_tag "application", "data-turbolinks-track": "reload"
+  %body{id: "#{controller_name}_#{action_name}", class: "#{controller_name}"}
+    .container
+      = yield
