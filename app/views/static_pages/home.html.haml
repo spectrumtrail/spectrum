@@ -1,2 +1,11 @@
-%h1 StaticPages#home
-%p Find me in app/views/static_pages/home.html.erb
+%h1.mt-5 Sticky footer with fixed navbar
+%p.lead
+  Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with
+  %code padding-top: 60px;
+  on the
+  = succeed "." do
+    %code body &gt; .container
+%p
+  Back to
+  %a{:href => "../sticky-footer"} the default sticky footer
+  minus the navbar.
