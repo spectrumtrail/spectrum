@@ -18,9 +18,6 @@ gem "mini_magick", "~> 4.8"
 gem "jquery-rails"
 gem "font-awesome-rails"
 
-# API
-gem "jbuilder", "~> 2.5"
-
 # Background Processing
 gem "redis", "~> 4.0"
 
