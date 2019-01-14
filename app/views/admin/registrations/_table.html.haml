@@ -1,0 +1,13 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th Race
+      %th Name
+      %th Email
+      %th Division
+      %th Mobile phone
+      %th
+
+  %tbody
+    - @registrations.each do |registration|
+      = render "registration"

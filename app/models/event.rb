@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   has_many :races
+  has_many :regisratrations, through: :races
 
   validates :name, presence: true
   validates :starts_at, presence: true

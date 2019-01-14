@@ -1,0 +1,10 @@
+%tr
+  %td= registration.race
+  %td= registration.first_name
+  %td= registration.email
+  %td= registration.division
+  %td= registration.mobile_phone
+  %td
+    = link_to 'Show', registration
+    = link_to 'Edit', edit_registration_path(registration)
+    = link_to 'Destroy', registration, method: :delete, data: { confirm: 'Are you sure?' }

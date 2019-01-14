@@ -1,6 +1,9 @@
 .card
   %img.card-img-top{alt: race.name, src: "https://picsum.photos/300/150/?random"}/
   .card-body
+    %span.badge.badge-primary Event
+    %h5.card-title= race.event.name
+    %span.badge.badge-info Race
     %h5.card-title= race.name
     %p.card-text= race.short_description
   .card-footer
@@ -8,3 +11,5 @@
     .float-right
       = link_to edit_admin_event_race_path(@event, race), class: "btn btn-sm btn-warning" do
         Edit
+      = link_to admin_event_race_registrations_path(@event, race), class: "btn btn-sm btn-dark" do
+        Registrations

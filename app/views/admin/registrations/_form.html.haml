@@ -1,0 +1,24 @@
+-# frozen_string_literal: true
+= simple_form_for([:admin, @event, @race, @registration]) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :date_of_birth
+    = f.input :email
+    = f.input :division
+    = f.input :mobile_phone
+    = f.input :opted_in_for_communication
+    = f.input :emergency_contact_name
+    = f.input :emergency_contact_phone
+    = f.input :medical_conditions_description
+    = f.input :legal_guardian_name
+    = f.input :legal_guardian_phone_string
+    = f.input :legal_guardian_initials
+    = f.input :accepted_refund_policy
+    = f.input :accepted_waiver
+
+  .form-actions
+    = f.button :submit, class: "btn btn-md btn-success"

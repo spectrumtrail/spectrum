@@ -1,0 +1,54 @@
+%p#notice= notice
+
+%p
+  %b Race:
+  = @registration.race
+%p
+  %b First name:
+  = @registration.first_name
+%p
+  %b Last name:
+  = @registration.last_name
+%p
+  %b Date of birth:
+  = @registration.date_of_birth
+%p
+  %b Email:
+  = @registration.email
+%p
+  %b Division:
+  = @registration.division
+%p
+  %b Mobile phone:
+  = @registration.mobile_phone
+%p
+  %b Opted in for communication:
+  = @registration.opted_in_for_communication
+%p
+  %b Emergency contact name:
+  = @registration.emergency_contact_name
+%p
+  %b Emergency contact phone:
+  = @registration.emergency_contact_phone
+%p
+  %b Medical conditions description:
+  = @registration.medical_conditions_description
+%p
+  %b Legal guardian name:
+  = @registration.legal_guardian_name
+%p
+  %b Legal guardian phone string:
+  = @registration.legal_guardian_phone_string
+%p
+  %b Legal guardian initials:
+  = @registration.legal_guardian_initials
+%p
+  %b Accepted refund policy:
+  = @registration.accepted_refund_policy
+%p
+  %b Accepted waiver:
+  = @registration.accepted_waiver
+
+= link_to 'Edit', edit_admin_event_race_registration_path(@event, @race, @registration)
+\|
+= link_to 'Back', admin_event_race_registrations_path(@event, @race)

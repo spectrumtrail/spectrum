@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :locations
     resources :events do
-      resources :races
+      resources :races do
+        resources :registrations
+      end
     end
   end
 end
