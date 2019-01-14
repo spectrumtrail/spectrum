@@ -1,0 +1,7 @@
+.card
+  %img.card-img-top{alt: location.name, src: "https://picsum.photos/300/150/?random"}/
+  .card-body
+    %h5.card-title= location.name
+    %p.card-text= location.short_description
+  .card-footer
+    %small.text-muted= location.updated_at

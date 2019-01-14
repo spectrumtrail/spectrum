@@ -1,35 +1,17 @@
-%h1 Listing locations
+.row.justify-content-between
+  .col-5
+    %h1 Locations
+  .col-2
+    = link_to "New", new_admin_location_path, class: "btn btn-md btn-success float-right"
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Gps lat
-      %th Gps long
-      %th Address text
-      %th Address link
-      %th Allows dogs
-      %th Spectator entry fee text
-      %th Is active
-      %th
-      %th
-      %th
-
-  %tbody
+- if @locations.any?
+  .card-deck
     - @locations.each do |location|
-      %tr
-        %td= location.name
-        %td= location.gps_lat
-        %td= location.gps_long
-        %td= location.address_text
-        %td= location.address_link
-        %td= location.allows_dogs
-        %td= location.spectator_entry_fee_text
-        %td= location.is_active
-        %td= link_to 'Show', admin_location_path(location)
-        %td= link_to 'Edit', edit_admin_location_path(location)
-        %td= link_to 'Destroy', admin_location_path, method: :delete, data: { confirm: 'Are you sure?' }
+      = render "location", location: location
 
-%br
-
-= link_to 'New Location', new_admin_location_path
+- else
+  .row
+    .col
+      .text-center
+        %h4.text-muted.p-4
+          No locations exist yet.

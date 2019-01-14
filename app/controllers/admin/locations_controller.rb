@@ -24,7 +24,7 @@ class Admin::LocationsController < Admin::BaseController
     @location = Location.new(location_params)
 
     if @location.save
-      redirect_to @location, notice: 'Location was successfully created.'
+      redirect_to admin_locations_path, notice: "Location was successfully created."
     else
       render :new
     end
@@ -33,7 +33,7 @@ class Admin::LocationsController < Admin::BaseController
   # PATCH/PUT /locations/1
   def update
     if @location.update(location_params)
-      redirect_to @location, notice: 'Location was successfully updated.'
+      redirect_to admin_locations_path, notice: "Location was successfully updated."
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class Admin::LocationsController < Admin::BaseController
   # DELETE /locations/1
   def destroy
     @location.destroy
-    redirect_to locations_url, notice: 'Location was successfully destroyed.'
+    redirect_to admin_locations_path, notice: "Location was successfully destroyed."
   end
 
   private
