@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_14_185327) do
+ActiveRecord::Schema.define(version: 2019_01_14_191434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,4 +48,27 @@ ActiveRecord::Schema.define(version: 2019_01_14_185327) do
     t.text "website_link"
   end
 
+  create_table "races", force: :cascade do |t|
+    t.bigint "event_id"
+    t.string "name"
+    t.integer "distance"
+    t.string "distance_type"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.boolean "is_active"
+    t.datetime "registration_opens_at"
+    t.datetime "archived_at"
+    t.string "archived_by"
+    t.string "course_map_link"
+    t.text "course_map_embed_code"
+    t.text "course_description_text"
+    t.string "short_description"
+    t.string "long_description"
+    t.text "video_embed_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_races_on_event_id"
+  end
+
+  add_foreign_key "races", "events"
 end

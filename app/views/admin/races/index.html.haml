@@ -1,0 +1,22 @@
+.row
+  .col-3
+    = render @event
+  .col-9
+    .row.justify-content-between
+      .col-5
+        %h1 Races
+      .col-2
+        = link_to "New", new_admin_event_race_path, class: "btn btn-md btn-success float-right"
+    %hr
+    - if @races.any?
+      .row
+        - @races.each do |race|
+          .col-4
+            = render "race", race: race
+
+    - else
+      .row
+        .col
+          .text-center
+            %h4.text-muted.p-4
+              No races exist yet.

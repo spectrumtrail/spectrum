@@ -1,0 +1,25 @@
+-# frozen_string_literal: true
+= simple_form_for([:admin, @event, @race]) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.association :event, selected: @event, disabled: true
+    = f.input :name
+    = f.input :distance
+    = f.input :distance_type
+    = f.input :starts_at
+    = f.input :ends_at
+    = f.input :is_active
+    = f.input :registration_opens_at
+    = f.input :archived_at
+    = f.input :archived_by
+    = f.input :course_map_link
+    = f.input :course_map_embed_code
+    = f.input :course_description_text
+    = f.input :short_description
+    = f.input :long_description
+    = f.input :video_embed_code
+
+  .form-actions
+    = f.button :submit, class: "btn btn-md btn-success"
