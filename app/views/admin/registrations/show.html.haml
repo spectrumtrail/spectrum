@@ -1,8 +1,16 @@
 %p#notice= notice
 
+%p.text-danger
+  %b Location:
+  = @registration.location.name
+
+%p
+  %b Event:
+  = @registration.event.name
+
 %p
   %b Race:
-  = @registration.race
+  = @registration.race.name
 %p
   %b First name:
   = @registration.first_name

@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  belongs_to :location
   has_many :races
   has_many :regisratrations, through: :races
 

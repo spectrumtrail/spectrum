@@ -1,6 +1,8 @@
 .card
   %img.card-img-top{alt: race.name, src: "https://picsum.photos/300/150/?random"}/
   .card-body
+    %span.badge.badge-danger Location
+    %h5.card-title= race.event.location.name
     %span.badge.badge-primary Event
     %h5.card-title= race.event.name
     %span.badge.badge-info Race

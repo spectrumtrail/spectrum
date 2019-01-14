@@ -4,6 +4,7 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
+    = f.association :location, include_blank: false
     = f.input :name
     = f.input :starts_at
     = f.input :ends_at
