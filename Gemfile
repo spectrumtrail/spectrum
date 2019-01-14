@@ -17,6 +17,7 @@ gem "turbolinks", "~> 5"
 gem "mini_magick", "~> 4.8"
 gem "jquery-rails"
 gem "font-awesome-rails"
+gem "simple_form"
 
 # Background Processing
 gem "redis", "~> 4.0"
