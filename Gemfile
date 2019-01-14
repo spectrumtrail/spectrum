@@ -18,6 +18,7 @@ gem "mini_magick", "~> 4.8"
 gem "jquery-rails"
 gem "font-awesome-rails"
 gem "simple_form"
+gem "local_time"
 
 # Background Processing
 gem "redis", "~> 4.0"
