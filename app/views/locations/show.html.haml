@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @location.name
+%p
+  %b Gps lat:
+  = @location.gps_lat
+%p
+  %b Gps long:
+  = @location.gps_long
+%p
+  %b Address text:
+  = @location.address_text
+%p
+  %b Address link:
+  = @location.address_link
+%p
+  %b Allows dogs:
+  = @location.allows_dogs
+%p
+  %b Spectator entry fee text:
+  = @location.spectator_entry_fee_text
+%p
+  %b Is active:
+  = @location.is_active
+
+= link_to 'Edit', edit_location_path(@location)
+\|
+= link_to 'Back', locations_path

@@ -1,0 +1,35 @@
+%h1 Listing locations
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Gps lat
+      %th Gps long
+      %th Address text
+      %th Address link
+      %th Allows dogs
+      %th Spectator entry fee text
+      %th Is active
+      %th
+      %th
+      %th
+
+  %tbody
+    - @locations.each do |location|
+      %tr
+        %td= location.name
+        %td= location.gps_lat
+        %td= location.gps_long
+        %td= location.address_text
+        %td= location.address_link
+        %td= location.allows_dogs
+        %td= location.spectator_entry_fee_text
+        %td= location.is_active
+        %td= link_to 'Show', location
+        %td= link_to 'Edit', edit_location_path(location)
+        %td= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Location', new_location_path

@@ -1,0 +1,17 @@
+-# frozen_string_literal: true
+= simple_form_for(@location) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :name
+    = f.input :gps_lat
+    = f.input :gps_long
+    = f.input :address_text
+    = f.input :address_link
+    = f.input :allows_dogs
+    = f.input :spectator_entry_fee_text
+    = f.input :is_active
+
+  .form-actions
+    = f.button :submit
