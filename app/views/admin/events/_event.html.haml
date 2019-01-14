@@ -1,0 +1,10 @@
+.card
+  %img.card-img-top{alt: event.name, src: "https://picsum.photos/300/150/?random"}/
+  .card-body
+    %h5.card-title= event.name
+    %p.card-text= event.short_description
+  .card-footer
+    %small.text-muted= event.updated_at
+    .float-right
+      = link_to edit_admin_event_path(event), class: "btn btn-sm btn-warning" do
+        Edit

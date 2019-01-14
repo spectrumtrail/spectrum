@@ -1,0 +1,21 @@
+-# frozen_string_literal: true
+= simple_form_for([:admin, @event]) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :name
+    = f.input :starts_at
+    = f.input :ends_at
+    = f.input :short_description
+    = f.input :long_description
+    = f.input :facebook_event_link
+    = f.input :external_photo_link
+    = f.input :external_results_link
+    = f.input :external_reservations_link
+    = f.input :is_active
+    = f.input :archived_at
+    = f.input :archived_by
+
+  .form-actions
+    = f.button :submit, class: "btn btn-md btn-success"

@@ -1,0 +1,42 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @event.name
+%p
+  %b Starts at:
+  = @event.starts_at
+%p
+  %b Ends at:
+  = @event.ends_at
+%p
+  %b Short description:
+  = @event.short_description
+%p
+  %b Long description:
+  = @event.long_description
+%p
+  %b Facebook event link:
+  = @event.facebook_event_link
+%p
+  %b External photo link:
+  = @event.external_photo_link
+%p
+  %b External results link:
+  = @event.external_results_link
+%p
+  %b External reservations link:
+  = @event.external_reservations_link
+%p
+  %b Is active:
+  = @event.is_active
+%p
+  %b Archived at:
+  = @event.archived_at
+%p
+  %b Archived by:
+  = @event.archived_by
+
+= link_to 'Edit', edit_admin_event_path(@event)
+\|
+= link_to 'Back', admin_events_path
