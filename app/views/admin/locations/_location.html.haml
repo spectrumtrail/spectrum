@@ -5,3 +5,6 @@
     %p.card-text= location.short_description
   .card-footer
     %small.text-muted= location.updated_at
+    .float-right
+      = link_to edit_admin_location_path(location), class: "btn btn-sm" do
+        Edit

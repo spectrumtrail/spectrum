@@ -8,7 +8,10 @@
     = stylesheet_link_tag "admin/base", media: "all", "data-turbolinks-track": "reload"
     = javascript_include_tag "admin/base", "data-turbolinks-track": "reload"
   %body{id: "", class: "admin"}
-    = render "navigation/header"
-    %main.container{role: "main"}
-      = yield
-    = render "navigation/footer"
+    %main.container-fluid{role: "main"}
+      .container-fluid
+        .row
+          .col-2
+            = render "navigation/working_list"
+          .col-10
+            = yield
