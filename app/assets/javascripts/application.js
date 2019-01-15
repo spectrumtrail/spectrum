@@ -11,4 +11,28 @@
 // about supported directives.
 //
 
-//= require_directory .
+//= require rails-ujs
+//= require activestorage
+//= require turbolinks
+//= require jquery.min.js
+//= require jquery-scrollbar.min.js
+//= require jquery.easing.js
+//= require jquery-scrollLock.min.js
+
+//= require bootstrap.bundle.min.js
+//= require bootstrap-select
+//= require bootstrap-tagsinput.min.js
+//= require clipboard.min.js
+//= require fontawesome-all.min.js
+//= require fontawesome.min.js
+//= require highlight.min.js
+//= require holder.min.js
+//= require input-mask.min.js
+//= require local-time
+//= require textarea-autosize.min.js
+//= require sticky-kit.min.js
+//= require nouislider.min.js
+//= require js-cookie.js
+//= require ie10-viewport-bug-workaround.js
+
+//= require_tree .

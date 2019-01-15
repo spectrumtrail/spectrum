@@ -2,13 +2,18 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Spectrum
-    = csrf_meta_tags
-    = csp_meta_tag
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
+    %meta{:content => "Probably the most complete UI kit out there. Multiple functionalities and controls added,  extended color palette and beautiful typography, designed as its own extended version of Bootstrap at  the highest level of quality.                             ", :name => "description"}/
+    %meta{:content => "Webpixels", :name => "author"}/
+    %title Boomerang UI Kit - Free Bootstrap Framework by Webpixels
+    / Fonts
+    %link{:href => "https://fonts.googleapis.com/css?family=Nunito:400,600,700,800|Roboto:400,500,700", :rel => "stylesheet"}/
+    / Theme CSS
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload"
     = javascript_include_tag "application", "data-turbolinks-track": "reload"
-  %body{id: "#{controller_name}_#{action_name}", class: "#{controller_name}"}
+  %body
     = render "navigation/header"
-    %main.container{role: "main"}
+    %main.main
       = yield
     = render "navigation/footer"

@@ -1,3 +1,76 @@
-%footer.footer.fixed-bottom.bg-dark.p-2
+%footer.pt-5.pb-3.footer.footer-dark.bg-tertiary
   .container
-    %span.text-muted Place sticky footer content here.
+    .row
+      .col-12.col-md-4
+        .pr-lg-5
+          %h1.heading.h6.text-uppercase.font-weight-700.mb-3
+            %strong Boomerang
+            UI Kit
+          %p Boomerang is a high quality UI Kit built on top of the well known Bootstrap 4 Framework. This theme was designed as its own extended version of Bootstrap with multiple functionalities and controls added, extended color palette and beautiful typography.
+      .col-6.col-md
+        %h5.heading.h6.text-uppercase.font-weight-700.mb-3 Features
+        %ul.list-unstyled.text-small
+          %li
+            %a.text-muted{:href => "#"} Cool stuff
+          %li
+            %a.text-muted{:href => "#"} Random feature
+          %li
+            %a.text-muted{:href => "#"} Team feature
+          %li
+            %a.text-muted{:href => "#"} Stuff for developers
+          %li
+            %a.text-muted{:href => "#"} Another one
+          %li
+            %a.text-muted{:href => "#"} Last time
+      .col-6.col-md
+        %h5.heading.h6.text-uppercase.font-weight-700.mb-3 Solutions
+        %ul.list-unstyled.text-small
+          %li
+            %a.text-muted{:href => "#"} Resource
+          %li
+            %a.text-muted{:href => "#"} Resource name
+          %li
+            %a.text-muted{:href => "#"} Another resource
+          %li
+            %a.text-muted{:href => "#"} Final resource
+      .col-6.col-md
+        %h5.heading.h6.text-uppercase.font-weight-700.mb-3 Resources
+        %ul.list-unstyled.text-small
+          %li
+            %a.text-muted{:href => "#"} Business
+          %li
+            %a.text-muted{:href => "#"} Education
+          %li
+            %a.text-muted{:href => "#"} Government
+          %li
+            %a.text-muted{:href => "#"} Gaming
+      .col-6.col-md
+        %h5.heading.h6.text-uppercase.font-weight-700.mb-3 About
+        %ul.list-unstyled.text-small
+          %li
+            %a.text-muted{:href => "#"} Team
+          %li
+            %a.text-muted{:href => "#"} Locations
+          %li
+            %a.text-muted{:href => "#"} Privacy
+          %li
+            %a.text-muted{:href => "#"} Terms
+    %hr/
+    .d-flex.align-items-center
+      %span
+        © 2018
+        = succeed "." do
+          %a.footer-link{:href => "https://webpixels.io/", :target => "_blank"} Webpixels
+      %ul.nav.ml-lg-auto
+        %li.nav-item
+          %a.nav-link.active{:href => "https://instagram.com/webpixelsofficial", :target => "_blank"}
+            %i.fab.fa-instagram
+        %li.nav-item
+          %a.nav-link{:href => "https://facebook.com/webpixels", :target => "_blank"}
+            %i.fab.fa-facebook
+        %li.nav-item
+          %a.nav-link{:href => "https://github.com/webpixels", :target => "_blank"}
+            %i.fab.fa-github
+        %li.nav-item
+          %a.nav-link{:href => "https://dribbble.com/webpixels", :target => "_blank"}
+            %i.fab.fa-dribbble

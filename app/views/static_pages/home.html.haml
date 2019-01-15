@@ -1,11 +1,373 @@
-%h1.mt-5 Sticky footer with fixed navbar
-%p.lead
-  Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with
-  %code padding-top: 60px;
-  on the
-  = succeed "." do
-    %code body &gt; .container
-%p
-  Back to
-  %a{:href => "../sticky-footer"} the default sticky footer
-  minus the navbar.
+%section.spotlight.bg-cover.bg-size--cover{:style => "background-image: url(#{asset_url('img-1')})"}
+  %span.mask.bg-primary.alpha-7
+  .spotlight-holder.py-sm.pt-lg-lg
+    .container.d-flex.align-items-center
+      .row.cols-xs-space.cols-sm-space.cols-md-space.align-items-center.justify-content-around
+        .col-lg-5.text-center
+          %h2.heading.h1.text-white.strong-400
+            Want to take your project to the next level?
+          %p.lead.text-white.mt-4
+            We put all the experience and know-how in thi product so we can offer you the best product we have ever built.
+          %a.btn.bg-white.mt-4{:href => "#", :target => "_blank"}
+            Learn more
+        .col-lg-5
+          .position-relative
+            %img.img-center.img-fluid.rounded{src: asset_path("iphone")}/
+%section#scrollToSection.py-5.bg-lighter.border-top.border-bottom
+  .container
+    .d-flex.align-items-center.justify-content-center
+      %a.btn.btn-danger.btn-icon-only.btn-zoom--hover.rounded-circle{:href => "#"}
+        %span.btn-inner--icon
+          %i.fa.fa-heart
+      %span.heading.h4.ml-3.mb-0 Build professional and modern looking websites in no time.
+%section.slice.slice-lg{"data-delimiter" => "1"}
+  .container
+    .row.cols-xs-space.cols-sm-space.align-items-center
+      .col-md-6
+        %img.img-center.img-fluid.rounded.z-depth-3{src: asset_path("img-1-1000x900.jpg")}
+      .col-md-6.col-lg-5.ml-lg-auto
+        .pr-md-4
+          %h3.heading.h3
+            All the features you need for a professional website
+          %p.lead.text-gray.mt-4
+            With Boomerang UI you get components and examples, including tons of variables that will help you customize this theme with ease.
+%section.slice.slice-lg{"data-delimiter" => "1"}
+  .container
+    .mb-md.text-center
+      %h3.heading.h3
+        With
+        %i.fa.fa-heart.text-danger.px-2
+        from the Webpixels team
+      .fluid-paragraph.text-center.mt-4
+        %p.lead.lh-180 Working with the most used framework in the world, Bootstrap, we want to extend its functionality and user interface possibilities so you can get even close to the final product, which is your website.
+    .row.cols-xs-space.cols-sm-space.cols-md-space
+      .col-lg-4
+        .card
+          %img.card-img-top{src: asset_path("team-1")}/
+          .card-body.text-center
+            %h3.heading.h5.mb-1
+              %span.d-block Alexis Enache
+              %small.text-muted Founder and Web Developer
+            %p.mt-2 Creator of Boomerang, developer at Webpixels.
+            %a.btn.btn-sm.btn-primary{:href => "https://instagram.com/extrabright", :target => "_blank"} View on Instagram
+      .col-lg-4
+        .card
+          %img.card-img-top{src: asset_path("team-2")}/
+          .card-body.text-center
+            %h3.heading.h5.mb-1
+              %span.d-block David Wally
+              %small.text-muted UI/UX Designer
+            %p.mt-2 Design at Webpixels, creator of Boomerang.
+            %a.btn.btn-sm.btn-primary{:href => "https://instagram.com/extrabright", :target => "_blank"} View on Instagram
+      .col-lg-4
+        .card
+          %img.card-img-top{src: asset_path("team-3")}/
+          .card-body.text-center
+            %h3.heading.h5.mb-1
+              %span.d-block Cliff Simon
+              %small.text-muted Front-End Developer
+            %p.mt-2 Clean code developer, creator of Boomerang
+            %a.btn.btn-sm.btn-primary{:href => "https://instagram.com/extrabright", :target => "_blank"} View on Instagram
+%section.slice.slice-xl{"data-delimiter" => "1"}
+  .container
+    .row.cols-xs-space.cols-sm-space.align-items-center
+      .col-md-6.order-md-2.ml-lg-auto
+        %img.img-center.img-fluid.rounded.z-depth-3{src: asset_path("img-2-1000x900")}/
+      .col-md-6.col-lg-5.order-md-1
+        .pr-md-4
+          %h3.heading.h3
+            Documentation and tooling
+          %p.lead.text-gray.mt-4 Every component and plugin is thoroughly documented with live examples and code blocks for easier use and customization—just like Bootstrap itself. Not comfortable diving that deep? No worries, you can get started by double clicking index.html!
+%section.slice.slice-lg{"data-delimiter" => "1"}
+  .container
+    .px-4
+      .row.justify-content-center.cols-xs-space.cols-sm-space.cols-md-space
+        .col-lg-7
+          .text-center
+            %h1.heading.h3
+              Curious about what you get in the FREE version?
+            %p.lead.lh-180.mt-4
+              One thing is for sure. You will be impressed of how much you receive with this free version of Boomerang UI. We offer more than any other UI kit has offered before. This is our way of showing that we are here to deliver, day by day, for a better web experience.
+            .btn-container.mt-5
+              %a.btn.btn-primary{:href => "#"}
+                Download FREE
+              %a.btn.btn-link{:href => "#"} See all features
+%section.slice.slice-xl.pb-5
+  .container
+    .row.align-items-center.mb-lg-lg
+      .col-lg-4
+        .mb-lg.mb-lg-0.text-center.text-lg-left
+          %h3.heading.h3 Free page examples
+          %p.mt-3 Now it's much easier to build web pages starting from this nice examples.
+      .col-lg-8
+        .row
+          .col-md-6
+            .card.bg-lighter.mb-lg.mb-lg-0
+              .px-3
+                %img.card-img.z-depth-2{:alt => "Homapage", src: asset_path("screen-homepage"), :style => "margin-top: -30px;"}/
+              .card-body
+                %h5.card-title.mb-2 Homepage
+                %p.card-text More than you need to create a beautiful landing page.
+          .col-md-6
+            .card.bg-lighter.mb-lg.mb-lg-0
+              .px-3
+                %img.card-img.z-depth-2{:alt => "Homapage", src: asset_path("screen-about"), :style => "margin-top: -30px;"}/
+              .card-body
+                %h5.card-title.mb-2 About us
+                %p.card-text All the features for a complete company description.
+    .row
+      .col-md-4
+        .card.bg-lighter.mb-lg.mb-lg-0
+          .px-3
+            %img.card-img.z-depth-2{:alt => "Homapage", src: asset_path("screen-cover"), :style => "margin-top: -30px;"}/
+          .card-body
+            %h5.card-title.mb-2 Cover
+            %p.card-text A one-page template for building simple and beautiful home pages.
+      .col-md-4
+        .card.bg-lighter.mb-lg.mb-lg-0
+          .px-3
+            %img.card-img.z-depth-2{:alt => "Homapage", src: asset_path("screen-contact"), :style => "margin-top: -30px;"}/
+          .card-body
+            %h5.card-title.mb-2 Contact
+            %p.card-text List your company information next to a nice contact form.
+      .col-md-4
+        .card.bg-lighter.mb-lg.mb-lg-0
+          .px-3
+            %img.card-img.z-depth-2{:alt => "Homapage", src: asset_path("screen-login"), :style => "margin-top: -30px;"}/
+          .card-body
+            %h5.card-title.mb-2 Sign in
+            %p.card-text Custom form layout and design for a simple sign in form.
+%section.slice.slice-lg
+  .container
+    .mb-md.text-center
+      %h3.heading.h3 The main features of Boomerang UI
+      .fluid-paragraph.text-center.mt-4
+        %p.lead.lh-180
+          You get all Bootstrap components fully customized. Besides, you receive another 5 plugins out of the box and ready to use.
+          %a{:href => "../docs/plugins.html"} See the complete list
+    .row-wrapper
+      .row.cols-xs-space.cols-sm-space.cols-md-space
+        .col-md-6
+          .card.bg-primary
+            .card-body.py-5
+              .d-flex.align-items-start
+                .icon.text-primary
+                  %i.fa.fa-twitter.text-white
+                .icon-text
+                  %h3.heading.text-white.h4
+                    Latest Bootstrap framework
+                    %small (v4.0.0)
+                  %p.text-white Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+        .col-md-6
+          .card
+            .card-body.py-5
+              .d-flex.align-items-start
+                .icon.text-primary
+                  %i.fa.fa-sass
+                .icon-text
+                  %h3.heading.h4
+                    Built with Sass
+                    %small (included)
+                  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+      .row.cols-xs-space.cols-sm-space.cols-md-space
+        .col-md-6
+          .card.bg-primary
+            .card-body.py-5
+              .d-flex.align-items-start
+                .icon.text-primary
+                  %i.fa.fa-th-large.text-white
+                .icon-text
+                  %h3.heading.text-white.h4 50 customized components
+                  %p.text-white Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+        .col-md-6
+          .card
+            .card-body.py-5
+              .d-flex.align-items-start
+                .icon.text-primary
+                  %i.fa.fa-tint
+                .icon-text
+                  %h3.heading.h4 Extended color palette
+                  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+%section.slice.slice-lg.bg-cover.bg-size--cover{:style => "background: url(#{asset_url('img-2')}) center center;"}
+  .mask.bg-dark.alpha-7
+  .container
+    .row
+      .col-lg-6.ml-lg-auto
+        .card.py-5.px-4.z-depth-3
+          .card-body
+            %h2.heading.h2
+              %strong Design
+              is thinking made visual.
+            %p.lead.lh-180.mt-4
+              Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna. Ut enim ad minim veniam quis nostrud exercitation.
+            .btn-container.mt-5
+              %a.btn.btn-lg.btn-primary.px-5{:href => "#"} Our mission
+%section.slice.slice-lg{"data-delimiter" => "1"}
+  .container
+    .mb-md.text-center
+      %h3.heading.h3 Complete list of included features
+      .fluid-paragraph.text-center.mt-4
+        %p.lead.lh-180 You get all Bootstrap components fully customized. Besides, you receive another 5 plugins out of the box and ready to use.
+    .row-wrapper
+      .row.cols-xs-space.cols-sm-space.cols-md-space
+        .col-lg-4
+          %div
+            .icon.text-primary.mb-3
+              %i.fa.fa-expand
+            %h5.heading.h5 Responsive design
+            %p Some quick example text to build on the card title and make up the bulk of the card's content.
+        .col-lg-4
+          %div
+            .icon.text-primary.mb-3
+              %i.fa.fa-code
+            %h5.heading.h5 Clever markup
+            %p Some quick example text to build on the card title and make up the bulk of the card's content.
+        .col-lg-4
+          %div
+            .icon.text-primary.mb-3
+              %i.fa.fa-question-circle
+            %h5.heading.h5 Technical support
+            %p Some quick example text to build on the card title and make up the bulk of the card's content.
+      .row.cols-xs-space.cols-sm-space.cols-md-space
+        .col-lg-4
+          %div
+            .icon.text-primary.mb-3
+              %i.fa.fa-file-alt
+            %h5.heading.h4 5 page examples
+            %p Some quick example text to build on the card title and make up the bulk of the card's content.
+        .col-lg-4
+          %div
+            .icon.text-primary.mb-3
+              %i.fa.fa-puzzle-piece
+            %h5.heading.h4 5 customized plugins
+            %p Some quick example text to build on the card title and make up the bulk of the card's content.
+        .col-lg-4
+          %div
+            .icon.text-primary.mb-3
+              %i.fa.fa-th
+            %h5.heading.h4 50+ components
+            %p Some quick example text to build on the card title and make up the bulk of the card's content.
+      .row.cols-xs-space.cols-sm-space.cols-md-space
+        .col-lg-4
+          %div
+            .icon.text-primary.mb-3
+              %i.fa.fa-tint
+            %h5.heading.h4 Unlimited colors
+            %p Some quick example text to build on the card title and make up the bulk of the card's content.
+        .col-lg-4
+          %div
+            .icon.text-primary.mb-3
+              %i.fa.fa-font
+            %h5.heading.h4 Custom fonts
+            %p Some quick example text to build on the card title and make up the bulk of the card's content.
+        .col-lg-4
+          %div
+            .icon.text-primary.mb-3
+              %i.fa.fa-sass
+            %h5.heading.h4 Enhanced forms
+            %p Some quick example text to build on the card title and make up the bulk of the card's content.
+      .row.cols-xs-space.cols-sm-space.cols-md-space
+        .col-lg-4
+          %div
+            .icon.text-primary.mb-3
+              %i.fa.fa-twitter
+            %h5.heading.h4 Bootstrap 4
+            %p Some quick example text to build on the card title and make up the bulk of the card's content.
+        .col-lg-4
+          %div
+            .icon.text-primary.mb-3
+              %i.fa.fa-moon
+            %h5.heading.h4 Font Awesome 5
+            %p Some quick example text to build on the card title and make up the bulk of the card's content.
+        .col-lg-4
+          %div
+            .icon.text-primary.mb-3
+              %i.fa.fa-sass
+            %h5.heading.h4 Built with Sass
+            %p Some quick example text to build on the card title and make up the bulk of the card's content.
+      .row.cols-xs-space.cols-sm-space.cols-md-space
+        .col-lg-4
+          %div
+            .icon.text-primary.mb-3
+              %i.fa.fa-caret-square-o-down
+            %h5.heading.h4 Selectpicker
+            %p Some quick example text to build on the card title and make up the bulk of the card's content.
+        .col-lg-4
+          %div
+            .icon.text-primary.mb-3
+              %i.fa.fa-tags
+            %h5.heading.h4 Tags input
+            %p Some quick example text to build on the card title and make up the bulk of the card's content.
+        .col-lg-4
+          %div
+            .icon.text-primary.mb-3
+              %i.fa.fa-keyboard
+            %h5.heading.h4 Input masks
+            %p Some quick example text to build on the card title and make up the bulk of the card's content.
+      .row.cols-xs-space.cols-sm-space.cols-md-space
+        .col-lg-4
+          %div
+            .icon.text-primary.mb-3
+              %i.fa.fa-sliders-h
+            %h5.heading.h4 Range sliders
+            %p Some quick example text to build on the card title and make up the bulk of the card's content.
+        .col-lg-4
+          %div
+            .icon.text-primary.mb-3
+              %i.fa.fa-css3-alt
+            %h5.heading.h4 CSS animations
+            %p Some quick example text to build on the card title and make up the bulk of the card's content.
+%section.slice.slice-lg
+  .container
+    .mb-md.text-center
+      %h3.heading.h3 Free updates and support
+    .row.cols-xs-space.cols-sm-space.cols-md-space
+      .col-lg-4
+        .card.border-0
+          %img.rounded.z-depth-3.img-fluid{:alt => "Image description", src: asset_path("img-3-800x600")}/
+          .pt-4
+            %h5.card-title Free updates
+            %p.card-text Each theme comes with updates for the life of the theme. This means you'll never pay for any bug-fixes and compatibility upgrades for your theme, ever.
+      .col-lg-4
+        .card.border-0
+          %img.rounded.z-depth-3.img-fluid{:alt => "Image description", src: asset_path("img-2-800x600")}/
+          .pt-4
+            %h5.card-title Licenses
+            %p.card-text
+              All our themes have three simple licenses. Free, Multiple and Exteneded Use license are availabled and you can learn more
+              = succeed "." do
+                %a{:href => "#"} here
+      .col-lg-4
+        .card.border-0
+          %img.rounded.z-depth-3.img-fluid{:alt => "Image description", src: asset_path("img-1-800x600")}/
+          .pt-4
+            %h5.card-title Technical support
+            %p.card-text We're here to help with your Boomerang UI questions. Shoot us an email at support@webpixels.io and we'll get back to you ASAP.
+%section.slice
+  .container
+    .mb-md.text-center
+      %h3.heading.h2
+        Trusted by over
+        %span.text-primary 4000
+        clients
+      .fluid-paragraph.mt-3
+        %p.lead Start building fast, beautiful and modern looking websites in no time using our theme.
+    .row.cols-xs-space.cols-sm-space.cols-md-space
+      .col-md-2.col-6
+        .px-4.py-4.border.rounded
+          %img.img-fluid{src: asset_path("client-1")}/
+      .col-md-2.col-6
+        .px-4.py-4.border.rounded
+          %img.img-fluid{src: asset_path("client-2")}/
+      .col-md-2.col-6
+        .px-4.py-4.border.rounded
+          %img.img-fluid{src: asset_path("client-3")}/
+      .col-md-2.col-6
+        .px-4.py-4.border.rounded
+          %img.img-fluid{src: asset_path("client-4")}/
+      .col-md-2.col-6
+        .px-4.py-4.border.rounded
+          %img.img-fluid{src: asset_path("client-5")}/
+      .col-md-2.col-6
+        .px-4.py-4.border.rounded
+          %img.img-fluid{src: asset_path("client-6")}/

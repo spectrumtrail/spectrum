@@ -1,0 +1,21 @@
+%footer.px-3.footer.bg-white
+  .container-fluid
+    .row.align-items-center.py-3.border-top
+      .col-lg-6.text-center.text-lg-left.mb-2.mb-lg-0
+        © 2018
+        = succeed "." do
+          %a{:href => "https://webpixels.io/", :target => "_blank"} Webpixels
+      .col-lg-6.text-center.text-lg-right
+        %ul.nav.justify-content-center.justify-content-lg-end
+          %li.nav-item
+            %a.nav-link.active{:href => "https://instagram.com/webpixelsofficial", :target => "_blank"}
+              %i.fab.fa-instagram
+          %li.nav-item
+            %a.nav-link{:href => "https://facebook.com/webpixels", :target => "_blank"}
+              %i.fab.fa-facebook
+          %li.nav-item
+            %a.nav-link{:href => "https://github.com/webpixels", :target => "_blank"}
+              %i.fab.fa-github
+          %li.nav-item
+            %a.nav-link{:href => "https://dribbble.com/webpixels", :target => "_blank"}
+              %i.fab.fa-dribbble

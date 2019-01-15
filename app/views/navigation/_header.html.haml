@@ -1,18 +1,42 @@
-%header.header
-  %nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-primary
-    %a.navbar-brand{:href => "#"} Fixed navbar
-    %button.navbar-toggler{"aria-controls" => "navbarCollapse", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarCollapse", "data-toggle" => "collapse", :type => "button"}
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.py-4.fixed-top
+  .container
+    %a.navbar-brand{:href => "../"}
+      %strong Boomerang
+      UI Kit
+    %button.navbar-toggler{"aria-controls" => "navbar_main", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-action" => "offcanvas-open", "data-target" => "#navbar_main", :type => "button"}
       %span.navbar-toggler-icon
-    #navbarCollapse.collapse.navbar-collapse
-      %ul.navbar-nav.mr-auto
-        %li.nav-item.active
-          %a.nav-link{:href => "#"}
-            Home
-            %span.sr-only (current)
+    #navbar_main.navbar-collapse.offcanvas-collapse
+      %ul.navbar-nav.ml-auto.align-items-lg-center
+        %h6.dropdown-header.font-weight-600.d-lg-none.px-0 Menu
         %li.nav-item
-          %a.nav-link{:href => "#"} Link
+          %a.nav-link{:href => "../index.html"} Overview
+        %li.nav-item.dropdown
+          %a#navbar_main_dropdown_1.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"} Pages
+          .dropdown-menu{"aria-labelledby" => "navbar_1_dropdown_1"}
+            %a.dropdown-item{:href => "../pages/homepage.html"} Homepage
+            %a.dropdown-item{:href => "../pages/about.html"} About us
+            %a.dropdown-item{:href => "../pages/sign-in.html"} Sign in
+            %a.dropdown-item{:href => "../pages/contact.html"} Contact
         %li.nav-item
-          %a.nav-link.disabled{:href => "#"} Disabled
-      %form.form-inline.mt-2.mt-md-0
-        %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "Search", :type => "text"}/
-        %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
+          %a.nav-link{:href => "../docs/introduction.html"} Docs
+        %li.nav-item
+          %a.nav-link.d-lg-none{:href => "https://github.com/webpixels/boomerang-ui-kit/archive/master.zip", :target => "_blank"} Download Free
+          %a.btn.btn-sm.bg-white.d-none.d-lg-inline-flex{:href => "https://github.com/webpixels/boomerang-ui-kit/archive/master.zip", :target => "_blank"} Download Free
+        .dropdown-divider.d-lg-none.my-4
+        %h6.dropdown-header.font-weight-600.d-lg-none.px-0 Social Media
+        %li.nav-item
+          %a.nav-link.nav-link-icon{:href => "https://instagram.com/webpixelsofficial/", :target => "_blank"}
+            %i.fab.fa-instagram
+            %span.ml-2.d-lg-none Instagram
+        %li.nav-item
+          %a.nav-link.nav-link-icon{:href => "https://web.facebook.com/webpixels", :target => "_blank"}
+            %i.fab.fa-facebook
+            %span.ml-2.d-lg-none Facebook
+        %li.nav-item
+          %a.nav-link.nav-link-icon{:href => "https://dribbble.com/webpixels", :target => "_blank"}
+            %i.fab.fa-dribbble
+            %span.ml-2.d-lg-none Dribbble
+        %li.nav-item
+          %a.nav-link.nav-link-icon{:href => "https://github.com/webpixels", :target => "_blank"}
+            %i.fab.fa-github
+            %span.ml-2.d-lg-none Github

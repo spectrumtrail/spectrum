@@ -1,0 +1,17 @@
+%header.header
+  .navigation-trigger.d-xl-none{"data-action" => "aside-open", "data-target" => ".sidebar"}
+    .navigation-trigger-inner
+      %i.navigation-trigger-line
+      %i.navigation-trigger-line
+      %i.navigation-trigger-line
+  .header-brand.d-xl-none
+    %h1
+      %a{:href => "index.html"} Spectrum ADMIN
+  .header-nav.ml-auto
+    %ul.nav.align-items-center
+      %li.nav-item.d-none.d-md-inline-block
+        %a.nav-link.pl-0.text-danger{:href => "../"} Sign Out
+      %li.nav-item.d-none.d-md-inline-block.ml-4
+        %a.nav-link{:href => "../docs/changelog.html"} My Profile
+      %li.nav-item.ml-4
+        %img.avatar.avatar-lg.mr-3{src: asset_url("thumb-1")}/

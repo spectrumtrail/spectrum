@@ -9,14 +9,12 @@ gem "bootsnap", ">= 1.1.0", require: false
 gem "puma", "~> 3.11"
 
 # Front End
-gem "bootstrap", "~> 4.1.1"
+gem 'bootstrap-select-rails'
 gem "sass-rails", "~> 5.0"
 gem "haml-rails", "~> 1.0"
 gem "coffee-rails", "~> 4.2"
 gem "turbolinks", "~> 5"
 gem "mini_magick", "~> 4.8"
-gem "jquery-rails"
-gem "font-awesome-rails"
 gem "simple_form"
 gem "local_time"
 
