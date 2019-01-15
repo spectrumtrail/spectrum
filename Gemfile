@@ -17,6 +17,7 @@ gem "turbolinks", "~> 5"
 gem "mini_magick", "~> 4.8"
 gem "simple_form"
 gem "local_time"
+gem "uglifier"
 
 # Background Processing
 gem "redis", "~> 4.0"
