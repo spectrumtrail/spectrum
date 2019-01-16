@@ -14,7 +14,6 @@ gem 'bootstrap-select-rails'
 gem "sass-rails", "~> 5.0"
 gem "haml-rails", "~> 1.0"
 gem "coffee-rails", "~> 4.2"
-gem "turbolinks", "~> 5"
 gem "mini_magick", "~> 4.8"
 gem "simple_form"
 gem "local_time"

@@ -13,7 +13,6 @@
 
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require jquery.min.js
 //= require jquery-scrollbar.min.js
 //= require jquery.easing.js
