@@ -6,7 +6,9 @@
         %small.font-weight-100 Admin
   .scrollbar-inner
     %ul.navigation.pr-3
-      %li.navigation-title Dashboards
+      %li.navigation-title
+        %i.fas.fa-columns
+        Dashboards
       %li.navigation-item
         %a.navigation-link{href: "#"} Summary
       %li.navigation-item
@@ -14,7 +16,9 @@
       %li.navigation-item
         %a.navigation-link{href: "#"} Marketing
 
-      %li.navigation-title Events
+      %li.navigation-title
+        %i.far.fa-calendar-alt
+        Events
       %li.navigation-item
         %a.navigation-link{href: admin_events_path} List
       %li.navigation-item
@@ -22,7 +26,9 @@
       %li.navigation-item
         %a.navigation-link{href: admin_locations_path} Locations
 
-      %li.navigation-title Financial
+      %li.navigation-title
+        $
+        Financial
       %li.navigation-item
         %a.navigation-link{href: "#"} Transactions
       %li.navigation-item
@@ -30,16 +36,30 @@
       %li.navigation-item
         %a.navigation-link{href: "#"} Refunds
 
-      %li.navigation-title Registrations
+      %li.navigation-title
+        %i.far.fa-list-alt
+        Registrations
       %li.navigation-item
         %a.navigation-link{href: new_admin_registration_path} New
       %li.navigation-item
         %a.navigation-link{href: admin_registrations_path} List
 
-      %li.navigation-title Z-Other
+      %li.navigation-title
+        %i.fab.fa-elementor
+        Settings
+      %li.navigation-item
+        %a.navigation-link{href: "#"} Menus
+      %li.navigation-item
+        %a.navigation-link{href: "#"} Home
+      %li.navigation-item
+        %a.navigation-link{href: "#"} Globals
+
+      %li.navigation-title
+        %i.fab.fa-ethereum
+        Other
       %li.navigation-item
         %a.navigation-link{href: "#"} Announcements
       %li.navigation-item
-        %a.navigation-link{href: "#"} Team
+        %a.navigation-link{href: "#"} Race Team
       %li.navigation-item
         %a.navigation-link{href: "#"} Sponsors

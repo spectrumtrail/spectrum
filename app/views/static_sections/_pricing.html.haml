@@ -1,0 +1,47 @@
+%section.slice.slice-lg
+  .container
+    .mb-5.text-center
+      %h3.heading.h2 Explore more features by selecting a plan
+      .fluid-paragraph.text-center
+        %p.lead.mb-0 Choose the best solution for your business.
+    .text-center.mb-5
+      .btn-group{"aria-label" => "Basic example", :role => "group"}
+        %button.btn.btn-secondary.active{:type => "button"} Monthly billing
+        %button.btn.btn-secondary{:type => "button"} Yearly billing
+    .card-deck.mb-3
+      .card.card-pricing.text-center.px-3.mb-4
+        .card-header.py-4
+          %h4.mb-4 Free
+          %h1.display-4.text-primary.text-center $0
+          %span.h6.text-muted per month
+        .card-body
+          %ul.list-unstyled.mb-4
+            %li Up to 5 users
+            %li Basic support on Github
+            %li Monthly updates
+            %li Free cancelation
+          %button.btn.btn-primary.mb-3{:type => "button"} Start free trial
+      .card.card-pricing.popular.text-center.px-3.mb-4.z-depth-3
+        .card-header.py-4
+          %h4.mb-4 Multiple Use
+          %h1.display-4.text-primary.text-center $49
+          %span.h6.text-muted per month
+        .card-body
+          %ul.list-unstyled.mb-4
+            %li Up to 15 users
+            %li Premium email support
+            %li Weekly updates
+            %li Free cancelation
+          %button.btn.btn-primary.mb-3{:type => "button"} Start free trial
+      .card.card-pricing.text-center.px-3.mb-4
+        .card-header.py-4
+          %h4.mb-4 Extended Use
+          %h1.display-4.text-primary.text-center $199
+          %span.h6.text-muted per month
+        .card-body
+          %ul.list-unstyled.mb-4
+            %li Unlimited users
+            %li One on one support
+            %li Weekly updates
+            %li Free cancelation
+          %button.btn.btn-primary.mb-3{:type => "button"} Start free trial
