@@ -1,20 +1,11 @@
-.row.justify-content-between
-  .col-5
+.row
+  .col-10
     %h1 Locations
   .col-2
-    = link_to "New", new_admin_location_path, class: "btn btn-md btn-success float-right"
-%hr
+    = link_to "New", new_admin_location_path, class: "btn btn-sm btn-success float-right"
+%br
 - if @locations.any?
-  %table.table.table-hover.table-cards.align-items-center
-    %thead
-      %tr
-        %th{scope: "col"} Name
-        %th{scope: "col"} Primary Contact
-        %th{scope: "col"} Address
-    %tbody
-      - @locations.each do |location|
-        = render "location", location: location
-
+  = render "table"
 - else
   .row
     .col

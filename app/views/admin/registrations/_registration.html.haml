@@ -1,10 +1,15 @@
 %tr
-  %td= registration.race
-  %td= registration.first_name
-  %td= registration.email
+  %td= link_to registration.event_name, admin_event_path(registration.event)
+  %td= link_to registration.race_name, admin_race_path(registration.race)
+  %td= registration.full_name
+  %td= mail_to registration.email
   %td= registration.division
   %td= registration.mobile_phone
   %td
-    = link_to 'Show', registration
-    = link_to 'Edit', edit_registration_path(registration)
-    = link_to 'Destroy', registration, method: :delete, data: { confirm: 'Are you sure?' }
+    .dropdown
+      %button.btn.btn-sm.btn-outline-tertiary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+        Actions
+      .dropdown-menu
+        = link_to "Show", admin_registration_path(registration), class: "dropdown-item"
+        = link_to "Change", edit_admin_registration_path(registration), class: "dropdown-item text-warning"
+        = link_to "Cancel", admin_registration_path(registration), method: :delete, data: { confirm: "Are you sure?" }, class: "dropdown-item text-danger"

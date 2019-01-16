@@ -7,13 +7,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => redirect('admin/dashboard')
-    resource :dashboard, controller: 'dashboard' do
-    end
+    resource :dashboard, controller: 'dashboard'
     resources :locations
-    resources :events do
-      resources :races do
-        resources :registrations
-      end
-    end
+    resources :events
+    resources :races
+    resources :registrations
   end
 end

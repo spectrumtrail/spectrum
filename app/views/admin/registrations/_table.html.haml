@@ -1,13 +1,14 @@
-%table.table.table-striped
+%table.table
   %thead
     %tr
+      %th Event
       %th Race
       %th Name
       %th Email
       %th Division
-      %th Mobile phone
+      %th Mobile
       %th
 
   %tbody
     - @registrations.each do |registration|
-      = render "registration"
+      = render "registration", registration: registration.decorate

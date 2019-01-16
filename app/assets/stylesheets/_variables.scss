@@ -11,16 +11,16 @@ $enable-print-styles:       true;
 
 // Color system
 
-$white:    #fff; 
+$white:    #fff;
 $gray-100: #f8f9fa;
 $gray-200: #e9ecef;
 $gray-300: #dee2e6;
 $gray-400: #ced4da;
 $gray-500: #adb5bd;
 $gray-600: #6c757d;
-$gray-700: #495057; 
-$gray-800: #343a40; 
-$gray-900: #212529; 
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
 $black:    #000;
 
 $grays: ();
@@ -78,7 +78,7 @@ $dark:          $gray-800;
 
 $facebook:      #3b5999;
 $twitter:       #1da1f2;
-$google-plus:   #dd4b39; 
+$google-plus:   #dd4b39;
 $instagram:     #e4405f;
 $pinterest:     #bd081c;
 $youtube:       #cd201f;
@@ -132,7 +132,7 @@ $link-decoration:           none;
 $link-hover-color:          darken($link-color, 15%);
 $link-hover-decoration:     unone;
 
- 
+
 // Spacing
 
 $spacer: 1rem;
@@ -164,7 +164,7 @@ $sizes: map-merge((
 $line-height-xl:              1.5;
 $line-height-lg:              1.5;
 $line-height-sm:              1.5;
- 
+
 $border-width:                .0625rem;
 $border-color:                $gray-200;
 
@@ -317,7 +317,7 @@ $input-btn-line-height-xl:    $line-height-xl;
 $input-btn-border-width:      $border-width;
 
 
-// Buttons 
+// Buttons
 
 $btn-padding-y:               $input-btn-padding-y;
 $btn-padding-x:               $input-btn-padding-x + 0.5;
@@ -454,7 +454,7 @@ $dropdown-border-color:             rgba($black, .15);
 $dropdown-border-radius:            $border-radius;
 
 
-// Navs 
+// Navs
 
 $nav-link-padding-y:                .25rem;
 $nav-link-padding-x:                .75rem;
@@ -510,7 +510,7 @@ $alert-bg-level: -2;
 $alert-border-level: -2;
 $alert-color-level: 0;
 
-// Close 
+// Close
 
 $close-font-size:                   $font-size-base * 1.5;
 $close-font-weight:                 $font-weight-bold;
@@ -585,20 +585,20 @@ $badge-pill-border-radius:          10rem;
 
 $pagination-color:                  $gray-600;
 $pagination-bg:                     $white ;
-$pagination-border-width:           $border-width; 
+$pagination-border-width:           $border-width;
 $pagination-border-color:           $gray-300;
 
 $pagination-focus-box-shadow:       $input-btn-focus-box-shadow;
 
 $pagination-hover-color:            $gray-600;
-$pagination-hover-bg:               $gray-300; 
+$pagination-hover-bg:               $gray-300;
 $pagination-hover-border-color:     $gray-300;
 
 $pagination-active-color:           $component-active-color;
 $pagination-active-bg:              $component-active-bg;
 $pagination-active-border-color:    $pagination-active-bg;
 
-$pagination-disabled-color:         $gray-600; 
+$pagination-disabled-color:         $gray-600;
 $pagination-disabled-bg:            $white;
 $pagination-disabled-border-color:  $gray-300;
 
@@ -606,7 +606,7 @@ $pagination-disabled-border-color:  $gray-300;
 // Cards
 
 $card-spacer-y:                     1.25rem;
-$card-spacer-x:                     1.5rem; 
+$card-spacer-x:                     1.5rem;
 $card-border-width:                 $border-width;
 $card-border-radius:                $border-radius;
 $card-border-color:                 rgba($black, .05);
@@ -654,4 +654,3 @@ $footer-bg: $white;
 $footer-color: $gray-600;
 $footer-link-color: $gray-600;
 $footer-link-hover-color: $primary;
-

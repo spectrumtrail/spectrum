@@ -1,0 +1,9 @@
+%table.table.table-hover.table-cards.align-items-center
+  %thead
+    %tr
+      %th{scope: "col"} Name
+      %th{scope: "col"} Primary Contact
+      %th{scope: "col"} Address
+  %tbody
+    - @locations.each do |location|
+      = render "location", location: location.decorate

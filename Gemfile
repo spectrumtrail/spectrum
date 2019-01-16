@@ -9,6 +9,7 @@ gem "bootsnap", ">= 1.1.0", require: false
 gem "puma", "~> 3.11"
 
 # Front End
+gem "draper"
 gem 'bootstrap-select-rails'
 gem "sass-rails", "~> 5.0"
 gem "haml-rails", "~> 1.0"

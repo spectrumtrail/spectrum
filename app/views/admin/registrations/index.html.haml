@@ -1,17 +1,15 @@
 .row
-  .col-3
-    = render @race
-  .col-9
-    .row.justify-content-between
-      .col-10
-        %h1="Registrations for #{@event.name} #{@race.name}"
-      .col-2
-        = link_to new_admin_event_race_registration_path(@event, @race), class: "btn btn-md btn-success" do
-          New
-    %hr
+  .col-10
+    %h1 Registrations
+  .col-2
+    = link_to new_admin_registration_path, class: "btn btn-md btn-success" do
+      New
+%br
+.row
+  .col
     - if @registrations.any?
-      = render "table"
-
+      .card
+        = render "table"
     - else
       .row
         .col

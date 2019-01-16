@@ -4,4 +4,8 @@ class Race < ApplicationRecord
   has_many :registrations
 
   validates :name, presence: true
+
+  def name_with_event
+    "#{event.name} #{name}"
+  end
 end

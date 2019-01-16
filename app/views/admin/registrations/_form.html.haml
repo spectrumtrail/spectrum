@@ -1,10 +1,15 @@
 -# frozen_string_literal: true
 = simple_form_for([:admin, @event, @race, @registration]) do |f|
   = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+  - if f.object.errors[:base].present?
+    = f.error_notification message: f.object.errors[:base].to_sentence
 
   .form-inputs
-    = f.input :first_name
+    = f.association :race,
+      label_method: :name_with_event,
+      value_method: :id,
+      prompt: "Which race does this Person want to do?"
+    = f.input :first_name, class: "col-6"
     = f.input :last_name
     = f.input :date_of_birth
     = f.input :email

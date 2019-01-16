@@ -1,15 +1,32 @@
-.card
-  %img.card-img-top{alt: event.name, src: "https://picsum.photos/300/150/?random"}/
-  .card-body
-    %span.badge.badge-danger Location
-    %h5.card-title= event.location.name
-    %span.badge.badge-primary Event
-    %h5.card-title= event.name
-    %p.card-text= event.short_description
-  .card-footer
-    %small.text-muted= local_time_ago(event.updated_at)
-    .float-right
-      = link_to edit_admin_event_path(event), class: "btn btn-sm btn-warning" do
-        Edit
-      = link_to admin_event_races_path(event), class: "btn btn-sm btn-dark" do
-        Races
+%tr.bg-white
+  %th{scope: "row"}
+    .media.align-items-center
+      %img.avatar.avatar-lg.mr-3{src: asset_path("thumb-#{rand(1..2)}")}
+      .media-body
+        %h6.h5.font-weight-normal.mb-0
+          = event.name
+        %span.font-weight-normal.text-muted
+          - event.races.each do |race|
+            %a{href: admin_race_path(race)}
+              %span.badge.badge-md.badge-primary= race.name
+  %td
+    = local_time event.created_at
+    %br
+    %i.fas.fa-map-pin
+    = link_to event.location_name, admin_location_path(event.location)
+  %td
+    .btn-group.float-right
+      = link_to "Registrations",
+        admin_registrations_path(event_id: event.id),
+        class: "btn btn-sm btn-outline-tertiary"
+      %button.btn.btn-sm.btn-outline-tertiary.dropdown-toggle.dropdown-toggle-split{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+        %span.sr-only Toggle Dropdown
+      .dropdown-menu
+        = link_to "Details", admin_event_path(event), class: "dropdown-item"
+        = link_to "Registrations",
+          admin_registrations_path(event_id: event.id),
+          class: "dropdown-item"
+        %a.dropdown-item{:href => "#"} Something else here
+        .dropdown-divider
+        = link_to "Cancel", admin_event_path(event), method: :delete, data: { confirm: "Are you sure?" }, class: "dropdown-item text-danger"
+%tr.table-divider
