@@ -1,11 +1,10 @@
-.card
-  %img.card-img-top{alt: location.name, src: "https://picsum.photos/300/150/?random"}/
-  .card-body
-    %span.badge.badge-danger Location
-    %h5.card-title= location.name
-    %p.card-text= location.short_description
-  .card-footer
-    %small.text-muted= local_time_ago(location.updated_at)
-    .float-right
-      = link_to edit_admin_location_path(location), class: "btn btn-sm" do
-        Edit
+%tr.bg-white
+  %th{scope: "row"}
+    .media.align-items-center
+      %img.avatar.avatar-lg.mr-3{src: asset_path("thumb-#{rand(1..2)}")}
+      .media-body
+        %h6.h5.font-weight-normal.mb-0= location.name
+        %span.font-weight-normal.text-muted= location.short_description
+  %td nabiha.armstrong@example.com
+  %td Cluj Napoca, RO
+%tr.table-divider

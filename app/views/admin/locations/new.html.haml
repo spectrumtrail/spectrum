@@ -1,5 +1,15 @@
-%h1 New location
+%nav{"aria-label" => "breadcrumb"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      %a{href: admin_dashboard_path} Admin
+    %li.breadcrumb-item
+      %a{href: admin_locations_path} Locations
+    %li.breadcrumb-item.active{"aria-current" => "page"} New
 
-= render 'form'
-
-= link_to 'Back', admin_locations_path
+.row
+  .col
+    %h2 New Venue
+    %p This is where event location information is stored. Locations may host multiple events.
+.row
+  .col-6.align-center
+    = render 'form'

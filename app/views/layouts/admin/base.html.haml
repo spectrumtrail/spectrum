@@ -16,5 +16,7 @@
     = render "admin/navigation/aside"
     %section.content
       = render "admin/navigation/header"
-      = yield
+      .content-inner.content-docs
+        .container-fluid
+          = yield
       = render "admin/navigation/footer"

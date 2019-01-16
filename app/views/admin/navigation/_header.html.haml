@@ -6,12 +6,13 @@
       %i.navigation-trigger-line
   .header-brand.d-xl-none
     %h1
-      %a{:href => "index.html"} Spectrum ADMIN
+      %a{href: admin_dashboard_path} Spectrum ADMIN
   .header-nav.ml-auto
     %ul.nav.align-items-center
       %li.nav-item.d-none.d-md-inline-block
-        %a.nav-link.pl-0.text-danger{:href => "../"} Sign Out
-      %li.nav-item.d-none.d-md-inline-block.ml-4
-        %a.nav-link{:href => "../docs/changelog.html"} My Profile
-      %li.nav-item.ml-4
-        %img.avatar.avatar-lg.mr-3{src: asset_url("thumb-1")}/
+        %a.nav-link{href: "#sign_out_path"} Sign Out
+      %li.nav-item.d-none.d-md-inline-block
+        %a.nav-link{href: "#admin_user_profile_path"} Profile
+      %li.nav-item.dropdown.d-md-inline-block
+        %a.nav-link{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", href: "#", role: "button"}
+          %img.avatar.avatar-md.mr-3{alt: "User profile image.", src: asset_url("thumb-1")}/

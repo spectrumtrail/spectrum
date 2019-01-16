@@ -1,21 +1,24 @@
-%footer.px-3.footer.bg-white
+%footer.footer.bg-white.px-3
   .container-fluid
     .row.align-items-center.py-3.border-top
       .col-lg-6.text-center.text-lg-left.mb-2.mb-lg-0
-        © 2018
-        = succeed "." do
-          %a{:href => "https://webpixels.io/", :target => "_blank"} Webpixels
+        © 2019
+        = succeed " (that's us!)" do
+          Spectrum Trail Racing
       .col-lg-6.text-center.text-lg-right
         %ul.nav.justify-content-center.justify-content-lg-end
           %li.nav-item
-            %a.nav-link.active{:href => "https://instagram.com/webpixelsofficial", :target => "_blank"}
+            %a.nav-link.active{href: "https://www.instagram.com/spectrumtrail/", target: "_blank"}
               %i.fab.fa-instagram
           %li.nav-item
-            %a.nav-link{:href => "https://facebook.com/webpixels", :target => "_blank"}
+            %a.nav-link{href: "https://www.facebook.com/spectrumtrailracing/", target: "_blank"}
               %i.fab.fa-facebook
           %li.nav-item
-            %a.nav-link{:href => "https://github.com/webpixels", :target => "_blank"}
+            %a.nav-link{href: "https://github.com/spectrumtrail", target: "_blank"}
               %i.fab.fa-github
           %li.nav-item
-            %a.nav-link{:href => "https://dribbble.com/webpixels", :target => "_blank"}
-              %i.fab.fa-dribbble
+            %a.nav-link{href: "https://stripe.com", target: "_blank"}
+              %i.fab.fa-stripe
+          %li.nav-item
+            %a.nav-link{href: "https://app.raygun.com/signin"}
+              %i.fas.fa-bug

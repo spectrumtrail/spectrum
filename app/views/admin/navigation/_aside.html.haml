@@ -1,55 +1,45 @@
 %aside#nav_docs.sidebar
   .sidebar-brand
-    %h1.font-weight-400
-      %a{:href => "../"}
-        %span.font-weight-900 Spectrum
-        Admin
+    %h1
+      %a{href: admin_dashboard_path}
+        %span.text-primary.font-weight-900 Spectrum
+        %small.font-weight-100 Admin
   .scrollbar-inner
     %ul.navigation.pr-3
-      %li.navigation-title Getting started
+      %li.navigation-title Dashboards
       %li.navigation-item
-        %a.navigation-link{:href => "introduction.html"} Introduction
+        %a.navigation-link{href: "#"} Summary
       %li.navigation-item
-        %a.navigation-link{:href => "file-structure.html"} File structure
+        %a.navigation-link{href: "#"} Events
       %li.navigation-item
-        %a.navigation-link{:href => "plugins.html"} Plugins
+        %a.navigation-link{href: "#"} Marketing
+
+      %li.navigation-title Events
       %li.navigation-item
-        %a.navigation-link{:href => "customization.html"} Customization
+        %a.navigation-link{href: admin_events_path} List
       %li.navigation-item
-        %a.navigation-link{:href => "update.html"} Update
-      %li.navigation-title Design elements
+        %a.navigation-link{href: new_admin_event_path} New
       %li.navigation-item
-        %a.navigation-link{:href => "colors.html"} Colors
+        %a.navigation-link{href: admin_locations_path} Locations
+
+      %li.navigation-title Financial
       %li.navigation-item
-        %a.navigation-link{:href => "typography.html"} Typography
+        %a.navigation-link{href: "#"} Transactions
       %li.navigation-item
-        %a.navigation-link{:href => "icons.html"} Icons
-      %li.navigation-title Components
+        %a.navigation-link{href: "#"} Discount Codes
       %li.navigation-item
-        %a.navigation-link{:href => "alerts.html"} Alerts
+        %a.navigation-link{href: "#"} Refunds
+
+      %li.navigation-title Registrations
       %li.navigation-item
-        %a.navigation-link{:href => "avatars.html"} Avatars
+        %a.navigation-link{href: "#"} New
       %li.navigation-item
-        %a.navigation-link{:href => "badges.html"} Badges
+        %a.navigation-link{href: "#"} List
+
+      %li.navigation-title Z-Other
       %li.navigation-item
-        %a.navigation-link{:href => "buttons.html"} Buttons
+        %a.navigation-link{href: "#"} Announcements
       %li.navigation-item
-        %a.navigation-link{:href => "cards.html"} Cards
+        %a.navigation-link{href: "#"} Team
       %li.navigation-item
-        %a.navigation-link{:href => "dropdowns.html"} Dropdowns
-      %li.navigation-item
-        %a.navigation-link{:href => "forms.html"} Forms
-      %li.navigation-item
-        %a.navigation-link{:href => "modal.html"} Modal
-      %li.navigation-item
-        %a.navigation-link{:href => "navbar.html"} Navbar
-      %li.navigation-item
-        %a.navigation-link{:href => "navs.html"} Navs
-      %li.navigation-item
-        %a.navigation-link{:href => "pagination.html"} Pagination
-      %li.navigation-item
-        %a.navigation-link{:href => "progress.html"} Progress
-      %li.navigation-item
-        %a.navigation-link{:href => "tables.html"} Tables
-      %li.navigation-item
-        %a.navigation-link{:href => "tooltips.html"} Tooltips
+        %a.navigation-link{href: "#"} Sponsors

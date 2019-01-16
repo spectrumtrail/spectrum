@@ -1,15 +1,15 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.py-4.fixed-top
   .container
-    %a.navbar-brand{:href => "../"}
-      %strong Boomerang
-      UI Kit
+    %a.navbar-brand{href: root_path}
+      %strong Spectrum
+      Trail Racing
     %button.navbar-toggler{"aria-controls" => "navbar_main", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-action" => "offcanvas-open", "data-target" => "#navbar_main", :type => "button"}
       %span.navbar-toggler-icon
     #navbar_main.navbar-collapse.offcanvas-collapse
       %ul.navbar-nav.ml-auto.align-items-lg-center
         %h6.dropdown-header.font-weight-600.d-lg-none.px-0 Menu
         %li.nav-item
-          %a.nav-link{:href => "../index.html"} Overview
+          %a.nav-link{href: root_path} Overview
         %li.nav-item.dropdown
           %a#navbar_main_dropdown_1.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"} Pages
           .dropdown-menu{"aria-labelledby" => "navbar_1_dropdown_1"}

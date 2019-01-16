@@ -5,9 +5,14 @@
     = link_to "New", new_admin_location_path, class: "btn btn-md btn-success float-right"
 %hr
 - if @locations.any?
-  .row
-    - @locations.each do |location|
-      .col-4
+  %table.table.table-hover.table-cards.align-items-center
+    %thead
+      %tr
+        %th{scope: "col"} Name
+        %th{scope: "col"} Primary Contact
+        %th{scope: "col"} Address
+    %tbody
+      - @locations.each do |location|
         = render "location", location: location
 
 - else
