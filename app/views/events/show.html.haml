@@ -1,0 +1,46 @@
+%section.spotlight.bg-cover.bg-size--cover{"data-spotlight" => "fullscreen", style: "background-image: url(#{asset_url('https://static1.squarespace.com/static/54243c3be4b062fcf1a0dab1/5a9fd6b98165f526fc6e0440/5a9fd6c353450a19d22839c9/1525273687433/Spectrum+Trail+Race+-+Ft+Davis+-++055.jpg')})"}
+  %span.mask.bg-dark.alpha-7
+  .spotlight-holder.py-lg.pt-lg-xl
+    .container.d-flex.align-items-center.no-padding
+      .col
+        .row.cols-xs-space.text-center.text-md-left.justify-content-center
+          .col-lg-10
+            .text-center.mt-5
+              %small.text-muted= local_time @event.starts_at
+              %h1.heading.h1.text-white= @event.name.upcase
+              %p.lead.lh-180.text-white.mt-3
+                = @event.short_description
+%section.slice-lg
+  .container
+    .row.align-items-center.cols-xs-space.cols-sm-space.cols-md-space
+      .col-lg-6.order-lg-2.ml-lg-auto
+        .block.block-image
+          %img.img-fluid.img-center{src: asset_path("https://static1.squarespace.com/static/54243c3be4b062fcf1a0dab1/t/5bbf884e0d929792c0575167/1539298374064/SkyIsland2018.jpg")}/
+      .col-lg-5.order-lg-1
+        .row-wrapper
+          .row
+            .col
+              .d-flex.align-items-start
+                .icon.icon-lg
+                  %i.far.fa-calendar-alt
+                .icon-text
+                  %h3.heading.h4 When?
+                  %p
+          .row
+            .col
+              .d-flex.align-items-start
+                .icon.icon-lg
+                  %i.fab.fa-sass
+                .icon-text
+                  %h3.heading.h4
+                    Built with Sass
+                    %small (included)
+                  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+          .row
+            .col
+              .d-flex.align-items-start
+                .icon.icon-lg
+                  %i.fas.fa-tint
+                .icon-text
+                  %h3.heading.h4 Extended color palette
+                  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.

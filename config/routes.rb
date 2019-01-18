@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   get "static_pages/privacy"
   get "static_pages/about"
 
-  resources :events, path: "races", only: [:index, :show]
+  resources :events, only: [:index, :show] do
+    resources :races, only: [:index, :show] do
+      resources :registrations, only: [:index, :new, :create]
+    end
+  end
 
   namespace :admin do
     get '/' => redirect('admin/dashboard')

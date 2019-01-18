@@ -12,7 +12,7 @@
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload"
     = javascript_include_tag "application", "data-turbolinks-track": "reload"
     %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"}
-  %body
+  %body{class: "application #{controller_name}", id: "#{controller_name}_#{action_name}"}
     = render "navigation/header"
     %main.main
       = yield
