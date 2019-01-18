@@ -6,41 +6,81 @@
         .row.cols-xs-space.text-center.text-md-left.justify-content-center
           .col-lg-10
             .text-center.mt-5
-              %small.text-muted= local_time @event.starts_at
+              %small.text-muted= local_time(@event.starts_at, '%B %e, %Y')
               %h1.heading.h1.text-white= @event.name.upcase
               %p.lead.lh-180.text-white.mt-3
                 = @event.short_description
-%section.slice-lg
+
+%section.slice
   .container
-    .row.align-items-center.cols-xs-space.cols-sm-space.cols-md-space
-      .col-lg-6.order-lg-2.ml-lg-auto
-        .block.block-image
-          %img.img-fluid.img-center{src: asset_path("https://static1.squarespace.com/static/54243c3be4b062fcf1a0dab1/t/5bbf884e0d929792c0575167/1539298374064/SkyIsland2018.jpg")}/
-      .col-lg-5.order-lg-1
-        .row-wrapper
-          .row
-            .col
-              .d-flex.align-items-start
-                .icon.icon-lg
-                  %i.far.fa-calendar-alt
-                .icon-text
-                  %h3.heading.h4 When?
-                  %p
-          .row
-            .col
-              .d-flex.align-items-start
-                .icon.icon-lg
-                  %i.fab.fa-sass
-                .icon-text
-                  %h3.heading.h4
-                    Built with Sass
-                    %small (included)
-                  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
-          .row
-            .col
-              .d-flex.align-items-start
-                .icon.icon-lg
-                  %i.fas.fa-tint
-                .icon-text
-                  %h3.heading.h4 Extended color palette
-                  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+    .row
+      .col-sm-12.col-md-3
+        %img.img-fluid{src: "https://static1.squarespace.com/static/54243c3be4b062fcf1a0dab1/t/5bbfc8d4f4e1fccc3f464970/1546271202853/shutterstock_133811615.jpg?format=1500w"}
+        .card
+          .list-group
+            %a.list-group-item.list-group-item-action.d-flex.align-items-center{:href => "#"}
+              .list-group-content
+                .list-group-heading
+                  %h4
+                    %i.far.fa-caret-square-right
+                    Overview
+            %a.list-group-item.list-group-item-action.d-flex.align-items-center{:href => "#"}
+              .list-group-content
+                .list-group-heading
+                  %h4
+                    %i.far.fa-caret-square-right
+                    Course
+            %a.list-group-item.list-group-item-action.d-flex.align-items-center{:href => "#"}
+              .list-group-content
+                .list-group-heading
+                  %h4
+                    %i.far.fa-caret-square-right
+                    Schedule
+            %a.list-group-item.list-group-item-action.d-flex.align-items-center{:href => "#"}
+              .list-group-content
+                .list-group-heading
+                  %h4
+                    %i.far.fa-caret-square-right
+                    Details
+
+      .col-9
+        .row#OverviewSection
+          .col
+            %h2 Overview
+            %hr
+            %p.lead= @event.overview_html.html_safe
+        .row#ScheduledSection
+          .col
+            %h2 Schedule
+            %hr
+            %p= @event.schedule_html.html_safe
+        .row#CoursesSection
+          .col
+            %h2 Courses
+            %hr
+            %p= @event.course_html.html_safe
+            %ul#tabs_2.nav.nav-pills.nav-fill.mb-3{:role => "tablist"}
+              %li.nav-item
+                %a#home-tab.nav-link.active{"aria-controls" => "home", "aria-selected" => "true", "data-toggle" => "tab", :href => "#tabs_2_1", :role => "tab"}
+                  %span.nav-link-icon.d-block
+                    %i.fab.fa-connectdevelop.fa-2x
+                  %span.d-none.d-sm-block.mt-3 UI/UX Design
+              %li.nav-item
+                %a#profile-tab.nav-link{"aria-controls" => "profile", "aria-selected" => "false", "data-toggle" => "tab", :href => "#tabs_2_2", :role => "tab"}
+                  %span.nav-link-icon.d-block
+                    %i.fas.fa-code.fa-2x
+                  %span.d-none.d-sm-block.mt-3 Programming
+              %li.nav-item
+                %a#contact-tab.nav-link{"aria-controls" => "contact", "aria-selected" => "false", "data-toggle" => "tab", :href => "#tabs_2_3", :role => "tab"}
+                  %span.nav-link-icon.d-block
+                    %i.fab.fa-node-js.fa-2x
+                  %span.d-none.d-sm-block.mt-3 Web Development
+            #myTabContent.tab-content
+              #tabs_2_1.tab-pane.fade.show.active{"aria-labelledby" => "home-tab", :role => "tabpanel"}
+                %p Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.
+              #tabs_2_2.tab-pane.fade{"aria-labelledby" => "profile-tab", :role => "tabpanel"}
+                %p Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+              #tabs_2_3.tab-pane.fade{"aria-labelledby" => "contact-tab", :role => "tabpanel"}
+                %p Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.
+        .row#PhotosSection
+        .row#ResultsSection

@@ -4,19 +4,22 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
-    = f.association :location, include_blank: false
-    = f.input :name
-    = f.input :starts_at
-    = f.input :ends_at
-    = f.input :short_description
-    = f.input :long_description
-    = f.input :facebook_event_link
-    = f.input :external_photo_link
-    = f.input :external_results_link
-    = f.input :external_reservations_link
-    = f.input :is_active
-    = f.input :archived_at
-    = f.input :archived_by
+    %fieldset
+      %legend Basics
+      = f.association :location, include_blank: false
+      = f.input :short_description
+      = f.input :name
+      = f.input :starts_at
+      = f.input :facebook_event_link
+    %fieldset
+      %legend Basics
+      = f.input :overview_html, required: true, input_html: { class: "textarea-autosize" }
+      = f.input :details_html, required: true, input_html: { class: "textarea-autosize" }
+      = f.input :schedule_html, required: true, input_html: { class: "textarea-autosize" }
+      = f.input :course_html, required: true, input_html: { class: "textarea-autosize" }
+    %fieldset
+      %legend Visibility
+      = f.input :is_active, hint: "Will show in menu if active."
 
   .form-actions
     = f.button :submit, class: "btn btn-md btn-success"

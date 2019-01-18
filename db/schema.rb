@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_17_040508) do
+ActiveRecord::Schema.define(version: 2019_01_18_200647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,13 +18,9 @@ ActiveRecord::Schema.define(version: 2019_01_17_040508) do
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.datetime "starts_at"
-    t.datetime "ends_at"
     t.string "short_description"
-    t.text "long_description"
+    t.text "overview_html"
     t.string "facebook_event_link"
-    t.string "external_photo_link"
-    t.string "external_results_link"
-    t.string "external_reservations_link"
     t.string "is_active"
     t.datetime "archived_at"
     t.string "archived_by"
@@ -32,6 +28,9 @@ ActiveRecord::Schema.define(version: 2019_01_17_040508) do
     t.datetime "updated_at", null: false
     t.bigint "location_id"
     t.string "slug"
+    t.text "schedule_html"
+    t.text "details_html"
+    t.text "course_html"
     t.index ["location_id"], name: "index_events_on_location_id"
     t.index ["slug"], name: "index_events_on_slug", unique: true
   end
