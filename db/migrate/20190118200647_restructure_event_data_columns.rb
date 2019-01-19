@@ -9,7 +9,6 @@ class RestructureEventDataColumns < ActiveRecord::Migration[5.2]
     # these will be delegated to Races
     remove_column :events, :external_reservations_link, :string
     remove_column :events, :external_photo_link, :string
-    remove_column :events, :external_results_link, :string
 
     # this is irrelevant for events
     remove_column :events, :external_results_link, :string
