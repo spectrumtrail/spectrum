@@ -6,9 +6,9 @@
   .form-inputs
     %fieldset
       %legend Basics
-      = f.association :location, include_blank: false
-      = f.input :short_description
+      = f.association :location, prompt: "Please select a Location for this Event"
       = f.input :name
+      = f.input :short_description
       = f.input :starts_at
       = f.input :facebook_event_link
     %fieldset

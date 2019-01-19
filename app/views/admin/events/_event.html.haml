@@ -23,8 +23,8 @@
         %span.sr-only Toggle Dropdown
       .dropdown-menu
         = link_to "Dashboard", admin_event_path(event), class: "dropdown-item"
-        = link_to "Registrations",
-          admin_registrations_path(event_id: event.id),
+        = link_to "Promo Page",
+          event_path(event),
           class: "dropdown-item"
         %a.dropdown-item{href: edit_admin_event_path(event)} Edit
         .dropdown-divider

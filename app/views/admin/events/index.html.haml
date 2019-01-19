@@ -1,20 +1,11 @@
-.row
+.row.header
   .col
     %h1 Events
-    .btn-group
-      %button.btn.btn-sm.btn-outline-secondary.active{type: "button"} Active
-      %button.btn.btn-sm.btn-outline-secondary{type: "button"} Archived
   .col
-    .align-items-center
-      = link_to "New Event", new_admin_event_path, class: "btn btn-sm btn-success float-right"
-%br
+    .float-right
+      = link_to "New Event",
+        new_admin_event_path,
+        class: "btn btn-sm btn-success"
 .row
   .col
-    - if @events.any?
-      = render "table"
-    - else
-      .row
-        .col
-          .text-center
-            %h4.text-muted.p-4
-              No events exist yet.
+    = render "table"

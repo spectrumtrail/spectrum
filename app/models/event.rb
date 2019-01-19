@@ -3,7 +3,7 @@ class Event < ApplicationRecord
   friendly_id :name, use: :slugged
 
   belongs_to :location
-  has_many :races
+  has_many :races, dependent: :destroy
   has_many :regisratrations, through: :races
 
   validates :name, presence: true
