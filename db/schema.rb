@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_18_200647) do
+ActiveRecord::Schema.define(version: 2019_01_19_201229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,15 +52,14 @@ ActiveRecord::Schema.define(version: 2019_01_18_200647) do
     t.string "gps_long"
     t.string "address_text"
     t.string "address_link"
-    t.boolean "allows_dogs"
     t.string "spectator_entry_fee_text"
     t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "short_description"
-    t.text "long_description"
-    t.text "website_link"
+    t.text "description_html"
     t.string "slug"
+    t.string "external_website_link"
     t.index ["slug"], name: "index_locations_on_slug", unique: true
   end
 

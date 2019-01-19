@@ -2,19 +2,36 @@
 = simple_form_for([:admin, @location]) do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-
   .form-inputs
-    = f.input :name
-    = f.input :gps_lat
-    = f.input :gps_long
-    = f.input :address_text
-    = f.input :address_link
-    = f.input :allows_dogs
-    = f.input :spectator_entry_fee_text
-    = f.input :is_active
-    = f.input :short_description
-    = f.input :long_description
-    = f.input :website_link
+    %fieldset
+      .form-row
+        .col
+          = f.input :name, hint: "The public name of the host location. Example: 'Davis Mountains State Park'"
+        .col
+          = f.input :external_website_link, hint: "Where can people go to learn more about this location? Set to '#' if unknown or unavailable.", input_html: { value: f.object.external_website_link || "#" }
+      .form-row
+        .col
+          = f.input :short_description, hint: "A short sentence describing the location."
+    %fieldset
+      %legend Description
+      .form-row
+        .col
+          = f.input :description_html, label: false, input_html: { class: "textarea-autosize" }
+    %fieldset
+      %legend GPS Coordinates
+      .form-row
+        .col-3
+          = f.input :gps_lat, label: "Latitude"
+        .col-3
+          = f.input :gps_long, label: "Longitude"
+    %fieldset
+      %legend Address
+      = f.input :address_text, as: :text, required: true
+      = f.input :address_link, required: true, hint: "Google Maps link to this location."
+    %fieldset
+      %legend Settings
+      = f.input :spectator_entry_fee_text, hint: "Describe what this Location charges for entry fees. Leave blank if unapplicable."
+      = f.input :is_active
 
   .form-actions
-    = f.button :submit, "Create this Location", class: "btn btn-md btn-success"
+    = f.button :submit, class: "btn btn-md btn-success float-right"
