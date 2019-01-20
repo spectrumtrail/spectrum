@@ -1,13 +1,8 @@
 class LocationDecorator < Draper::Decorator
   delegate_all
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
+  def form_name_hint
+    "The public name of the host location. Example: 'Davis Mountains State Park'"
+  end
 
 end

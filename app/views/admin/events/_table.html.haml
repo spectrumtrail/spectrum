@@ -6,4 +6,4 @@
       %th{scope: "col"}
   %tbody
     - @events.each do |event|
-      = render "event", event: event.decorate
+      = render "event_row", event: event.decorate

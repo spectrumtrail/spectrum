@@ -1,36 +1,46 @@
 -# frozen_string_literal: true
 = simple_form_for([:admin, @location]) do |f|
   = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+  - if f.object.errors[:base].present?
+    = f.error_notification message: f.object.errors[:base].to_sentence
   .form-inputs
     %fieldset
       .form-row
         .col
-          = f.input :name, hint: "The public name of the host location. Example: 'Davis Mountains State Park'"
+          = f.input :name,
+            hint: "The public name of the host location. Example: 'Davis Mountains State Park'"
         .col
-          = f.input :external_website_link, hint: "Where can people go to learn more about this location? Set to '#' if unknown or unavailable.", input_html: { value: f.object.external_website_link || "#" }
+          = f.input :external_website_link,
+            hint: "Where can people go to learn more about this location? Set to '#' if unknown or unavailable.",
+            input_html: { value: f.object.external_website_link || "#" }
       .form-row
         .col
-          = f.input :short_description, hint: "A short sentence describing the location."
+          = f.input :short_description,
+            hint: "A short sentence describing the location."
     %fieldset
       %legend Description
       .form-row
         .col
-          = f.input :description_html, label: false, input_html: { class: "textarea-autosize" }
+          = f.input :description_html,
+            label: false,
+            input_html: { class: "textarea-autosize" },
+            hint: "This is where you can add some HTML to discuss this park. This will be shown on the events page."
     %fieldset
-      %legend GPS Coordinates
-      .form-row
-        .col-3
-          = f.input :gps_lat, label: "Latitude"
-        .col-3
-          = f.input :gps_long, label: "Longitude"
+      %legend Images
+      = f.input :cover_photo, direct_upload: true
+      = f.input :promo_photos
     %fieldset
       %legend Address
-      = f.input :address_text, as: :text, required: true
-      = f.input :address_link, required: true, hint: "Google Maps link to this location."
+      = f.input :address_text,
+        as: :text,
+        required: true
+      = f.input :address_link,
+        required: true,
+        hint: "Google Maps link to this location."
     %fieldset
       %legend Settings
-      = f.input :spectator_entry_fee_text, hint: "Describe what this Location charges for entry fees. Leave blank if unapplicable."
+      = f.input :spectator_entry_fee_text,
+        hint: "Describe what this Location charges for entry fees. Leave blank if unapplicable."
       = f.input :is_active
 
   .form-actions

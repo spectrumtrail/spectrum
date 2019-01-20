@@ -5,8 +5,10 @@
       %i.navigation-trigger-line
       %i.navigation-trigger-line
   .header-brand.d-xl-none
-    %h1
-      %a{href: admin_dashboard_path} Spectrum ADMIN
+    %a{href: admin_dashboard_path}
+      %img.img-fluid{src: asset_path("logo-no-text"), style: "max-width: 2rem;"}
+      %span.text-primary.font-weight-900 Spectrum
+      %small.font-weight-100 Admin
   .header-nav.ml-auto
     %ul.nav.align-items-center
       %li.nav-item.d-none.d-md-inline-block

@@ -10,7 +10,7 @@
             %a{href: admin_race_path(race)}
               %span.badge.badge-md.badge-primary= race.name
   %td
-    = local_time event.created_at
+    = local_time event.starts_at
     %br
     %i.fas.fa-map-pin
     = link_to event.location_name, admin_location_path(event.location)

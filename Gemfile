@@ -8,6 +8,10 @@ gem "pg", ">= 0.18", "< 2.0"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "puma", "~> 3.11"
 
+# Asset Storage
+gem "aws-sdk-s3", require: false
+gem 'mini_magick', '~> 4.8'
+
 # Front End
 gem "draper"
 gem 'bootstrap-select-rails'

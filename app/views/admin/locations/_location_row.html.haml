@@ -1,0 +1,32 @@
+%tr
+  %th{scope: "row"}
+    .media.align-items-center
+      %img.avatar.avatar-sm.mr-3{src: asset_path("#{url_for(location.cover_photo)}")}
+      .media-body
+        %h6.h5.font-weight-normal.mb-0
+          = location.name
+  %td
+    %span.font-weight-normal.text-muted
+      - location.events.each do |event|
+        %a{href: admin_event_path(event)}
+          %span.badge.badge-md.badge-primary= event.name
+  %td
+    = link_to location.address_link do
+      %i.fas.fa-map-pin
+      = location.address_text
+  %td
+    %i.fa.fa-clock
+    = local_time_ago location.updated_at
+
+  %td
+    .float-right
+      = link_to edit_admin_location_path(location) do
+        %button.btn.btn-sm.btn-outline-primary.btn-icon.mx-1{type: "button"}
+          %span.btn-inner--icon
+            %i.fas.fa-edit
+      = link_to admin_location_path(location), method: :delete do
+        %button.btn.btn-sm.btn-outline-danger.btn-icon.mx-1{type: "button"}
+          %span.btn-inner--icon
+            %i.fas.fa-trash
+
+%tr.table-divider
