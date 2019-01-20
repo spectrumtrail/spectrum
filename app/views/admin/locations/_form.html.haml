@@ -34,9 +34,9 @@
             class: "custom-input-file",
             type: 'file',
             "data-multiple-caption" => "{count} files selected"
-          = f.label :promo_photos do
+          = f.label :cover_photo do
             %i.fa.fa-upload
-            %span Select Promo Photos
+            %span Select Cover Photo
         .col.form-group
           = f.file_field :promo_photos,
             multiple: true,

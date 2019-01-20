@@ -5,7 +5,7 @@ $(window).on("load", function() {
 }),
 
 $(window).on('load resize', function() {
-    
+
     // Background image holder - Static hero with fullscreen autosize
     if ($('.spotlight').length) {
         $('.spotlight').each(function() {
