@@ -4,7 +4,9 @@ class AttachmentsController < ActionController::Base
     @attachment.purge
 
     respond_to do |format|
-      format.js {}
+      format.js {
+        flash[:success] = "Attachment successfully removed."
+      }
     end
   end
 end

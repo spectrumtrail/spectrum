@@ -33,5 +33,6 @@
 //= require nouislider.min.js
 //= require js-cookie.js
 //= require ie10-viewport-bug-workaround.js
+//= require toastr.min.js
 
 //= require_tree .
