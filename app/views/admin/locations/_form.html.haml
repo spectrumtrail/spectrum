@@ -1,5 +1,5 @@
 -# frozen_string_literal: true
-= simple_form_for([:admin, @location]) do |f|
+= simple_form_for([:admin, @location], multipart: true) do |f|
   = f.error_notification
   - if f.object.errors[:base].present?
     = f.error_notification message: f.object.errors[:base].to_sentence
@@ -22,13 +22,33 @@
       .form-row
         .col
           = f.input :description_html,
-            label: false,
+            label: "Details",
             input_html: { class: "textarea-autosize" },
             hint: "This is where you can add some HTML to discuss this park. This will be shown on the events page."
     %fieldset
       %legend Images
-      = f.input :cover_photo, direct_upload: true
-      = f.input :promo_photos
+      .form-row
+        .col.form-group
+          = f.file_field :cover_photo,
+            direct_upload: true,
+            class: "custom-input-file",
+            type: 'file',
+            "data-multiple-caption" => "{count} files selected"
+          = f.label :promo_photos do
+            %i.fa.fa-upload
+            %span Select Promo Photos
+        .col.form-group
+          = f.file_field :promo_photos,
+            multiple: true,
+            direct_upload: true,
+            class: "custom-input-file custom-input-file--2",
+            type: 'file',
+            "data-multiple-caption" => "{count} files selected"
+          = f.label :promo_photos do
+            %i.fa.fa-upload
+            %span Select Promo Photos
+
+
     %fieldset
       %legend Address
       = f.input :address_text,
@@ -42,6 +62,9 @@
       = f.input :spectator_entry_fee_text,
         hint: "Describe what this Location charges for entry fees. Leave blank if unapplicable."
       = f.input :is_active
-
-  .form-actions
-    = f.button :submit, class: "btn btn-md btn-success float-right"
+  %br
+  .form-actions.justify-content
+    = link_to admin_locations_path, class: "btn btn-md btn-outline-secondary", data: { confirm: "Careful! You will lose any progress you made on this form."} do
+      %i.fas.fa-arrow-left
+      Go Back
+    = f.button :submit, class: "btn btn-md btn-outline-success"
