@@ -36,7 +36,9 @@
             "data-multiple-caption" => "{count} files selected"
           = f.label :cover_photo do
             %i.fa.fa-upload
-            %span Select Cover Photo
+            %span Select New Cover Photo
+          - if f.object.cover_photo.attached?
+            = image_tag f.object.cover_photo, class: "img img-fluid img-thumbnail"
         .col.form-group
           = f.file_field :promo_photos,
             multiple: true,
@@ -47,6 +49,8 @@
           = f.label :promo_photos do
             %i.fa.fa-upload
             %span Select Promo Photos
+          - f.object.promo_photos.each do |promo_photo|
+            = image_tag promo_photo.variant(resize: "100x100"), class: "img img-fluid img-thumbnail"
 
 
     %fieldset
