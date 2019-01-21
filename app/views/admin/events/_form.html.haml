@@ -1,4 +1,12 @@
 -# frozen_string_literal: true
+
+:javascript
+  $(function() {
+    $('textarea').froalaEditor({
+      iconsTemplate: 'font_awesome_5'
+    })
+  });
+
 = simple_form_for([:admin, @event], multipart: true) do |f|
   = f.error_notification
   - if f.object.errors[:base].present?
@@ -16,7 +24,11 @@
           = f.input :facebook_event_link,
             hint: "What is the Facebook event link?"
         .col
-          = f.input :starts_at, as: :datetime
+          = f.input :starts_at,
+            as: :date,
+            html5: true,
+            label: "Starting Date",
+            hint: "What day do you want to say this event starts?"
       .form-row
         .col
           = f.input :short_description,
@@ -26,7 +38,7 @@
       .form-row
         .col
           = f.input :overview_html,
-            input_html: { class: "textarea-autosize" },
+            input_html: { class: "code_editor" },
             hint: "This is where you can add some HTML to introduce the event."
       .form-row
         .col

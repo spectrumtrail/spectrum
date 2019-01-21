@@ -4,14 +4,17 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:charset => "utf-8"}/
     %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
-    %meta{:content => "Probably the most complete UI kit out there. Multiple functionalities and controls added,  extended color palette and beautiful typography, designed as its own extended version of Bootstrap at  the highest level of quality.                             ", :name => "description"}/
-    %meta{:content => "Webpixels", :name => "author"}/
+    %meta{:content => "This is the admin side of Spectrum Trail Racing.", :name => "description"}/
+    %meta{:content => "Spectrum Trail Racing", :name => "author"}/
+    %link{:href => "https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/css/froala_editor.pkgd.min.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/css/froala_style.min.css", :rel => "stylesheet", :type => "text/css"}/
     %title ADMIN
     %link{:href => "https://fonts.googleapis.com/css?family=Nunito:400,600,700,800|Roboto:400,500,700", :rel => "stylesheet"}/
     = csrf_meta_tag
     = favicon_link_tag asset_path("favicon")
-    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload"
-    = javascript_include_tag "application", "data-turbolinks-track": "reload"
+    = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag "application"
+    %script{:src => "https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/js/froala_editor.pkgd.min.js", :type => "text/javascript"}
   %body
     = render "admin/navigation/aside"
     %section.content
