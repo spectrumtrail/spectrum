@@ -8,7 +8,7 @@
     %meta{:content => "Spectrum Trail Racing", :name => "author"}/
     %link{:href => "https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/css/froala_editor.pkgd.min.css", :rel => "stylesheet", :type => "text/css"}/
     %link{:href => "https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/css/froala_style.min.css", :rel => "stylesheet", :type => "text/css"}/
-    %title ADMIN
+    %title= "ADMIN #{controller_name.titleize} #{action_name.titleize}"
     %link{:href => "https://fonts.googleapis.com/css?family=Nunito:400,600,700,800|Roboto:400,500,700", :rel => "stylesheet"}/
     = csrf_meta_tag
     = favicon_link_tag asset_path("favicon")
