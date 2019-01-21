@@ -34,5 +34,6 @@
 //= require js-cookie.js
 //= require ie10-viewport-bug-workaround.js
 //= require toastr.min.js
+//= require ekko_lightbox.min.js
 
 //= require_tree .
