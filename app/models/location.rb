@@ -7,10 +7,10 @@ class Location < ApplicationRecord
   has_one_attached :cover_photo
   has_many_attached :promo_photos
 
-  validates :name, presence: true
-  validates :description_html, presence: true
-  validates :short_description, presence: true
-  validates :external_website_link, presence: true
+  validates :name, presence: true, length: { minimum: 5 }
+  validates :description_html, presence: true, length: { minimum: 5 }
+  validates :short_description, presence: true, length: { minimum: 5 }
+  validates :external_website_link, presence: true, length: { minimum: 5 }
 
   scope :active, -> { where(is_active: true) }
 end

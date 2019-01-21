@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_20_022242) do
+ActiveRecord::Schema.define(version: 2019_01_20_234320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 2019_01_20_022242) do
     t.string "slug"
     t.text "schedule_html"
     t.text "details_html"
-    t.text "course_html"
     t.index ["location_id"], name: "index_events_on_location_id"
     t.index ["slug"], name: "index_events_on_slug", unique: true
   end
