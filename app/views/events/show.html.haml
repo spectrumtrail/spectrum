@@ -1,4 +1,4 @@
-%section.spotlight.bg-cover.bg-size--cover.angle--bottom-right{"data-spotlight" => "fullscreen", style: "background-image: url(#{asset_url('https://static1.squarespace.com/static/54243c3be4b062fcf1a0dab1/5a9fd6b98165f526fc6e0440/5a9fd6c353450a19d22839c9/1525273687433/Spectrum+Trail+Race+-+Ft+Davis+-++055.jpg')})"}
+%section.spotlight.bg-cover.bg-size--cover.angle--bottom-right{"data-spotlight" => "fullscreen", style: "background-image: url(#{url_for(@event.cover_photo)})"}
   %span.mask.bg-dark.alpha-7
   .spotlight-holder.py-lg.pt-lg-xl
     .container.d-flex.align-items-center.no-padding
@@ -16,38 +16,63 @@
     .row
       .col-sm-12.col-md-4.col-lg-3
         .card.bg-black.sticky-top.mb-3
-          %img.img-fluid.img-center{src: asset_path("https://static1.squarespace.com/static/54243c3be4b062fcf1a0dab1/t/5bbf884e0d929792c0575167/1539298374064/SkyIsland2018.jpg")}
+          %img.img-fluid.img-center{src: url_for(@event.logo)}
           #EventMenu.list-group
             %a.list-group-item.list-group-item-action.d-flex.align-items-center{href: "#OverviewSection"} Overview
-            %a.list-group-item.list-group-item-action.d-flex.align-items-center{href: "#LocationSection"} Location
+            %a.list-group-item.list-group-item-action.d-flex.align-items-center{href: "#RacesSection"} Races
             %a.list-group-item.list-group-item-action.d-flex.align-items-center{href: "#ScheduleSection"} Schedule
+            %a.list-group-item.list-group-item-action.d-flex.align-items-center{href: "#LocationSection"} Location
             %a.list-group-item.list-group-item-action.d-flex.align-items-center{href: "#DetailsSection"} Details
             %a.list-group-item.list-group-item-action.d-flex.align-items-center{href: "#PhotosSection"} Photos
-            %a.list-group-item.list-group-item-action.d-flex.align-items-center{href: "#ResultsSection"} Results
             %a.list-group-item.list-group-item-action.d-flex.align-items-center{href: "#FaqSection"} FAQ
       .col-sm-12.col-md-8.col-lg-9
         .scrollspy-example{"data-spy" => "scroll", "data-target" => "#EventMenu"}
           %section#OverviewSection
             %h2.pt-1 Overview
+            - if @event.video_embed_code.present?
+              = @event.video_embed_code.html_safe
             %p= @event.overview_html.html_safe
-          %section.slice#LocationSection
-            %h2.pt-1 Location
-            %p= @event.location.long_description
+          %section#RacesSection
+            %h2.pt-1 Races
+            .row
+              - @event.races.each do |race|
+                .col
+                  .card
+                    .card-header= race.name
+                    .card-body Race info here!
           %section.slice#ScheduleSection
             %h2.pt-1 Schedule
             %p= @event.schedule_html.html_safe
+          %section.slice#LocationSection
+            .row
+              .col
+                %h2.pt-1 Location
+                = image_tag @event.location.cover_photo, class: "img img-fluid rounded"
+                %br
+                %br
+                %p= @event.location.description_html
+            .row
+              .col
+                .row
+                  - @event.location.promo_photos.each do |promo_photo|
+                    %a.col-4.p-1{"data-gallery" => "example-gallery", "data-toggle" => "lightbox", :href => "https://unsplash.it/1200/768.jpg?image=251"}
+                      = image_tag promo_photo, class: "img img-fluid rounded"
+
           %section.slice#DetailsSection
             %h2.pt-1 Details
             %p= @event.details_html.html_safe
           %section.slice#PhotosSection
             %h2.pt-1 Photos
-            %p= @event.overview_html.html_safe
-          %section.slice#ResultsSection
-            %h2.pt-1 Results
-            %p= @event.overview_html.html_safe
+            %br
+            .row.text-center.text-lg-left
+              - @event.promo_photos.each do |promo_photo|
+                .col-lg-3.col-md-4.col-xs-6
+                  %a.d-block.mb-4.h-100{"data-gallery" => "example-gallery", "data-toggle" => "lightbox", href: url_for(promo_photo)}
+                    = image_tag promo_photo, class: "img img-fluid rounded"
+
           %section.slice#FaqSection
             %h2.pt-1 FAQ
-            %p= @event.overview_html.html_safe
+            %p This is where we will put some FAQ stuff
 
 :javascript
   $('body').scrollspy({

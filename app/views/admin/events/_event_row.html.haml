@@ -1,7 +1,7 @@
 %tr.bg-white
   %th{scope: "row"}
     .media.align-items-center
-      %img.avatar.avatar-lg.mr-3{src: asset_path("https://picsum.photos/200/300/?random")}
+      = image_tag event.logo.variant(resize: "100x100"), class: "img img-fluid rounded mr-2"
       .media-body
         %h6.h5.font-weight-normal.mb-0
           = event.name

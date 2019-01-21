@@ -2,8 +2,12 @@
 
 :javascript
   $(function() {
-    $('textarea').froalaEditor({
-      iconsTemplate: 'font_awesome_5'
+    $('textarea.editor').froalaEditor({
+      iconsTemplate: 'font_awesome_5',
+      imageStyles: {
+        class1: 'img',
+        class2: 'img-fluid'
+      },
     })
   });
 
@@ -21,6 +25,9 @@
           - if f.object.persisted?
             = f.input :slug, disabled: true
         .col
+          = f.association :location, prompt: "Please select a Location"
+      .form-row
+        .col
           = f.input :facebook_event_link,
             hint: "What is the Facebook event link?"
         .col
@@ -37,32 +44,53 @@
       %legend Sections
       .form-row
         .col
+          = f.input :video_embed_code,
+            input_html: { class: "textarea-autosize" },
+            hint: "Copy & Paste the Vimeo Embed Code here"
+      .form-row
+        .col
           = f.input :overview_html,
-            input_html: { class: "code_editor" },
+            input_html: { class: "editor textarea-autosize" },
             hint: "This is where you can add some HTML to introduce the event."
       .form-row
         .col
           = f.input :schedule_html,
-            input_html: { class: "textarea-autosize" },
+            input_html: { class: "editor textarea-autosize" },
             hint: "This is where you can build a custom schedule with HTML. Be sure to use the table-responsive class for any tables."
       .form-row
         .col
           = f.input :details_html,
-            input_html: { class: "textarea-autosize" },
+            input_html: { class: "editor textarea-autosize" },
             hint: "This is where you can add some HTML or simple plain text to provide extra details you want participants to know about."
     %fieldset
       %legend Images
       .form-row
         .col.form-group
+          = f.file_field :logo,
+            direct_upload: true,
+            class: "custom-input-file",
+            type: 'file',
+            "data-multiple-caption" => "{count} files selected"
+          = f.label :logo do
+            %i.fa.fa-upload
+            %span Select Logo *
+            %small.text-muted Please select exatly one
+          - if f.object.logo.attached?
+            .attachment-wrapper{id: "attachment-wrapper-#{f.object.logo.id}"}
+              = image_tag f.object.logo,
+                class: "img img-fluid img-thumbnail"
+              = link_to attachment_path(id: f.object.logo.id), method: :delete, remote: true, class: "text-danger" do
+                %i.fa.fa-times
+        .col.form-group
           = f.file_field :cover_photo,
-            required: true,
             direct_upload: true,
             class: "custom-input-file",
             type: 'file',
             "data-multiple-caption" => "{count} files selected"
           = f.label :cover_photo do
             %i.fa.fa-upload
-            %span Select New Cover Photo
+            %span Select New Cover Photo *
+            %small.text-muted Please select exatly one
           - if f.object.cover_photo.attached?
             .attachment-wrapper{id: "attachment-wrapper-#{f.object.cover_photo.id}"}
               = image_tag f.object.cover_photo,
@@ -78,7 +106,8 @@
             "data-multiple-caption" => "{count} files selected"
           = f.label :promo_photos do
             %i.fa.fa-upload
-            %span Select Promo Photos
+            %span Select Promo Photos *
+            %small.text-muted Please select at least one
           .row.text-center.text-lg-left
             - f.object.promo_photos.each do |promo_photo|
               .col-lg-3.col-md-6.col-sm-12.attachment-wrapper{id: "attachment-wrapper-#{promo_photo.id}"}
