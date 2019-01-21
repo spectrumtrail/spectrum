@@ -5,6 +5,9 @@ class Event < ApplicationRecord
   belongs_to :location
   has_many :races, dependent: :destroy
   has_many :regisratrations, through: :races
+
+  # attachments
+  has_one_attached :logo
   has_one_attached :cover_photo
   has_many_attached :promo_photos
 
