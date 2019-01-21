@@ -21,7 +21,7 @@ class Admin::EventsController < Admin::BaseController
     if @event.save
       redirect_to(
         admin_event_path(@event),
-        notice: "Successfully created #{@event.name}"
+        success: "Successfully created #{@event.name}"
       )
     else
       render :new
@@ -32,7 +32,7 @@ class Admin::EventsController < Admin::BaseController
     if @event.update(event_params)
       redirect_to(
         admin_event_path(@event),
-        notice: "Successfully updated #{@event.name}"
+        success: "Successfully updated #{@event.name}"
       )
     else
       render :edit
@@ -43,16 +43,17 @@ class Admin::EventsController < Admin::BaseController
     @event.destroy
     redirect_to(
       admin_events_path,
-      notice: "Successfully destroyed #{@event.name}"
+      success: "Successfully destroyed #{@event.name}"
     )
   end
 
   private
-    def set_event
-      @event = Event.friendly.find(params[:id])
-    end
 
-    def event_params
-      params.require(:event).permit!
-    end
+  def set_event
+    @event = Event.friendly.find(params[:id])
+  end
+
+  def event_params
+    params.require(:event).permit!
+  end
 end
