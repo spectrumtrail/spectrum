@@ -104,8 +104,8 @@ $(document).ready(function() {
     $('textarea.editor').each(function() {
       $(function() {
         $(this).froalaEditor({
-          key: 'YE4G3G4A3c1A6B5B5E2A3B2D2G3C4C3D-17A-13yohxJ-7B-22bB1ef1rB-8yB1C-21B-16kupiA-8noC7bmn=='
-          iconsTemplate: 'font_awesome_5'
+          key: 'YE4G3G4A3c1A6B5B5E2A3B2D2G3C4C3D-17A-13yohxJ-7B-22bB1ef1rB-8yB1C-21B-16kupiA-8noC7bmn==',
+          iconsTemplate: 'font_awesome_5',
           imageStyles: {
             class1: 'img',
             class2: 'img-fluid'
