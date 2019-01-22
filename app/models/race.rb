@@ -14,4 +14,8 @@ class Race < ApplicationRecord
   def is_open?
     true
   end
+
+  def name_with_event
+    "#{event.name} #{name}"
+  end
 end
