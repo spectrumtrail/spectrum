@@ -28,6 +28,21 @@
             label: "Details",
             input_html: { class: "textarea-autosize editor" },
             hint: "This is where you can add some HTML to discuss this park. This will be shown on the events page."
+
+    %fieldset
+      %legend Address
+      = f.input :address_text,
+        as: :text,
+        required: true
+      = f.input :address_link,
+        required: true,
+        hint: "Google Maps link to this location."
+    %fieldset
+      %legend Settings
+      = f.input :spectator_entry_fee_text,
+        hint: "Describe what this Location charges for entry fees. Leave blank if unapplicable."
+      = f.input :is_active
+
     %fieldset
       %legend Images
       .form-row
@@ -64,19 +79,6 @@
                   = link_to attachment_path(id: promo_photo.id), method: :delete, remote: true, class: "text-danger" do
                     %i.fa.fa-times
 
-    %fieldset
-      %legend Address
-      = f.input :address_text,
-        as: :text,
-        required: true
-      = f.input :address_link,
-        required: true,
-        hint: "Google Maps link to this location."
-    %fieldset
-      %legend Settings
-      = f.input :spectator_entry_fee_text,
-        hint: "Describe what this Location charges for entry fees. Leave blank if unapplicable."
-      = f.input :is_active
   %br
   .form-actions
     = link_to admin_locations_path,

@@ -1,24 +1,118 @@
 -# frozen_string_literal: true
-= simple_form_for([:admin, @event, @race]) do |f|
+= simple_form_for([:admin, @race], multipart: true) do |f|
   = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-
+  - if f.object.errors[:base].present?
+    = f.error_notification message: f.object.errors[:base].to_sentence
   .form-inputs
-    = f.input :name
-    = f.input :distance
-    = f.input :distance_type
-    = f.input :starts_at
-    = f.input :ends_at
-    = f.input :is_active
-    = f.input :registration_opens_at
-    = f.input :archived_at
-    = f.input :archived_by
-    = f.input :course_map_link
-    = f.input :course_map_embed_code
-    = f.input :course_description_text
-    = f.input :short_description
-    = f.input :long_description
-    = f.input :video_embed_code
+    %fieldset
+      %legend Basics
+      .form-row
+        .col
+          = f.association :event, prompt: "Please select an Event"
+        .col
+          = f.input :name,
+            hint: "Examples: 25K, Last Man Standing, 10M"
+        .col
+          = f.input :starts_at,
+            as: :datetime,
+            html5: true,
+            label: "Starting Date Time",
+            hint: "What time and day does this race start?"
+        .col
+          = f.input :ends_at,
+            as: :datetime,
+            html5: true,
+            label: "Cutoff Time",
+            hint: "What is the hard cutoff time & day for this Race?"
+      .form-row
+        .col
+          = f.input :short_description,
+            hint: "What is special about this race? Elevator pitch."
+    %fieldset
+      %legend Registration Settings
+      .form-row
+        .col
+          = f.input :registration_opens_at,
+            as: :datetime,
+            html5: true,
+            hint: "When does Registration Open?"
+        .col
+          = f.input :registrations_limit
+        .col
+          = f.input :is_active
+    %fieldset
+      %legend Strava Stuff
+      .form-row
+        .col
+          = f.input :strava_segment_link
+      .form-row
+        .col
+          = f.input :strava_embed_code,
+            input_html: { class: "textarea-autosize" },
+            hint: "Copy & Paste the Strava Segment Embed Code here"
+    %fieldset
+      %legend Content
+      .form-row
+        .col
+          = f.input :overview_html,
+            input_html: { class: "textarea-autosize editor" },
+            hint: "This is where you can add some HTML. Treat this like a race briefing. Describe the course. It will go above the course map and elevation profile on the event's promo page, and on the public create registration page."
+    %fieldset
+      %legend Images
+      .form-row
+        .col.form-group
+          = f.file_field :course_map,
+            direct_upload: true,
+            class: "custom-input-file",
+            type: 'file',
+            "data-multiple-caption" => "{count} files selected"
+          = f.label :course_map do
+            %i.fa.fa-upload
+            %span Select the course map.
+            %small.text-muted Please select exatly one.
+          - if f.object.course_map.attached?
+            .attachment-wrapper{id: "attachment-wrapper-#{f.object.course_map.id}"}
+              = image_tag f.object.course_map,
+                class: "img img-fluid img-thumbnail"
+              = link_to attachment_path(id: f.object.course_map.id), method: :delete, remote: true, class: "text-danger" do
+                %i.fa.fa-times
+        .col.form-group
+          = f.file_field :elevation_profile,
+            direct_upload: true,
+            class: "custom-input-file",
+            type: 'file',
+            "data-multiple-caption" => "{count} files selected"
+          = f.label :elevation_profile do
+            %i.fa.fa-upload
+            %span Select the elevation profile image.
+            %small.text-muted Please select exatly one.
+          - if f.object.elevation_profile.attached?
+            .attachment-wrapper{id: "attachment-wrapper-#{f.object.elevation_profile.id}"}
+              = image_tag f.object.elevation_profile,
+                class: "img img-fluid img-thumbnail"
+              = link_to attachment_path(id: f.object.elevation_profile.id), method: :delete, remote: true, class: "text-danger" do
+                %i.fa.fa-times
+        .col.form-group
+          = f.file_field :briefing_document,
+            direct_upload: true,
+            class: "custom-input-file",
+            type: 'file',
+            "data-multiple-caption" => "{count} files selected"
+          = f.label :briefing_document do
+            %i.fa.fa-upload
+            %span Select the race briefing document.
+            %small.text-muted Please select exatly one.
+          - if f.object.briefing_document.attached?
+            = link_to url_for(f.object.briefing_document) do
+              %i.fa.fa-file
 
+  %br
   .form-actions
-    = f.button :submit, class: "btn btn-md btn-success"
+    = link_to admin_races_path,
+      class: "mr-2 btn btn-md btn-outline-secondary",
+      data: { confirm: "Careful! You will lose any progress you made on this form."} do
+      %i.fas.fa-arrow-left
+      Go Back
+    = f.button :submit,
+      class: "btn btn-md btn-outline-success",
+      data: { disable_with: "Submitting..." }

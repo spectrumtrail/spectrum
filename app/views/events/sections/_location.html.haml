@@ -1,0 +1,11 @@
+%section.slice#LocationSection
+  .row
+    .col
+      %h2 Location
+      = image_tag @event.location.cover_photo, class: "img img-fluid rounded"
+      .mt-2
+        = raw @event.location.description_html
+  .row
+    - @event.location.promo_photos.each do |promo_photo|
+      %a.col-4.p-1{"data-gallery" => "example-gallery", "data-toggle" => "lightbox", href: url_for(promo_photo)}
+        = image_tag promo_photo, class: "img img-fluid rounded"

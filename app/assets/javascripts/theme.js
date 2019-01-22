@@ -101,13 +101,15 @@ $(document).ready(function() {
 
 
     // Froala Editor
-    $(function() {
-      $('textarea.editor').froalaEditor({
-        iconsTemplate: 'font_awesome_5',
-        imageStyles: {
-          class1: 'img',
-          class2: 'img-fluid'
-        },
+    $('textarea.editor').each(function() {
+      $(function() {
+        $(this).froalaEditor({
+          iconsTemplate: 'font_awesome_5',
+          imageStyles: {
+            class1: 'img',
+            class2: 'img-fluid'
+          },
+        })
       })
     });
 

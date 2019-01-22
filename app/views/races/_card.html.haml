@@ -1,0 +1,13 @@
+.card
+  .card-body
+    %h5.heading.heading-5.strong-600= race.name
+    %ul.list-inline.mb-4
+      %li.list-inline-item.pr-2
+        %i.fas.fa-users.mr-1
+        %span= "#{race.registrations_count} / #{race.registrations_limit}"
+      %li.list-inline-item
+        %i.fas.fa-dollar-sign.text-muted.mr-1
+        750
+    %p.card-text= race.short_description
+    - if race.is_open?
+      %a.btn.btn-sm.btn-primary{href: "#"} Register

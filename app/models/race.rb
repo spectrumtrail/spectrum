@@ -3,9 +3,15 @@ class Race < ApplicationRecord
   has_one :location, through: :event
   has_many :registrations
 
+  has_one_attached :course_map
+  has_one_attached :elevation_profile
+  has_one_attached :briefing_document
+
   validates :name, presence: true
 
-  def name_with_event
-    "#{event.name} #{name}"
+  scope :active, -> { where(is_active: true) }
+
+  def is_open?
+    true
   end
 end

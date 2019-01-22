@@ -1,5 +1,8 @@
-%h1= "New Race for #{@event.name}"
+.row
+  .col
+    %h1 Create a New Race
+    %p Races belong to Events and have many registrations.
 
-= render 'form'
-
-= link_to 'Back', admin_event_races_path
+.row
+  .col
+    = render 'form'

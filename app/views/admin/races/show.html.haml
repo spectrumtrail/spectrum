@@ -1,54 +1,9 @@
-%p#notice= notice
-
-%p
-  %b Event:
-  = @race.event.name
-%p
-  %b Name:
-  = @race.name
-%p
-  %b Distance:
-  = @race.distance
-%p
-  %b Distance type:
-  = @race.distance_type
-%p
-  %b Starts at:
-  = @race.starts_at
-%p
-  %b Ends at:
-  = @race.ends_at
-%p
-  %b Is active:
-  = @race.is_active
-%p
-  %b Registration opens at:
-  = @race.registration_opens_at
-%p
-  %b Archived at:
-  = @race.archived_at
-%p
-  %b Archived by:
-  = @race.archived_by
-%p
-  %b Course map link:
-  = @race.course_map_link
-%p
-  %b Course map embed code:
-  = @race.course_map_embed_code
-%p
-  %b Course description text:
-  = @race.course_description_text
-%p
-  %b Short description:
-  = @race.short_description
-%p
-  %b Long description:
-  = @race.long_description
-%p
-  %b Video embed code:
-  = @race.video_embed_code
-
-= link_to 'Edit', edit_admin_event_race_path(@race)
-\|
-= link_to 'Back', admin_event_races_path
+.row
+  .col-lg-6
+    .card
+      = image_tag(@race.course_map, alt: "#{@race.name} Race Cap", class: "img img-fluid card-img-top")
+      .card-body
+        %h5.heading.heading-5.strong-600= @race.name
+        %h6.heading.heading-sm.strong-400.text-muted.mb-4= local_time @race.starts_at
+        %p.card-text= raw @race.overview_html
+        %a.btn.btn-sm.btn-primary{:href => "#"} Register Now

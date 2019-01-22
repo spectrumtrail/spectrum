@@ -1,0 +1,8 @@
+%section.slice#PhotosSection
+  %h2 Photos
+  %br
+  .row.text-center.text-lg-left
+    - @event.promo_photos.each do |promo_photo|
+      .col-lg-3.col-md-4.col-xs-6
+        %a.d-block.mb-4.h-100{"data-gallery" => "example-gallery", "data-toggle" => "lightbox", href: url_for(promo_photo)}
+          = image_tag promo_photo, class: "img img-fluid rounded"

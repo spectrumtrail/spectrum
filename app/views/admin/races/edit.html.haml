@@ -1,7 +1,10 @@
-%h1 Editing race
+.row
+  .col
+    %h1
+      Updating
+      %i= "#{@race.name_with_event}"
+    %p Races belong to Events and have many registrations.
 
-= render 'form'
-
-= link_to 'Show', admin_event_races_path(@race)
-\|
-= link_to 'Back', admin_event_races_path
+.row
+  .col
+    = render 'form'

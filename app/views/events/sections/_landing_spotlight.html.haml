@@ -1,0 +1,13 @@
+%section.spotlight.bg-cover.bg-size--cover.angle--bottom-right{"data-spotlight" => "fullscreen", style: "background-image: url(#{url_for(@event.cover_photo)}); background-attachment: fixed"}
+  %span.mask.bg-dark.alpha-7
+  .spotlight-holder.py-lg.pt-lg-xl
+    .container.d-flex.align-items-center.no-padding
+      .col
+        .row.cols-xs-space.text-center.text-md-left.justify-content-center
+          .col-lg-10
+            .text-center.mt-5
+              %small.text-muted= local_time(@event.starts_at, '%B %e, %Y')
+              %h1.heading.h1.text-white= @event.name.upcase
+              %p.lead.lh-180.text-white.mt-3
+                = @event.short_description
+              %a.btn.btn-primary.btn-md{href: "#RegistrationSection"} REGISTER

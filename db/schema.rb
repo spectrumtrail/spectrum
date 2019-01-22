@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_22_143630) do
+ActiveRecord::Schema.define(version: 2019_01_22_191900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_01_22_143630) do
     t.text "schedule_html"
     t.text "details_html"
     t.text "video_embed_code"
+    t.text "lodging_html"
     t.index ["location_id"], name: "index_events_on_location_id"
     t.index ["slug"], name: "index_events_on_slug", unique: true
   end
@@ -87,21 +88,22 @@ ActiveRecord::Schema.define(version: 2019_01_22_143630) do
   create_table "races", force: :cascade do |t|
     t.bigint "event_id"
     t.string "name"
-    t.integer "distance"
-    t.string "distance_type"
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.boolean "is_active"
     t.datetime "registration_opens_at"
     t.datetime "archived_at"
     t.string "archived_by"
-    t.string "course_map_link"
-    t.text "course_map_embed_code"
+    t.string "strava_segment_link"
+    t.text "strava_embed_code"
     t.text "course_description_text"
     t.string "short_description"
-    t.string "long_description"
+    t.string "overview_html"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "registrations_count", default: 0
+    t.integer "registrations_limit", default: 100
+    t.integer "price_in_cents"
     t.index ["event_id"], name: "index_races_on_event_id"
   end
 

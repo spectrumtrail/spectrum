@@ -1,5 +1,5 @@
 class Admin::RacesController < Admin::BaseController
-  before_action :set_race
+  before_action :set_race, except: [:index]
 
   def index
     @races = Race.all
@@ -21,7 +21,7 @@ class Admin::RacesController < Admin::BaseController
     if @race.save
       redirect_to(
         admin_race_path(@race),
-        success: "Race was successfully created."
+        success: "Race was successfully created!"
       )
     else
       flash[:danger] = "We could not create this race. See errors."
@@ -32,8 +32,8 @@ class Admin::RacesController < Admin::BaseController
   def update
     if @race.update(race_params)
       redirect_to(
-        admin_event_race_path(@event, @race),
-        success: "Race was successfully updated."
+        admin_race_path(@race),
+        success: "Race was successfully updated!"
       )
     else
       flash[:danger] = "We could not update this race. See errors."
@@ -45,14 +45,14 @@ class Admin::RacesController < Admin::BaseController
     @race.destroy
     redirect_to(
       admin_races_path,
-      success: "Race was successfully destroyed."
+      success: "Race was successfully destroyed!"
     )
   end
 
   private
 
   def set_race
-    @race = Race.find params[:id]
+    @race = Race.find(params[:id]).decorate
   end
 
   def race_params

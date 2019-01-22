@@ -6,6 +6,8 @@ class EventsController < ApplicationController
   end
 
   def show
+    @location = @event.location
+    @races = @event.races.active
   end
 
   private

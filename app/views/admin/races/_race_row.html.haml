@@ -1,0 +1,32 @@
+%tr.align-items-center
+  %th{scope: "row"}
+    .media.align-items-center
+      = image_tag race.row_thumbnail, class: "img img-fluid rounded mr-2"
+      .media-body
+        %h6.h5.font-weight-normal.mb-0
+          = race.name
+  %td= link_to race.event.name, edit_admin_event_path(race.event)
+  %td= local_time race.starts_at
+  %td
+    .btn-group.float-right
+      = link_to edit_admin_race_path(race),
+        class: "btn btn-sm btn-outline-primary" do
+        %i.fa.fa-edit
+        Edit
+      %button.btn.btn-sm.btn-outline-primary.dropdown-toggle.dropdown-toggle-split{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+        %span.sr-only Toggle Dropdown
+      .dropdown-menu
+        = link_to "#", class: "dropdown-item" do
+          %i.fa.fa-list
+          Registrations
+        = link_to event_race_path(race.event, race),
+          class: "dropdown-item" do
+          %i.fa.fa-star
+          Registration Page
+        - unless race.registrations.any?
+          .dropdown-divider
+            = link_to admin_race_path(race),
+              method: :delete, data: { confirm: "Are you sure?" },
+              class: "dropdown-item text-danger" do
+              %i.fas.fa-exclamation-triangle
+              Remove

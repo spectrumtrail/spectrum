@@ -1,5 +1,5 @@
 %tr
-  %th{scope: "row"}
+  %td
     .media.align-items-center
       - if location.cover_photo.attached?
         = image_tag location.row_thumbnail, class: "img img-fluid rounded"
@@ -18,28 +18,24 @@
   %td
     %i.fa.fa-clock
     = local_time_ago location.updated_at
-
   %td
-    %td
-      .btn-group.float-right
-        = link_to edit_admin_location_path(location),
-          class: "btn btn-sm btn-outline-primary" do
-          %i.fa.fa-edit
-          Edit
-        %button.btn.btn-sm.btn-outline-primary.dropdown-toggle.dropdown-toggle-split{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-          %span.sr-only Toggle Dropdown
-        .dropdown-menu
-          = link_to location_path(location),
-            class: "dropdown-item" do
-            %i.fa.fa-star
-            Promo Page
-          - unless location.events.any?
-            .dropdown-divider
-              = link_to admin_location_path(event),
-                method: :delete,
-                data: { confirm: "Are you sure?" },
-                class: "dropdown-item text-danger" do
-                %i.fas.fa-exclamation-triangle
-                Remove
-
-%tr.table-divider
+    .btn-group.float-right
+      = link_to edit_admin_location_path(location),
+        class: "btn btn-sm btn-outline-primary" do
+        %i.fa.fa-edit
+        Edit
+      %button.btn.btn-sm.btn-outline-primary.dropdown-toggle.dropdown-toggle-split{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+        %span.sr-only Toggle Dropdown
+      .dropdown-menu
+        = link_to location_path(location),
+          class: "dropdown-item" do
+          %i.fa.fa-star
+          Promo Page
+        - unless location.events.any?
+          .dropdown-divider
+            = link_to admin_location_path(event),
+              method: :delete,
+              data: { confirm: "Are you sure?" },
+              class: "dropdown-item text-danger" do
+              %i.fas.fa-exclamation-triangle
+              Remove

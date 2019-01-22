@@ -2,8 +2,9 @@
   %thead
     %tr
       %th{scope: "col"} Name
+      %th{scope: "col"} Event
       %th{scope: "col"} Starts
       %th{scope: "col"}
   %tbody
-    - @events.each do |event|
-      = render "event_row", event: event.decorate
+    - @races.each do |race|
+      = render "race_row", race: race.decorate
