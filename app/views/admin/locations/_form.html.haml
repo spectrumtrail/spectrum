@@ -1,3 +1,14 @@
+:javascript
+  $(function() {
+    $('textarea.editor').froalaEditor({
+      iconsTemplate: 'font_awesome_5',
+      imageStyles: {
+        class1: 'img',
+        class2: 'img-fluid'
+      },
+    })
+  });
+
 -# frozen_string_literal: true
 = simple_form_for([:admin, @location], multipart: true) do |f|
   = f.error_notification
@@ -23,7 +34,7 @@
         .col
           = f.input :description_html,
             label: "Details",
-            input_html: { class: "textarea-autosize" },
+            input_html: { class: "textarea-autosize editor" },
             hint: "This is where you can add some HTML to discuss this park. This will be shown on the events page."
     %fieldset
       %legend Images
@@ -75,8 +86,12 @@
         hint: "Describe what this Location charges for entry fees. Leave blank if unapplicable."
       = f.input :is_active
   %br
-  .form-actions.justify-content
-    = link_to admin_locations_path, class: "btn btn-md btn-outline-secondary", data: { confirm: "Careful! You will lose any progress you made on this form."} do
+  .form-actions
+    = link_to admin_locations_path,
+      class: "btn btn-md btn-outline-secondary mr-2",
+      data: { confirm: "Careful! You will lose any progress you made on this form."} do
       %i.fas.fa-arrow-left
       Go Back
-    = f.button :submit, class: "btn btn-md btn-outline-success"
+    = f.button :submit,
+      class: "btn btn-md btn-outline-success",
+      data: { disable_with: "Submitting..." }

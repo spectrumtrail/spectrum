@@ -122,4 +122,6 @@
       data: { confirm: "Careful! You will lose any progress you made on this form."} do
       %i.fas.fa-arrow-left
       Go Back
-    = f.button :submit, class: "btn btn-md btn-outline-success"
+    = f.button :submit,
+      class: "btn btn-md btn-outline-success",
+      data: { disable_with: "Submitting..." }
