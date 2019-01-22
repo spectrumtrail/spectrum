@@ -20,7 +20,7 @@ class Admin::EventsController < Admin::BaseController
 
     if @event.save
       redirect_to(
-        admin_event_path(@event),
+        admin_events_path(@event),
         success: "Successfully created #{@event.name}"
       )
     else
@@ -31,7 +31,7 @@ class Admin::EventsController < Admin::BaseController
   def update
     if @event.update(event_params)
       redirect_to(
-        admin_event_path(@event),
+        admin_events_path(@event),
         success: "Successfully updated #{@event.name}"
       )
     else

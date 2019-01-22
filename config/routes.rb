@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "static_pages/about"
 
   resources :attachments, only: [:destroy]
+  resources :locations, only: [:index, :show]
   resources :events, only: [:index, :show] do
     resources :races, only: [:index, :show] do
       resources :registrations, only: [:index, :new, :create]

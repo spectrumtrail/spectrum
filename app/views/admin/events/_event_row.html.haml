@@ -1,7 +1,7 @@
-%tr.bg-white
+%tr
   %th{scope: "row"}
     .media.align-items-center
-      = image_tag event.logo.variant(resize: "100x100"), class: "img img-fluid rounded mr-2"
+      = image_tag event.row_thumbnail, class: "img img-fluid rounded mr-2"
       .media-body
         %h6.h5.font-weight-normal.mb-0
           = event.name
@@ -13,22 +13,26 @@
     = local_time event.starts_at
     %br
     %i.fas.fa-map-pin
-    = link_to event.location_name, admin_location_path(event.location)
+    = link_to event.location_name, edit_admin_location_path(event.location)
   %td
     .btn-group.float-right
-      = link_to "Registrations",
-        admin_registrations_path(event_id: event.id),
-        class: "btn btn-sm btn-outline-tertiary"
-      %button.btn.btn-sm.btn-outline-tertiary.dropdown-toggle.dropdown-toggle-split{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+      = link_to edit_admin_event_path(event),
+        class: "btn btn-sm btn-outline-primary" do
+        %i.fa.fa-edit
+        Edit
+      %button.btn.btn-sm.btn-outline-primary.dropdown-toggle.dropdown-toggle-split{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
         %span.sr-only Toggle Dropdown
       .dropdown-menu
-        = link_to "Dashboard", admin_event_path(event), class: "dropdown-item"
-        = link_to "Promo Page",
-          event_path(event),
-          class: "dropdown-item"
-        %a.dropdown-item{href: edit_admin_event_path(event)} Edit
-        .dropdown-divider
-        = link_to admin_event_path(event), method: :delete, data: { confirm: "Are you sure?" }, class: "dropdown-item text-danger" do
-          %i.fas.fa-exclamation-triangle
-          Remove
+        = link_to admin_event_path(event), class: "dropdown-item" do
+          %i.fa.fa-tachometer-alt
+          Dashboard
+        = link_to event_path(event),
+          class: "dropdown-item" do
+          %i.fa.fa-star
+          Promo Page
+        - unless event.races.any?
+          .dropdown-divider
+            = link_to admin_event_path(event), method: :delete, data: { confirm: "Are you sure?" }, class: "dropdown-item text-danger" do
+              %i.fas.fa-exclamation-triangle
+              Remove
 %tr.table-divider

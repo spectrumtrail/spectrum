@@ -1,7 +1,4 @@
 class Race < ApplicationRecord
-  extend FriendlyId
-  friendly_id :name, use: :slugged
-
   belongs_to :event
   has_one :location, through: :event
   has_many :registrations

@@ -6,6 +6,6 @@ class LocationDecorator < Draper::Decorator
   end
 
   def row_thumbnail
-    location.cover_photo.variant(resize: "50x50")
+    location.cover_photo.variant(resize: "100x100")
   end
 end

@@ -22,8 +22,9 @@
         .col
           = f.input :name,
             hint: "The full name of the event. 'The Game', 'Sky Island'"
-          - if f.object.persisted?
-            = f.input :slug, disabled: true
+        - if f.object.persisted?
+          .col
+            = f.input :slug, disabled: true, hint: "Unique identifier. Used in URLs. Auto-generated."
         .col
           = f.association :location, prompt: "Please select a Location"
       .form-row
@@ -118,7 +119,7 @@
   %br
   .form-actions
     = link_to admin_events_path,
-      class: "mr-4 btn btn-md btn-outline-secondary",
+      class: "mr-2 btn btn-md btn-outline-secondary",
       data: { confirm: "Careful! You will lose any progress you made on this form."} do
       %i.fas.fa-arrow-left
       Go Back

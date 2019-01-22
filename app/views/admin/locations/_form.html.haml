@@ -20,6 +20,9 @@
         .col
           = f.input :name,
             hint: "The public name of the host location. Example: 'Davis Mountains State Park'"
+        - if f.object.persisted?
+          .col
+            = f.input :slug, disabled: true, hint: "Unique identifier. Used in URLs. Auto-generated."
         .col
           = f.input :external_website_link,
             hint: "Where can people go to learn more about this location? Set to '#' if unknown or unavailable.",

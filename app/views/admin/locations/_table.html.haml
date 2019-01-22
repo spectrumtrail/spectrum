@@ -1,12 +1,11 @@
-.card
-  %table.table.align-items-center
-    %thead
-      %tr
-        %th{scope: "col"} Name
-        %th{scope: "col"} Events
-        %th{scope: "col"} Address
-        %th{scope: "col"} Updated
-        %th{scope: "col"}
-    %tbody
-      - @locations.each do |location|
-        = render "location_row", location: location.decorate
+%table.table.table-cards.align-items-center
+  %thead
+    %tr
+      %th{scope: "col"} Name
+      %th{scope: "col"} Events
+      %th{scope: "col"} Address
+      %th{scope: "col"} Updated
+      %th{scope: "col"}
+  %tbody
+    - @locations.each do |location|
+      = render "location_row", location: location.decorate
