@@ -100,6 +100,18 @@ $(document).ready(function() {
     });
 
 
+    // Froala Editor
+    $(function() {
+      $('textarea.editor').froalaEditor({
+        iconsTemplate: 'font_awesome_5',
+        imageStyles: {
+          class1: 'img',
+          class2: 'img-fluid'
+        },
+      })
+    });
+
+
     // NoUI Slider
     if ($(".input-slider-container")[0]) {
         $('.input-slider-container').each(function() {

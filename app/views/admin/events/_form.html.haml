@@ -1,16 +1,4 @@
 -# frozen_string_literal: true
-
-:javascript
-  $(function() {
-    $('textarea.editor').froalaEditor({
-      iconsTemplate: 'font_awesome_5',
-      imageStyles: {
-        class1: 'img',
-        class2: 'img-fluid'
-      },
-    })
-  });
-
 = simple_form_for([:admin, @event], multipart: true) do |f|
   = f.error_notification
   - if f.object.errors[:base].present?
