@@ -1,5 +1,5 @@
 class Admin::RacesController < Admin::BaseController
-  before_action :set_race, except: [:index, :new]
+  before_action :set_race, only: [:edit, :update, :show, :destroy]
 
   def index
     @races = Race.all
