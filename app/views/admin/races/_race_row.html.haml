@@ -7,6 +7,7 @@
           = race.name
   %td= link_to race.event.name, edit_admin_event_path(race.event)
   %td= local_time race.starts_at
+  %td= race.participants_text
   %td
     .btn-group.float-right
       = link_to edit_admin_race_path(race),
