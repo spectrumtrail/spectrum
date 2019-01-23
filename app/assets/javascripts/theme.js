@@ -5,6 +5,14 @@ $(document).on('click', '[data-toggle="lightbox"]', function(event) {
     $(this).ekkoLightbox();
 });
 
+$(window).scroll(function() {
+   if ($(document).scrollTop() > 50) {
+     $('nav').addClass('shrink');
+   } else {
+     $('nav').removeClass('shrink');
+   }
+});
+
 $(window).on("load", function() {
 
 }),
