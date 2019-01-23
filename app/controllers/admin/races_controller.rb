@@ -20,8 +20,8 @@ class Admin::RacesController < Admin::BaseController
 
     if @race.save
       redirect_to(
-        admin_race_path(@race),
-        success: "Race was successfully created!"
+        admin_races_path(@race),
+        success: "#{@race.name_with_event} was successfully created!"
       )
     else
       flash[:danger] = "We could not create this race. See errors."
@@ -32,8 +32,8 @@ class Admin::RacesController < Admin::BaseController
   def update
     if @race.update(race_params)
       redirect_to(
-        admin_race_path(@race),
-        success: "Race was successfully updated!"
+        admin_races_path(@race),
+        success: "#{@race.name_with_event} was successfully updated!"
       )
     else
       flash[:danger] = "We could not update this race. See errors."
