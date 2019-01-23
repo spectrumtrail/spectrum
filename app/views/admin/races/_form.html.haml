@@ -25,7 +25,9 @@
             label: "Cutoff Time",
             hint: "What is the hard cutoff time & day for this Race?"
       .form-row
-        .col
+        .col-sm-12.col-md-3
+          = f.input :price_in_cents
+        .col-sm-12.col-md-9
           = f.input :short_description,
             hint: "What is special about this race? Elevator pitch."
     %fieldset
