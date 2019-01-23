@@ -1,9 +1,9 @@
 .row
   .col-lg-6
     .card
-      = image_tag(@race.course_map, alt: "#{@race.name} Race Cap", class: "img img-fluid card-img-top")
-      .card-body
+      .card-header
         %h5.heading.heading-5.strong-600= @race.name
         %h6.heading.heading-sm.strong-400.text-muted.mb-4= local_time @race.starts_at
-        %p.card-text= raw @race.overview_html
+      .card-body
+        = raw @race.strava_embed_code
         %a.btn.btn-sm.btn-primary{:href => "#"} Register Now

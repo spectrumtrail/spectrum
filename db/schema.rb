@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_22_191900) do
+ActiveRecord::Schema.define(version: 2019_01_23_154138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,12 +98,12 @@ ActiveRecord::Schema.define(version: 2019_01_22_191900) do
     t.text "strava_embed_code"
     t.text "course_description_text"
     t.string "short_description"
-    t.string "overview_html"
+    t.text "overview_html"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "registrations_count", default: 0
     t.integer "registrations_limit", default: 100
-    t.integer "price_in_cents"
+    t.integer "price_in_cents", default: 100
     t.index ["event_id"], name: "index_races_on_event_id"
   end
 
