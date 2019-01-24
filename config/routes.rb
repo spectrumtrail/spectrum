@@ -8,9 +8,8 @@ Rails.application.routes.draw do
   resources :attachments, only: [:destroy]
   resources :locations, only: [:index, :show]
   resources :events, only: [:index, :show] do
-    resources :races, only: [:index, :show] do
-      resources :registrations, only: [:index, :new, :create]
-    end
+    resources :races
+    resources :registrations, only: [:new, :create, :edit, :update]
   end
 
   namespace :admin do
@@ -19,6 +18,5 @@ Rails.application.routes.draw do
     resources :locations
     resources :events
     resources :races
-    resources :registrations
-  end
+    end
 end

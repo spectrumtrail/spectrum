@@ -10,4 +10,4 @@
         = number_to_currency(race.price_in_cents / 100, precision: 0)
     %p.card-text= race.short_description
     - if race.is_open?
-      %a.btn.btn-sm.btn-primary{href: new_event_race_registration_path(race.event, race)} Register
+      %a.btn.btn-sm.btn-primary.text-upcase{href: new_event_registration_path(race.event, race_id: race.id)} Register

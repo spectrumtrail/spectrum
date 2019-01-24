@@ -14,6 +14,6 @@
     %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"}
   %body{class: "application #{controller_name}", id: "#{controller_name}_#{action_name}"}
     = render "navigation/dark_header"
-    %main.main
+    %main.main{style: "min-height: 100vh;"}
       = yield
     = render "navigation/footer"

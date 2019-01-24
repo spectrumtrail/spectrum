@@ -52,7 +52,7 @@ class Admin::RacesController < Admin::BaseController
   private
 
   def set_race
-    @race = Race.find(params[:id]).decorate
+    @race = Race.friendly.find(params[:id]).decorate
   end
 
   def race_params

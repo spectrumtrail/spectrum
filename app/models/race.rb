@@ -1,4 +1,7 @@
 class Race < ApplicationRecord
+  extend FriendlyId
+  friendly_id :generate_slug, use: :slugged
+
   belongs_to :event
   has_one :location, through: :event
   has_many :registrations, through: :event
@@ -8,6 +11,8 @@ class Race < ApplicationRecord
   has_one_attached :briefing_document
 
   validates :name, presence: true
+  validates :event, presence: true
+  validates :starts_at, presence: true
 
   scope :active, -> { where(is_active: true) }
 
@@ -17,5 +22,17 @@ class Race < ApplicationRecord
 
   def name_with_event
     "#{event.name} #{name}"
+  end
+
+  def generate_slug
+    "#{starts_at.year} #{event.name} #{name}".parameterize
+  end
+
+  def should_generate_new_friendly_id?
+    return true if slug.blank?
+    return true if name_changed?
+    return true if event_id_changed?
+    return true if starts_at_changed?
+    false
   end
 end

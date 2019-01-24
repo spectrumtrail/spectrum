@@ -1,0 +1,11 @@
+-# frozen_string_literal: true
+= simple_form_for([@event, @registration]) do |f|
+  = f.error_notification
+  - if f.object.errors[:base].present?
+    = f.error_notification message: f.object.errors[:base].to_sentence
+
+  .form-inputs
+    = f.input :billing_email
+
+  .form-actions
+    = f.button :submit

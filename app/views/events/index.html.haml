@@ -1,0 +1,48 @@
+%section.slice.slice-xl
+  .container
+    .row.justify-content-center
+      .col-lg-7
+        .text-center.pt-lg-md
+          %h2.heading.h1.mb-4
+            Event Lineup
+          %p.lead.lh-180
+            Whether you're a Rainshadow veteran, or brand new to our race series, we're glad you've found us here! With some of the most beautiful and challenging trail ultras throughout the Northwest, Rainshadow Races will leave you wondering: Why run anywhere else?
+%section.slice.bg-tertiary.bg-cover.bg-size--cover{:style => "background-attachment: fixed; background-image: url('https://lh3.googleusercontent.com/O_YSrzK74Qzb5_IrWKGqpt5OlBCUPICWO6edyhBDfyKEf-ptSFvtbbFOilrWeFCF_7Zy97TS6pvd84LIiibCWliBeQK71jv9vacWki3GYXclfJSM48hGjIIBCYhZkk46xigNVR1OAUASKdBIpE8UxSJ0Th3-nlUcYI9By6mUJe4JGay5RH3vwc6ZawqdiIXBT0BMYlIJs9natukUEkr2xRK14Yw14DAGhbyr2h5FbEUp_9_lCAsn10fONsNkjuBD4b7NhwSS4NXvVCfw7kCj9cBkueHlFM71hjdTMMxqe3Be97S15xHZ72JXspnONZuKchRsjYPJhFMKJ4wh54_J6f27LErOaHeH_J79Jr1sHjW4Z42Bq_QOXoC1O9kCamTkng8LiD02fXgwSXsSOC2K9lO_PaHncCSmgcivcsOhdXtiCJfJrsqPz2_dNYjOG94lc65CZlLmpJP9HM9b_MYu8gTGCwoBFVqx0uCyAyVBlpMun8FJPAKS4veIFdAJbZINd_bDsq_3w23bYxu8GXsbJHbi3WuWdXiiBUtryrdzx2Z-VZxpBZvSC5q_bCprSNbM7D2hx1EZKGuGEGK11PPDoQKoTYq3hMR4I4qRRcUHYl4TBRQohJPuk33fAc4S_j8aA-Rl3KaElYvM0fYRMh67FQhROcRmRihMebbU5irR_pwjVWrw8dJ8H9ZakXXuIXxG8YM_UaPQxIA84EmnZ1U=w2188-h1640-no')"}
+  %span.mask.bg-tertiary.alpha-9
+  .container
+    .row.cols-xs-space.cols-sm-space.cols-md-space
+      = render "list", events: @events
+%section.slice.slice-lg
+  .container
+    .row.align-items-center.cols-xs-space.cols-sm-space.cols-md-space
+      .col-lg-6
+        %h3.heading.h3 Got an idea for a race in Texas?
+        %p.lead.mb-4 We would love to help make your dream a reality.
+        %form
+          .row
+            .col-12
+              .form-group
+                %input.form-control{:placeholder => "Name", :type => "text"}/
+          .row
+            .col-12
+              .form-group
+                %input.form-control{:placeholder => "Email address", :type => "email"}/
+          .row
+            .col-12
+              .form-group
+                %textarea.form-control{:placeholder => "Your message", :rows => "5"}
+          .mt-4
+            %button.btn.btn-primary.px-4{:type => "submit"}
+              Send message
+      .col-lg-5.ml-lg-auto
+        %h3.heading.heading-3.strong-300
+          150 Southeast Pidgeon Meadow
+          %br/
+          Claflin Terrace, 305458
+        %p.lead.mt-4.mb-4
+          E:
+          %a{:href => "#"} support@webpixels.io
+          %br/
+          T: 0755.222.333
+        %p
+          Probably the most complete UI kit out there. Multiple functionalities and controls added,  extended color palette and beautiful typography, designed as its own extended version of Bootstrap at  the highest level of quality.
