@@ -1,6 +1,5 @@
 %section#OverviewSection
-  %h2 Overview
   - if @event.video_embed_code.present?
     = @event.video_embed_code.html_safe
-    %br
+  %h2 Overview
   = raw @event.overview_html
