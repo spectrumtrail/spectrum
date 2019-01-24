@@ -5,10 +5,6 @@ class RaceDecorator < Draper::Decorator
     "#{event.name} #{name}"
   end
 
-  def participants_text
-    "#{registrations_count} / #{registrations_limit}"
-  end
-
   def row_thumbnail
     event.decorate.row_thumbnail
   end

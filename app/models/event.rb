@@ -7,7 +7,7 @@ class Event < ApplicationRecord
 
   belongs_to :location
   has_many :races, dependent: :destroy
-  has_many :regisratrations, through: :races
+  has_many :registrations, counter_cache: true
 
   # attachments
   has_one_attached :logo

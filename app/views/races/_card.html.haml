@@ -5,9 +5,9 @@
     %ul.list-inline.mb-4
       %li.list-inline-item.pr-2
         %i.fas.fa-users.mr-1
-        %span= "#{race.registrations_count} / #{race.registrations_limit}"
+        %span= "x / y"
       %li.list-inline-item
         = number_to_currency(race.price_in_cents / 100, precision: 0)
     %p.card-text= race.short_description
     - if race.is_open?
-      %a.btn.btn-sm.btn-primary{href: "#"} Register
+      %a.btn.btn-sm.btn-primary{href: new_event_race_registration_path(race.event, race)} Register
