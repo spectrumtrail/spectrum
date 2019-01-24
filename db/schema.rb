@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_23_154138) do
+ActiveRecord::Schema.define(version: 2019_01_24_035127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2019_01_23_154138) do
     t.text "details_html"
     t.text "video_embed_code"
     t.text "lodging_html"
+    t.integer "registrations_count", default: 0
     t.index ["location_id"], name: "index_events_on_location_id"
     t.index ["slug"], name: "index_events_on_slug", unique: true
   end
@@ -101,36 +102,20 @@ ActiveRecord::Schema.define(version: 2019_01_23_154138) do
     t.text "overview_html"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "registrations_count", default: 0
-    t.integer "registrations_limit", default: 100
     t.integer "price_in_cents", default: 100
     t.index ["event_id"], name: "index_races_on_event_id"
   end
 
   create_table "registrations", force: :cascade do |t|
-    t.bigint "race_id"
-    t.string "first_name"
-    t.string "last_name"
-    t.datetime "date_of_birth"
-    t.string "email"
-    t.string "division"
-    t.string "mobile_phone"
-    t.boolean "opted_in_for_communication"
-    t.string "emergency_contact_name"
-    t.string "emergency_contact_phone"
-    t.text "medical_conditions_description"
-    t.string "legal_guardian_name"
-    t.string "legal_guardian_phone_string"
-    t.string "legal_guardian_initials"
-    t.boolean "accepted_refund_policy"
-    t.boolean "accepted_waiver"
+    t.string "billing_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["race_id"], name: "index_registrations_on_race_id"
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_registrations_on_event_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "events", "locations"
   add_foreign_key "races", "events"
-  add_foreign_key "registrations", "races"
+  add_foreign_key "registrations", "events"
 end
