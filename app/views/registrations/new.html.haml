@@ -1,23 +1,13 @@
-%section.spotlight.bg-cover.bg-size--cover{"data-spotlight" => "fullscreen", :style => "background-attachment: fixed; background-image: url(#{url_for(@event.cover_photo)})"}
-  %span.mask.bg-tertiary.alpha-7
+%section.bg-cover.bg-size--cover{"data-spotlight" => "fullscreen", :style => "background-attachment: fixed; background-image: url(#{url_for(@event.cover_photo)})"}
+  %span.mask.bg-tertiary.alpha-5
   .spotlight-holder.py-lg.pt-lg-xl
-    .container.d-flex.align-items-center.no-padding
-      .col
-        .row.cols-xs-space.align-items-center.text-center.text-md-left.justify-content-center
-          .col-sm-3
-            .card.card-outline-success
-              %img.card-img-top{:alt => "Card image cap", :src => url_for(@event.logo)}/
-              .card-body
-                %h4.card-title= @event.name
-                %p.card-text= @event.short_description
-              .card-footer
-                %i.fas.fa-calendar-alt
-                = local_time @event.starts_at
+    .container
+      .col.align-items-center
+        .row
+          .col-sm-12.col-md-3
+            = render "events/card", event: @event
 
-          .col-lg-9
+          .col-sm-12.col-md-9
             .card
-              .card-header
-                %h4.card-title Registration Form
-                %p Start here.
               .card-body
                 = render "form"

@@ -1,0 +1,9 @@
+%section.slice
+  .container
+    .row
+      .col-6
+        %h1 New participant
+        %br
+        = render 'form'
+        %br
+        = link_to 'Back', event_registration_participants_path(@event, @registration, token: @registration.token)

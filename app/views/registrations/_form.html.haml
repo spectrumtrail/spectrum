@@ -5,7 +5,13 @@
     = f.error_notification message: f.object.errors[:base].to_sentence
 
   .form-inputs
-    = f.input :billing_email
+    %fieldset
+      %legend Let's get started!
+      = f.input :starting_name, label: "What is your name?", required: true
+      = f.input :starting_email, label: "What is your email?", as: :email, required: true
+
+    %fieldset
 
   .form-actions
-    = f.button :submit
+    .float-right
+      = f.button :submit, "Next", class: "btn btn-success btn-md"

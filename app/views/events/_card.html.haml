@@ -1,1 +1,8 @@
-%h1{style: "height: 2000px;"}= @event.name
+.card.bg-dark
+  %img.card-img-top{alt: "#{event.name} card image", src: url_for(event.logo)}
+  .card-body
+    %h4.card-title.text-white= @event.name
+    %p.card-text.text-white= @event.short_description
+  .card-footer.bg-dark.text-white
+    %i.fas.fa-calendar-alt
+    = local_time @event.starts_at, "%B %e, %Y"

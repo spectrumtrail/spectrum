@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_24_042853) do
+ActiveRecord::Schema.define(version: 2019_01_25_185243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,25 @@ ActiveRecord::Schema.define(version: 2019_01_24_042853) do
     t.index ["slug"], name: "index_locations_on_slug", unique: true
   end
 
+  create_table "participants", force: :cascade do |t|
+    t.bigint "registration_id"
+    t.bigint "race_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "division"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "phone"
+    t.string "medical_conditions"
+    t.datetime "birth_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["race_id"], name: "index_participants_on_race_id"
+    t.index ["registration_id"], name: "index_participants_on_registration_id"
+  end
+
   create_table "races", force: :cascade do |t|
     t.bigint "event_id"
     t.string "name"
@@ -109,15 +128,20 @@ ActiveRecord::Schema.define(version: 2019_01_24_042853) do
   end
 
   create_table "registrations", force: :cascade do |t|
-    t.string "billing_email"
+    t.string "starting_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "event_id"
+    t.string "starting_name"
+    t.string "token"
+    t.string "last_step"
     t.index ["event_id"], name: "index_registrations_on_event_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "events", "locations"
+  add_foreign_key "participants", "races"
+  add_foreign_key "participants", "registrations"
   add_foreign_key "races", "events"
   add_foreign_key "registrations", "events"
 end

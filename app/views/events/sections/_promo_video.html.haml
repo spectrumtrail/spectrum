@@ -1,0 +1,3 @@
+- if @event.video_embed_code.present?
+  %section.slice.slice-sm#OverviewSection
+    = @event.video_embed_code.html_safe

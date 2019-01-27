@@ -1,0 +1,47 @@
+%section.slice
+  .container
+    .row
+      .col-12
+        %h1 Listing participants
+
+        %table.table
+          %thead
+            %tr
+              %th Registration
+              %th Race
+              %th First name
+              %th Last name
+              %th Division
+              %th Address
+              %th City
+              %th State
+              %th Zip
+              %th Phone
+              %th Medical conditions
+              %th Birth date
+              %th
+              %th
+              %th
+
+          %tbody
+            - @participants.each do |participant|
+              %tr
+                %td= participant.registration
+                %td= participant.race
+                %td= participant.first_name
+                %td= participant.last_name
+                %td= participant.division
+                %td= participant.address
+                %td= participant.city
+                %td= participant.state
+                %td= participant.zip
+                %td= participant.phone
+                %td= participant.medical_conditions
+                %td= participant.birth_date
+                %td= link_to 'Show', participant
+                %td= link_to 'Edit', edit_participant_path(participant)
+                %td= link_to 'Destroy', participant, method: :delete, data: { confirm: 'Are you sure?' }
+
+        %br
+
+        = link_to 'New Participant', new_event_registration_participant_path(@event, @registration)

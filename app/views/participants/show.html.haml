@@ -1,0 +1,42 @@
+%p#notice= notice
+
+%p
+  %b Registration:
+  = @participant.registration
+%p
+  %b Race:
+  = @participant.race
+%p
+  %b First name:
+  = @participant.first_name
+%p
+  %b Last name:
+  = @participant.last_name
+%p
+  %b Division:
+  = @participant.division
+%p
+  %b Address:
+  = @participant.address
+%p
+  %b City:
+  = @participant.city
+%p
+  %b State:
+  = @participant.state
+%p
+  %b Zip:
+  = @participant.zip
+%p
+  %b Phone:
+  = @participant.phone
+%p
+  %b Medical conditions:
+  = @participant.medical_conditions
+%p
+  %b Birth date:
+  = @participant.birth_date
+
+= link_to 'Edit', edit_participant_path(@participant)
+\|
+= link_to 'Back', participants_path

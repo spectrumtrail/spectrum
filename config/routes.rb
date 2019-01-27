@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   resources :locations, only: [:index, :show]
   resources :events, only: [:index, :show] do
     resources :races
-    resources :registrations, only: [:new, :create, :edit, :update]
+    resources :registrations do
+      resources :participants
+      resources :payments
+    end
   end
 
   namespace :admin do

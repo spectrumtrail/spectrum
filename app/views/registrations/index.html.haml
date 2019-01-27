@@ -1,19 +1,23 @@
-%h1 Listing registrations
+%section.slice
+  .container
+    .row
+      .col
+        %h1 Listing registrations
 
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
+        %table
+          %thead
+            %tr
+              %th
+              %th
+              %th
 
-  %tbody
-    - @registrations.each do |registration|
-      %tr
-        %td= link_to 'Show', registration
-        %td= link_to 'Edit', edit_registration_path(registration)
-        %td= link_to 'Destroy', registration, method: :delete, data: { confirm: 'Are you sure?' }
+          %tbody
+            - @registrations.each do |registration|
+              %tr
+                %td= link_to 'Show', registration
+                %td= link_to 'Edit', edit_registration_path(registration)
+                %td= link_to 'Destroy', registration, method: :delete, data: { confirm: 'Are you sure?' }
 
-%br
+        %br
 
-= link_to 'New Registration', new_registration_path
+        = link_to 'New Registration', new_registration_path
