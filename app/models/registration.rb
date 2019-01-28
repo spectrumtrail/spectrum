@@ -4,6 +4,7 @@ class Registration < ApplicationRecord
   belongs_to :event
   has_one :location, through: :event
   has_many :participants
+  accepts_nested_attributes_for :participants, allow_destroy: :true
 
   validates :starting_email, presence: true
   validates :starting_name, presence: true

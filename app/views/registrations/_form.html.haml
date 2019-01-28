@@ -6,12 +6,9 @@
 
   .form-inputs
     %fieldset
-      %legend Let's get started!
-      = f.input :starting_name, label: "What is your name?", required: true
-      = f.input :starting_email, label: "What is your email?", as: :email, required: true
-
-    %fieldset
+      = f.fields_for :participants do |builder|
+        = render "participants/shared_fields", f: builder, selected_race: @race
 
   .form-actions
     .float-right
-      = f.button :submit, "Next", class: "btn btn-success btn-md"
+      = f.button :submit, "Next Step", class: "btn btn-success btn-md"

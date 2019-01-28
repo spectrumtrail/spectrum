@@ -6,16 +6,7 @@
   .form-inputs
     = f.association :race, collection: @event.races.active, include_blank: false, input_html: { value: session.fetch(:race_id, nil) }
     %p.text-danger This will not be a dropdown.
-    = f.input :first_name, default: f.object.persisted? ? f.object.first_name : @registration.starting_name
-    = f.input :last_name
-    = f.input :division
-    = f.input :address
-    = f.input :city
-    = f.input :state
-    = f.input :zip
-    = f.input :phone, as: :tel
-    = f.input :medical_conditions
-    = f.input :birth_date, as: :date, html5: true
+    = render "shared_fields", f: f
 
   .form-actions
     = f.button :submit

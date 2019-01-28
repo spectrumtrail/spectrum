@@ -3,4 +3,4 @@
   .row
     - @event.races.each do |race|
       .col
-        = render "races/card", race: race
+        = render "races/card", race: race.decorate

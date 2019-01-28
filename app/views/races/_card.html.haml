@@ -1,13 +1,12 @@
-.card
+.card.bg-dark.sticky-top.sticky-top-offset-4.mb-3
+  %img.card-img-top{alt: "Race Card Image", src: race.card_image_cap}
   .card-body
-    %h5.heading.heading-5.strong-600= race.name
-    %p.text-dark= local_time race.starts_at
-    %ul.list-inline.mb-4
-      %li.list-inline-item.pr-2
-        %i.fas.fa-users.mr-1
-        %span= "x / y"
-      %li.list-inline-item
-        = number_to_currency(race.price_in_cents / 100, precision: 0)
-    %p.card-text= race.short_description
-    - if race.is_open?
-      %a.btn.btn-sm.btn-primary.text-upcase{href: new_event_registration_path(race.event, race_id: race.id)} Register
+    %h4.card-title.text-white= race.name_with_event
+    %h6.text-success
+      Price:
+      = number_to_currency(race.price_in_cents/100)
+    %p.card-text.text-white= race.short_description
+  .card-footer.bg-dark.text-white
+    %i.fas.fa-calendar-alt
+    = local_time race.starts_at
+    = link_to "Register Now!", new_event_registration_path(event_id: race.event_id, race_id: race.id)

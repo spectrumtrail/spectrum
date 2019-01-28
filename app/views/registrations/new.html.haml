@@ -1,13 +1,21 @@
-%section.bg-cover.bg-size--cover{"data-spotlight" => "fullscreen", :style => "background-attachment: fixed; background-image: url(#{url_for(@event.cover_photo)})"}
-  %span.mask.bg-tertiary.alpha-5
-  .spotlight-holder.py-lg.pt-lg-xl
-    .container
-      .col.align-items-center
-        .row
-          .col-sm-12.col-md-3
-            = render "events/card", event: @event
-
-          .col-sm-12.col-md-9
-            .card
-              .card-body
-                = render "form"
+%section.slice.slice-lg
+  .container.align-items-center
+    .row
+      .col-sm-12.col-md-3
+        = render "races/card", race: @race.decorate
+      .col-sm-12.col-md-6
+        .card
+          .card-header
+            %h4.card-title
+              Step 1
+              %span.text-muted.small (of 3)
+            %p
+              If you have an account, be sure to
+              = succeed "!" do
+                %a{href: "#"} sign in
+              If you don't have an account, we can create
+              one for you after you submit your Payment information. You will
+              need a valid credit / debit card. If you're under 18, you will
+              also need a parent or guardian to sign our waivers.
+          .card-body
+            = render "form"

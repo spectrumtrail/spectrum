@@ -1,0 +1,41 @@
+%fieldset
+  .form-group
+    = f.input :first_name
+  .form-group
+    = f.input :last_name
+  .form-group
+    = f.input :birth_date, as: :date, html5: true
+  .form-group
+    = f.input :division,
+      as: :radio_buttons,
+      collection: ["Male", "Female", "Open"],
+      item_wrapper_class: "inline custom-control custom-radio"
+%hr
+%fieldset
+  %legend.h5 Contact
+  %p.text-muted.small No spam, we promise. Just race info!
+  = f.input :phone, as: :tel
+  = f.input :email
+%hr
+%fieldset
+  %legend.h5 Address
+  .form-group
+    = f.input :address
+  .form-group
+    = f.input :city
+  .form-row
+    .col
+      .form-group
+        = f.input :state, collection: states_list, class: "form-control selectpicker", prompt: "Select A State"
+
+%hr
+%fieldset
+  %legend.h5 Emergency Contact
+  %p.text-muted.small Who would you like us to call in the extremely rare case of an emergency?
+  .form-group
+    = f.input :emergency_contact_name
+  .form-group
+    = f.input :emergency_contact_phone
+  .form-group
+    = f.input :medical_conditions,
+      hint: "Do you have any medical conditions that might affect first aid?"
