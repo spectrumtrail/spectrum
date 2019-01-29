@@ -6,56 +6,37 @@
   .form-inputs
     %fieldset
       %legend Basics
-      .form-row
-        .col
-          = f.input :name,
-            hint: "The full name of the event. 'The Game', 'Sky Island'"
-        - if f.object.persisted?
-          .col
-            = f.input :slug, disabled: true, hint: "Unique identifier. Used in URLs. Auto-generated."
-        .col
-          = f.association :location, prompt: "Please select a Location"
-      .form-row
-        .col
-          = f.input :facebook_event_link,
-            hint: "What is the Facebook event link?"
-        .col
-          = f.input :starts_at,
-            as: :date,
-            html5: true,
-            label: "Starting Date",
-            hint: "What day do you want to say this event starts?"
-      .form-row
-        .col
-          = f.input :short_description,
-            hint: "What is special about this event? Elevator pitch."
+      = f.input :name,
+        hint: "The full name of the event. 'The Game', 'Sky Island'"
+      - if f.object.persisted?
+        = f.input :slug, disabled: true, hint: "Unique identifier. Used in URLs. Auto-generated."
+      = f.association :location, prompt: "Please select a Location"
+      = f.input :facebook_event_link,
+        hint: "What is the Facebook event link?"
+      = f.input :starts_at,
+        as: :date,
+        html5: true,
+        label: "Starting Date",
+        hint: "What day do you want to say this event starts?"
+      = f.input :short_description,
+        hint: "What is special about this event? Elevator pitch."
     %fieldset
       %legend Sections
-      .form-row
-        .col
-          = f.input :video_embed_code,
-            input_html: { class: "textarea-autosize" },
-            hint: "Copy & Paste the Vimeo Embed Code here"
-      .form-row
-        .col
-          = f.input :overview_html,
-            input_html: { class: "editor textarea-autosize" },
-            hint: "This is where you can add some HTML to introduce the event."
-      .form-row
-        .col
-          = f.input :schedule_html,
-            input_html: { class: "editor textarea-autosize" },
-            hint: "This is where you can build a custom schedule with HTML. Be sure to use the table-responsive class for any tables."
-      .form-row
-        .col
-          = f.input :details_html,
-            input_html: { class: "editor textarea-autosize" },
-            hint: "This is where you can add some HTML or simple plain text to provide extra details you want participants to know about."
-      .form-row
-        .col
-          = f.input :lodging_html,
-            input_html: { class: "editor textarea-autosize" },
-            hint: "This is where you can add some HTML or simple plain text to provide extra details you want participants to know about."
+      = f.input :video_embed_code,
+        input_html: { class: "textarea-autosize" },
+        hint: "Copy & Paste the Vimeo Embed Code here"
+      = f.input :overview_html,
+        input_html: { class: "editor textarea-autosize" },
+        hint: "This is where you can add some HTML to introduce the event."
+      = f.input :schedule_html,
+        input_html: { class: "editor textarea-autosize" },
+        hint: "This is where you can build a custom schedule with HTML. Be sure to use the table-responsive class for any tables."
+      = f.input :details_html,
+        input_html: { class: "editor textarea-autosize" },
+        hint: "This is where you can add some HTML or simple plain text to provide extra details you want participants to know about."
+      = f.input :lodging_html,
+        input_html: { class: "editor textarea-autosize" },
+        hint: "This is where you can add some HTML or simple plain text to provide extra details you want participants to know about."
     %fieldset
       %legend Images
       .form-row

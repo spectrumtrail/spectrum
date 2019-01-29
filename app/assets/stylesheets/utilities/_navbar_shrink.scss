@@ -1,0 +1,14 @@
+nav.navbar.shrink .navbar-brand {
+  transform: scale(0.95);
+  transition: all 1.2s ease;
+}
+
+nav.navbar.shrink a {
+  transform: scale(0.95);
+  transition: all 1.2s ease;
+}
+
+nav.navbar.shrink {
+  padding: 0.35rem;
+  transition: all 1.2s ease;
+}

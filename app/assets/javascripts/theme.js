@@ -186,9 +186,9 @@ $(document).ready(function() {
 
 }),
 
+// Listener for anything with a data-action attribute.
 $(document).ready(function() {
     $("body").on("click", "[data-action]", function(e) {
-
         e.preventDefault();
 
         var $this = $(this);
@@ -200,6 +200,7 @@ $(document).ready(function() {
                 target = $this.data("target"), $(target).addClass("open"), $("body").append('<div class="body-backdrop" data-action="offcanvas-close" data-target=' + target + " />");
                 break;
             case "offcanvas-close":
+                console.log("Seeing request to close the sidebar");
                 target = $this.data("target"), $(target).removeClass("open"), $("body").find(".body-backdrop").remove();
                 break;
 

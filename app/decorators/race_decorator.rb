@@ -9,6 +9,10 @@ class RaceDecorator < Draper::Decorator
     "#{event.name} #{name}"
   end
 
+  def participants_count
+    participants.size
+  end
+
   def row_thumbnail
     event.decorate.row_thumbnail
   end

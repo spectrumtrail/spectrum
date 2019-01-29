@@ -4,21 +4,6 @@ Add your custom styles below
 
 */
 
-nav.navbar.shrink .navbar-brand {
-  transform: scale(0.9);
-  transition: all 1.2s ease;
-}
-
-nav.navbar.shrink a {
-  transform: scale(0.9);
-  transition: all 1.2s ease;
-}
-
-nav.navbar.shrink {
-  padding: 0.25rem;
-  transition: all 1.2s ease;
-}
-
 html {
   scroll-behavior: smooth;
 }
