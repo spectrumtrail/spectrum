@@ -1,0 +1,11 @@
+.row
+  .col
+    %h1 series
+  .col
+    .float-right
+      = link_to "New Series",
+        new_admin_series_path,
+        class: "btn btn-sm btn-success"
+.row
+  .col
+    = render "table"

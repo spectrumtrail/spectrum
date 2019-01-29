@@ -1,0 +1,87 @@
+-# frozen_string_literal: true
+= simple_form_for([:admin, @series], multipart: true) do |f|
+  = f.error_notification
+  - if f.object.errors[:base].present?
+    = f.error_notification message: f.object.errors[:base].to_sentence
+  .form-inputs
+    %fieldset
+      .form-row
+        .col
+          = f.input :name,
+            hint: "The full name of the series. 'Rogue', 'Water'"
+        - if f.object.persisted?
+          .col
+            = f.input :slug,
+              disabled: true,
+              hint: "Unique identifier. Used in URLs. Auto-generated."
+        .col
+          = f.input :short_description,
+            hint: "What is special about this series? Elevator pitch."
+      .form-row
+        .col
+          = f.input :overview_html,
+            input_html: { class: "editor textarea-autosize" },
+            hint: "This is where you can add some HTML to introduce the series."
+    %fieldset
+      %legend Images
+      .form-row
+        .col.form-group
+          = f.file_field :logo,
+            direct_upload: true,
+            class: "custom-input-file",
+            type: 'file',
+            "data-multiple-caption" => "{count} files selected"
+          = f.label :logo do
+            %i.fa.fa-upload
+            %span Select Logo *
+            %small.text-muted Please select exatly one
+          - if f.object.logo.attached?
+            .attachment-wrapper{id: "attachment-wrapper-#{f.object.logo.id}"}
+              = image_tag f.object.logo,
+                class: "img img-fluid img-thumbnail"
+              = link_to attachment_path(id: f.object.logo.id), method: :delete, remote: true, class: "text-danger" do
+                %i.fa.fa-times
+        .col.form-group
+          = f.file_field :cover_photo,
+            direct_upload: true,
+            class: "custom-input-file",
+            type: 'file',
+            "data-multiple-caption" => "{count} files selected"
+          = f.label :cover_photo do
+            %i.fa.fa-upload
+            %span Select New Cover Photo *
+            %small.text-muted Please select exatly one
+          - if f.object.cover_photo.attached?
+            .attachment-wrapper{id: "attachment-wrapper-#{f.object.cover_photo.id}"}
+              = image_tag f.object.cover_photo,
+                class: "img img-fluid img-thumbnail"
+              = link_to attachment_path(id: f.object.cover_photo.id), method: :delete, remote: true, class: "text-danger" do
+                %i.fa.fa-times
+        .col.form-group
+          = f.file_field :promo_photos,
+            multiple: true,
+            direct_upload: true,
+            class: "custom-input-file custom-input-file--2",
+            type: 'file',
+            "data-multiple-caption" => "{count} files selected"
+          = f.label :promo_photos do
+            %i.fa.fa-upload
+            %span Select Promo Photos *
+            %small.text-muted Please select at least one
+          .row.text-center.text-lg-left
+            - f.object.promo_photos.each do |promo_photo|
+              .col-lg-3.col-md-6.col-sm-12.attachment-wrapper{id: "attachment-wrapper-#{promo_photo.id}"}
+                .d-block.mb-4.h-100
+                  %img.img-fluid.img-thumbnail{:alt => "", :src => url_for(promo_photo)}/
+                  = link_to attachment_path(id: promo_photo.id), method: :delete, remote: true, class: "text-danger" do
+                    %i.fa.fa-times
+  %br
+  .form-actions
+    = link_to admin_series_index_path,
+      class: "mr-2 btn btn-md btn-outline-secondary",
+      data: { confirm: "Careful! You will lose any progress you made on this form."} do
+      %i.fas.fa-arrow-left
+      Go Back
+    = f.button :submit,
+      class: "btn btn-md btn-outline-success",
+      data: { disable_with: "Submitting..." }

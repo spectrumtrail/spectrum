@@ -11,41 +11,21 @@
       .col-6.col-md
         %h5.heading.h6.text-uppercase.font-weight-700.mb-3 Series
         %ul.list-unstyled.text-small
-          %li
-            %a.text-muted{href: "#"} Excursion
-          %li
-            %a.text-muted{href: "#"} Rogue
-          %li
-            %a.text-muted{href: "#"} Water
+          - @menu_series.each do |series|
+            %li
+              %a.text-muted{href: series_path(series)}= series.name
 
       .col
         %h5.heading.h6.text-uppercase.font-weight-700.mb-3 Events
         %ul.list-unstyled.text-small
-          %li
-            %a.text-muted{href: "#"} Aurora
-          %li
-            %a.text-muted{href: "#"} Goodwater
-          %li
-            %a.text-muted{href: "#"} Sky Island
-          %li
-            %a.text-muted{href: "#"} The Circus
-          %li
-            %a.text-muted{href: "#"} The Escarpment
-          %li
-            %a.text-muted{href: "#"} The Game
-          %li
-            %a.text-muted{href: "#"} The Maze
-          %li
-            %a.text-muted{href: "#"} The Stampede
-          %li
-            %a.text-muted{href: "#"} The Tangle
-          %li
-            %a.text-muted{href: "#"} Wonderland
+          - @menu_events.each do |event|
+            %li
+              %a.text-muted{href: event_path(event)}= event.name
       .col
         %h5.heading.h6.text-uppercase.font-weight-700.mb-3 Cool Stuff
         %ul.list-unstyled.text-small
           %li
-            %a.text-muted{href: "#"} About
+            %a.text-muted{href: about_path} About
           %li
             %a.text-muted{href: "#"} Coaching
           %li
@@ -62,9 +42,9 @@
           %li
             %a.text-muted{href: "#"} Policies
           %li
-            %a.text-muted{href: "#"} Privacy
+            %a.text-muted{href: privacy_path} Privacy
           %li
-            %a.text-muted{href: "#"} Terms
+            %a.text-muted{href: terms_path} Terms
 
     .d-flex.align-items-center.mt-4
       %span

@@ -10,7 +10,6 @@ class RegistrationsController < ApplicationController
 
   def create
     @registration = @event.registrations.new(registration_params)
-
     if @registration.save
       redirect_to(
         # this will be navigating to a form just for waivers.

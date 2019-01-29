@@ -1,0 +1,15 @@
+%section.slice.slice-lg
+  .container
+    .row
+      .col
+        %p#notice= notice
+
+        %p
+          %b Name:
+          = @series.name
+        %p
+          %b Short description:
+          = @series.short_description
+        %p
+          %b Overview html:
+          = @series.overview_html

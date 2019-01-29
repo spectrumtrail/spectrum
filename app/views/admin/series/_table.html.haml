@@ -1,0 +1,8 @@
+%table.table.align-items-center
+  %thead
+    %tr
+      %th{scope: "col"} Name
+      %th{scope: "col"}
+  %tbody
+    - @series.each do |series|
+      = render "series_row", series: series.decorate

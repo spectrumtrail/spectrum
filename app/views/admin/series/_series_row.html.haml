@@ -1,0 +1,19 @@
+%tr
+  %td
+    .media.align-items-center
+      .media-body
+        %h6.h5.font-weight-normal.mb-0= series.name
+  %td
+    .btn-group.float-right
+      = link_to edit_admin_series_path(series),
+        class: "btn btn-sm btn-outline-primary" do
+        %i.fa.fa-edit
+        Edit
+      %button.btn.btn-sm.btn-outline-primary.dropdown-toggle.dropdown-toggle-split{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+        %span.sr-only Toggle Dropdown
+      .dropdown-menu
+        = link_to series_path(series),
+          class: "dropdown-item" do
+          %i.fa.fa-star
+          Promo Page
+%tr.table-divider

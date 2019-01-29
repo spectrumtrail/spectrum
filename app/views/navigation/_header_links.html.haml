@@ -3,26 +3,17 @@
   %li.nav-item.dropdown
     %a#navbar_series_dropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", href: "#", role: "button"} Series
     .dropdown-menu{"aria-labelledby" => "navbar_series_dropdown"}
-      %a.dropdown-item{href: "#"} Water
-      %a.dropdown-item{href: "#"} Excursion
-      %a.dropdown-item{href: "#"} Rogue
+      - @menu_series.each do |series|
+        %a.dropdown-item{href: series_path(series)}= series.name
   %li.nav-item.dropdown
     %a#navbar_events_dropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", href: "#", role: "button"} Events
     .dropdown-menu{"aria-labelledby" => "navbar_events_dropdown"}
-      %a.dropdown-item{href: "#"} Goodwater
-      %a.dropdown-item{href: "#"} The Escarpment
-      %a.dropdown-item{href: "#"} The Game
-      %a.dropdown-item{href: "#"} Aurora
-      %a.dropdown-item{href: "#"} Sky Island
-      %a.dropdown-item{href: "#"} Wonderland
-      %a.dropdown-item{href: "#"} The Circus
-      %a.dropdown-item{href: "#"} The Maze
-      %a.dropdown-item{href: "#"} The Tangle
-      %a.dropdown-item{href: "#"} The Stampede
+      - @menu_events.each do |event|
+        %a.dropdown-item{href: event_path(event)}= event.name
   %li.nav-item
-    %a.nav-link{href: static_pages_about_path} About
+    %a.nav-link{href: about_path} About
   %li.nav-item
-    %a.nav-link{href: static_pages_about_path} Store
+    %a.nav-link{href: about_path} Store
   %li.nav-item
     %a.nav-link.d-lg-none{href: "new_user_session_path"} Sign In
     %a.btn.btn-sm.bg-white.d-none.d-lg-inline-flex{href: "new_user_session_path"} Sign In

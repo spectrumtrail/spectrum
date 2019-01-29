@@ -1,25 +1,29 @@
 Rails.application.routes.draw do
   root to: "static_pages#home"
-  get "static_pages/home"
-  get "static_pages/terms"
-  get "static_pages/privacy"
-  get "static_pages/about"
+
+  match '/home' => "static_pages#home", via: [:get]
+  match '/terms' => "static_pages#terms", via: [:get]
+  match '/privacy' => "static_pages#privacy", via: [:get]
+  match '/about' => "static_pages#about", via: [:get]
 
   resources :attachments, only: [:destroy]
   resources :locations, only: [:index, :show]
   resources :events, only: [:index, :show] do
-    resources :races
     resources :registrations do
       resources :participants
       resources :payments
     end
+    resources :races
   end
+  resources :series, only: [:show]
 
   namespace :admin do
     get '/' => redirect('admin/dashboard')
     resource :dashboard, controller: 'dashboard'
-    resources :locations
     resources :events
+    resources :locations
     resources :races
-    end
+    resources :registrations
+    resources :series
+  end
 end
