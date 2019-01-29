@@ -8,3 +8,16 @@
   cursor: pointer;
   z-index: 1020; // IMPORTANT! navbar fixed has a z-index of 1030. When using a fixed-top header, this must be less than that, otherwise, clicking anywhere in the sidebar just collapses the menu.
 }
+
+// mobile
+.parallaxy {
+  background-position: center center;
+  background-attachment: scroll;
+}
+
+@include media-breakpoint-up(md) {
+  .parallaxy {
+    background-position: center center;
+    background-attachment: fixed; // makes it parallaxy
+  }
+}

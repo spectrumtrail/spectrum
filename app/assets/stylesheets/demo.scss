@@ -394,17 +394,21 @@
 
 // Background covers (.bg-cover)
 .bg-cover {
-    position: relative;
+  position: relative;
 }
 
 .bg-size--cover {
-    background-size: cover;
-    background-repeat: no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .bg-size--contain {
-    background-size: contain;
-    background-repeat: no-repeat;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.bg-position--center-center {
+  background-position: center center;
 }
 
 // Typeface palette
