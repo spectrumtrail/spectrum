@@ -1,16 +1,13 @@
 %section.slice.slice-lg
-  .container.align-items-center
+  .container
+    .d-sm-block.d-md-none
+      %h1 Register
     .row
       .col-sm-12.col-md-3
-        = render "races/card", race: @race.decorate
+        = render "events/card", event: @event.decorate, context_classes: "sticky-top sticky-top-offset-6"
       .col-sm-12.col-md-6
         .card
-          %ul.nav.nav-pills.nav-fill.flex-column.flex-sm-row
-            %li.nav-item
-              %a.nav-link.mb-sm-3.bg-primary.text-white 1. Info
-            %li.nav-item
-              %a.nav-link.mb-sm-3 2. Waiver
-            %li.nav-item
-              %a.nav-link.mb-sm-3 3. Payment
+          .card-header.pb-1
+            = render "welcome_message"
           .card-body
             = render "form"

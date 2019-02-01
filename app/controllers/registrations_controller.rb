@@ -3,8 +3,7 @@ class RegistrationsController < ApplicationController
   before_action :set_registration, only: [:show, :edit, :update, :destroy]
 
   def new
-    @race = Race.find params[:race_id]
-    @registration = @event.registrations.new
+    @registration = @event.registrations.new(started_at: Time.now)
     @participants = @registration.participants.new(race_id: params[:race_id])
   end
 
@@ -12,9 +11,7 @@ class RegistrationsController < ApplicationController
     @registration = @event.registrations.new(registration_params)
     if @registration.save
       redirect_to(
-        # this will be navigating to a form just for waivers.
-        # might be on the registration, might be just the
-        # registration update action, we shall see.
+        # the payment step
         edit_event_registration_path(@event, @registration)
       )
     else

@@ -1,10 +1,17 @@
 %fieldset
+  %legend.h5 Select Your Race Distance
   .form-group
-    = f.input :first_name
+    = f.association :race,
+      collection: @event.races.active,
+      as: :radio_buttons,
+      label_method: :name_with_event
+%hr
+%fieldset
+  = f.input :first_name, label: "Your First Name"
   .form-group
-    = f.input :last_name
+    = f.input :last_name, label: "Your Last Name"
   .form-group
-    = f.input :birth_date, as: :date, html5: true
+    = f.input :birth_date, as: :date, html5: true, label: "Your Birthdate"
   .form-group
     = f.input :division,
       as: :radio_buttons,
@@ -13,7 +20,6 @@
 %hr
 %fieldset
   %legend.h5 Contact
-  %p.text-muted.small No spam, we promise. Just race info!
   = f.input :phone, as: :tel
   = f.input :email
 %hr
@@ -38,4 +44,15 @@
     = f.input :emergency_contact_phone
   .form-group
     = f.input :medical_conditions,
+      as: :text,
+      input_html: { class: "textarea-autosize" },
       hint: "Do you have any medical conditions that might affect first aid?"
+
+%hr
+%fieldset
+  %legend.h5 Waivers
+  %div.text-muted.waiver-container
+    %span= @event.waiver_html.html_safe
+  %small.text-danger Please scroll to read the entire term set.
+  %b
+  = f.input :accepts_waiver, as: :radio_buttons, required: true, label: "I have read, understood, and accept the agreement above. My submission of this form shall act as my legal signature."

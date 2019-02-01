@@ -9,4 +9,4 @@
   .card-footer.bg-dark.text-white
     %i.fas.fa-calendar-alt
     = local_time race.starts_at
-    = link_to "Register Now!", new_event_registration_path(event_id: race.event_id, race_id: race.id)
+    = link_to "Register Now!", new_event_registration_path(event_id: race.event.slug, race_id: race.id)

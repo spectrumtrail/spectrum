@@ -4,9 +4,7 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
-    = f.association :race, collection: @event.races.active, include_blank: false, input_html: { value: session.fetch(:race_id, nil) }
-    %p.text-danger This will not be a dropdown.
-    = render "shared_fields", f: f
+    = render "fields", f: f
 
   .form-actions
     = f.button :submit

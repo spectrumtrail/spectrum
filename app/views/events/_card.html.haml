@@ -1,8 +1,7 @@
-.card.bg-dark
-  %img.card-img-top{alt: "#{event.name} card image", src: url_for(event.logo)}
-  .card-body
-    %h4.card-title.text-white= @event.name
-    %p.card-text.text-white= @event.short_description
-  .card-footer.bg-dark.text-white
-    %i.fas.fa-calendar-alt
-    = local_time @event.starts_at, "%B %e, %Y"
+.card.bg-dark.mb-4{class: context_classes}
+  .px-3
+    %img.card-img.z-depth-2{alt: "race name", src: url_for(event.logo), style: "margin-top: -30px;"}
+  .card-body.text-white
+    %h4.card-title.text-white.mb-2= event.name
+    %p.text-success @ #{event.location.name}
+    %p.card-text= event.short_description

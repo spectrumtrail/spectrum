@@ -6,9 +6,10 @@
 
   .form-inputs
     %fieldset
-      = f.fields_for :participants do |builder|
-        = render "participants/shared_fields", f: builder, selected_race: @race
+      = f.simple_fields_for :participants do |builder|
+        = render "participants/fields", f: builder, selected_race: @race
 
   .form-actions
     .float-right
-      = f.button :submit, "Next Step", class: "btn btn-success btn-md"
+      = f.input :started_at, as: :hidden, value: @registration.started_at
+      = f.button :submit, class: "btn btn-success btn-md"

@@ -37,6 +37,10 @@
       = f.input :lodging_html,
         input_html: { class: "editor textarea-autosize" },
         hint: "This is where you can add some HTML or simple plain text to provide extra details you want participants to know about."
+      = f.input :waiver_html,
+        input_html: {class: "editor textarea-autosize" },
+        hint: "This is where you store the Waiver text for this specific event."
+
     %fieldset
       %legend Images
       .form-row

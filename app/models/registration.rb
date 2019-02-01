@@ -6,9 +6,6 @@ class Registration < ApplicationRecord
   has_many :participants
   accepts_nested_attributes_for :participants, allow_destroy: :true
 
-  validates :starting_email, presence: true
-  validates :starting_name, presence: true
-
   def calculate_total_charge
     total = 0
     participants.each do |participant|

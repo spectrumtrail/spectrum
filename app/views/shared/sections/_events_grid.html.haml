@@ -1,0 +1,10 @@
+%section.slice.slice-xl.pb-5#EventsGrid
+  .container
+    .row.align-items-center.mb-lg-lg
+      .col-lg-4
+        .mb-lg.mb-lg-0.text-center.text-lg-left
+          %h2.heading Our Events
+          %p.mt-3 Register today before we fill up!
+      - @events.each do |event|
+        .col-md-4.mb-4
+          = render "events/card", event: event.decorate, context_classes: ""
