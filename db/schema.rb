@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_29_043301) do
+ActiveRecord::Schema.define(version: 2019_02_01_032507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2019_01_29_043301) do
     t.text "lodging_html"
     t.integer "registrations_count", default: 0
     t.boolean "is_active", default: true
+    t.text "waiver_html"
     t.index ["location_id"], name: "index_events_on_location_id"
     t.index ["slug"], name: "index_events_on_slug", unique: true
   end
@@ -104,6 +105,7 @@ ActiveRecord::Schema.define(version: 2019_01_29_043301) do
     t.string "email"
     t.string "emergency_contact_name"
     t.string "emergency_contact_phone"
+    t.boolean "accepts_waiver"
     t.index ["race_id"], name: "index_participants_on_race_id"
     t.index ["registration_id"], name: "index_participants_on_registration_id"
   end
@@ -138,6 +140,7 @@ ActiveRecord::Schema.define(version: 2019_01_29_043301) do
     t.string "starting_name"
     t.string "token"
     t.string "last_step"
+    t.datetime "started_at"
     t.index ["event_id"], name: "index_registrations_on_event_id"
   end
 
