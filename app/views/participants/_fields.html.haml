@@ -9,7 +9,7 @@
 %fieldset
   = f.input :first_name, label: "Your First Name"
   = f.input :last_name, label: "Your Last Name"
-  = f.input :birth_date, as: :date, html5: true, label: "Your Birthdate", placeholder: "mm/dd/yyyy", input_html: { class: "masked-date" }
+  = f.input :birth_date, as: :string, label: "Your Birthdate", placeholder: "mm/dd/yyyy", input_html: { class: "date masked-date" }
   = f.input :division,
     as: :radio_buttons,
     collection: ["Male", "Female", "Open"],

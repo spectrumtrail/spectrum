@@ -10,11 +10,10 @@
 # components.
 # See https://github.com/plataformatec/simple_form#custom-components
 # to know more about custom components.
-Dir[Rails.root.join('lib/components/**/*.rb')].each { |f| require f }
+# Dir[Rails.root.join('lib/components/**/*.rb')].each { |f| require f }
 
 # Use this setup block to configure all options available in SimpleForm.
 SimpleForm.setup do |config|
-  config.browser_validations = true
   # Default class for buttons
   config.button_class = 'btn'
 
@@ -22,7 +21,7 @@ SimpleForm.setup do |config|
   config.boolean_label_class = 'form-check-label'
 
   # How the label text should be generated altogether with the required text.
-  config.label_text = lambda { |label, required, explicit_label| "#{label.titleize} #{required}" }
+  config.label_text = lambda { |label, required, explicit_label| "#{label} #{required}" }
 
   # Define the way to render check boxes / radio buttons with labels.
   config.boolean_style = :inline
@@ -69,8 +68,8 @@ SimpleForm.setup do |config|
     b.use :html5
     b.optional :readonly
     b.wrapper :form_check_wrapper, tag: 'div', class: 'form-check' do |bb|
-      bb.use :input, class: 'form-check-input custom-control-input', error_class: 'is-invalid', valid_class: 'is-valid'
-      bb.use :label, class: 'form-check-label custom-control-label'
+      bb.use :input, class: 'form-check-input', error_class: 'is-invalid', valid_class: 'is-valid'
+      bb.use :label, class: 'form-check-label'
       bb.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
       bb.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
     end
@@ -109,7 +108,7 @@ SimpleForm.setup do |config|
     b.optional :readonly
     b.use :label
     b.use :input, class: 'form-control-file', error_class: 'is-invalid', valid_class: 'is-valid'
-    b.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
+    b.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback d-block' }
     b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
   end
 
@@ -288,7 +287,7 @@ SimpleForm.setup do |config|
   config.wrappers :custom_boolean_switch, tag: 'fieldset', class: 'form-group', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
     b.use :html5
     b.optional :readonly
-    b.wrapper :form_check_wrapper, tag: 'div', class: 'custom-control custom-switch' do |bb|
+    b.wrapper :form_check_wrapper, tag: 'div', class: 'custom-control custom-checkbox-switch' do |bb|
       bb.use :input, class: 'custom-control-input', error_class: 'is-invalid', valid_class: 'is-valid'
       bb.use :label, class: 'custom-control-label'
       bb.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
@@ -363,23 +362,23 @@ SimpleForm.setup do |config|
 
   # Input Group - custom component
   # see example app and config at https://github.com/rafaelfranca/simple_form-bootstrap
-  config.wrappers :input_group, tag: 'div', class: 'form-group', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
-    b.use :html5
-    b.use :placeholder
-    b.optional :maxlength
-    b.optional :minlength
-    b.optional :pattern
-    b.optional :min_max
-    b.optional :readonly
-    b.use :label, class: 'form-control-label'
-    b.wrapper :input_group_tag, tag: 'div', class: 'input-group' do |ba|
-      ba.optional :prepend
-      ba.use :input, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid'
-      ba.optional :append
-    end
-    b.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback d-block' }
-    b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
-  end
+  # config.wrappers :input_group, tag: 'div', class: 'form-group', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
+  #   b.use :html5
+  #   b.use :placeholder
+  #   b.optional :maxlength
+  #   b.optional :minlength
+  #   b.optional :pattern
+  #   b.optional :min_max
+  #   b.optional :readonly
+  #   b.use :label, class: 'form-control-label'
+  #   b.wrapper :input_group_tag, tag: 'div', class: 'input-group' do |ba|
+  #     ba.optional :prepend
+  #     ba.use :input, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid'
+  #     ba.optional :append
+  #   end
+  #   b.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback d-block' }
+  #   b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
+  # end
 
 
   # Floating Labels form

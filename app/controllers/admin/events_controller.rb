@@ -35,6 +35,7 @@ class Admin::EventsController < Admin::BaseController
         success: "Successfully updated #{@event.name}"
       )
     else
+      flash[:danger] = "Could not update this event. Please see errors."
       render :edit
     end
   end

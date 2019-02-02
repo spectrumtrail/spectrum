@@ -3,5 +3,8 @@
     %img.card-img.z-depth-2{alt: "race name", src: url_for(event.logo), style: "margin-top: -30px;"}
   .card-body.text-white
     %h4.card-title.text-white.mb-2= event.name
-    %p.text-success @ #{event.location.name}
+    %a.text-success{href: event.location.address_link, target: "_blank"}
+      %i.fas.fa-map-marker-alt
+      #{event.location.name}
+    %i.fa.fa-calendar-day
     %p.card-text= event.short_description

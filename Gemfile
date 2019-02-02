@@ -19,10 +19,12 @@ gem "sass-rails", "~> 5.0"
 gem "haml-rails", "~> 1.0"
 gem "coffee-rails", "~> 4.2"
 gem "mini_magick", "~> 4.8"
-gem "simple_form"
 gem "local_time"
 gem "uglifier"
 gem 'friendly_id', '~> 5.2.4'
+gem "simple_form"
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
 
 # Background Processing
 gem "redis", "~> 4.0"

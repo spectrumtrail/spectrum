@@ -1,5 +1,5 @@
 -# frozen_string_literal: true
-= simple_form_for([:admin, @event], multipart: true) do |f|
+= simple_form_for([:admin, @event], multipart: true, validate: true, html: { id: "AdminEventsForm" }) do |f|
   = f.error_notification
   - if f.object.errors[:base].present?
     = f.error_notification message: f.object.errors[:base].to_sentence
@@ -8,6 +8,7 @@
       %legend Basics
       = f.input :name,
         hint: "The full name of the event. 'The Game', 'Sky Island'"
+      = f.error :name
       - if f.object.persisted?
         = f.input :slug, disabled: true, hint: "Unique identifier. Used in URLs. Auto-generated."
       = f.association :location, prompt: "Please select a Location"
