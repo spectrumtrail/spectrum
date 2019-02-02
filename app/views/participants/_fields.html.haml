@@ -8,15 +8,12 @@
 %hr
 %fieldset
   = f.input :first_name, label: "Your First Name"
-  .form-group
-    = f.input :last_name, label: "Your Last Name"
-  .form-group
-    = f.input :birth_date, as: :date, html5: true, label: "Your Birthdate", placeholder: "mm/dd/yyyy", input_html: { class: "masked-date" }
-  .form-group
-    = f.input :division,
-      as: :radio_buttons,
-      collection: ["Male", "Female", "Open"],
-      item_wrapper_class: "inline custom-control custom-radio"
+  = f.input :last_name, label: "Your Last Name"
+  = f.input :birth_date, as: :date, html5: true, label: "Your Birthdate", placeholder: "mm/dd/yyyy", input_html: { class: "masked-date" }
+  = f.input :division,
+    as: :radio_buttons,
+    collection: ["Male", "Female", "Open"],
+    item_wrapper_class: "inline custom-control custom-radio"
 %hr
 %fieldset
   %legend.h5 Contact
@@ -25,28 +22,20 @@
 %hr
 %fieldset
   %legend.h5 Address
-  .form-group
-    = f.input :address
-  .form-group
-    = f.input :city
-  .form-row
-    .col
-      .form-group
-        = f.input :state, collection: states_list, class: "form-control selectpicker", prompt: "Select A State"
+  = f.input :address
+  = f.input :city
+  = f.input :state, collection: states_list, class: "form-control selectpicker", prompt: "Select A State"
 
 %hr
 %fieldset
   %legend.h5 Emergency Contact
   %p.text-muted.small Who would you like us to call in the extremely rare case of an emergency?
-  .form-group
-    = f.input :emergency_contact_name
-  .form-group
-    = f.input :emergency_contact_phone
-  .form-group
-    = f.input :medical_conditions,
-      as: :text,
-      input_html: { class: "textarea-autosize" },
-      hint: "Do you have any medical conditions that might affect first aid?"
+  = f.input :emergency_contact_name
+  = f.input :emergency_contact_phone
+  = f.input :medical_conditions,
+    as: :text,
+    input_html: { class: "textarea-autosize" },
+    hint: "Do you have any medical conditions that might affect first aid?"
 
 %hr
 %fieldset
