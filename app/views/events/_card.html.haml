@@ -3,8 +3,20 @@
     %img.card-img.z-depth-2{alt: "race name", src: url_for(event.logo), style: "margin-top: -30px;"}
   .card-body.text-white
     %h4.card-title.text-white.mb-2= event.name
-    %a.text-success{href: event.location.address_link, target: "_blank"}
-      %i.fas.fa-map-marker-alt
-      #{event.location.name}
-    %i.fa.fa-calendar-day
+    %p
+      - event.races.each do |race|
+        %span.badge.badge-primary.badge-lg= race.name
+    %p
+      %i.fa.fa-calendar-day
+      = local_time event.starts_at, '%B %e, %Y'
+    %p
+      %a{href: event.location.address_link, target: "_blank"}
+        %i.fas.fa-map-marker-alt
+        #{event.location.name}
     %p.card-text= event.short_description
+  .card-footer.bg-dark
+    .row.align-items-center
+      .col-6
+        %a.btn.btn-sm.btn-primary{:href => "#"} Register Now
+      .col-6.text-right
+        %span.text-muted 100 / 1000
