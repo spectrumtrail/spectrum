@@ -16,4 +16,16 @@ class RaceDecorator < Draper::Decorator
   def row_thumbnail
     event.decorate.row_thumbnail
   end
+
+  def start_time_with_zone
+    Time.use_zone(time_zone) do
+      starts_at.strftime("%I:%M %p (%Z)")
+    end
+  end
+
+  def start_date
+    Time.use_zone(time_zone) do
+      starts_at.strftime("%A %B %d, %Y")
+    end
+  end
 end

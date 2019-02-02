@@ -4,7 +4,7 @@
     = f.association :race,
       collection: @event.races.active,
       as: :radio_buttons,
-      label_method: :name_with_event
+      label_method: :name_with_event_and_price
 %hr
 %fieldset
   = f.input :first_name, label: "Your First Name"

@@ -1,12 +1,16 @@
-.card.bg-dark.sticky-top.sticky-top-offset-4.mb-3
-  %img.card-img-top{alt: "Race Card Image", src: race.card_image_cap}
-  .card-body
-    %h4.card-title.text-white= race.name_with_event
-    %h6.text-success
-      Price:
-      = number_to_currency(race.price_in_cents/100)
-    %p.card-text.text-white= race.short_description
-  .card-footer.bg-dark.text-white
-    %i.fas.fa-calendar-alt
-    = local_time race.starts_at
-    = link_to "Register Now!", new_event_registration_path(event_id: race.event.slug, race_id: race.id)
+.card.bg-dark.alpha-container.text-white.border-0.overflow-hidden
+  %a{href: new_event_registration_path(race.event, race_id: race.id), :target => "_blank"}
+    .card-img-bg{:style => "background-image: url(#{url_for(race.course_map)});"}
+    %span.mask.bg-dark.alpha-8.alpha-4--hover
+    .card-body.px-5.py-5
+      %div{:style => "min-height: 300px;"}
+        %h3.heading.h1.text-white.mb-3= race.name
+        %p.mt-4.mb-1.text-white.lh-180
+          %i.far.fa-clock
+          = race.start_time_with_zone
+        %p.mb-1.text-white.lh-180
+          %i.fas.fa-calendar-day
+          = race.start_date
+      %span.text-white.text-uppercase.font-weight-500{href: new_event_registration_path(race.event, race)}
+        Register Now
+        %i.fas.fa-arrow-right.ml-2

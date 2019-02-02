@@ -18,6 +18,7 @@ class Event < ApplicationRecord
   validates :name, presence: true
   validates :short_description, presence: true
   validates :starts_at, presence: true
+  validates :time_zone, presence: true
 
   scope :is_active, -> { where(is_active: true) }
 end

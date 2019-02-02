@@ -17,12 +17,18 @@ class Race < ApplicationRecord
 
   scope :active, -> { where(is_active: true) }
 
+  delegate :time_zone, to: :event
+
   def is_open?
     true
   end
 
   def name_with_event
     "#{event.name} #{name}"
+  end
+
+  def name_with_event_and_price
+    "#{name_with_event} - ( $#{price_in_cents / 100} )"
   end
 
   def generate_slug

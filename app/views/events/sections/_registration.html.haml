@@ -1,6 +1,6 @@
 %section.slice#RegistrationSection
   %h2 Registration
   .row
-    - @event.races.each do |race|
+    - @races.each do |race|
       .col-sm-12.col-md-6
         = render "races/card", race: race.decorate

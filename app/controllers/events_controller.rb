@@ -7,7 +7,7 @@ class EventsController < ApplicationController
 
   def show
     @location = @event.location
-    @races = @event.races.active
+    @races = @event.races.active.order(starts_at: :asc)
   end
 
   private
