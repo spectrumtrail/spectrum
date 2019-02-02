@@ -13,12 +13,7 @@ $(window).scroll(function() {
    }
 });
 
-$(window).on("load", function() {
-
-}),
-
 $(window).on('load resize', function() {
-
   // Background image holder - Static hero with fullscreen autosize
   if ($('.spotlight').length) {
     $('.spotlight').each(function() {
@@ -51,7 +46,6 @@ $(window).on('load resize', function() {
 }),
 
 $(document).ready(function() {
-
     // Plugins init
     $("input.date.masked-date").mask('00/00/0000', { placeholder: "MM/DD/YYYY" })
     $("input[type='tel']").mask('(000) 000-0000', { placeholder: "(111) 222-3333"})
@@ -70,13 +64,6 @@ $(document).ready(function() {
             template: '<div class="popover '+ popoverClass +'" role="tooltip"><div class="arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>'
         })
     });
-
-
-    // Floating label
-    $('.form-control').on('focus blur', function(e) {
-        $(this).parents('.form-group').toggleClass('focused', (e.type === 'focus' || this.value.length > 0));
-    }).trigger('blur');
-
 
     // Custom input file
     $('.custom-input-file').each(function() {
@@ -122,34 +109,33 @@ $(document).ready(function() {
 
     // NoUI Slider
     if ($(".input-slider-container")[0]) {
-        $('.input-slider-container').each(function() {
+      $('.input-slider-container').each(function() {
+        var slider = $(this).find('.input-slider');
+        var sliderId = slider.attr('id');
+        var minValue = slider.data('range-value-min');
+        var maxValue = slider.data('range-value-max');
 
-            var slider = $(this).find('.input-slider');
-            var sliderId = slider.attr('id');
-            var minValue = slider.data('range-value-min');
-            var maxValue = slider.data('range-value-max');
+        var sliderValue = $(this).find('.range-slider-value');
+        var sliderValueId = sliderValue.attr('id');
+        var startValue = sliderValue.data('range-value-low');
 
-            var sliderValue = $(this).find('.range-slider-value');
-            var sliderValueId = sliderValue.attr('id');
-            var startValue = sliderValue.data('range-value-low');
+        var c = document.getElementById(sliderId),
+            d = document.getElementById(sliderValueId);
 
-            var c = document.getElementById(sliderId),
-                d = document.getElementById(sliderValueId);
+        noUiSlider.create(c, {
+          start: [parseInt(startValue)],
+          connect: [true, false],
+          //step: 1000,
+          range: {
+              'min': [parseInt(minValue)],
+              'max': [parseInt(maxValue)]
+          }
+        });
 
-            noUiSlider.create(c, {
-                start: [parseInt(startValue)],
-                connect: [true, false],
-                //step: 1000,
-                range: {
-                    'min': [parseInt(minValue)],
-                    'max': [parseInt(maxValue)]
-                }
-            });
-
-            c.noUiSlider.on('update', function(a, b) {
-                d.textContent = a[b];
-            });
-        })
+        c.noUiSlider.on('update', function(a, b) {
+          d.textContent = a[b];
+        });
+      })
 
     }
 
@@ -188,37 +174,36 @@ $(document).ready(function() {
 
 // Listener for anything with a data-action attribute.
 $(document).ready(function() {
-    $("body").on("click", "[data-action]", function(e) {
-        e.preventDefault();
+  $("body").on("click", "[data-action]", function(e) {
+    e.preventDefault();
 
-        var $this = $(this);
-        var action = $this.data('action');
-        var target = '';
+    var $this = $(this);
+    var action = $this.data('action');
+    var target = '';
 
-        switch (action) {
-            case "offcanvas-open":
-                target = $this.data("target"), $(target).addClass("open"), $("body").append('<div class="body-backdrop" data-action="offcanvas-close" data-target=' + target + " />");
-                break;
-            case "offcanvas-close":
-                console.log("Seeing request to close the sidebar");
-                target = $this.data("target"), $(target).removeClass("open"), $("body").find(".body-backdrop").remove();
-                break;
+    switch (action) {
+      case "offcanvas-open":
+          target = $this.data("target"), $(target).addClass("open"), $("body").append('<div class="body-backdrop" data-action="offcanvas-close" data-target=' + target + " />");
+          break;
+      case "offcanvas-close":
+          console.log("Seeing request to close the sidebar");
+          target = $this.data("target"), $(target).removeClass("open"), $("body").find(".body-backdrop").remove();
+          break;
 
-            case 'aside-open':
-                target = $this.data('target');
-                $this.data('action', 'aside-close');
-                $this.addClass('toggled');
-                $(target).addClass('toggled');
-                $('.content').append('<div class="body-backdrop" data-action="aside-close" data-target='+target+' />');
-                break;
+      case 'aside-open':
+          target = $this.data('target');
+          $this.data('action', 'aside-close');
+          $this.addClass('toggled');
+          $(target).addClass('toggled');
+          $('.content').append('<div class="body-backdrop" data-action="aside-close" data-target='+target+' />');
+          break;
 
-
-            case 'aside-close':
-                target = $this.data('target');
-                $this.data('action', 'aside-open');
-                $('[data-action="aside-open"], '+target).removeClass('toggled');
-                $('.content, .header').find('.body-backdrop').remove();
-                break;
-        }
-    })
+      case 'aside-close':
+          target = $this.data('target');
+          $this.data('action', 'aside-open');
+          $('[data-action="aside-open"], '+target).removeClass('toggled');
+          $('.content, .header').find('.body-backdrop').remove();
+          break;
+      }
+  })
 });
