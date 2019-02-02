@@ -16,6 +16,7 @@ class Event < ApplicationRecord
   has_many_attached :promo_photos
 
   validates :name, presence: true
+  validates :short_description, presence: true
   validates :starts_at, presence: true
 
   scope :is_active, -> { where(is_active: true) }

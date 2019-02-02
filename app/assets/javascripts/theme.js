@@ -53,7 +53,8 @@ $(window).on('load resize', function() {
 $(document).ready(function() {
 
     // Plugins init
-    $("input[type='tel']").mask('(000) 000-0000')
+    $("input.date.masked-date").mask('00/00/0000', { placeholder: "MM/DD/YYYY" })
+    $("input[type='tel']").mask('(000) 000-0000', { placeholder: "(111) 222-3333"})
     $(".scrollbar-inner")[0] && $(".scrollbar-inner").scrollbar().scrollLock();
     $('[data-stick-in-parent="true"]')[0] && $('[data-stick-in-parent="true"]').stick_in_parent();
     $('.selectpicker')[0] && $('.selectpicker').selectpicker();

@@ -11,7 +11,7 @@
   .form-group
     = f.input :last_name, label: "Your Last Name"
   .form-group
-    = f.input :birth_date, as: :date, html5: true, label: "Your Birthdate"
+    = f.input :birth_date, as: :date, html5: true, label: "Your Birthdate", placeholder: "mm/dd/yyyy", input_html: { class: "masked-date" }
   .form-group
     = f.input :division,
       as: :radio_buttons,
