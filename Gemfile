@@ -25,6 +25,7 @@ gem "simple_form"
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
 gem 'gon'
+gem 'wicked'
 
 # Background Processing
 gem "redis", "~> 4.0"
