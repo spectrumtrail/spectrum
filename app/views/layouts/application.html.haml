@@ -11,7 +11,9 @@
     = favicon_link_tag asset_path("favicon")
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload"
     = javascript_include_tag "application", "data-turbolinks-track": "reload"
+    // SVG Animation script
     %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"}
+    = Gon::Base.render_data
   %body{class: "application #{controller_name}", id: "#{controller_name}_#{action_name}"}
     = render "navigation/dark_header"
     %main.main{style: "min-height: 100vh;"}
