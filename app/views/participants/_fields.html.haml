@@ -7,6 +7,7 @@
       label_method: :name_with_event_and_price
 %hr
 %fieldset
+  %legend.h5 About You
   = f.input :first_name, label: "Your First Name"
   = f.input :last_name, label: "Your Last Name"
   = f.input :birth_date, as: :string, label: "Your Birthdate", placeholder: "mm/dd/yyyy", input_html: { class: "date masked-date" }
@@ -39,7 +40,7 @@
 
 %hr
 %fieldset
-  %legend.h5 Waivers
+  %legend.h5 Waiver
   %div.text-muted.waiver-container
     %span= @event.waiver_html.html_safe
   %small.text-danger Please scroll to read the entire term set.

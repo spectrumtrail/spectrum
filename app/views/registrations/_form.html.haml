@@ -5,9 +5,8 @@
     = f.error_notification message: f.object.errors[:base].to_sentence
 
   .form-inputs
-    %fieldset
-      = f.simple_fields_for :participants do |builder|
-        = render "participants/fields", f: builder, selected_race: @race
+    = f.simple_fields_for :participants do |builder|
+      = render "participants/fields", f: builder, selected_race: @race
 
   .form-actions
     .float-right
