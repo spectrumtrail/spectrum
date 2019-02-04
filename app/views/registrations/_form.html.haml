@@ -5,10 +5,19 @@
     = f.error_notification message: f.object.errors[:base].to_sentence
 
   .form-inputs
-    = f.simple_fields_for :participants do |builder|
-      = render "participants/fields", f: builder, selected_race: @race
+    = f.simple_fields_for :participants do |ff|
+      %fieldset
+        = ff.association :race,
+          collection: @event.races.active,
+          as: :radio_buttons,
+          label_method: :name_with_event_and_price,
+          label: "Select a Race"
+        = ff.input :first_name
+        = ff.input :last_name
+        = ff.input :email
 
   .form-actions
     .float-right
+      = f.input :last_step, as: :hidden, value: "first"
       = f.input :started_at, as: :hidden, value: @registration.started_at
-      = f.button :submit, class: "btn btn-success btn-md"
+      = f.button :submit, "Next Step", class: "btn btn-success btn-md"

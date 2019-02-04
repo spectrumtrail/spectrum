@@ -5,29 +5,21 @@
     = f.error_notification message: f.object.errors[:base].to_sentence
   .form-inputs
     %fieldset
-      .form-row
-        .col
-          = f.input :name,
-            hint: "The public name of the host location. Example: 'Davis Mountains State Park'"
-        - if f.object.persisted?
-          .col
-            = f.input :slug, disabled: true, hint: "Unique identifier. Used in URLs. Auto-generated."
-        .col
-          = f.input :external_website_link,
-            hint: "Where can people go to learn more about this location? Set to '#' if unknown or unavailable.",
-            input_html: { value: f.object.external_website_link || "#" }
-      .form-row
-        .col
-          = f.input :short_description,
-            hint: "A short sentence describing the location."
+      = f.input :name,
+        hint: "The public name of the host location. Example: 'Davis Mountains State Park'"
+      - if f.object.persisted?
+        = f.input :slug, disabled: true, hint: "Unique identifier. Used in URLs. Auto-generated."
+      = f.input :external_website_link,
+        hint: "Where can people go to learn more about this location? Set to '#' if unknown or unavailable.",
+        input_html: { value: f.object.external_website_link || "#" }
+      = f.input :short_description,
+        hint: "A short sentence describing the location."
     %fieldset
       %legend Description
-      .form-row
-        .col
-          = f.input :description_html,
-            label: "Details",
-            input_html: { class: "textarea-autosize editor" },
-            hint: "This is where you can add some HTML to discuss this park. This will be shown on the events page."
+      = f.input :description_html,
+        label: "Details",
+        input_html: { class: "textarea-autosize editor" },
+        hint: "This is where you can add some HTML to discuss this park. This will be shown on the events page."
 
     %fieldset
       %legend Address
@@ -46,7 +38,6 @@
     %fieldset
       %legend Images
       .form-row
-        .col.form-group
           = f.file_field :cover_photo,
             direct_upload: true,
             class: "custom-input-file",
@@ -61,7 +52,6 @@
                 class: "img img-fluid img-thumbnail"
               = link_to attachment_path(id: f.object.cover_photo.id), method: :delete, remote: true, class: "text-danger" do
                 %i.fa.fa-times
-        .col.form-group
           = f.file_field :promo_photos,
             multiple: true,
             direct_upload: true,

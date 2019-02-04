@@ -1,46 +1,32 @@
 %fieldset
-  %legend.h5 Select Your Race Distance
-  .form-group
-    = f.association :race,
-      collection: @event.races.active,
-      as: :radio_buttons,
-      label_method: :name_with_event_and_price
-%hr
-%fieldset
-  %legend.h5 About You
+  = f.association :race,
+    collection: @event.races.active,
+    as: :radio_buttons,
+    label_method: :name_with_event_and_price,
+    label: "Select a Race"
   = f.input :first_name, label: "Your First Name"
   = f.input :last_name, label: "Your Last Name"
+  = f.input :email
+%fieldset
+  = f.input :phone, as: :tel, hint: "Used for important Race updates."
+  = f.input :address
+  = f.input :city
+  = f.input :state, collection: states_list, class: "form-control selectpicker", prompt: "Select A State"
+  = f.input :zip
   = f.input :birth_date, as: :string, label: "Your Birthdate", placeholder: "mm/dd/yyyy", input_html: { class: "date masked-date" }
   = f.input :division,
     as: :radio_buttons,
     collection: ["Male", "Female", "Open"],
-    item_wrapper_class: "inline custom-control custom-radio"
-%hr
+    item_wrapper_class: "inline custom-control custom-radio",
+    label: "Gender"
 %fieldset
-  %legend.h5 Contact
-  = f.input :phone, as: :tel
-  = f.input :email
-%hr
-%fieldset
-  %legend.h5 Address
-  = f.input :address
-  = f.input :city
-  = f.input :state, collection: states_list, class: "form-control selectpicker", prompt: "Select A State"
-
-%hr
-%fieldset
-  %legend.h5 Emergency Contact
-  %p.text-muted.small Who would you like us to call in the extremely rare case of an emergency?
   = f.input :emergency_contact_name
-  = f.input :emergency_contact_phone
+  = f.input :emergency_contact_phone, as: :tel
   = f.input :medical_conditions,
     as: :text,
     input_html: { class: "textarea-autosize" },
     hint: "Do you have any medical conditions that might affect first aid?"
-
-%hr
-%fieldset
-  %legend.h5 Waiver
+  %h5 Waiver
   %div.text-muted.waiver-container
     %span= @event.waiver_html.html_safe
   %small.text-danger Please scroll to read the entire term set.

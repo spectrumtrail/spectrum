@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_02_182342) do
+ActiveRecord::Schema.define(version: 2019_02_03_202447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -142,7 +142,11 @@ ActiveRecord::Schema.define(version: 2019_02_02_182342) do
     t.string "token"
     t.string "last_step"
     t.datetime "started_at"
+    t.string "status"
+    t.datetime "completed_at"
+    t.boolean "keep_private", default: false
     t.index ["event_id"], name: "index_registrations_on_event_id"
+    t.index ["token"], name: "index_registrations_on_token", unique: true
   end
 
   create_table "series", force: :cascade do |t|

@@ -7,7 +7,26 @@
         = render "events/card", event: @event.decorate, context_classes: "sticky-top sticky-top-offset-6"
       .col-sm-12.col-md-6
         .card
-          .card-header.pb-1
-            = render "welcome_message"
+          .card-header.bg-secondary
+            %ul.nav.nav-tabs.card-header-tabs.nav-fill
+              %li.nav-item
+                %a.nav-link.active{:href => "#"} Start
+              %li.nav-item
+                %a.nav-link.disabled{"aria-disabled" => "true", :tabindex => "-1"} Details
+              %li.nav-item
+                %a.nav-link.disabled{"aria-disabled" => "true", :tabindex => "-1"} Waiver
+                %li.nav-item
+                  %a.nav-link.disabled{"aria-disabled" => "true", :tabindex => "-1"} Payment
+              -# %li.nav-item
+              -#   %a.nav-link.disabled{"aria-disabled" => "true", :tabindex => "-1"} Confirm
           .card-body
+            %h4 Start your Registration for #{@event.name}
+            %p
+              We are
+              %strong.text-success so excited
+              for
+              %strong you
+              to join us! Be sure to
+              %a{href: "#"} sign in
+              if you have an account already.!
             = render "form"

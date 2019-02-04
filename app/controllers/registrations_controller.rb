@@ -11,8 +11,8 @@ class RegistrationsController < ApplicationController
     @registration = @event.registrations.new(registration_params)
     if @registration.save
       redirect_to(
-        # the payment step
-        edit_event_registration_path(@event, @registration)
+        # takes you to the registration steps wizard Details step
+        registration_steps_path(token: @registration.token)
       )
     else
       render :new
@@ -28,12 +28,18 @@ class RegistrationsController < ApplicationController
   def update
     if @registration.update(registration_params)
       redirect_to(
-        event_registration_path(@event, @registration),
-        success: "Registration was successfully updated."
+        registration_steps_path(token: @registration.token)
       )
     else
       render :edit
     end
+  end
+
+  def destroy
+    redirect_to(
+      root_path,
+      danger: "Registrations cannot be destroyed. This attempt has been logged."
+    )
   end
 
   private

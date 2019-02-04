@@ -9,12 +9,10 @@ Rails.application.routes.draw do
   resources :attachments, only: [:destroy]
   resources :locations, only: [:index, :show]
   resources :events, only: [:index, :show] do
-    resources :registrations do
-      resources :participants
-      resources :payments
-    end
+    resources :registrations
     resources :races
   end
+  resources :registration_steps
   resources :series, only: [:show]
 
   namespace :admin do
