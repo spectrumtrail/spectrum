@@ -1,5 +1,6 @@
 -# frozen_string_literal: true
 = simple_form_for([@event, @registration], validate: true) do |f|
+  = f.input :started_at, as: :hidden, input_html: { value: @registration.started_at }
   = f.error_notification
   - if f.object.errors[:base].present?
     = f.error_notification message: f.object.errors[:base].to_sentence
@@ -18,6 +19,4 @@
 
   .form-actions
     .float-right
-      = f.input :last_step, as: :hidden, value: "first"
-      = f.input :started_at, as: :hidden, value: @registration.started_at
       = f.button :submit, "Next Step", class: "btn btn-success btn-md"

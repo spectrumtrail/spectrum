@@ -1,13 +1,11 @@
 %section.slice.slice-lg
   .container
-    .d-sm-block.d-md-none
-      %h1 Register
     .row
       .col-sm-12.col-md-3
         = render "events/card", event: @event.decorate, context_classes: "sticky-top sticky-top-offset-6"
       .col-sm-12.col-md-6
-        .card
-          .card-header.bg-secondary
+        .card.border-primary
+          .card-header.bg-primary
             %ul.nav.nav-tabs.card-header-tabs.nav-fill
               %li.nav-item
                 %a.nav-link.active{:href => "#"} Start
@@ -15,10 +13,8 @@
                 %a.nav-link.disabled{"aria-disabled" => "true", :tabindex => "-1"} Details
               %li.nav-item
                 %a.nav-link.disabled{"aria-disabled" => "true", :tabindex => "-1"} Waiver
-                %li.nav-item
-                  %a.nav-link.disabled{"aria-disabled" => "true", :tabindex => "-1"} Payment
-              -# %li.nav-item
-              -#   %a.nav-link.disabled{"aria-disabled" => "true", :tabindex => "-1"} Confirm
+              %li.nav-item
+                %a.nav-link.disabled{"aria-disabled" => "true", :tabindex => "-1"} Payment
           .card-body
             %h4 Start your Registration for #{@event.name}
             %p
@@ -28,5 +24,6 @@
               %strong you
               to join us! Be sure to
               %a{href: "#"} sign in
-              if you have an account already.!
+              if you have an account!
+            %hr
             = render "form"

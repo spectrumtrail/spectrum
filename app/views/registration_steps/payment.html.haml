@@ -1,0 +1,33 @@
+%section.slice.slice-lg
+  .container
+    .d-sm-block.d-md-none
+      %h1 Register
+    .row
+      .col-sm-12.col-md-3
+        = render "events/card", event: @event.decorate, context_classes: "sticky-top sticky-top-offset-6"
+      .col-sm-12.col-md-6
+        .card.border-primary
+          .card-header.bg-primary
+            %ul.nav.nav-tabs.card-header-tabs.nav-fill
+              %li.nav-item
+                %a.nav-link.text-white{href: edit_event_registration_path(@event, @registration)}
+                  Start
+                  %i.fa.fa-check-circle.text-success
+              %li.nav-item
+                %a.nav-link.text-white{href: wizard_path(:details)}
+                  Details
+                  %i.fa.fa-check-circle.text-success
+              %li.nav-item
+                %a.nav-link.text-white{href: wizard_path(:waiver)}
+                  Waiver
+                  %i.fa.fa-check-circle.text-success
+              %li.nav-item
+                %a.nav-link.active{href: "#"}
+                  Payment
+          .card-body
+            %h4 Payment Settings
+            %ul
+              %li Add A Card
+              %li Set a discount code
+              %li Set Password to save for future use
+              %li Submit goes to Confirmation Page & triggers email

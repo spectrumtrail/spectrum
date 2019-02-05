@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   resources :attachments, only: [:destroy]
   resources :locations, only: [:index, :show]
   resources :events, only: [:index, :show] do
-    resources :registrations
+    resources :registrations do
+      resources :steps, controller: "registration_steps"
+    end
     resources :races
   end
-  resources :registration_steps
   resources :series, only: [:show]
 
   namespace :admin do

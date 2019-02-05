@@ -1,27 +1,41 @@
 %section.slice.slice-lg
   .container
-    .d-sm-block.d-md-none
-      %h1 Register
     .row
       .col-sm-12.col-md-3
         = render "events/card", event: @event.decorate, context_classes: "sticky-top sticky-top-offset-6"
       .col-sm-12.col-md-6
-        .card
-          .card-header.bg-secondary
+        .card.border-primary
+          .card-header.bg-primary
             %ul.nav.nav-tabs.card-header-tabs.nav-fill
               %li.nav-item
-                %a.nav-link{href: edit_event_registration_path(@event, @registration)} Start
+                %a.nav-link.text-white{href: edit_event_registration_path(@event, @registration)}
+                  Start
+                  %i.fa.fa-check-circle.text-success
               %li.nav-item
-                %a.nav-link.active{"aria-disabled" => "true", :tabindex => "-1"} Details
+                %a.nav-link.active{href: "#"}
+                  Details
+                  - if @registration.steps_completed.include?("details")
+                    %i.fa.fa-check-circle.text-success
               %li.nav-item
-                %a.nav-link.disabled{"aria-disabled" => "true", :tabindex => "-1"} Waiver
-                %li.nav-item
-                  %a.nav-link.disabled{"aria-disabled" => "true", :tabindex => "-1"} Payment
+                - if @registration.steps_seen.include?("waiver")
+                  %a.nav-link.text-white{href: wizard_path(:waiver)}
+                    Waiver
+                    - if @registration.steps_completed.include?("waiver")
+                      %i.fa.fa-check-circle.text-success
+                - else
+                  %a.nav-link.disabled.gray-100{"aria-disabled" => "true", :tabindex => "-1"} Waiver
               %li.nav-item
-                %a.nav-link.disabled{"aria-disabled" => "true", :tabindex => "-1"} Confirm
+                - if @registration.steps_seen.include?("payment")
+                  %a.nav-link.text-white{href: wizard_path(:payment)}
+                    Payment
+                - else
+                  %a.nav-link.disabled.gray-100{"aria-disabled" => "true", :tabindex => "-1"} Payment
           .card-body
-            = simple_form_for(@registration, url: wizard_path, validate: true) do |f|
-              = f.input :last_step, as: :hidden, value: "details"
+            %h4 Registration Details
+            %p Tell us a little more about yourself.
+            %hr
+            = simple_form_for(@registration, url: wizard_path, method: :put, validate: true) do |f|
+              = hidden_field_tag(:token, @registration.token)
               = f.error_notification
               - if f.object.errors[:base].present?
                 = f.error_notification message: f.object.errors[:base].to_sentence
@@ -29,17 +43,20 @@
               .form-inputs
                 = f.simple_fields_for :participants do |ff|
                   %fieldset
-                    = ff.input :phone, as: :tel, hint: "Used for important Race updates."
-                    = ff.input :address
+                    = ff.input :phone, as: :tel, hint: "Used for important Race updates.", validate: true
+                    = ff.input :birth_date, as: :date
+                    = ff.input :division,
+                      as: :radio_buttons,
+                      collection: [["Men's Open", :male], ["Women's Open", :female]],
+                      item_wrapper_class: "inline custom-control custom-radio",
+                      label: "In which division would you like to compete?"
+                    %hr
+                  %fieldset
+                    %legend Address
+                    = ff.input :address, label: "Full Street Address"
                     = ff.input :city
                     = ff.input :state, collection: states_list, class: "form-control selectpicker", prompt: "Select A State"
                     = ff.input :zip
-                    = ff.input :birth_date, as: :string, label: "Your Birthdate", placeholder: "mm/dd/yyyy", input_html: { class: "date masked-date" }
-                    = ff.input :division,
-                      as: :radio_buttons,
-                      collection: ["Male", "Female", "Open"],
-                      item_wrapper_class: "inline custom-control custom-radio",
-                      label: "Gender"
               .form-actions.d-flex.justify-content-between.align-content-center
                 = link_to "Back", edit_event_registration_path(@event, @registration), class: "btn btn-md btn-secondary"
                 = f.button :submit, "Next", class: "btn btn-success btn-md"

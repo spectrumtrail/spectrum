@@ -1,6 +1,5 @@
 class ParticipantsController < ApplicationController
   before_action :set_registration
-  # before_action :check_for_token
   before_action :set_participant, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -50,16 +49,6 @@ class ParticipantsController < ApplicationController
   end
 
   private
-
-  def check_for_token
-    if params.fetch(:token, nil) != @registration.token
-      redirect_to new_event_registration_path(
-        @event,
-        danger: "You need the appropriate token to work with this registration.
-         Please contact us if you are seeing this error and need help!"
-      )
-    end
-  end
 
   def set_participant
     @participant = @registration.particpants.find(params[:id])

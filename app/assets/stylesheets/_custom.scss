@@ -8,6 +8,8 @@ html {
   scroll-behavior: smooth;
 }
 
+
+
 .list-group-item {
   padding: 1rem 1rem;
   border: 0;
@@ -27,6 +29,12 @@ html {
 
 .navbar-dark .navbar-nav .nav-link {
   color: $white;
+}
+
+.nav-tabs .nav-link.disabled {
+  color: #ced4da;
+  background-color: transparent;
+  border-color: transparent;
 }
 
 .waiver-container {

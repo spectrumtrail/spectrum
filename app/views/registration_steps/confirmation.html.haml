@@ -1,0 +1,28 @@
+%section.slice.slice-lg
+  .container
+    .d-sm-block.d-md-none
+      %h1 Register
+    .row
+      .col-sm-12.col-md-3
+        = render "events/card", event: @event.decorate, context_classes: "sticky-top sticky-top-offset-6"
+      .col-sm-12.col-md-6
+        .card.border-primary
+          .card-header.bg-primary
+            %ul.nav.nav-tabs.card-header-tabs.nav-fill
+              %li.nav-item
+                %a.nav-link.active{href: "#"}
+                  Start
+                  %i.fa.fa-check-circle.text-success
+              %li.nav-item
+                %a.nav-link.text-white{href: wizard_path(@event, @registration, :details)}
+                  Details
+                  %i.fa.fa-check-circle.text-success
+              %li.nav-item
+                %a.nav-link.text-white{href: wizard_path(@event, @registration, :waiver)}
+                  Waiver
+                  %i.fa.fa-check-circle.text-success
+              %li.nav-item
+                %a.nav-link.text-white{href: "#")}
+                  Payment
+          .card-body
+            %h4 Confirmed!

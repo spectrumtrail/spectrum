@@ -6,16 +6,42 @@
       .col-sm-12.col-md-3
         = render "events/card", event: @event.decorate, context_classes: "sticky-top sticky-top-offset-6"
       .col-sm-12.col-md-6
-        .card
-          .card-header.bg-secondary
+        .card.border-primary
+          .card-header.bg-primary
             %ul.nav.nav-tabs.card-header-tabs.nav-fill
               %li.nav-item
-                %a.nav-link.active{:href => "#"} Start
+                %a.nav-link.active{href: "#"}
+                  Start
+                  %i.fa.fa-check-circle.text-success
               %li.nav-item
-                %a.nav-link.disabled{"aria-disabled" => "true", :tabindex => "-1"} Details
+                %a.nav-link.text-white{href: event_registration_steps_path(@event, @registration)}
+                  Details
+                  - if @registration.steps_completed.include?("details")
+                    %i.fa.fa-check-circle.text-success
               %li.nav-item
-                %a.nav-link.disabled{"aria-disabled" => "true", :tabindex => "-1"} Waiver
-                %li.nav-item
-                  %a.nav-link.disabled{"aria-disabled" => "true", :tabindex => "-1"} Payment
+                - if @registration.steps_seen.include?("waiver")
+                  %a.nav-link.text-white{href: event_registration_steps_path(@event, @registration, id: :waiver)}
+                    Waiver
+                    - if @registration.steps_completed.include?("waiver")
+                      %i.fa.fa-check-circle.text-success
+                - else
+                  %a.nav-link.disabled.gray-100{"aria-disabled" => "true", :tabindex => "-1"} Waiver
+              %li.nav-item
+                - if @registration.steps_seen.include?("payment")
+                  %a.nav-link.text-white{href: event_registration_steps_path(@event, @registration, id: :payment)}
+                    Payment
+                  - if @registration.steps_completed.include?("payment")
+                    %i.fa.fa-check-circle.text-success
+                - else
+                  %a.nav-link.disabled.gray-100{"aria-disabled" => "true", :tabindex => "-1"} Payment
           .card-body
+            %h4 Start your Registration for #{@event.name}
+            %p
+              We are
+              %strong.text-success so excited
+              for
+              %strong you
+              to join us! Be sure to
+              %a{href: "#"} sign in
+              if you have an account!
             = render "form"

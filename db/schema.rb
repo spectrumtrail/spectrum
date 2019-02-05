@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_04_202233) do
+ActiveRecord::Schema.define(version: 2019_02_05_065433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,11 +140,13 @@ ActiveRecord::Schema.define(version: 2019_02_04_202233) do
     t.bigint "event_id"
     t.string "starting_name"
     t.string "token"
-    t.string "last_step"
+    t.string "step_to_validate"
     t.datetime "started_at"
     t.string "status"
     t.datetime "completed_at"
     t.boolean "keep_private", default: false
+    t.text "steps_seen"
+    t.text "steps_completed"
     t.index ["event_id"], name: "index_registrations_on_event_id"
     t.index ["token"], name: "index_registrations_on_token", unique: true
   end
