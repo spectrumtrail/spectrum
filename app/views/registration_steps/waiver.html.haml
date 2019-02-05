@@ -2,7 +2,10 @@
   .container
     .row
       .col-sm-12.col-md-3
-        = render "events/card", event: @event.decorate, context_classes: "sticky-top sticky-top-offset-6"
+        = render "events/card",
+          event: @event.decorate,
+          context_classes: "sticky-top sticky-top-offset-6",
+          show_footer: false
       .col-sm-12.col-md-6
         .card.border-primary
           .card-header.bg-primary
@@ -27,8 +30,8 @@
                 - else
                   %a.nav-link.disabled.gray-100{"aria-disabled" => "true", :tabindex => "-1"} Payment
           .card-body
-            %h4 Registration Details
-            %p Tell us a little more about yourself.
+            %h4 Waiver for #{@event.name}
+            %p This information helps keep you safe!
             %hr
             = simple_form_for(@registration, url: wizard_path, validate: true) do |f|
               = f.error_notification
@@ -52,5 +55,5 @@
                     = ff.input :accepts_waiver, as: :radio_buttons, required: true, label: "I have read, understood, and accept the agreement above. My submission of this form shall act as my legal signature.", validate: true
 
               .form-actions.d-flex.justify-content-between.align-content-center
-                = link_to "Back", wizard_path(:details, token: @registration.token), class: "btn btn-md btn-secondary"
+                = link_to "Back", wizard_path(:details), class: "btn btn-md btn-secondary"
                 = f.button :submit, "Next", class: "btn btn-success btn-md"

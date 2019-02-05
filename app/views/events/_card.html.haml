@@ -14,9 +14,10 @@
         %i.fas.fa-map-marker-alt
         #{event.location.name}
     %p.card-text= event.short_description
-  .card-footer.bg-dark
-    .row.align-items-center
-      .col-6
-        %a.btn.btn-sm.btn-primary{:href => "#"} Register Now
-      .col-6.text-right
-        %span.text-muted 100 / 1000
+  - if show_footer
+    .card-footer.bg-dark
+      .row.align-items-center
+        .col-6
+          %a.btn.btn-sm.btn-primary{:href => "#"} Register Now
+        .col-6.text-right
+          %span.text-muted 100 / 1000

@@ -27,6 +27,7 @@ class RegistrationsController < ApplicationController
   end
 
   def update
+    @registration.step_to_validate = "start"
     if @registration.update(registration_params)
       redirect_to(
         event_registration_steps_path(@event, @registration)

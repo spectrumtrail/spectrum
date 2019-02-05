@@ -2,7 +2,7 @@
   .container
     .row
       .col-sm-12.col-md-3
-        = render "events/card", event: @event.decorate, context_classes: "sticky-top sticky-top-offset-6"
+        = render "events/card", event: @event.decorate, context_classes: "sticky-top sticky-top-offset-6", show_footer: false
       .col-sm-12.col-md-6
         .card.border-primary
           .card-header.bg-primary
