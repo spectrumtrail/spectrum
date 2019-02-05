@@ -6,7 +6,7 @@
       .col-sm-12.col-md-6
         .card.border-primary
           .card-header.bg-primary
-            %ul.nav.nav-tabs.card-header-tabs.nav-fill
+            %ul.nav.nav-tabs.card-header-tabs.nav-fill.nowrap
               %li.nav-item
                 %a.nav-link.text-white{href: edit_event_registration_path(@event, @registration)}
                   Start
@@ -38,8 +38,8 @@
               .form-inputs
                 = f.simple_fields_for :participants do |ff|
                   %fieldset
-                    = ff.input :emergency_contact_name
-                    = ff.input :emergency_contact_phone, as: :tel
+                    = ff.input :emergency_contact_name, validate: true
+                    = ff.input :emergency_contact_phone, as: :tel, validate: true
                     = ff.input :medical_conditions,
                       as: :text,
                       input_html: { class: "textarea-autosize" },
@@ -49,7 +49,7 @@
                       %span= @event.waiver_html.html_safe
                     %small.text-danger Please scroll to read the entire term set.
                     %b
-                    = ff.input :accepts_waiver, as: :radio_buttons, required: true, label: "I have read, understood, and accept the agreement above. My submission of this form shall act as my legal signature."
+                    = ff.input :accepts_waiver, as: :radio_buttons, required: true, label: "I have read, understood, and accept the agreement above. My submission of this form shall act as my legal signature.", validate: true
 
               .form-actions.d-flex.justify-content-between.align-content-center
                 = link_to "Back", wizard_path(:details, token: @registration.token), class: "btn btn-md btn-secondary"

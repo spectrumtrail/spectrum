@@ -6,7 +6,7 @@
       .col-sm-12.col-md-6
         .card.border-primary
           .card-header.bg-primary
-            %ul.nav.nav-tabs.card-header-tabs.nav-fill
+            %ul.nav.nav-tabs.card-header-tabs.nav-fill{style: "flex-wrap: no-wrap;"}
               %li.nav-item
                 %a.nav-link.text-white{href: edit_event_registration_path(@event, @registration)}
                   Start
@@ -44,19 +44,20 @@
                 = f.simple_fields_for :participants do |ff|
                   %fieldset
                     = ff.input :phone, as: :tel, hint: "Used for important Race updates.", validate: true
-                    = ff.input :birth_date, as: :date
+                    = ff.input :birth_date, as: :date, validate: true
                     = ff.input :division,
                       as: :radio_buttons,
                       collection: [["Men's Open", :male], ["Women's Open", :female]],
                       item_wrapper_class: "inline custom-control custom-radio",
-                      label: "In which division would you like to compete?"
+                      label: "In which division would you like to compete?",
+                      validate: true
                     %hr
                   %fieldset
                     %legend Address
-                    = ff.input :address, label: "Full Street Address"
-                    = ff.input :city
+                    = ff.input :address, label: "Full Street Address", validate: true
+                    = ff.input :city, validate: true
                     = ff.input :state, collection: states_list, class: "form-control selectpicker", prompt: "Select A State"
-                    = ff.input :zip
+                    = ff.input :zip, validate: true
               .form-actions.d-flex.justify-content-between.align-content-center
                 = link_to "Back", edit_event_registration_path(@event, @registration), class: "btn btn-md btn-secondary"
                 = f.button :submit, "Next", class: "btn btn-success btn-md"
