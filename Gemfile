@@ -22,10 +22,13 @@ gem "local_time"
 gem "uglifier"
 gem 'friendly_id', '~> 5.2.4'
 gem "simple_form"
-gem 'client_side_validations'
-gem 'client_side_validations-simple_form'
-gem 'gon'
-gem 'wicked'
+gem "client_side_validations"
+gem "client_side_validations-simple_form"
+gem "gon"
+gem "wicked"
+
+# payments
+gem "stripe"
 
 # Background Processing
 gem "redis", "~> 4.0"

@@ -10,7 +10,7 @@
     = f.simple_fields_for :participants do |ff|
       %fieldset
         = ff.association :race,
-          collection: @event.races.active,
+          collection: @event.races.active.by_starts_at,
           as: :radio_buttons,
           label_method: :name_with_event_and_price,
           label: "Select a Race"

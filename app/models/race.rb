@@ -16,6 +16,7 @@ class Race < ApplicationRecord
   validates :starts_at, presence: true
 
   scope :active, -> { where(is_active: true) }
+  scope :by_starts_at, -> { order(starts_at: :asc) }
 
   delegate :time_zone, to: :event
 

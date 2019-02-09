@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_06_043646) do
+ActiveRecord::Schema.define(version: 2019_02_08_225738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2019_02_06_043646) do
     t.boolean "is_active", default: true
     t.text "waiver_html"
     t.string "time_zone", default: "Central Time (US & Canada)"
+    t.text "refund_policy_html"
     t.index ["location_id"], name: "index_events_on_location_id"
     t.index ["slug"], name: "index_events_on_slug", unique: true
   end
@@ -147,6 +148,7 @@ ActiveRecord::Schema.define(version: 2019_02_06_043646) do
     t.boolean "keep_private", default: false
     t.text "steps_seen"
     t.text "steps_completed"
+    t.boolean "accepts_refund_terms"
     t.index ["event_id"], name: "index_registrations_on_event_id"
     t.index ["token"], name: "index_registrations_on_token", unique: true
   end

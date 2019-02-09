@@ -7,4 +7,7 @@
           %p.mt-3 Register today before we fill up!
       - @events.each do |event|
         .col-md-4.mb-4
-          = render "events/card", event: event.decorate, context_classes: "", show_footer: false
+          = render "events/card",
+            event: event.decorate,
+            context_classes: "",
+            show_footer: false

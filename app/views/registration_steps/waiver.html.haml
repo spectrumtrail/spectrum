@@ -1,7 +1,7 @@
 %section.slice.slice-lg
   .container
     .row
-      .col-sm-12.col-md-4.col-lg-3.d-sm-none.d-md-block
+      .col-sm-12.col-md-4.col-lg-3.d-none.d-md-block
         = render "events/card",
           event: @event.decorate,
           context_classes: "sticky-top sticky-top-offset-6",
@@ -52,7 +52,10 @@
                       %span= @event.waiver_html.html_safe
                     %small.text-danger Please scroll to read the entire term set.
                     %b
-                    = ff.input :accepts_waiver, as: :radio_buttons, required: true, label: "I have read, understood, and accept the agreement above. My submission of this form shall act as my legal signature.", validate: true
+                    = ff.input :accepts_waiver,
+                      as: :radio_buttons,
+                      required: true,
+                      label: "I have read, understood, and accept the agreement above. My submission of this form shall act as my legal signature."
 
               .form-actions.d-flex.justify-content-between.align-content-center
                 = link_to "Back", wizard_path(:details), class: "btn btn-md btn-secondary"

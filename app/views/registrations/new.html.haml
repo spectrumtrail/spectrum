@@ -1,7 +1,7 @@
 %section.slice.slice-lg
   .container
     .row
-      .col-sm-12.col-md-4.col-lg-3.d-sm-none.d-md-block
+      .col-sm-12.col-md-4.col-lg-3.d-none.d-md-block
         = render "events/card",
           event: @event.decorate,
           context_classes: "sticky-top sticky-top-offset-6",
@@ -21,11 +21,7 @@
           .card-body
             %h4 Start your Registration for #{@event.name}
             %p
-              We are
-              %strong.text-success so excited
-              for
-              %strong you
-              to join us! Be sure to
+              We are so excited for you to join us! Be sure to
               %a{href: "#"} sign in
               if you have an account!
             %hr

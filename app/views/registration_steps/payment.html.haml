@@ -1,7 +1,8 @@
+%script{:src => "https://js.stripe.com/v3/"}
 %section.slice.slice-lg
   .container
     .row
-      .col-sm-12.col-md-4.col-lg-3.d-sm-none.d-md-block
+      .col-sm-12.col-md-4.col-lg-3.d-none.d-md-block
         = render "events/card",
           event: @event.decorate,
           context_classes: "sticky-top sticky-top-offset-6",
@@ -26,9 +27,37 @@
                 %a.nav-link.active{href: "#"}
                   Payment
           .card-body
-            %h4 Payment Settings
-            %ul
-              %li Add A Card
-              %li Set a discount code
-              %li Set Password to save for future use
-              %li Submit goes to Confirmation Page & triggers email
+            = simple_form_for(@registration, url: wizard_path, validate: true, html: { id: "PaymentStepForm" }) do |f|
+              = f.error_notification
+              - if f.object.errors[:base].present?
+                = f.error_notification message: f.object.errors[:base].to_sentence
+              .form-inputs
+                %fieldset
+                  %h5 Refund Policy
+                  %div.text-muted.waiver-container
+                    %span= @event.waiver_html.html_safe
+                  %small.text-danger
+                    Please scroll to read the entire term set.
+                    Policies may vary between Events.
+                  %b
+                  = f.input :accepts_refund_terms,
+                    as: :radio_buttons,
+                    required: true,
+                    label: "I have read, understood, and accept the refund policy for this Event."
+                %fieldset
+                  %h4 Payment settings
+                  .form-group
+                    %label{:for => "card-element"}
+                      Input Your Card Details
+                    #card-element
+                    #card-errors
+                %br
+                .form-actions
+                  = f.button :submit,
+                    'Complete my registration and pay now!',
+                    id: 'stripe_button',
+                    class: 'btn btn-success btn-block',
+                    confirm: "Are you sure?"
+                .text-center.text-muted.my-3
+                  %i.fa.fa-lock.text-success
+                  %i.fab.fa-stripe
