@@ -1,0 +1,13 @@
+- if flash.present?
+  #flash-message
+    :javascript
+      <haml_silent>      if flash[:success] 
+      </haml_silent><haml_block>       var $toastContent = $('<span>#{flash[:success]}</span>');
+             toastr.success($toastContent)
+      </haml_block><haml_silent>      if flash[:info] 
+      </haml_silent><haml_block>       var $toastContent = $('<span>#{flash[:info]}</span>');
+             toastr.info($toastContent)
+      </haml_block><haml_silent>      if flash[:danger] 
+      </haml_silent><haml_block>       var $toastContent = $('<span>#{flash[:danger]}</span>');
+             toastr.error($toastContent)
+      </haml_block>

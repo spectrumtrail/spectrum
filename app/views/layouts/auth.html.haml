@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    = render "layouts/shared/meta_tags"
+    %title Spectrum Trail Racing
+    %link{:href => "https://fonts.googleapis.com/css?family=Nunito:400,600,700,800|Roboto:400,500,700", :rel => "stylesheet"}/
+    = favicon_link_tag asset_path("favicon")
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload"
+    = javascript_include_tag "application", "data-turbolinks-track": "reload"
+    = Gon::Base.render_data
+  %body{class: "application #{controller_name}", id: "#{controller_name}_#{action_name}"}
+    %main.main{style: "min-height: 100vh;"}
+      = render partial: 'flash_messages', flash: flash
+      = yield

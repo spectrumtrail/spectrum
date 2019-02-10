@@ -1,0 +1,38 @@
+%section.py-xl.bg-cover.bg-size--cover{:style => "background-image: url('../assets/images/backgrounds/img-1.jpg')"}
+  %span.mask.bg-primary.alpha-6
+  .container.d-flex.align-items-center.no-padding
+    .col
+      .row.justify-content-center
+        .col-lg-4
+          .card.bg-primary.text-white
+            .card-body
+              %button.btn.btn-primary.btn-nobg.btn-zoom--hover.mb-5{:type => "button"}
+                %span.btn-inner--icon
+                  %i.fas.fa-arrow-left
+              %span.clearfix
+              %img.img-fluid{src: asset_path("logo-no-text"), style: "max-width: 4rem;"}
+              %h3.heading.h3.text-white.pt-3
+                Welcome back!
+              %h6.text-white.pb-5
+                You can sign in here.
+              = simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class:"form-primary" }) do |f|
+                .form-inputs
+                  = f.input :email,
+                    required: false,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" }
+                  = f.input :password,
+                    required: false,
+                    input_html: { autocomplete: "current-password" }
+                  = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+                .form-actions
+                  = f.button :submit, "Log in"
+              = render "devise/shared/links"
+              -# %form.form-primary
+              -#   .form-group
+              -#     %input#input_email.form-control{:placeholder => "Your email", :type => "email"}/
+              -#   .form-group
+              -#     %input#input_password.form-control{:placeholder => "Password", :type => "password"}/
+              -#   .text-right.mt-4
+              -#     %a.text-white{:href => "#"} Forgot password?
+              -#   %button.btn.btn-block.btn-lg.bg-white.mt-4{:type => "submit"} Sign in

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root to: "static_pages#home"
-
   match '/home' => "static_pages#home", via: [:get]
   match '/terms' => "static_pages#terms", via: [:get]
   match '/privacy' => "static_pages#privacy", via: [:get]
@@ -15,6 +14,13 @@ Rails.application.routes.draw do
     resources :races
   end
   resources :series, only: [:show]
+
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    invitations: 'users/invitations',
+    passwords: 'users/passwords',
+  }
 
   namespace :admin do
     get '/' => redirect('admin/dashboard')

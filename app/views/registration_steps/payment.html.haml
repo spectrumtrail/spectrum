@@ -33,7 +33,7 @@
                 = f.error_notification message: f.object.errors[:base].to_sentence
               .form-inputs
                 %fieldset
-                  %h5 Refund Policy
+                  %h4 Refund Policy
                   %div.text-muted.waiver-container
                     %span= @event.waiver_html.html_safe
                   %small.text-danger
@@ -45,7 +45,7 @@
                     required: true,
                     label: "I have read, understood, and accept the refund policy for this Event."
                 %fieldset
-                  %h4 Payment settings
+                  %h4 Payment
                   .form-group
                     %label{:for => "card-element"}
                       Input Your Card Details
