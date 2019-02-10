@@ -15,7 +15,7 @@
                 Welcome back!
               %h6.text-white.pb-5
                 You can sign in here.
-              = simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class:"form-primary" }) do |f|
+              = simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class:"form-primary pr-2" }) do |f|
                 .form-inputs
                   = f.input :email,
                     required: false,
@@ -27,6 +27,7 @@
                   = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
                 .form-actions
                   = f.button :submit, "Log in"
+              %br
               = render "devise/shared/links"
               -# %form.form-primary
               -#   .form-group
