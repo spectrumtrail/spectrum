@@ -1,13 +1,7 @@
-- if flash.present?
-  #flash-message
-    :javascript
-      <haml_silent>      if flash[:success] 
-      </haml_silent><haml_block>       var $toastContent = $('<span>#{flash[:success]}</span>');
-             toastr.success($toastContent)
-      </haml_block><haml_silent>      if flash[:info] 
-      </haml_silent><haml_block>       var $toastContent = $('<span>#{flash[:info]}</span>');
-             toastr.info($toastContent)
-      </haml_block><haml_silent>      if flash[:danger] 
-      </haml_silent><haml_block>       var $toastContent = $('<span>#{flash[:danger]}</span>');
-             toastr.error($toastContent)
-      </haml_block>
+- flash.keys.each do |key|
+  - toastr_key = 'success' if key == 'success'
+  - toastr_key = 'info' if key == 'notice'
+  - toastr_key = 'warning' if key == 'alert'
+  - toastr_key = 'danger' if key == 'danger'
+  :coffeescript
+    toastr['#{toastr_key}'] '#{flash[key]}'
