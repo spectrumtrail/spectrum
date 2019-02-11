@@ -1,6 +1,7 @@
 .card.bg-dark.mb-4{class: context_classes}
   .px-3
-    %img.card-img.z-depth-2{alt: "race name", src: url_for(event.logo), style: "margin-top: -30px;"}
+    - if event.logo.attached?
+      %img.card-img.z-depth-2{alt: "race name", src: url_for(event.logo), style: "margin-top: -30px;"}
   .card-body.text-white
     %h4.card-title.text-white.mb-2= event.name
     %p
