@@ -1,6 +1,6 @@
 class RegistrationStepsController < ApplicationController
   include Wicked::Wizard
-  before_action :set_registration, :set_event, :set_keys
+  before_action :set_registration, :set_event, :set_stripe_key
 
   # Important! These steps are not 1:1 reflected in the UI. Semantics matter.
   steps :details, :waiver, :payment, :confirmation
@@ -30,14 +30,9 @@ class RegistrationStepsController < ApplicationController
     @event = Event.friendly.find(params[:event_id])
   end
 
-  def set_keys
-    gon.foo = "bar"
-    if Rails.env.development?
-      credentials = Rails.application.credentials.development
-      gon.stripe_publishable_key = credentials[:STRIPE_PUBLISHABLE_KEY]
-    else
-      ENV['STRIPE_PUBLISHABLE_KEY']
-    end
+  def set_stripe_key
+    credentials = Rails.application.credentials.send(Rails.env)
+    gon.stripe_publishable_key = credentials.fetch(:stripe_publishable_key)
   end
 
   def set_registration

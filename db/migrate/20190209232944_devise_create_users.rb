@@ -43,6 +43,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :phone
       t.string :medical_conditions
       t.string :division
+      t.string :originating_registration_id
       t.boolean :is_guest, default: false
       t.boolean :is_admin, default: false
 
