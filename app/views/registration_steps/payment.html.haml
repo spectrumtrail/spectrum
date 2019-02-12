@@ -26,6 +26,8 @@
               %li.nav-item
                 %a.nav-link.active{href: "#"}
                   Payment
+                  - if @registration.paid?
+                    %i.fa.fa-check-circle.text-success
           .card-body
             = simple_form_for(@registration, url: wizard_path, validate: true, html: { id: "PaymentStepForm" }) do |f|
               = f.error_notification
@@ -61,7 +63,7 @@
                   = f.button :submit,
                     'Complete my registration and pay now!',
                     id: 'stripe_button',
-                    class: 'btn btn-xl btn-success btn-block'
+                    class: 'btn btn-md btn-success btn-block'
                 .text-center.text-muted.my-3
                   %i.fa.fa-lock.text-success
                   %i.fab.fa-stripe

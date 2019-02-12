@@ -23,7 +23,6 @@ class RegistrationStepsController < ApplicationController
   private
 
   def handle_result_for(result)
-    byebug
     if result.success?
       update_steps_completed
       flash[result.flash_status] = result.flash_message
