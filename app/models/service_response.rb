@@ -15,7 +15,7 @@ class ServiceResponse
     if success
       :success
     else
-      :danger
+      :error
     end
   end
 

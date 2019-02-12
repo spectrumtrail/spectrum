@@ -13,8 +13,9 @@ class CreatePayment
 
   def perform
     if registration.invalid?
+      messages = registration.errors.full_messages << "Your card has not been charged!"
       ServiceResponse.new(
-        message: registration.errors.full_messages.join(". "),
+        message: messages.join(". "),
         object: registration,
         success: false
       )
@@ -25,11 +26,7 @@ class CreatePayment
         success: false
       )
     else
-      ServiceResponse.new(
-        message: "Sucessfully charged card.",
-        object: create_payment,
-        success: true
-      )
+      create_payment
     end
   end
 
@@ -37,7 +34,7 @@ class CreatePayment
 
   def catch_exception(exception)
     ServiceResponse.new(
-      message: exception.message,
+      message: exception.message + " Please try again.",
       object: exception,
       success: false
     )
@@ -55,11 +52,17 @@ class CreatePayment
     customer = create_customer
     charge = create_charge_for(customer)
 
-    Payment.create!(
+    payment = Payment.create!(
       registration: registration,
       stripe_charge_id: charge.id,
       stripe_customer_id: customer.id,
       amount_charged_in_cents: charge.amount
+    )
+
+    ServiceResponse.new(
+      message: "Sucessfully charged card.",
+      object: payment,
+      success: true
     )
   rescue Stripe::CardError, Stripe::InvalidRequestError, Stripe::StripeError => error
     catch_exception(error)

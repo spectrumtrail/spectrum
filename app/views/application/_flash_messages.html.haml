@@ -1,8 +1,8 @@
 - flash.keys.each do |key|
-  - toastr_key = 'success' if key == 'success'
+  - toastr_key = key
   - toastr_key = 'info' if key == 'notice'
   - toastr_key = 'warning' if key == 'alert'
-  - toastr_key = 'danger' if key == 'danger'
-  - toastr_key = 'danger' if key == 'error'
-  :coffeescript
-    toastr['#{toastr_key}'] '#{flash[key]}'
+  :javascript
+    $(function() {
+      toastr["#{toastr_key}"]("#{flash[key]}");
+    });

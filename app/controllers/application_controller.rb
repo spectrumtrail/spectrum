@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  add_flash_types :success, :danger, :info
+  add_flash_types :success, :info, :warning, :error
   before_action :set_menu_items
   around_action :set_time_zone
 

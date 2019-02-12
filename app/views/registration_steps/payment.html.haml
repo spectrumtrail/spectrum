@@ -45,7 +45,8 @@
                   = f.input :accepts_refund_terms,
                     as: :radio_buttons,
                     required: true,
-                    label: "I have read, understood, and accept the refund policy for this Event."
+                    label: "I have read, understood, and accept the refund policy for this Event.",
+                    input_html: { id: "js-refund-terms-radio-input" }
                 %fieldset
                   %h4 Payment
                   = f.input :billing_email,
@@ -53,17 +54,20 @@
                     validate: true,
                     hint: "Where do you want the receipt to go?",
                     input_html: { value: @registration.default_billing_email }
-                  .form-group
+                  .form-group{class: @card_errors.present? ? "border-danger" : ""}
                     %label{for: "card-element"}
                       Input Your Card Details
                     #card-element
                     #card-errors
+                      - if @card_errors.present?
+                        = flash[:error]
                 %br
                 .form-actions
                   = f.button :submit,
                     'Complete my registration and pay now!',
                     id: 'stripe_button',
-                    class: 'btn btn-md btn-success btn-block'
+                    class: 'btn btn-md btn-success btn-block',
+                    disabled: true
                 .text-center.text-muted.my-3
                   %i.fa.fa-lock.text-success
                   %i.fab.fa-stripe

@@ -1,16 +1,25 @@
+stripeTokenHandler = (token) ->
+  # Insert the token ID into the form so it gets submitted to the server
+  form = document.getElementById("PaymentStepForm")
+  tokenHiddenInput = document.createElement('input')
+  tokenHiddenInput.setAttribute 'type', 'hidden'
+  tokenHiddenInput.setAttribute 'name', 'stripe_token'
+  tokenHiddenInput.setAttribute 'value', token.id
+  form.appendChild tokenHiddenInput
+  # Submit the form. This is the one that will have the token on it.
+  form.submit()
+  return
+
 $ ->
   if $("#PaymentStepForm").length > 0
-    stripeTokenHandler = (token) ->
-      # Insert the token ID into the form so it gets submitted to the server
-      form = document.getElementById("PaymentStepForm")
-      tokenHiddenInput = document.createElement('input')
-      tokenHiddenInput.setAttribute 'type', 'hidden'
-      tokenHiddenInput.setAttribute 'name', 'stripe_token'
-      tokenHiddenInput.setAttribute 'value', token.id
-      form.appendChild tokenHiddenInput
-      # Submit the form. This is the one that will have the token on it.
-      form.submit()
-      return
+    form = document.getElementById("PaymentStepForm")
+    submit_button = $("#stripe_button")
+    terms_radio_inputs = $(".registration_accepts_refund_terms")
+    terms_radio_yes = $("#js-refund-terms-radio-input")
+
+    terms_radio_inputs.change ->
+      submit_button.prop("disabled", !terms_radio_yes.is(":checked"))
+
     # Create a Stripe client
     stripe = Stripe(gon.stripe_publishable_key)
     # Create an instance of Elements
@@ -41,7 +50,6 @@ $ ->
         displayError.textContent = ''
       return
     # Handle form submission
-    form = document.getElementById("PaymentStepForm")
     form.addEventListener 'submit', (event) ->
       event.preventDefault()
       # PREVENT DOUBLE CLICKING
