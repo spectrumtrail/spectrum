@@ -46,8 +46,13 @@
                     label: "I have read, understood, and accept the refund policy for this Event."
                 %fieldset
                   %h4 Payment
+                  = f.input :billing_email,
+                    required: true,
+                    validate: true,
+                    hint: "Where do you want the receipt to go?",
+                    input_html: { value: @registration.default_billing_email }
                   .form-group
-                    %label{:for => "card-element"}
+                    %label{for: "card-element"}
                       Input Your Card Details
                     #card-element
                     #card-errors
@@ -56,8 +61,7 @@
                   = f.button :submit,
                     'Complete my registration and pay now!',
                     id: 'stripe_button',
-                    class: 'btn btn-success btn-block',
-                    confirm: "Are you sure?"
+                    class: 'btn btn-xl btn-success btn-block'
                 .text-center.text-muted.my-3
                   %i.fa.fa-lock.text-success
                   %i.fab.fa-stripe

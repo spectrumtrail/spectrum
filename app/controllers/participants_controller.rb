@@ -3,14 +3,14 @@ class ParticipantsController < ApplicationController
   before_action :set_participant, only: [:show, :edit, :update, :destroy]
 
   def index
-    @participants = @registration.participants
+    @participants = @registration.participant
   end
 
   def show
   end
 
   def new
-    @participant = @registration.participants.new
+    @participant = @registration.participant.new
   end
 
   def edit

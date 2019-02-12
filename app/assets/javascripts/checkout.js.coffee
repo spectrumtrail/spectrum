@@ -2,7 +2,7 @@ $ ->
   if $("#PaymentStepForm").length > 0
     stripeTokenHandler = (token) ->
       # Insert the token ID into the form so it gets submitted to the server
-      form = $("#PaymentStepForm")
+      form = document.getElementById("PaymentStepForm")
       tokenHiddenInput = document.createElement('input')
       tokenHiddenInput.setAttribute 'type', 'hidden'
       tokenHiddenInput.setAttribute 'name', 'stripe_token'
@@ -20,13 +20,13 @@ $ ->
     style =
       base:
         color: '#32325d'
-        fontFamily: 'Muli, Helvetica, sans-serif'
+        fontFamily: 'Nunito, Helvetica, sans-serif'
         fontSmoothing: 'antialiased'
-        fontSize: '16px'
+        fontSize: '14px'
         '::placeholder': color: '#aab7c4'
       invalid:
-        color: '#fa755a'
-        iconColor: '#fa755a'
+        color: '#ff0033'
+        iconColor: '#ff0033'
     # Create an instance of the card Element
     card = elements.create('card', style: style)
     # Add an instance of the card Element into the `card-element` <div>
@@ -37,10 +37,11 @@ $ ->
       if event.error
         displayError.textContent = event.error.message
       else
+        $('input[type="submit"]').removeAttr('disabled')
         displayError.textContent = ''
       return
     # Handle form submission
-    form = $("#PaymentStepForm")
+    form = document.getElementById("PaymentStepForm")
     form.addEventListener 'submit', (event) ->
       event.preventDefault()
       # PREVENT DOUBLE CLICKING

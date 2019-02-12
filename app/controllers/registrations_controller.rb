@@ -4,7 +4,7 @@ class RegistrationsController < ApplicationController
 
   def new
     @registration = @event.registrations.new(started_at: Time.now, steps_seen: ["start"])
-    @participants = @registration.participants.new(race_id: params[:race_id])
+    @participant = Participant.new(registration: @registration, race_id: params[:race_id])
   end
 
   def create

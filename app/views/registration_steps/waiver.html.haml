@@ -39,7 +39,7 @@
                 = f.error_notification message: f.object.errors[:base].to_sentence
 
               .form-inputs
-                = f.simple_fields_for :participants do |ff|
+                = f.simple_fields_for :participant do |ff|
                   %fieldset
                     = ff.input :emergency_contact_name, validate: true
                     = ff.input :emergency_contact_phone, as: :tel, validate: true

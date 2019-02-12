@@ -42,6 +42,9 @@
       = f.input :waiver_html,
         input_html: {class: "editor textarea-autosize" },
         hint: "This is where you store the Waiver text for this specific event."
+      = f.input :refund_html,
+        input_html: {class: "editor textarea-autosize" },
+        hint: "This is where you set the specific Refund policy for this event. This information will be shown on the events page, and participants will be forced to accept it before they are allowed to register."
 
     %fieldset
       %legend Images

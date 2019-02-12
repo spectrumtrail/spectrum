@@ -44,7 +44,7 @@
                 = f.error_notification message: f.object.errors[:base].to_sentence
 
               .form-inputs
-                = f.simple_fields_for :participants do |ff|
+                = f.simple_fields_for :participant do |ff|
                   %fieldset
                     = ff.input :phone, as: :tel, hint: "Used for important Race updates.", validate: true
                     = ff.input :birth_date, as: :date, validate: true

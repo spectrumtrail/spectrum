@@ -1,8 +1,7 @@
 class RegistrationStepsController < ApplicationController
   include Wicked::Wizard
-  before_action :set_registration, :set_event, :set_stripe_key
+  before_action :set_event_registration, :set_stripe_key
 
-  # Important! These steps are not 1:1 reflected in the UI. Semantics matter.
   steps :details, :waiver, :payment, :confirmation
 
   def show
@@ -11,23 +10,38 @@ class RegistrationStepsController < ApplicationController
   end
 
   def update
-    @registration.assign_attributes(registration_params)
-    update_steps_completed if @registration.valid?
-    render_wizard @registration
+    if step == :payment
+      @registration.assign_attributes(registration_params)
+      process_payment(token: params[:stripe_token])
+    else
+      @registration.assign_attributes(registration_params)
+      update_steps_completed if @registration.valid?
+      render_wizard @registration
+    end
   end
 
   private
 
+  def handle_result_for(result)
+    byebug
+    if result.success?
+      update_steps_completed
+      flash[result.flash_status] = result.flash_message
+      render_wizard @registration
+    else
+      flash[result.flash_status] = result.flash_message
+      render_wizard
+    end
+  end
+
+  def process_payment(token:)
+    handle_result_for(
+      CreatePayment.new(registration: @registration, token: token).perform
+    )
+  end
+
   def registration_params
     params.require(:registration).permit!
-  end
-
-  def payment_params
-    params.require(:payment).permit!
-  end
-
-  def set_event
-    @event = Event.friendly.find(params[:event_id])
   end
 
   def set_stripe_key
@@ -35,24 +49,19 @@ class RegistrationStepsController < ApplicationController
     gon.stripe_publishable_key = credentials.fetch(:stripe_publishable_key)
   end
 
-  def set_registration
+  def set_event_registration
+    @event = Event.friendly.find(params[:event_id])
     @registration = Registration.find(params[:registration_id])
     @registration.step_to_validate = step
   end
 
-  def set_step_to_validate
-    if step == steps.last
-      "complete"
-    else
-      step.to_s
-    end
-  end
-
   def update_steps_seen
-    @registration.update(steps_seen: @registration.steps_seen | [step.to_s])
+    steps_seen = @registration.steps_seen | [step.to_s]
+    @registration.update(steps_seen: steps_seen)
   end
 
   def update_steps_completed
-    @registration.update(steps_completed: @registration.steps_completed | [step.to_s])
+    steps_completed = @registration.steps_completed | [step.to_s]
+    @registration.update(steps_completed: steps_completed)
   end
 end

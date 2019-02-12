@@ -7,7 +7,7 @@
     = f.error_notification message: f.object.errors[:base].to_sentence
 
   .form-inputs
-    = f.simple_fields_for :participants do |ff|
+    = f.simple_fields_for :participant do |ff|
       %fieldset
         = ff.association :race,
           collection: @event.races.active.by_starts_at,
