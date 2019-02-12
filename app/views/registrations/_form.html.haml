@@ -18,6 +18,7 @@
         = ff.input :last_name
         = ff.input :email
 
+    = f.input :keep_private, as: :radio_buttons, label: "Do you want your name to show up on the public starting list for the race?"
   .form-actions
     .float-right
       = f.button :submit, "Next Step", class: "btn btn-success btn-md"

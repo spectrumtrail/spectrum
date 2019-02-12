@@ -31,8 +31,8 @@
                 - if @registration.steps_seen.include?("payment")
                   %a.nav-link.text-white{href: event_registration_steps_path(@event, @registration, id: :payment)}
                     Payment
-                  - if @registration.steps_completed.include?("payment")
-                    %i.fa.fa-check-circle.text-success
+                    - if @registration.paid?
+                      %i.fa.fa-check-circle.text-success
                 - else
                   %a.nav-link.disabled.gray-100{"aria-disabled" => "true", :tabindex => "-1"} Payment
           .card-body

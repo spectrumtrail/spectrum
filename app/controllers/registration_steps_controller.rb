@@ -22,6 +22,13 @@ class RegistrationStepsController < ApplicationController
 
   private
 
+  def check_token
+    if @registration.token != registration_token
+      flash[:warning] = "Token submitted doesn't match this registration."
+      redirect_to new_event_registration_path(@event)
+    end
+  end
+
   def handle_result_for(result)
     if result.success?
       update_steps_completed
@@ -42,6 +49,10 @@ class RegistrationStepsController < ApplicationController
     params.require(:registration).permit!
   end
 
+  def registration_token
+    params[:registration_id].split("-").last
+  end
+
   def set_stripe_key
     credentials = Rails.application.credentials.send(Rails.env)
     gon.stripe_publishable_key = credentials.fetch(:stripe_publishable_key)
@@ -50,6 +61,7 @@ class RegistrationStepsController < ApplicationController
   def set_event_registration
     @event = Event.friendly.find(params[:event_id])
     @registration = Registration.find(params[:registration_id])
+    check_token
     @registration.step_to_validate = step
   end
 
