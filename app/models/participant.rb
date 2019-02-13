@@ -1,21 +1,20 @@
 class Participant < ApplicationRecord
   belongs_to :registration
-  has_one :event, through: :registration
   belongs_to :race
+  has_one :event, through: :race
+
+  delegate :event_id, to: :registration
 
   validates :race, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email,
     presence: true,
-    uniqueness: {
-      scope: :event,
-      message: "This email has already been used for this event."
-    },
     format: {
       with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i,
-      message: "This email looks unusual. Please use a different one."
+      message: "looks unusual. Please use a different one."
     }
+  validate :email_unique_to_event
 
   validates :phone, presence: true, if: :validate_details?
   validates :division, presence: true, if: :validate_details?
@@ -32,6 +31,15 @@ class Participant < ApplicationRecord
   delegate :step_to_validate, to: :registration
 
   private
+
+  def email_unique_to_event
+    if event.participants.pluck(:email).include? email
+      errors.add(
+        :email,
+        "matches an email address belonging to an existing, registered participant."
+      )
+    end
+  end
 
   def validate_details?
     ["completed", "details"].include? registration.step_to_validate
