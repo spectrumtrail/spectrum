@@ -8,7 +8,6 @@ class Registration < ApplicationRecord
   has_one :location, through: :event
   has_one :participant, dependent: :destroy
   accepts_nested_attributes_for :participant, allow_destroy: :true
-  has_one :payment
   accepts_nested_attributes_for :payment
 
   validates :accepts_refund_terms, acceptance: true, if: :validate_payment?
