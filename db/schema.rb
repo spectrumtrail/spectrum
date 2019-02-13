@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_12_034653) do
+ActiveRecord::Schema.define(version: 2019_02_13_070746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -169,7 +169,7 @@ ActiveRecord::Schema.define(version: 2019_02_12_034653) do
     t.datetime "started_at"
     t.string "status"
     t.datetime "completed_at"
-    t.boolean "keep_private", default: false
+    t.boolean "keep_private", default: true
     t.text "steps_seen"
     t.text "steps_completed"
     t.boolean "accepts_refund_terms"
