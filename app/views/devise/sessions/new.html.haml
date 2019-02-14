@@ -2,7 +2,7 @@
   Welcome back!
 %h6.text-white.pb-5
   You can sign in to your account here.
-= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class:"form-tertiary pr-2" }) do |f|
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class:"form-tertiary" }) do |f|
   .form-inputs
     = f.input :email,
       required: false,
@@ -13,4 +13,5 @@
       input_html: { autocomplete: "current-password" }
     = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
   .form-actions
-    = f.button :submit, "Sign In", class: "btn btn-block"
+    .text-center
+      = f.button :submit, "Sign In", class: "btn btn-block btn-success"
