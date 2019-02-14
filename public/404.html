@@ -1,67 +1,571 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+  <title>404 | Spectrum</title>
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+  <style type="text/css">
+    body {
+      padding: 30px 20px;
+      font-family: 'Nunito', sans-serif;
+      color: #727272;
+      line-height: 1.6;
+      background-color: lightgrey
+    }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+    }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+    h1 {
+      margin: 0 0 40px;
+      font-size: 60px;
+      line-height: 1;
+      color: #252427;
+      font-weight: 700;
+    }
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+    h2 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: #A299AC;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-size: 16px;
+      margin: 1em 0;
+    }
+
+    .go-back a {
+      display: inline-block;
+      margin-top: 3em;
+      padding: 10px;
+      color: #1B1A1A;
+      font-weight: 700;
+      border: solid 2px #e7e7e7;
+      text-decoration: none;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .go-back a:hover {
+      border-color: #1B1A1A;
+    }
+
+    @media screen and (min-width: 768px) {
+      body {
+        padding: 50px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      h1 {
+        font-size: 48px;
+      }
+    }
   </style>
 </head>
+<body>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
+<div class="container">
+  <div class="wrap">
+    <svg id="vvolf" data-name="vvolf" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1008 507.89">
+      <polygon class="gon" points="0 150.48 0.22 151.04 6.39 133.69 0 150.48" fill="#070b0a"/>
+      <polygon class="gon" points="94.69 463.61 92.93 490.27 105.35 463.23 94.69 463.61" fill="#918e7b"/>
+      <polygon class="gon" points="16.5 146.42 19.6 157.48 24.64 153.58 16.5 146.42" fill="#8e8f89"/>
+      <polygon class="gon" points="16.5 146.42 0.22 151.04 19.6 157.48 16.5 146.42" fill="#6a6965"/>
+      <polygon class="gon" points="19.6 157.48 33.91 164.82 34.06 160.08 19.6 157.48" fill="#8a887c"/>
+      <polygon class="gon" points="6.39 133.69 0.22 151.04 16.5 146.42 6.39 133.69" fill="#2c312a"/>
+      <polygon class="gon" points="0.22 151.04 20.65 183.04 19.6 157.48 0.22 151.04" fill="#8a867b"/>
+      <polygon class="gon" points="20.65 183.04 36.25 183.61 33.91 164.82 20.65 183.04" fill="#403d36"/>
+      <polygon class="gon" points="77.67 484.72 92.93 490.27 94.69 463.61 77.67 484.72" fill="#7f6f55"/>
+      <polygon class="gon" points="6.39 133.69 49.23 122.43 49.58 118.92 6.39 133.69" fill="#4b473c"/>
+      <polygon class="gon" points="19.6 157.48 20.65 183.04 33.91 164.82 19.6 157.48" fill="#888679"/>
+      <polygon class="gon" points="24.64 153.58 19.6 157.48 34.06 160.08 24.64 153.58" fill="#8b8b83"/>
+      <polygon class="gon" points="24.64 153.58 34.06 160.08 35.04 150.38 24.64 153.58" fill="#484840"/>
+      <polygon class="gon" points="49.58 118.92 49.23 122.43 51.06 114.25 49.58 118.92" fill="#443e2e"/>
+      <polygon class="gon" points="179.34 359.74 158.7 411.04 261.86 374.87 179.34 359.74" fill="#8f856c"/>
+      <polygon class="gon" points="94.69 463.61 105.35 463.23 103.82 444.73 94.69 463.61" fill="#dbc8a8"/>
+      <polygon class="gon" points="105.11 427.24 103.82 444.73 109.25 431.85 105.11 427.24" fill="#ddd8b8"/>
+      <polygon class="gon" points="16.5 146.42 24.64 153.58 35.04 150.38 16.5 146.42" fill="#272a21"/>
+      <polygon class="gon" points="35.04 150.38 34.06 160.08 38.76 162.91 35.04 150.38" fill="#8f8b7f"/>
+      <polygon class="gon" points="34.06 160.08 33.91 164.82 38.76 162.91 34.06 160.08" fill="#8a8474"/>
+      <polygon class="gon" points="33.91 164.82 36.25 183.61 43.61 178.57 33.91 164.82" fill="#645e50"/>
+      <polygon class="gon" points="38.76 162.91 33.91 164.82 43.61 178.57 38.76 162.91" fill="#928a7f"/>
+      <polygon class="gon" points="105.35 463.23 92.93 490.27 112.34 467.96 105.35 463.23" fill="#645e50"/>
+      <polygon class="gon" points="112.34 467.96 92.93 490.27 119.11 467.5 112.34 467.96" fill="#78705b"/>
+      <polygon class="gon" points="127.44 420.5 119.66 437.25 137.34 444.15 127.44 420.5" fill="#7d755e"/>
+      <polygon class="gon" points="77.67 484.72 94.69 463.61 105.11 427.24 77.67 484.72" fill="#918e7b"/>
+      <polygon class="gon" points="94.69 463.61 103.82 444.73 105.11 427.24 94.69 463.61" fill="#ddd8b8"/>
+      <polygon class="gon" points="43.61 178.57 36.25 183.61 56.13 177.81 43.61 178.57" fill="#ad9e89"/>
+      <polygon class="gon" points="38.76 162.91 43.61 178.57 56.13 177.81 38.76 162.91" fill="#988c7c"/>
+      <polygon class="gon" points="103.82 444.73 105.35 463.23 114.3 465.77 103.82 444.73" fill="#b0aa94"/>
+      <polygon class="gon" points="105.35 463.23 112.34 467.96 114.3 465.77 105.35 463.23" fill="#79755c"/>
+      <polygon class="gon" points="204.37 44.25 201.52 58.34 240.34 60.02 204.37 44.25" fill="#30312b"/>
+      <polygon class="gon" points="6.39 133.69 49.58 118.92 51.06 114.25 6.39 133.69" fill="#3f3b32"/>
+      <polygon class="gon" points="16.5 146.42 35.04 150.38 49.23 122.43 16.5 146.42" fill="#7b7b7d"/>
+      <polygon class="gon" points="6.39 133.69 16.5 146.42 49.23 122.43 6.39 133.69" fill="#35352d"/>
+      <polygon class="gon" points="114.3 465.77 112.34 467.96 119.11 467.5 114.3 465.77" fill="#6d5e4b"/>
+      <polygon class="gon" points="109.25 431.85 119.66 437.25 117.59 426.02 109.25 431.85" fill="#ddd8b8"/>
+      <polygon class="gon" points="135.28 402.29 131.18 410.74 138.82 409.87 135.28 402.29" fill="#706d64"/>
+      <polygon class="gon" points="131.18 410.74 133.76 412.59 138.82 409.87 131.18 410.74" fill="#74746a"/>
+      <polygon class="gon" points="49.23 122.43 35.04 150.38 67.05 172.37 49.23 122.43" fill="#8d8a81"/>
+      <polygon class="gon" points="109.25 431.85 103.82 444.73 119.66 437.25 109.25 431.85" fill="#f0e1c4"/>
+      <polygon class="gon" points="38.76 162.91 56.13 177.81 67.05 172.37 38.76 162.91" fill="#67553d"/>
+      <polygon class="gon" points="35.04 150.38 38.76 162.91 67.05 172.37 35.04 150.38" fill="#9b9585"/>
+      <polygon class="gon" points="103.82 444.73 114.3 465.77 119.66 437.25 103.82 444.73" fill="#8a846c"/>
+      <polygon class="gon" points="114.3 465.77 119.11 467.5 119.66 437.25 114.3 465.77" fill="#7b7663"/>
+      <polygon class="gon" points="105.11 427.24 109.25 431.85 117.59 426.02 105.11 427.24" fill="#fee2d4"/>
+      <polygon class="gon" points="113.89 419.38 105.11 427.24 117.59 426.02 113.89 419.38" fill="#ddd8b8"/>
+      <polygon class="gon" points="94.28 71.03 87.56 77.15 98.9 90.8 94.28 71.03" fill="#4a483b"/>
+      <polygon class="gon" points="113.89 419.38 127.44 420.5 131.18 410.74 113.89 419.38" fill="#a19482"/>
+      <polygon class="gon" points="119.66 437.25 119.11 467.5 137.34 444.15 119.66 437.25" fill="#564b35"/>
+      <polygon class="gon" points="113.89 419.38 117.59 426.02 127.44 420.5 113.89 419.38" fill="#d0ccb1"/>
+      <polygon class="gon" points="117.59 426.02 119.66 437.25 127.44 420.5 117.59 426.02" fill="#60584d"/>
+      <polygon class="gon" points="131.18 410.74 127.44 420.5 133.76 412.59 131.18 410.74" fill="#7b7d6f"/>
+      <polygon class="gon" points="113.89 419.38 135.28 402.29 135.27 389.07 113.89 419.38" fill="#a39481"/>
+      <polygon class="gon" points="58.94 87.9 51.06 114.25 70.95 97.77 58.94 87.9" fill="#cdbd9c"/>
+      <polygon class="gon" points="49.23 122.43 67.05 172.37 81.63 170.03 49.23 122.43" fill="#978c76"/>
+      <polygon class="gon" points="138.82 409.87 133.76 412.59 156.75 413.55 138.82 409.87" fill="#7b755d"/>
+      <polygon class="gon" points="133.76 412.59 137.34 444.15 156.75 413.55 133.76 412.59" fill="#9b8c6f"/>
+      <polygon class="gon" points="187.21 232.32 226.43 228 228.72 214.17 187.21 232.32" fill="#9f9272"/>
+      <polygon class="gon" points="82.13 103.59 51.06 114.25 92.34 117.04 82.13 103.59" fill="#878576"/>
+      <polygon class="gon" points="86.69 74.22 87.56 77.15 89.47 73.13 86.69 74.22" fill="#48412f"/>
+      <polygon class="gon" points="127.44 420.5 137.34 444.15 133.76 412.59 127.44 420.5" fill="#888574"/>
+      <polygon class="gon" points="97.88 18.16 111.71 27.06 113.03 20.34 97.88 18.16" fill="#fbf0d4"/>
+      <polygon class="gon" points="113.89 419.38 131.18 410.74 135.28 402.29 113.89 419.38" fill="#6c6553"/>
+      <polygon class="gon" points="105.11 427.24 113.89 419.38 135.27 389.07 105.11 427.24" fill="#ddd8b8"/>
+      <polygon class="gon" points="51.06 114.25 49.23 122.43 92.34 117.04 51.06 114.25" fill="#64635e"/>
+      <polygon class="gon" points="102.64 151.92 109.39 176.79 116.97 176.34 102.64 151.92" fill="#aca18b"/>
+      <polygon class="gon" points="86.69 74.22 85.59 80.1 87.56 77.15 86.69 74.22" fill="#484330"/>
+      <polygon class="gon" points="85.59 80.1 81.41 101.11 96.07 97.34 85.59 80.1" fill="#87806e"/>
+      <polygon class="gon" points="95.98 125.52 81.63 170.03 102.64 151.92 95.98 125.52" fill="#97927f"/>
+      <polygon class="gon" points="81.41 101.11 70.95 97.77 82.13 103.59 81.41 101.11" fill="#140b06"/>
+      <polygon class="gon" points="70.95 97.77 51.06 114.25 82.13 103.59 70.95 97.77" fill="#5d5d5b"/>
+      <polygon class="gon" points="58.08 66.64 58.94 87.9 85.59 80.1 58.08 66.64" fill="#897958"/>
+      <polygon class="gon" points="58.94 87.9 70.95 97.77 85.59 80.1 58.94 87.9" fill="#746d51"/>
+      <polygon class="gon" points="70.95 97.77 81.41 101.11 85.59 80.1 70.95 97.77" fill="#1b1107"/>
+      <polygon class="gon" points="92.34 117.04 49.23 122.43 95.98 125.52 92.34 117.04" fill="#858377"/>
+      <polygon class="gon" points="49.23 122.43 81.63 170.03 95.98 125.52 49.23 122.43" fill="#94948c"/>
+      <polygon class="gon" points="81.41 101.11 82.13 103.59 96.07 97.34 81.41 101.11" fill="#a79d84"/>
+      <polygon class="gon" points="90.16 47.61 97.3 50.84 96.19 30.35 90.16 47.61" fill="#ebdecb"/>
+      <polygon class="gon" points="58.08 66.64 85.59 80.1 86.69 74.22 58.08 66.64" fill="#86765c"/>
+      <polygon class="gon" points="81.63 170.03 92.57 175.87 102.64 151.92 81.63 170.03" fill="#b0a48c"/>
+      <polygon class="gon" points="92.57 175.87 103.2 175.89 102.64 151.92 92.57 175.87" fill="#a99d85"/>
+      <polygon class="gon" points="86.69 74.22 89.47 73.13 90.16 47.61 86.69 74.22" fill="#cdc2ae"/>
+      <polygon class="gon" points="102.64 151.92 103.2 175.89 109.39 176.79 102.64 151.92" fill="#afa58c"/>
+      <polygon class="gon" points="75.98 10.5 84.86 20.48 87.65 16.64 75.98 10.5" fill="#301c1d"/>
+      <polygon class="gon" points="80.35 32.54 70.02 33.81 86.67 39.71 80.35 32.54" fill="#ccb19e"/>
+      <polygon class="gon" points="120.64 181.05 137.97 187.99 132.85 154.69 120.64 181.05" fill="#bdaf94"/>
+      <polygon class="gon" points="135.27 389.07 158.7 411.04 179.34 359.74 135.27 389.07" fill="#817662"/>
+      <polygon class="gon" points="82.13 103.59 92.34 117.04 96.07 97.34 82.13 103.59" fill="#817d71"/>
+      <polygon class="gon" points="177.28 209.9 187.21 232.32 228.72 214.17 177.28 209.9" fill="#a79d84"/>
+      <polygon class="gon" points="195.48 251.93 206.29 260.43 206.25 242.19 195.48 251.93" fill="#ebdfb7"/>
+      <polygon class="gon" points="135.27 389.07 135.28 402.29 158.7 411.04 135.27 389.07" fill="#807f6d"/>
+      <polygon class="gon" points="135.28 402.29 138.82 409.87 158.7 411.04 135.28 402.29" fill="#8e867b"/>
+      <polygon class="gon" points="138.82 409.87 156.75 413.55 158.7 411.04 138.82 409.87" fill="#8c7f6c"/>
+      <polygon class="gon" points="96.07 97.34 101.77 110.1 98.9 90.8 96.07 97.34" fill="#514d41"/>
+      <polygon class="gon" points="101.77 110.1 92.34 117.04 102.85 113.97 101.77 110.1" fill="#9e9e92"/>
+      <polygon class="gon" points="70.02 33.81 80.35 32.54 84.86 20.48 70.02 33.81" fill="#eee1ce"/>
+      <polygon class="gon" points="96.07 97.34 92.34 117.04 101.77 110.1 96.07 97.34" fill="#807d74"/>
+      <polygon class="gon" points="85.59 80.1 96.07 97.34 98.9 90.8 85.59 80.1" fill="#9d9b8f"/>
+      <polygon class="gon" points="75.98 10.5 70.02 33.81 84.86 20.48 75.98 10.5" fill="#33220e"/>
+      <polygon class="gon" points="89.47 73.13 87.56 77.15 94.28 71.03 89.47 73.13" fill="#4d4b3c"/>
+      <polygon class="gon" points="87.56 77.15 85.59 80.1 98.9 90.8 87.56 77.15" fill="#4e4c40"/>
+      <polygon class="gon" points="86.69 74.22 58.08 66.64 58.18 63.55 86.69 74.22" fill="#c1b89b"/>
+      <polygon class="gon" points="58.18 63.55 86.69 74.22 90.16 47.61 58.18 63.55" fill="#c1b89b"/>
+      <polygon class="gon" points="70.02 33.81 58.18 63.55 90.16 47.61 70.02 33.81" fill="#b2ada3"/>
+      <polygon class="gon" points="86.67 39.71 70.02 33.81 90.16 47.61 86.67 39.71" fill="#cec0a3"/>
+      <polygon class="gon" points="95.98 125.52 102.64 151.92 104.9 117.24 95.98 125.52" fill="#9f9c8d"/>
+      <polygon class="gon" points="101.77 110.1 102.85 113.97 104.9 117.24 101.77 110.1" fill="#9c9c90"/>
+      <polygon class="gon" points="92.34 117.04 95.98 125.52 104.9 117.24 92.34 117.04" fill="#acaa9e"/>
+      <polygon class="gon" points="102.85 113.97 92.34 117.04 104.9 117.24 102.85 113.97" fill="#88867a"/>
+      <polygon class="gon" points="111.14 64.68 111.66 73.78 114.06 74.93 111.14 64.68" fill="#55544f"/>
+      <polygon class="gon" points="116.97 176.34 109.39 176.79 120.64 181.05 116.97 176.34" fill="#b5a78a"/>
+      <polygon class="gon" points="89.47 73.13 94.28 71.03 97.3 50.84 89.47 73.13" fill="#9a927e"/>
+      <polygon class="gon" points="90.16 47.61 89.47 73.13 97.3 50.84 90.16 47.61" fill="#c5b79d"/>
+      <polygon class="gon" points="84.86 20.48 96.19 30.35 97.88 18.16 84.86 20.48" fill="#201d0c"/>
+      <polygon class="gon" points="87.65 16.64 84.86 20.48 97.88 18.16 87.65 16.64" fill="#201513"/>
+      <polygon class="gon" points="86.67 39.71 90.16 47.61 96.19 30.35 86.67 39.71" fill="#dcd5bb"/>
+      <polygon class="gon" points="84.86 20.48 80.35 32.54 96.19 30.35 84.86 20.48" fill="#7e7357"/>
+      <polygon class="gon" points="80.35 32.54 86.67 39.71 96.19 30.35 80.35 32.54" fill="#e7d9bc"/>
+      <polygon class="gon" points="111.66 73.78 98.9 90.8 114.06 74.93 111.66 73.78" fill="#64615a"/>
+      <polygon class="gon" points="229.14 205.11 228.72 214.17 237.95 222.38 229.14 205.11" fill="#998d73"/>
+      <polygon class="gon" points="94.28 71.03 98.9 90.8 111.66 73.78 94.28 71.03" fill="#888576"/>
+      <polygon class="gon" points="116.97 176.34 120.64 181.05 132.85 154.69 116.97 176.34" fill="#b0a48c"/>
+      <polygon class="gon" points="102.64 151.92 116.97 176.34 132.85 154.69 102.64 151.92" fill="#98907b"/>
+      <polygon class="gon" points="97.3 50.84 94.28 71.03 111.14 64.68 97.3 50.84" fill="#8c8470"/>
+      <polygon class="gon" points="94.28 71.03 111.66 73.78 111.14 64.68 94.28 71.03" fill="#666458"/>
+      <polygon class="gon" points="125.95 190.9 134.03 199.9 137.97 187.99 125.95 190.9" fill="#d1c3a6"/>
+      <polygon class="gon" points="120.64 181.05 125.95 190.9 137.97 187.99 120.64 181.05" fill="#c7b795"/>
+      <polygon class="gon" points="107.27 11.49 97.88 18.16 113.03 20.34 107.27 11.49" fill="#fcfddd"/>
+      <polygon class="gon" points="104.9 117.24 102.64 151.92 132.85 154.69 104.9 117.24" fill="#8d8a7b"/>
+      <polygon class="gon" points="96.19 30.35 97.3 50.84 111.71 27.06 96.19 30.35" fill="#9d9370"/>
+      <polygon class="gon" points="168.92 220.94 179.5 229.03 177.28 209.9 168.92 220.94" fill="#d5c9b1"/>
+      <polygon class="gon" points="97.88 18.16 96.19 30.35 111.71 27.06 97.88 18.16" fill="#b8b69d"/>
+      <polygon class="gon" points="111.71 27.06 125.03 33.28 122.53 17.12 111.71 27.06" fill="#a69373"/>
+      <polygon class="gon" points="101.77 110.1 104.9 117.24 128.95 80.64 101.77 110.1" fill="#6a6760"/>
+      <polygon class="gon" points="137.97 187.99 134.03 199.9 149.25 203.27 137.97 187.99" fill="#ded0b5"/>
+      <polygon class="gon" points="113.03 20.34 111.71 27.06 122.53 17.12 113.03 20.34" fill="#bca67f"/>
+      <polygon class="gon" points="111.14 64.68 114.06 74.93 122.39 64.68 111.14 64.68" fill="#49493f"/>
+      <polygon class="gon" points="122.39 64.68 114.06 74.93 128.95 80.64 122.39 64.68" fill="#5d5d51"/>
+      <polygon class="gon" points="114.06 74.93 98.9 90.8 128.95 80.64 114.06 74.93" fill="#464741"/>
+      <polygon class="gon" points="98.9 90.8 101.77 110.1 128.95 80.64 98.9 90.8" fill="#51524a"/>
+      <polygon class="gon" points="104.9 117.24 132.85 154.69 141.07 123.1 104.9 117.24" fill="#a39d8f"/>
+      <polygon class="gon" points="168.92 220.94 174.24 228.4 179.5 229.03 168.92 220.94" fill="#feeed5"/>
+      <polygon class="gon" points="128.95 80.64 104.9 117.24 141.07 123.1 128.95 80.64" fill="#909183"/>
+      <polygon class="gon" points="111.14 64.68 122.39 64.68 125.03 33.28 111.14 64.68" fill="#635b46"/>
+      <polygon class="gon" points="97.3 50.84 111.14 64.68 125.03 33.28 97.3 50.84" fill="#675843"/>
+      <polygon class="gon" points="111.71 27.06 97.3 50.84 125.03 33.28 111.71 27.06" fill="#d9caab"/>
+      <polygon class="gon" points="191.74 239.86 195.48 251.93 206.25 242.19 191.74 239.86" fill="#ecdec1"/>
+      <polygon class="gon" points="107.27 11.49 113.03 20.34 122.53 17.12 107.27 11.49" fill="#bba88a"/>
+      <polygon class="gon" points="111.73 0 107.27 11.49 122.53 17.12 111.73 0" fill="#ac9f7d"/>
+      <polygon class="gon" points="157.46 12.35 156.22 31.52 159.77 10.63 157.46 12.35" fill="#aaa28d"/>
+      <polygon class="gon" points="141.07 49.62 122.39 64.68 152.05 58.04 141.07 49.62" fill="#8a826d"/>
+      <polygon class="gon" points="132.53 4.07 122.53 17.12 135.18 12.57 132.53 4.07" fill="#49221d"/>
+      <polygon class="gon" points="122.53 17.12 136.82 31.92 135.18 12.57 122.53 17.12" fill="#a8947c"/>
+      <polygon class="gon" points="136.82 31.92 125.03 33.28 141.07 49.62 136.82 31.92" fill="#e7d9bc"/>
+      <polygon class="gon" points="125.03 33.28 122.39 64.68 141.07 49.62 125.03 33.28" fill="#110801"/>
+      <polygon class="gon" points="122.53 17.12 125.03 33.28 136.82 31.92 122.53 17.12" fill="#7b6a4e"/>
+      <polygon class="gon" points="162.58 219.43 168.92 220.94 177.28 209.9 162.58 219.43" fill="#e5d5bb"/>
+      <polygon class="gon" points="111.73 0 122.53 17.12 132.53 4.07 111.73 0" fill="#371c15"/>
+      <polygon class="gon" points="149.25 203.27 162.58 219.43 177.28 209.9 149.25 203.27" fill="#d0c6a5"/>
+      <polygon class="gon" points="227.28 281.27 202.94 304.66 229.08 285.65 227.28 281.27" fill="#cfbe8a"/>
+      <polygon class="gon" points="122.39 64.68 128.95 80.64 152.05 58.04 122.39 64.68" fill="#2f291d"/>
+      <polygon class="gon" points="132.85 154.69 137.97 187.99 163.4 142.39 132.85 154.69" fill="#b5ad98"/>
+      <polygon class="gon" points="202.94 304.66 213.55 318.65 228.39 314.63 202.94 304.66" fill="#fff8e1"/>
+      <polygon class="gon" points="141.07 123.1 132.85 154.69 163.4 142.39 141.07 123.1" fill="#a5a08d"/>
+      <polygon class="gon" points="135.18 12.57 136.82 31.92 147.81 24.64 135.18 12.57" fill="#423723"/>
+      <polygon class="gon" points="153.08 28.15 136.82 31.92 156.22 31.52 153.08 28.15" fill="#3f3824"/>
+      <polygon class="gon" points="177.28 209.9 179.5 229.03 187.21 232.32 177.28 209.9" fill="#d2c3a2"/>
+      <polygon class="gon" points="136.82 31.92 141.07 49.62 156.22 31.52 136.82 31.92" fill="#635741"/>
+      <polygon class="gon" points="153.08 28.15 156.22 31.52 157.46 12.35 153.08 28.15" fill="#232019"/>
+      <polygon class="gon" points="213.55 318.65 179.34 359.74 261.86 374.87 213.55 318.65" fill="#8e8268"/>
+      <polygon class="gon" points="163.4 142.39 185.34 174.42 172.61 94.17 163.4 142.39" fill="#97907c"/>
+      <polygon class="gon" points="147.81 24.64 136.82 31.92 153.08 28.15 147.81 24.64" fill="#3f3826"/>
+      <polygon class="gon" points="202.94 304.66 228.39 314.63 229.08 285.65 202.94 304.66" fill="#fff8e1"/>
+      <polygon class="gon" points="149.25 203.27 177.28 209.9 185.34 174.42 149.25 203.27" fill="#b1a992"/>
+      <polygon class="gon" points="170.59 90.35 141.07 123.1 172.61 94.17 170.59 90.35" fill="#6d6d61"/>
+      <polygon class="gon" points="141.07 123.1 163.4 142.39 172.61 94.17 141.07 123.1" fill="#524f3e"/>
+      <polygon class="gon" points="137.97 187.99 149.25 203.27 185.34 174.42 137.97 187.99" fill="#a3977d"/>
+      <polygon class="gon" points="163.4 142.39 137.97 187.99 185.34 174.42 163.4 142.39" fill="#aea78d"/>
+      <polygon class="gon" points="152.05 58.04 170.59 90.35 164.44 57.33 152.05 58.04" fill="#1b1811"/>
+      <polygon class="gon" points="128.95 80.64 141.07 123.1 170.59 90.35 128.95 80.64" fill="#8e8b7c"/>
+      <polygon class="gon" points="152.05 58.04 128.95 80.64 170.59 90.35 152.05 58.04" fill="#29271b"/>
+      <polygon class="gon" points="152.05 58.04 164.44 57.33 164.49 39.76 152.05 58.04" fill="#1b1309"/>
+      <polygon class="gon" points="156.22 31.52 141.07 49.62 164.49 39.76 156.22 31.52" fill="#1d140d"/>
+      <polygon class="gon" points="135.18 12.57 147.81 24.64 157.46 12.35 135.18 12.57" fill="#bab3ab"/>
+      <polygon class="gon" points="147.81 24.64 153.08 28.15 157.46 12.35 147.81 24.64" fill="#2c261a"/>
+      <polygon class="gon" points="141.07 49.62 152.05 58.04 164.49 39.76 141.07 49.62" fill="#342c22"/>
+      <polygon class="gon" points="187.21 232.32 191.74 239.86 206.25 242.19 187.21 232.32" fill="#e5d5bb"/>
+      <polygon class="gon" points="206.25 242.19 206.29 260.43 226.43 228 206.25 242.19" fill="#bbab89"/>
+      <polygon class="gon" points="229.08 285.65 228.39 314.63 239.37 289.13 229.08 285.65" fill="#f1e1c7"/>
+      <polygon class="gon" points="258.18 309.07 228.39 314.63 266.87 329.32 258.18 309.07" fill="#b5a581"/>
+      <polygon class="gon" points="181.86 17.25 156.22 31.52 183.22 20.4 181.86 17.25" fill="#4f4f45"/>
+      <polygon class="gon" points="170.59 90.35 172.61 94.17 201.52 58.34 170.59 90.35" fill="#373528"/>
+      <polygon class="gon" points="159.77 10.63 156.22 31.52 181.86 17.25 159.77 10.63" fill="#8a8474"/>
+      <polygon class="gon" points="201.93 34.1 164.49 39.76 204.37 44.25 201.93 34.1" fill="#404139"/>
+      <polygon class="gon" points="213.55 318.65 261.86 374.87 263.25 372.18 213.55 318.65" fill="#817157"/>
+      <polygon class="gon" points="156.22 31.52 164.49 39.76 183.22 20.4 156.22 31.52" fill="#403929"/>
+      <polygon class="gon" points="227.28 281.27 229.08 285.65 239.37 289.13 227.28 281.27" fill="#dacdad"/>
+      <polygon class="gon" points="187.21 232.32 206.25 242.19 226.43 228 187.21 232.32" fill="#ab9c7d"/>
+      <polygon class="gon" points="206.29 260.43 227.28 281.27 226.43 228 206.29 260.43" fill="#bfb091"/>
+      <polygon class="gon" points="164.49 39.76 201.52 58.34 204.37 44.25 164.49 39.76" fill="#3f3c33"/>
+      <polygon class="gon" points="228.39 314.63 263.25 372.18 266.87 329.32 228.39 314.63" fill="#93876d"/>
+      <polygon class="gon" points="248.27 41.47 240.34 60.02 262.92 74.9 248.27 41.47" fill="#40413b"/>
+      <polygon class="gon" points="164.44 57.33 170.59 90.35 201.52 58.34 164.44 57.33" fill="#393222"/>
+      <polygon class="gon" points="228.39 314.63 213.55 318.65 263.25 372.18 228.39 314.63" fill="#95876d"/>
+      <polygon class="gon" points="185.34 174.42 177.28 209.9 229.14 205.11 185.34 174.42" fill="#9d9781"/>
+      <polygon class="gon" points="177.28 209.9 228.72 214.17 229.14 205.11 177.28 209.9" fill="#918369"/>
+      <polygon class="gon" points="164.49 39.76 164.44 57.33 201.52 58.34 164.49 39.76" fill="#322a16"/>
+      <polygon class="gon" points="262.92 74.9 185.34 174.42 281.66 93.1 262.92 74.9" fill="#312f23"/>
+      <polygon class="gon" points="229.14 205.11 237.95 222.38 266.43 241.5 229.14 205.11" fill="#5d5338"/>
+      <polygon class="gon" points="263.25 372.18 270.41 372.29 266.87 329.32 263.25 372.18" fill="#a49375"/>
+      <polygon class="gon" points="376.86 437.42 400.03 445.03 396.64 423.9 376.86 437.42" fill="#a08e68"/>
+      <polygon class="gon" points="228.72 214.17 226.43 228 237.95 222.38 228.72 214.17" fill="#998773"/>
+      <polygon class="gon" points="183.22 20.4 164.49 39.76 201.93 34.1 183.22 20.4" fill="#484840"/>
+      <polygon class="gon" points="239.37 289.13 228.39 314.63 258.18 309.07 239.37 289.13" fill="#b2a481"/>
+      <polygon class="gon" points="201.52 58.34 172.61 94.17 240.34 60.02 201.52 58.34" fill="#555344"/>
+      <polygon class="gon" points="263.25 372.18 261.86 374.87 270.41 372.29 263.25 372.18" fill="#b7a57d"/>
+      <polygon class="gon" points="226.43 228 227.28 281.27 266.43 241.5 226.43 228" fill="#83795e"/>
+      <polygon class="gon" points="227.28 281.27 239.37 289.13 266.43 241.5 227.28 281.27" fill="#cabfa3"/>
+      <polygon class="gon" points="237.95 222.38 226.43 228 266.43 241.5 237.95 222.38" fill="#9d907d"/>
+      <polygon class="gon" points="327.71 284.87 319.23 288.42 348.87 309.98 327.71 284.87" fill="#9a927b"/>
+      <polygon class="gon" points="266.87 329.32 270.41 372.29 311.07 339.5 266.87 329.32" fill="#86724d"/>
+      <polygon class="gon" points="266.43 241.5 239.37 289.13 288.81 267.87 266.43 241.5" fill="#a59e8a"/>
+      <polygon class="gon" points="239.37 289.13 258.18 309.07 288.81 267.87 239.37 289.13" fill="#aca287"/>
+      <polygon class="gon" points="319.23 288.42 311.07 339.5 348.87 309.98 319.23 288.42" fill="#bcb299"/>
+      <polygon class="gon" points="240.34 60.02 172.61 94.17 262.92 74.9 240.34 60.02" fill="#3b3c36"/>
+      <polygon class="gon" points="201.93 34.1 204.37 44.25 248.27 41.47 201.93 34.1" fill="#444740"/>
+      <polygon class="gon" points="204.37 44.25 240.34 60.02 248.27 41.47 204.37 44.25" fill="#2d2e28"/>
+      <polygon class="gon" points="185.34 174.42 229.14 205.11 281.66 93.1 185.34 174.42" fill="#5f5240"/>
+      <polygon class="gon" points="387.18 402.86 376.86 437.42 396.64 423.9 387.18 402.86" fill="#5e4d2f"/>
+      <polygon class="gon" points="288.81 267.87 258.18 309.07 319.23 288.42 288.81 267.87" fill="#b2a793"/>
+      <polygon class="gon" points="172.61 94.17 185.34 174.42 262.92 74.9 172.61 94.17" fill="#39352a"/>
+      <polygon class="gon" points="315.84 406.71 323.25 431.07 333.9 433.52 315.84 406.71" fill="#948f7a"/>
+      <polygon class="gon" points="258.18 309.07 266.87 329.32 319.23 288.42 258.18 309.07" fill="#90815a"/>
+      <polygon class="gon" points="266.87 329.32 311.07 339.5 319.23 288.42 266.87 329.32" fill="#b8a47f"/>
+      <polygon class="gon" points="387.66 401.43 396.64 423.9 405.81 409.57 387.66 401.43" fill="#7c6f5f"/>
+      <polygon class="gon" points="387.66 401.43 387.18 402.86 396.64 423.9 387.66 401.43" fill="#a18d74"/>
+      <polygon class="gon" points="396.64 423.9 400.03 445.03 414.32 441.21 396.64 423.9" fill="#9a8767"/>
+      <polygon class="gon" points="304.37 113.36 229.14 205.11 350.83 169.42 304.37 113.36" fill="#49453a"/>
+      <polygon class="gon" points="248.27 41.47 262.92 74.9 323.46 55.84 248.27 41.47" fill="#5a5c57"/>
+      <polygon class="gon" points="262.92 74.9 281.66 93.1 323.46 55.84 262.92 74.9" fill="#181913"/>
+      <polygon class="gon" points="288.81 267.87 319.23 288.42 327.71 284.87 288.81 267.87" fill="#bbb6a3"/>
+      <polygon class="gon" points="281.66 93.1 304.37 113.36 323.46 55.84 281.66 93.1" fill="#403f3a"/>
+      <polygon class="gon" points="281.66 93.1 229.14 205.11 304.37 113.36 281.66 93.1" fill="#797363"/>
+      <polygon class="gon" points="315.84 406.71 333.9 433.52 387.18 402.86 315.84 406.71" fill="#908d7e"/>
+      <polygon class="gon" points="342.4 367.07 315.84 406.71 387.18 402.86 342.4 367.07" fill="#8f8d80"/>
+      <polygon class="gon" points="333.9 433.52 376.86 437.42 387.18 402.86 333.9 433.52" fill="#877d62"/>
+      <polygon class="gon" points="304.37 113.36 350.83 169.42 344.44 79.43 304.37 113.36" fill="#2e2f2a"/>
+      <polygon class="gon" points="323.46 55.84 304.37 113.36 344.44 79.43 323.46 55.84" fill="#363833"/>
+      <polygon class="gon" points="471.7 98.02 466.06 95.4 479.43 106.79 471.7 98.02" fill="#252a2d"/>
+      <polygon class="gon" points="229.14 205.11 266.43 241.5 350.83 169.42 229.14 205.11" fill="#514a3a"/>
+      <polygon class="gon" points="288.81 267.87 327.71 284.87 350.83 169.42 288.81 267.87" fill="#787566"/>
+      <polygon class="gon" points="266.43 241.5 288.81 267.87 350.83 169.42 266.43 241.5" fill="#6e6a5e"/>
+      <polygon class="gon" points="466.06 95.4 412.7 109.27 479.43 106.79 466.06 95.4" fill="#2e3839"/>
+      <polygon class="gon" points="479.43 106.79 424.5 216.6 409.09 147.59 479.43 106.79" fill="#1c1c1c"/>
+      <polygon class="gon" points="409.09 147.59 404.09 152.93 424.5 216.6 409.09 147.59" fill="#1c1c1c"/>
+      <polygon class="gon" points="442.42 455.64 445.81 473.07 449.34 473.03 442.42 455.64" fill="#4a4436"/>
+      <polygon class="gon" points="387.18 402.86 387.66 401.43 413.51 370.22 387.18 402.86" fill="#db9b99"/>
+      <polygon class="gon" points="348.87 309.98 432.43 344.14 437.47 332.7 348.87 309.98" fill="#99917a"/>
+      <polygon class="gon" points="449.34 473.03 445.81 473.07 455.5 490.44 449.34 473.03" fill="#24150e"/>
+      <polygon class="gon" points="342.4 367.07 387.18 402.86 413.51 370.22 342.4 367.07" fill="#a79d84"/>
+      <polygon class="gon" points="348.87 309.98 342.4 367.07 413.51 370.22 348.87 309.98" fill="#999481"/>
+      <polygon class="gon" points="405.81 409.57 396.64 423.9 428.94 424.18 405.81 409.57" fill="#241802"/>
+      <polygon class="gon" points="396.64 423.9 414.32 441.21 428.94 424.18 396.64 423.9" fill="#847151"/>
+      <polygon class="gon" points="405.81 409.57 428.94 424.18 429.35 418 405.81 409.57" fill="#4d3720"/>
+      <polygon class="gon" points="427.93 469.84 435.46 489.98 445.81 473.07 427.93 469.84" fill="#606056"/>
+      <polygon class="gon" points="428.94 424.18 414.32 441.21 437.5 439.42 428.94 424.18" fill="#6d624c"/>
+      <polygon class="gon" points="429.35 418 428.94 424.18 437.5 439.42 429.35 418" fill="#2d1f12"/>
+      <polygon class="gon" points="427.93 469.84 445.81 473.07 442.42 455.64 427.93 469.84" fill="#767154"/>
+      <polygon class="gon" points="424.5 216.6 425.52 225.5 435.91 238.42 424.5 216.6" fill="#918f83"/>
+      <polygon class="gon" points="445.81 473.07 435.46 489.98 455.5 490.44 445.81 473.07" fill="#dfcaab"/>
+      <polygon class="gon" points="466.06 95.4 514.18 92.63 533.39 81.87 466.06 95.4" fill="#222a2d"/>
+      <polygon class="gon" points="348.87 309.98 413.51 370.22 432.43 344.14 348.87 309.98" fill="#9d977f"/>
+      <polygon class="gon" points="461.27 455.35 449.34 473.03 479.64 480.9 461.27 455.35" fill="#6e6b5c"/>
+      <polygon class="gon" points="344.44 79.43 350.83 169.42 386.29 97.67 344.44 79.43" fill="#1d1e19"/>
+      <polygon class="gon" points="323.46 55.84 344.44 79.43 386.29 97.67 323.46 55.84" fill="#222a2d"/>
+      <polygon class="gon" points="533.01 459.43 500.86 448.2 508.71 427.56 533.01 459.43" fill="#62625a"/>
+      <polygon class="gon" points="500.86 448.2 501.64 476.43 533.01 459.43 500.86 448.2" fill="#62625a"/>
+      <polygon class="gon" points="442.42 455.64 449.34 473.03 461.27 455.35 442.42 455.64" fill="#7b735f"/>
+      <polygon class="gon" points="449.34 473.03 455.5 490.44 479.64 480.9 449.34 473.03" fill="#64564d"/>
+      <polygon class="gon" points="405.1 139.67 404.09 152.93 409.09 147.59 405.1 139.67" fill="#5b5c54"/>
+      <polygon class="gon" points="402.39 138.75 405.1 139.67 412.7 109.27 402.39 138.75" fill="#5e605d"/>
+      <polygon class="gon" points="425.52 225.5 348.87 309.98 435.91 238.42 425.52 225.5" fill="#9f947e"/>
+      <polygon class="gon" points="402.39 138.75 404.09 152.93 405.1 139.67 402.39 138.75" fill="#777a73"/>
+      <polygon class="gon" points="350.83 169.42 391.15 172.27 402.39 138.75 350.83 169.42" fill="#41423c"/>
+      <polygon class="gon" points="391.15 172.27 404.09 152.93 402.39 138.75 391.15 172.27" fill="#41423a"/>
+      <polygon class="gon" points="386.29 97.67 350.83 169.42 402.39 138.75 386.29 97.67" fill="#4c4d48"/>
+      <polygon class="gon" points="327.71 284.87 348.87 309.98 425.52 225.5 327.71 284.87" fill="#9d9483"/>
+      <polygon class="gon" points="350.83 169.42 327.71 284.87 425.52 225.5 350.83 169.42" fill="#6a6454"/>
+      <polygon class="gon" points="350.83 169.42 425.52 225.5 424.5 216.6 350.83 169.42" fill="#5b5d52"/>
+      <polygon class="gon" points="424.5 216.6 391.15 172.27 404.09 152.93 424.5 216.6" fill="#595a55"/>
+      <polygon class="gon" points="391.15 172.27 350.83 169.42 424.5 216.6 391.15 172.27" fill="#595a55"/>
+      <polygon class="gon" points="386.29 97.67 402.39 138.75 412.7 109.27 386.29 97.67" fill="#141615"/>
+      <polygon class="gon" points="461.27 455.35 479.64 480.9 475.17 456.05 461.27 455.35" fill="#737568"/>
+      <polygon class="gon" points="348.87 309.98 437.47 332.7 435.91 238.42 348.87 309.98" fill="#6f644e"/>
+      <polygon class="gon" points="405.1 139.67 409.09 147.59 412.7 109.27 405.1 139.67" fill="#636562"/>
+      <polygon class="gon" points="500.86 448.2 501.64 476.43 475.17 456.05 500.86 448.2" fill="#6a685c"/>
+      <polygon class="gon" points="475.17 456.05 479.64 480.9 501.64 476.43 475.17 456.05" fill="#6a685c"/>
+      <polygon class="gon" points="475.17 456.05 500.86 448.2 508.71 427.56 475.17 456.05" fill="#6a685c"/>
+      <polygon class="gon" points="386.29 97.67 412.7 109.27 466.06 95.4 386.29 97.67" fill="#222a2d"/>
+      <polygon class="gon" points="435.91 238.42 437.47 332.7 477.57 261.07 435.91 238.42" fill="#ada080"/>
+      <polygon class="gon" points="424.5 216.6 435.91 238.42 477.57 261.07 424.5 216.6" fill="#83806f"/>
+      <polygon class="gon" points="412.7 109.27 409.09 147.59 479.43 106.79 412.7 109.27" fill="#212320"/>
+      <polygon class="gon" points="471.7 98.02 479.43 106.79 482.75 106.58 471.7 98.02" fill="#131416"/>
+      <polygon class="gon" points="564.52 438.4 508.71 427.56 545.49 376.83 564.52 438.4" fill="#5e6458"/>
+      <polygon class="gon" points="508.71 427.56 533.01 459.43 564.52 438.4 508.71 427.56" fill="#5e6458"/>
+      <polygon class="gon" points="479.43 106.79 424.5 216.6 482.75 106.58 479.43 106.79" fill="#0d0f0e"/>
+      <polygon class="gon" points="424.5 216.6 477.57 261.07 482.75 106.58 424.5 216.6" fill="#55554b"/>
+      <polygon class="gon" points="477.57 261.07 437.47 332.7 536.35 316.68 477.57 261.07" fill="#aa9776"/>
+      <polygon class="gon" points="514.18 92.63 519.21 97.77 519.46 96.54 514.18 92.63" fill="#151714"/>
+      <polygon class="gon" points="615.57 89.87 597.05 125.25 632.97 156.85 615.57 89.87" fill="#0c0e0d"/>
+      <polygon class="gon" points="466.06 95.4 471.7 98.02 514.18 92.63 466.06 95.4" fill="#0c0d12"/>
+      <polygon class="gon" points="514.18 92.63 519.46 96.54 533.39 81.87 514.18 92.63" fill="#222a2d"/>
+      <polygon class="gon" points="471.7 98.02 482.75 106.58 514.18 92.63 471.7 98.02" fill="#050b0b"/>
+      <polygon class="gon" points="514.18 92.63 482.75 106.58 519.21 97.77 514.18 92.63" fill="#090d0e"/>
+      <polygon class="gon" points="562.49 98.87 584.63 192.01 598.03 160.73 562.49 98.87" fill="#2f2f2d"/>
+      <polygon class="gon" points="477.57 261.07 560.19 251.25 568.13 223.25 477.57 261.07" fill="#706955"/>
+      <polygon class="gon" points="482.75 106.58 477.57 261.07 568.13 223.25 482.75 106.58" fill="#4b4b41"/>
+      <polygon class="gon" points="559.41 96.88 562.49 98.87 563.27 92.51 559.41 96.88" fill="#0c0e0d"/>
+      <polygon class="gon" points="477.57 261.07 536.35 316.68 560.19 251.25 477.57 261.07" fill="#9e9075"/>
+      <polygon class="gon" points="584.63 192.01 568.13 223.25 597.16 209.93 584.63 192.01" fill="#6a6957"/>
+      <polygon class="gon" points="597.16 209.93 560.19 251.25 627.29 324.55 597.16 209.93" fill="#928b7b"/>
+      <polygon class="gon" points="533.39 81.87 559.41 96.88 563.27 92.51 533.39 81.87" fill="#15161a"/>
+      <polygon class="gon" points="536.35 316.68 532.98 336.63 601.58 353.82 536.35 316.68" fill="#868571"/>
+      <polygon class="gon" points="583.18 384.86 564.52 438.4 545.49 376.83 583.18 384.86" fill="#6b6a58"/>
+      <polygon class="gon" points="532.98 336.63 545.49 376.83 601.58 353.82 532.98 336.63" fill="#6b6a58"/>
+      <polygon class="gon" points="598.03 160.73 597.16 209.93 632.97 156.85 598.03 160.73" fill="#404139"/>
+      <polygon class="gon" points="545.49 376.83 583.18 384.86 601.58 353.82 545.49 376.83" fill="#6b6a58"/>
+      <polygon class="gon" points="562.49 98.87 519.46 96.54 584.63 192.01 562.49 98.87" fill="#1d1d1b"/>
+      <polygon class="gon" points="568.13 223.25 560.19 251.25 597.16 209.93 568.13 223.25" fill="#79745f"/>
+      <polygon class="gon" points="533.39 81.87 519.46 96.54 559.41 96.88 533.39 81.87" fill="#222a2d"/>
+      <polygon class="gon" points="559.41 96.88 519.46 96.54 562.49 98.87 559.41 96.88" fill="#0b0c0e"/>
+      <polygon class="gon" points="563.27 92.51 562.49 98.87 584.87 90.81 563.27 92.51" fill="#191d1c"/>
+      <polygon class="gon" points="519.46 96.54 519.21 97.77 584.63 192.01 519.46 96.54" fill="#080808"/>
+      <polygon class="gon" points="482.75 106.58 568.13 223.25 584.63 192.01 482.75 106.58" fill="#403f3a"/>
+      <polygon class="gon" points="519.21 97.77 482.75 106.58 584.63 192.01 519.21 97.77" fill="#0e0e0e"/>
+      <polygon class="gon" points="533.39 81.87 563.27 92.51 584.87 90.81 533.39 81.87" fill="#0e0e0e"/>
+      <polygon class="gon" points="597.05 125.25 598.03 160.73 632.97 156.85 597.05 125.25" fill="#121411"/>
+      <polygon class="gon" points="655.94 364.4 733.4 433.76 731.11 349.08 655.94 364.4" fill="#8e8773"/>
+      <polygon class="gon" points="560.19 251.25 536.35 316.68 627.29 324.55 560.19 251.25" fill="#7a786b"/>
+      <polygon class="gon" points="536.35 316.68 601.58 353.82 627.29 324.55 536.35 316.68" fill="#837c6a"/>
+      <polygon class="gon" points="584.63 192.01 597.16 209.93 598.03 160.73 584.63 192.01" fill="#6c6e63"/>
+      <polygon class="gon" points="584.87 90.81 562.49 98.87 597.05 125.25 584.87 90.81" fill="#1b1b19"/>
+      <polygon class="gon" points="562.49 98.87 598.03 160.73 597.05 125.25 562.49 98.87" fill="#1a1a1a"/>
+      <polygon class="gon" points="627.29 324.55 641.56 365.33 655.94 364.4 627.29 324.55" fill="#9b8e6e"/>
+      <polygon class="gon" points="738.84 472.16 733.83 476.84 757.22 484.01 738.84 472.16" fill="#a39d87"/>
+      <polygon class="gon" points="584.87 90.81 597.05 125.25 615.57 89.87 584.87 90.81" fill="#292b28"/>
+      <polygon class="gon" points="533.39 81.87 584.87 90.81 615.57 89.87 533.39 81.87" fill="#1e1818"/>
+      <polygon class="gon" points="843.74 210.33 875.33 250.64 896.89 197.39 843.74 210.33" fill="#524c3c"/>
+      <polygon class="gon" points="678.59 106.06 699.25 114.2 707.56 112.27 678.59 106.06" fill="#1e2221"/>
+      <polygon class="gon" points="808.58 187.45 791.15 192.22 830.49 236.46 808.58 187.45" fill="#5e5848"/>
+      <polygon class="gon" points="711.59 507.8 727.25 497.07 733.83 476.84 711.59 507.8" fill="#0f0900"/>
+      <polygon class="gon" points="673.5 102.04 632.97 156.85 678.59 106.06 673.5 102.04" fill="#272725"/>
+      <polygon class="gon" points="727.25 497.07 711.59 507.8 743.58 507.89 727.25 497.07" fill="#8e7557"/>
+      <polygon class="gon" points="727.25 497.07 743.58 507.89 757.22 484.01 727.25 497.07" fill="#8c8c84"/>
+      <polygon class="gon" points="733.83 476.84 738.84 472.16 733.4 433.76 733.83 476.84" fill="#b19d82"/>
+      <polygon class="gon" points="615.57 89.87 632.97 156.85 673.5 102.04 615.57 89.87" fill="#0c0c0e"/>
+      <polygon class="gon" points="733.4 433.76 738.84 472.16 757.22 484.01 733.4 433.76" fill="#a39481"/>
+      <polygon class="gon" points="733.83 476.84 727.25 497.07 757.22 484.01 733.83 476.84" fill="#97907c"/>
+      <polygon class="gon" points="627.29 324.55 655.94 364.4 731.11 349.08 627.29 324.55" fill="#817962"/>
+      <polygon class="gon" points="707.56 112.27 699.25 114.2 711.93 131.91 707.56 112.27" fill="#191f1d"/>
+      <polygon class="gon" points="699.25 114.2 678.59 106.06 711.93 131.91 699.25 114.2" fill="#0c0e0d"/>
+      <polygon class="gon" points="732.36 174.45 732.24 190.88 733.56 173.16 732.36 174.45" fill="#7f7c69"/>
+      <polygon class="gon" points="673.5 102.04 678.59 106.06 707.56 112.27 673.5 102.04" fill="#232524"/>
+      <polygon class="gon" points="711.93 131.91 737.13 141.05 736.32 129.63 711.93 131.91" fill="#373735"/>
+      <polygon class="gon" points="678.59 106.06 632.97 156.85 711.93 131.91 678.59 106.06" fill="#3a3a3c"/>
+      <polygon class="gon" points="597.16 209.93 627.29 324.55 732.24 190.88 597.16 209.93" fill="#7a725d"/>
+      <polygon class="gon" points="707.56 112.27 711.93 131.91 736.32 129.63 707.56 112.27" fill="#252527"/>
+      <polygon class="gon" points="632.97 156.85 597.16 209.93 732.24 190.88 632.97 156.85" fill="#838379"/>
+      <polygon class="gon" points="791.15 192.22 784.75 245.97 830.49 236.46 791.15 192.22" fill="#6e6046"/>
+      <polygon class="gon" points="731.11 349.08 733.4 433.76 777.62 411.79 731.11 349.08" fill="#736f63"/>
+      <polygon class="gon" points="733.4 433.76 757.22 484.01 777.62 411.79 733.4 433.76" fill="#9a9c87"/>
+      <polygon class="gon" points="711.93 131.91 632.97 156.85 732.36 174.45 711.93 131.91" fill="#5f605a"/>
+      <polygon class="gon" points="632.97 156.85 732.24 190.88 732.36 174.45 632.97 156.85" fill="#808078"/>
+      <polygon class="gon" points="733.56 173.16 732.24 190.88 745.27 201.59 733.56 173.16" fill="#8d8a7b"/>
+      <polygon class="gon" points="732.24 190.88 627.29 324.55 745.27 201.59 732.24 190.88" fill="#978b73"/>
+      <polygon class="gon" points="627.29 324.55 731.11 349.08 745.27 201.59 627.29 324.55" fill="#a69b85"/>
+      <polygon class="gon" points="711.93 131.91 732.36 174.45 737.13 141.05 711.93 131.91" fill="#434341"/>
+      <polygon class="gon" points="732.36 174.45 733.56 173.16 737.13 141.05 732.36 174.45" fill="#696b68"/>
+      <polygon class="gon" points="768.46 183.39 745.27 201.59 779.47 194.43 768.46 183.39" fill="#4e483c"/>
+      <polygon class="gon" points="733.56 173.16 745.27 201.59 768.46 183.39 733.56 173.16" fill="#47473b"/>
+      <polygon class="gon" points="768.46 183.39 768.79 182.87 767.37 137.21 768.46 183.39" fill="#3f403b"/>
+      <polygon class="gon" points="733.56 173.16 768.46 183.39 767.37 137.21 733.56 173.16" fill="#505046"/>
+      <polygon class="gon" points="737.13 141.05 733.56 173.16 767.37 137.21 737.13 141.05" fill="#0c0d08"/>
+      <polygon class="gon" points="783.23 247.95 784.75 245.97 779.47 194.43 783.23 247.95" fill="#866b4e"/>
+      <polygon class="gon" points="707.56 112.27 736.32 129.63 767.37 137.21 707.56 112.27" fill="#191718"/>
+      <polygon class="gon" points="788.97 150.58 768.79 182.87 795.28 180.29 788.97 150.58" fill="#262624"/>
+      <polygon class="gon" points="736.32 129.63 737.13 141.05 767.37 137.21 736.32 129.63" fill="#393a35"/>
+      <polygon class="gon" points="768.79 182.87 768.46 183.39 779.47 194.43 768.79 182.87" fill="#2f2e29"/>
+      <polygon class="gon" points="745.27 201.59 783.23 247.95 779.47 194.43 745.27 201.59" fill="#6d5c42"/>
+      <polygon class="gon" points="784.75 245.97 783.23 247.95 802.77 258.09 784.75 245.97" fill="#e1d2ab"/>
+      <polygon class="gon" points="784.75 245.97 802.77 258.09 830.49 236.46 784.75 245.97" fill="#baa37a"/>
+      <polygon class="gon" points="788.97 150.58 795.28 180.29 808.58 187.45 788.97 150.58" fill="#1b1c16"/>
+      <polygon class="gon" points="779.47 194.43 784.75 245.97 791.15 192.22 779.47 194.43" fill="#4b4430"/>
+      <polygon class="gon" points="767.37 137.21 768.79 182.87 788.97 150.58 767.37 137.21" fill="#23241f"/>
+      <polygon class="gon" points="808.58 187.45 843.74 210.33 851.31 166.85 808.58 187.45" fill="#1b1c14"/>
+      <polygon class="gon" points="788.97 150.58 808.58 187.45 851.31 166.85 788.97 150.58" fill="#1b1b19"/>
+      <polygon class="gon" points="768.79 182.87 779.47 194.43 795.28 180.29 768.79 182.87" fill="#53544e"/>
+      <polygon class="gon" points="779.47 194.43 791.15 192.22 795.28 180.29 779.47 194.43" fill="#1e1d18"/>
+      <polygon class="gon" points="830.49 236.46 802.77 258.09 847.32 280.97 830.49 236.46" fill="#c4ab83"/>
+      <polygon class="gon" points="795.28 180.29 791.15 192.22 808.58 187.45 795.28 180.29" fill="#4f4f47"/>
+      <polygon class="gon" points="808.58 187.45 830.49 236.46 843.74 210.33 808.58 187.45" fill="#5e5745"/>
+      <polygon class="gon" points="767.37 137.21 788.97 150.58 851.31 166.85 767.37 137.21" fill="#3d3533"/>
+      <polygon class="gon" points="851.31 166.85 843.74 210.33 896.89 197.39 851.31 166.85" fill="#414139"/>
+      <polygon class="gon" points="830.49 236.46 847.32 280.97 859.79 266.65 830.49 236.46" fill="#bda77e"/>
+      <polygon class="gon" points="875.33 250.64 861.92 266.64 952.64 262.03 875.33 250.64" fill="#766b4d"/>
+      <polygon class="gon" points="859.79 266.65 847.32 280.97 861.92 266.64 859.79 266.65" fill="#dc8482"/>
+      <polygon class="gon" points="830.49 236.46 859.79 266.65 875.33 250.64 830.49 236.46" fill="#af9775"/>
+      <polygon class="gon" points="859.79 266.65 861.92 266.64 875.33 250.64 859.79 266.65" fill="#a99978"/>
+      <polygon class="gon" points="843.74 210.33 830.49 236.46 875.33 250.64 843.74 210.33" fill="#5e4f3a"/>
+      <polygon class="gon" points="995.48 191.68 972.07 211.33 1008 211.56 995.48 191.68" fill="#424240"/>
+      <polygon class="gon" points="972.07 211.33 970.4 213.42 1008 211.56 972.07 211.33" fill="#32342f"/>
+      <polygon class="gon" points="861.92 266.64 847.32 280.97 952.64 262.03 861.92 266.64" fill="#ac9e81"/>
+      <polygon class="gon" points="896.89 197.39 875.33 250.64 952.64 262.03 896.89 197.39" fill="#524a35"/>
+      <polygon class="gon" points="896.89 197.39 952.64 262.03 970.4 213.42 896.89 197.39" fill="#444236"/>
+      <polygon class="gon" points="896.89 197.39 970.4 213.42 972.07 211.33 896.89 197.39" fill="#5a4c43"/>
+      <polygon class="gon" points="970.4 213.42 952.64 262.03 1008 211.56 970.4 213.42" fill="#45453d"/>
+    </svg>
   </div>
+  <h2>404</h2>
+  <h1>Not found.</h1>
+
+  <p>
+    Looks like you're trying to find something that no longer exists here.
+    If you need support, please mention "404-Not Found".
+  </p>
+
+  <span class="go-back"><a href="/">Go to our home page.</a></span>
+</div>
+<script>
+  $(window).load(function() {
+    var time = 1,
+      tl = new TimelineMax({
+        delay: 0.5,
+        repeat: 0,
+      }),
+      gons = $('.gon');
+    tl.timeScale(25);
+    function randy(min, max) {
+      return Math.floor(Math.random() * (1 + max - min) + min);
+    }
+    for (var i = 0; i < gons.length; i++) {
+      tl.set(gons[i], {
+        x: randy((-400*(400/i))-300, (400*(400/i))+300),
+        rotationY: randy(-400*(i/100), 400*(i/100)),
+        rotationZ: randy(-400*(i/100), 400*(i/100)),
+        y: randy((-400*(300/i))-300, (400*(300/i))+300),
+        rotation: randy(-400*(i/100), 400*(i/100)),
+        rotationX: randy(-400*(i/100), 400*(i/100)),
+        opacity: 0
+      });
+    }
+    for (var i = 0; i < gons.length; i++) {
+      tl.to(gons[i], time*2 + 100, {
+        rotationY: 0,
+        rotationZ: 0,
+        x: 0,
+        opacity: 1,
+        ease: Sine.easeInOut
+      }, (i/5));
+    }
+    for (var i = 0; i < gons.length; i++) {
+      tl.to(gons[i], time + 100, {
+        rotation: 0,
+        rotationX: 0,
+        y: 0,
+        ease: Sine.easeInOut
+      }, (i/5));
+    }
+    for (var i = 0; i < gons.length; i++) {
+      tl.to(gons[i], time + 100, {
+        y: randy((-400*(i/200))-50, (400*(i/200))+50),
+        rotation: randy(-400*(i/100), 400*(i/100)),
+        rotationX: randy(-400*(i/100), 400*(i/100)),
+        ease: Sine.easeInOut
+      }, time + (gons.length/5) + (i/5)*2 + 100);
+    }
+    for (var i = 0; i < gons.length; i++) {
+      tl.to(gons[i], time*2 + 100, {
+        x: randy((-400*(i/50))-50, (400*(i/50))+50),
+        rotationY: randy(-400*(i/100), 400*(i/100)),
+        rotationZ: randy(-400*(i/100), 400*(i/100)),
+        opacity: 0,
+        ease: Sine.easeInOut
+      }, (time * 2) + (gons.length/5) + (i/5)*2 + 100);
+    }
+  });
+</script>
 </body>
 </html>
