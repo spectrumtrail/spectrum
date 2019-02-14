@@ -8,6 +8,7 @@ gem "pg", ">= 0.18", "< 2.0"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "puma", "~> 3.11"
 gem "devise"
+gem "barnes"
 
 # Asset Storage
 gem "aws-sdk-s3", require: false
@@ -33,6 +34,7 @@ gem "stripe"
 
 # Background Processing
 gem "redis", "~> 4.0"
+gem "sidekiq"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

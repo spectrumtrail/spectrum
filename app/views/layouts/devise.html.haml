@@ -9,6 +9,15 @@
     = javascript_include_tag "application", "data-turbolinks-track": "reload"
     = Gon::Base.render_data
   %body{class: "application #{controller_name}", id: "#{controller_name}_#{action_name}"}
-    %main.main{style: "min-height: 100vh;"}
+    %main.main.with-topo-background{style: "min-height: 100vh; background-color: linen"}
       = render partial: 'flash_messages', flash: flash
-      = yield
+      .container.d-flex.align-items-center
+        .col
+          .row.text-center.text-md-left.justify-content-center.mt-4
+            .col-sm-12.col-md-8.col-lg-4
+              .card.bg-tertiary.text-white
+                .card-body
+                  %img.img-fluid{src: asset_path("logo-no-text"), style: "max-width: 8rem;"}
+                  = yield
+                .card-footer.bg-tertiary
+                  = render "devise/shared/links"

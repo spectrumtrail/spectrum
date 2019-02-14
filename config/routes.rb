@@ -16,10 +16,11 @@ Rails.application.routes.draw do
   resources :series, only: [:show]
 
   devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations',
-    invitations: 'users/invitations',
-    passwords: 'users/passwords',
+    confirmations: "users/confirmations",
+    passwords: "users/passwords",
+    registrations: "users/registrations",
+    sessions: "users/sessions",
+    unlocks: "users/unlocks",
   }
 
   namespace :admin do

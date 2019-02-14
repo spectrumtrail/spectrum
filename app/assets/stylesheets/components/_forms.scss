@@ -101,3 +101,21 @@ select.form-control-xl {
         }
     }
 }
+
+.form-tertiary {
+    .form-control {
+        color: color-yiq(theme-color("tertiary"));
+        background-color: lighten(theme-color("tertiary"), 12%);
+        border: $input-border-width solid darken(theme-color("tertiary"), 12%);
+
+        &:focus {
+          background-color: darken(theme-color("tertiary"), 16%);
+          border: $input-border-width solid lighten(theme-color("tertiary"), 16%);
+        }
+
+        // Placeholder
+        &::placeholder {
+          color: transparentize(color-yiq(theme-color("tertiary")), .2);
+        }
+    }
+}
