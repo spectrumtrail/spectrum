@@ -32,7 +32,6 @@ class RegistrationStepsController < ApplicationController
   def handle_result_for(result)
     if result.success?
       update_steps_completed
-      flash[result.flash_status] = result.flash_message
       render_wizard @registration
     else
       @card_errors = result.message

@@ -22,7 +22,9 @@
             %h4 Start your Registration for #{@event.name}
             %p
               We are so excited for you to join us! Be sure to
-              %a{href: "#"} sign in
+              %a{href: new_user_session_path} sign in
               if you have an account!
+              %small.text-muted
+                (Want an account? You can create one after you complete registration!)
             %hr
             = render "form"

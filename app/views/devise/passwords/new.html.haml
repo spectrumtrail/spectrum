@@ -1,11 +1,14 @@
-%h2 Forgot your password?
-= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+%h3.heading.h3.text-white.pt-3
+  Reset Password
+%h6.text-white.pb-3
+  Forgot your password? Use this form to request a reset.
+= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "form-tertiary" }) do |f|
   = f.error_notification
   .form-inputs
     = f.input :email,
       required: true,
       autofocus: true,
-      input_html: { autocomplete: "email" }
+      input_html: { autocomplete: "email" },
+      hint: "If your email matches, we will send you a magic reset link."
   .form-actions
-    = f.button :submit, "Send me reset password instructions"
-= render "devise/shared/links"
+    = f.button :submit, "Send reset password link", class: "btn btn-block btn-success"

@@ -1,4 +1,4 @@
-%section.slice.slice-lg
+%section.slice.slice-lg.with-topo-background
   .container
     .row
       .col-sm-12.col-md-4.col-lg-3.d-none.d-md-block
@@ -7,11 +7,29 @@
           context_classes: "sticky-top sticky-top-offset-6",
           show_footer: false
       .col-sm-12.col-md-8.col-lg-6
-        .card.border-primary
-          .card-header.bg-primary
-
+        .card.border-success
           .card-body
-            %h4 Confirmed!
-            - @registration.attributes.each do |attr, val|
-              %strong= attr
-              %p= val
+            .row
+              .col.text-center
+                = animated_check_icon
+                %h4.heading.h4.text-success Registration Confirmed
+                %h5.lead We are so excited to see you at #{@event.name}!
+                %p We will send a confirmation email to #{@registration.participant.email} shortly!
+            .row
+              .col
+                = simple_form_for(User.new, as: :user, url: registration_path(:user)) do |f|
+                  = f.error_notification
+                  .form-inputs
+                    = f.input :email,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email", value: @registration.participant.email, readonly: true }
+                    = f.input :password,
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" }
+                    = f.input :password_confirmation,
+                      required: true,
+                      input_html: { autocomplete: "new-password" }
+                  .form-actions
+                    = f.button :submit, "Create My Account", class: "btn btn-block btn-success"

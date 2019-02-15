@@ -1,5 +1,9 @@
-%h2 Change your password
-= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+%h3.heading.h3.text-white.pt-3
+  Change Password
+%h6.text-white.pb-3
+  Use this form to change your password.
+
+= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "form-tertiary" }) do |f|
   = f.error_notification
   = f.input :reset_password_token, as: :hidden
   = f.full_error :reset_password_token
@@ -12,5 +16,4 @@
       input_html: { autocomplete: "new-password" }
     = f.input :password_confirmation, label: "Confirm your new password", required: true
   .form-actions
-    = f.button :submit, "Change my password"
-= render "devise/shared/links"
+    = f.button :submit, "Change my password", class: "btn btn-block btn-success"

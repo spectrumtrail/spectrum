@@ -1,0 +1,38 @@
+svg.animated-success-circle{
+  width: 33%;
+}
+
+path.animated-success-circle, polyline.animated-success-circle{
+  fill: none;
+  stroke: $success;
+  stroke-width: 20;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.circle{
+  stroke-dasharray: 1260;
+  animation: circle 1s ease-out ;
+}
+
+.check{
+  stroke-dasharray: 430;
+  animation: check 1s ease-in ;
+}
+
+@keyframes circle {
+    0%, 40% {
+        stroke-dashoffset: -1260;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+@keyframes check {
+    0% {
+        stroke-dashoffset: 430;
+    }
+    40% {
+        stroke-dashoffset: 0;
+    }
+}

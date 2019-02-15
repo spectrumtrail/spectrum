@@ -1,5 +1,8 @@
-%h2 Sign up
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+%h3.heading.h3.text-white.pt-3
+  Sign Up
+%h6.text-white.pb-3
+  Creating an account makes it easier to register for future races!
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-tertiary" }) do |f|
   = f.error_notification
   .form-inputs
     = f.input :email,
@@ -14,5 +17,4 @@
       required: true,
       input_html: { autocomplete: "new-password" }
   .form-actions
-    = f.button :submit, "Sign up"
-= render "devise/shared/links"
+    = f.button :submit, "Sign up now!", class: "btn btn-block btn-success"
