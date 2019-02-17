@@ -14,8 +14,8 @@
           as: :radio_buttons,
           label_method: :name_with_event_and_price,
           label: "Select a Race"
-        = ff.input :first_name
-        = ff.input :last_name
+        = ff.input :first_name, label: "First Name"
+        = ff.input :last_name, label: "Last Name"
         = ff.input :email
 
     = f.input :keep_private, as: :radio_buttons, label: "Do you want your name to show up on the public starting list for the race?"
