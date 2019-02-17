@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_13_070746) do
+ActiveRecord::Schema.define(version: 2019_02_17_211335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,8 @@ ActiveRecord::Schema.define(version: 2019_02_13_070746) do
     t.string "emergency_contact_name"
     t.string "emergency_contact_phone"
     t.boolean "accepts_waiver"
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_participants_on_event_id"
     t.index ["race_id"], name: "index_participants_on_race_id"
     t.index ["registration_id"], name: "index_participants_on_registration_id"
   end
@@ -226,6 +228,7 @@ ActiveRecord::Schema.define(version: 2019_02_13_070746) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "events", "locations"
+  add_foreign_key "participants", "events"
   add_foreign_key "participants", "races"
   add_foreign_key "participants", "registrations"
   add_foreign_key "payments", "registrations"

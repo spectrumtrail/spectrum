@@ -1,7 +1,7 @@
 class Participant < ApplicationRecord
   belongs_to :registration
+  belongs_to :event
   belongs_to :race
-  has_one :event, through: :race
 
   validates :race, presence: true
   validates :first_name, presence: true
@@ -26,6 +26,10 @@ class Participant < ApplicationRecord
   validates :accepts_waiver, acceptance: true, if: :validate_waiver?
 
   delegate :step_to_validate, to: :registration
+
+  def full_name
+    "#{first_name} #{last_name}".titleize
+  end
 
   private
 
