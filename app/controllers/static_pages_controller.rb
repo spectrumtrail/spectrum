@@ -1,17 +1,30 @@
 class StaticPagesController < ApplicationController
-  def home
-    @events = Event.is_active.order(:name)
+  layout :resolve_layout
+
+  def about
   end
 
-  def terms
+  def danger
+    render layout: nil
+  end
+
+  def home
+    @events = Event.is_active.order(:name)
   end
 
   def privacy
   end
 
-  def about
+  def terms
   end
 
-  def team
+  private
+
+  def resolve_layout
+    if action_name == "danger"
+      nil
+    else
+      "application"
+    end
   end
 end

@@ -24,8 +24,7 @@ class RegistrationStepsController < ApplicationController
 
   def check_token
     if @registration.token != registration_token
-      flash[:warning] = "Token submitted doesn't match this registration."
-      redirect_to new_event_registration_path(@event)
+      redirect_to danger_path
     end
   end
 
