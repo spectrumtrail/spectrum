@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     resource :dashboard, controller: 'dashboard'
     resources :events
     resources :locations
+    resources :participants
     resources :races
     resources :registrations
     resources :series
