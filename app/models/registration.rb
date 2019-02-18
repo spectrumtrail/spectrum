@@ -22,10 +22,6 @@ class Registration < ApplicationRecord
     billing_email ||= participant.email
   end
 
-  def complete?
-    step_to_validate == "complete"
-  end
-
   def paid?
     payment.present?
   end
