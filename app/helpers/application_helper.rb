@@ -9,6 +9,11 @@ module ApplicationHelper
     end
   end
 
+  def animated_check_icon
+    '<svg viewBox="-10 -10 500 500" class="animated-success-circle">
+      <path class="animated-success-circle circle" d="M877.28,335.72a203.17,203.17,0,0,1,37.86,118.1C915.14,565.26,823.44,657,712,657s-203.14-91.7-203.14-203.14S600.56,250.68,712,250.68a203.21,203.21,0,0,1,144.67,60.53" transform="translate(-508.86 -250.68)"/><polyline class="check animated-success-circle" points="78.54 229.94 179.32 300.74 347.98 60.67"/>
+    </svg>'.html_safe
+  end
   def states_list
     [
       ["Alabama", "AL"],
@@ -103,11 +108,5 @@ module ApplicationHelper
         </svg>
       </div>
     ".html_safe
-  end
-
-  def animated_check_icon
-    '<svg viewBox="-10 -10 500 500" class="animated-success-circle">
-      <path class="animated-success-circle circle" d="M877.28,335.72a203.17,203.17,0,0,1,37.86,118.1C915.14,565.26,823.44,657,712,657s-203.14-91.7-203.14-203.14S600.56,250.68,712,250.68a203.21,203.21,0,0,1,144.67,60.53" transform="translate(-508.86 -250.68)"/><polyline class="check animated-success-circle" points="78.54 229.94 179.32 300.74 347.98 60.67"/>
-    </svg>'.html_safe
   end
 end
