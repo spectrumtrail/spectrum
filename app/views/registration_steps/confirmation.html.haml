@@ -1,4 +1,4 @@
-%section.slice.slice-lg.with-topo-background
+%section.slice.slice-lg
   .container
     .row
       .col-sm-12.col-md-4.col-lg-3.d-none.d-md-block
@@ -14,7 +14,23 @@
                 = animated_check_icon
                 %h4.heading.h4.text-success Registration Confirmed
                 %h5.lead We are so excited to see you at #{@event.name}!
-                %p We will send a confirmation email to #{@registration.participant.email} shortly!
+                %p
+                  We will send a confirmation email with all the details to
+                  %strong.text-tertiary
+                    #{@registration.participant.email}
+                  shortly!
+            %hr
+            .row
+              .col
+                %h4.heading.h4.text-center Create an Account
+                %p.text-center Join the official Spectrum Trail Racing community today to access:
+            .row
+              .col-sm-12.col-md-6
+                %ul
+                  %li Early Registration
+                  %li Rapid Registration
+                  %li Exclusive Gear
+                  %li Exclusive Offers
             .row
               .col
                 = simple_form_for(User.new, as: :user, url: registration_path(:user)) do |f|
@@ -23,6 +39,7 @@
                     = f.input :email,
                       required: true,
                       autofocus: true,
+                      hint: "(You can change this later)",
                       input_html: { autocomplete: "email", value: @registration.participant.email, readonly: true }
                     = f.input :password,
                       required: true,
