@@ -425,6 +425,19 @@ SimpleForm.setup do |config|
     time:          :vertical_multi_select
   }
 
+  # ---snip---
+  config.wrappers :vertical_input_group, tag: 'div', class: 'form-group' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label, class: 'form-control-label'
+
+    b.wrapper :input_group_div, tag: 'div', class:'input-group' do |append|
+      append.use :input, class: 'form-control'
+    end
+    b.use :hint,  wrap_with: { tag: 'small', class: 'text-muted form-text' }
+  end
+  # ---snip---
+
   # enable custom form wrappers
   # config.wrapper_mappings = {
   #   boolean:       :custom_boolean,
