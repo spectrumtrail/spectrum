@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_18_034421) do
+ActiveRecord::Schema.define(version: 2019_02_18_035150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,10 +42,12 @@ ActiveRecord::Schema.define(version: 2019_02_18_034421) do
     t.string "expiration_date"
     t.integer "percent"
     t.integer "cents"
-    t.boolean "check_email"
-    t.text "valid_emails"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "valid_emails"
+    t.integer "limit"
+    t.integer "times_used", default: 0
+    t.boolean "is_active", default: true
   end
 
   create_table "events", force: :cascade do |t|
@@ -175,7 +177,7 @@ ActiveRecord::Schema.define(version: 2019_02_18_034421) do
     t.text "steps_seen"
     t.text "steps_completed"
     t.boolean "accepts_refund_terms"
-    t.string "discount_code_text"
+    t.string "discount_code"
     t.index ["event_id"], name: "index_registrations_on_event_id"
     t.index ["token"], name: "index_registrations_on_token", unique: true
   end
