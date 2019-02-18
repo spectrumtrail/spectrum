@@ -8,6 +8,7 @@
 
   .form-inputs
     = f.simple_fields_for :participant do |ff|
+      = ff.input :event_id, as: :hidden, input_html: { value: @event.id }
       %fieldset
         = ff.association :race,
           collection: @event.races.active.by_starts_at,
