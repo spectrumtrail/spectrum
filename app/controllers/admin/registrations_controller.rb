@@ -2,7 +2,7 @@ class Admin::RegistrationsController < Admin::BaseController
   before_action :set_registration, only: [:edit, :update, :destroy, :show]
 
   def index
-    @registrations = Registration.all
+    @registrations = Registration.includes(:payment, :participant)
   end
 
   def show
