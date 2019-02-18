@@ -1,14 +1,13 @@
 %table.table
   %thead
     %tr
+      %th ID
       %th Event
       %th Race
-      %th Name
-      %th Email
-      %th Division
-      %th Mobile
+      %th Participant
+      %th Payment
       %th
 
   %tbody
     - @registrations.each do |registration|
-      = render "registration", registration: registration.decorate
+      = render "registration_row", registration: registration.decorate

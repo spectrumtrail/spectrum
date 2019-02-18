@@ -1,0 +1,6 @@
+%tr
+  %td= registration.id
+  %td= registration.event_name
+  %td= registration.race_name
+  %td= registration.participant_name
+  %td= registration.payment.try(:stripe_charge_id)
