@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   match '/danger' => "static_pages#danger", via: [:get]
 
   resources :attachments, only: [:destroy]
-  resources :locations, only: [:index, :show]
+  resources :discount_codes do
+    member do
+      get :validate
+    end
+  end
   resources :events, only: [:index, :show] do
     resources :registrations, only: [:new, :create, :edit, :update] do
       resources :steps, controller: "registration_steps"
