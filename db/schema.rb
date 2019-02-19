@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_18_035150) do
+ActiveRecord::Schema.define(version: 2019_02_19_052338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2019_02_18_035150) do
   create_table "discount_codes", force: :cascade do |t|
     t.string "code"
     t.string "description"
-    t.string "expiration_date"
     t.integer "percent"
     t.integer "cents"
     t.datetime "created_at", null: false
@@ -48,6 +47,7 @@ ActiveRecord::Schema.define(version: 2019_02_18_035150) do
     t.integer "limit"
     t.integer "times_used", default: 0
     t.boolean "is_active", default: true
+    t.datetime "expiration_date"
   end
 
   create_table "events", force: :cascade do |t|
