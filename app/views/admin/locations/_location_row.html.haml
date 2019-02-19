@@ -24,18 +24,10 @@
         class: "btn btn-sm btn-outline-primary" do
         %i.fa.fa-edit
         Edit
-      %button.btn.btn-sm.btn-outline-primary.dropdown-toggle.dropdown-toggle-split{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-        %span.sr-only Toggle Dropdown
-      .dropdown-menu
-        = link_to location_path(location),
-          class: "dropdown-item" do
-          %i.fa.fa-star
-          Promo Page
-        - unless location.events.any?
-          .dropdown-divider
-            = link_to admin_location_path(location),
-              method: :delete,
-              data: { confirm: "Are you sure?" },
-              class: "dropdown-item text-danger" do
-              %i.fas.fa-exclamation-triangle
-              Remove
+      - unless location.events.any?
+        = link_to admin_location_path(location),
+            method: :delete,
+            data: { confirm: "Are you sure?" },
+            class: "btn btn-sm btn-outline-danger" do
+          %i.fas.fa-exclamation-triangle
+          Remove
