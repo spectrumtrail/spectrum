@@ -22,9 +22,9 @@
         label: "Discount Code",
         hint: "If you have been given a discount code, enter it here!",
         wrapper: :vertical_input_group do
-        = f.input_field :discount_code, class: "form-control"
+        = f.input_field :discount_code, class: "form-control", input_html: { default: "" }
         .input-group-append
-          %button.btn.btn-sm.btn-primary#CheckDiscountCode{disabled: true, type: "button", data: { registration_id: @registration.id }} Check
+          %button.btn.btn-sm.btn-primary#CheckDiscountCodeButton{disabled: true, type: "button", data: { registration_id: @registration.id }} Check
       .form-group{class: @card_errors.present? ? "border-danger" : ""}
         %label{for: "card-element"}
           Input Your Card Details
@@ -51,36 +51,3 @@
     .text-center.text-muted.my-3
       %i.fa.fa-lock.text-success
       %i.fab.fa-stripe
-
-:coffeescript
-  $("#registration_discount_code").on "keyup change", ->
-    if $("#registration_discount_code").val().length > 3
-      $("#CheckDiscountCode").prop("disabled", false)
-    else
-      $("#CheckDiscountCode").prop("disabled", true)
-
-  $("#CheckDiscountCode").click (e) ->
-    code_input = $("#registration_discount_code")
-    code_input_hint = code_input.parents(".form-group").children("small")
-    code = code_input.val()
-    registration_id = $("#CheckDiscountCode").data("registration-id")
-
-    if code
-      $.get "/discount_codes/" + code + "/validate?registration_id" + registration_id, (data) ->
-        if data["valid"]
-          code_input.removeClass("is-invalid")
-          code_input.addClass("is-valid")
-          $("#CheckDiscountCode").addClass("btn-success").prop("disabled", true).html("Valid <i class='far fa-check-circle'></i>")
-          code_input.prop("disabled", true)
-          code_input_hint.removeClass("text-muted")
-          code_input_hint.removeClass("text-danger")
-          code_input_hint.addClass("text-success")
-          code_input_hint.html("Discount code applied!")
-          $("#FinalTotal").effect("highlight", {}, 3000).text("$129.00")
-        else
-          code_input_hint.removeClass("text-muted")
-          code_input_hint.addClass("text-danger")
-          code_input_hint.html("Discount code is invalid. Please retry")
-          code_input.addClass('is-invalid')
-    else
-    #  $("InvalidCodeEntry").show()

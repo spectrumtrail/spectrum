@@ -8,10 +8,52 @@ stripeTokenHandler = (token) ->
   form.appendChild tokenHiddenInput
   # Submit the form. This is the one that will have the token on it.
   form.submit()
-  return
+
+toggleVerifyButton = () ->
+  if $("#registration_discount_code").val().length > 3
+    $("#CheckDiscountCodeButton").prop("disabled", false)
+  else
+    $("#CheckDiscountCodeButton").prop("disabled", true)
 
 $ ->
   if $("#PaymentStepForm").length > 0
+    $("#registration_discount_code").on "keyup change", ->
+      toggleVerifyButton()
+
+    $("#CheckDiscountCodeButton").click (e) ->
+      $(this).prop("disabled", true) # prevent double click
+      code_input = $("#registration_discount_code")
+      code_input_hint = code_input.parents(".form-group").children("small")
+      code = code_input.val()
+      check_button = $(this)
+      registration_id = $("#CheckDiscountCodeButton").data("registration-id")
+
+      if code
+        $.get "/discount_codes/" + code + "/validate?registration_id=" + registration_id, (data) ->
+          if data["success"]
+            new_amount_in_dollars = data["new_total_in_cents"] / 100
+            formatted_new_amount_in_dollars = new_amount_in_dollars.toLocaleString 'en-US',
+              style: 'currency'
+              currency: 'USD'
+
+            code_input.removeClass("is-invalid")
+            code_input.addClass("is-valid")
+            code_input.prop("readonly", true)
+            code_input_hint.removeClass("text-muted")
+            code_input_hint.removeClass("text-danger")
+            code_input_hint.addClass("text-success")
+            code_input_hint.html("Discount code applied!")
+            check_button.addClass("btn-success")
+            check_button.prop("disabled", true)
+            check_button.html("Valid <i class='far fa-check-circle'></i>")
+            $("#FinalTotal").text(formatted_new_amount_in_dollars).addClass("text-success")
+          else
+            check_button.prop("disabled", false)
+            code_input_hint.removeClass("text-muted")
+            code_input_hint.addClass("text-danger")
+            code_input_hint.html("Hmmm... we don't recognize this code.")
+            code_input.addClass('is-invalid')
+
     form = document.getElementById("PaymentStepForm")
     submit_button = $("#stripe_button")
     terms_radio_inputs = $(".registration_accepts_refund_terms")
