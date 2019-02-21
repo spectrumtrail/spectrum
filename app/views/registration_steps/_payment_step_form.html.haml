@@ -18,11 +18,11 @@
         input_html: { id: "js-refund-terms-radio-input" }
     %fieldset
       %h4 Checkout
-      = f.input :discount_code,
+      = f.input :discount_code_text,
         label: "Discount Code",
         hint: "If you have been given a discount code, enter it here!",
         wrapper: :vertical_input_group do
-        = f.input_field :discount_code, class: "form-control", input_html: { default: "" }
+        = f.input_field :discount_code_text, class: "form-control", input_html: { default: "" }
         .input-group-append
           %button.btn.btn-sm.btn-primary#CheckDiscountCodeButton{disabled: true, type: "button", data: { registration_id: @registration.id }} Check
       .form-group{class: @card_errors.present? ? "border-danger" : ""}
@@ -39,10 +39,11 @@
         input_html: { value: registration.default_billing_email }
     %h4
       Your final total will be:
-      %span.float-right#FinalTotal= number_to_currency @registration.amount_to_charge / 100
+      %span.float-right#FinalTotal= number_to_currency @registration.amount_to_charge.to_i / 100
 
     %br
     .form-actions
+      = f.input :discount_code_id, as: :hidden, input_html: { id: "js-DiscountCodeIdInput" }
       = f.button :submit,
         "Complete my registration and pay now!",
         id: 'stripe_button',

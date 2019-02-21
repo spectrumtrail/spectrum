@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_19_052338) do
+ActiveRecord::Schema.define(version: 2019_02_21_052140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_02_19_052338) do
     t.integer "times_used", default: 0
     t.boolean "is_active", default: true
     t.datetime "expiration_date"
+    t.integer "registrations_count", default: 0
   end
 
   create_table "events", force: :cascade do |t|
@@ -177,7 +178,8 @@ ActiveRecord::Schema.define(version: 2019_02_19_052338) do
     t.text "steps_seen"
     t.text "steps_completed"
     t.boolean "accepts_refund_terms"
-    t.string "discount_code"
+    t.bigint "discount_code_id"
+    t.index ["discount_code_id"], name: "index_registrations_on_discount_code_id"
     t.index ["event_id"], name: "index_registrations_on_event_id"
     t.index ["token"], name: "index_registrations_on_token", unique: true
   end
@@ -237,5 +239,6 @@ ActiveRecord::Schema.define(version: 2019_02_19_052338) do
   add_foreign_key "payments", "registrations"
   add_foreign_key "payments", "users"
   add_foreign_key "races", "events"
+  add_foreign_key "registrations", "discount_codes"
   add_foreign_key "registrations", "events"
 end

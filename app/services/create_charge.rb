@@ -11,7 +11,7 @@ class CreateCharge
   def perform
     Stripe::Charge.create(
       customer: customer.id,
-      amount: registration.amount_to_charge,
+      amount: registration.amount_to_charge.to_i,
       description: "#{registration.event.name} Registration Fee",
       currency: "usd",
       metadata: meta_hash

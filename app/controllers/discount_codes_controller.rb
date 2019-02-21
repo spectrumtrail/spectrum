@@ -2,23 +2,17 @@ class DiscountCodesController < ApplicationController
   before_action :fetch_code
 
   def validate
-    # if @code.present?
-    #   result = ValidateDiscountCodeForRegistration.new(@code, @registration).perform
-    #   result = {
-    #     valid: result.success?,
-    #     message:
-    #     discount_amount: @code.discounted_price
-    #   }
-    # else
-    #   result = {
-    #     valid: false,
-    #     new_total: @registration.
-    #   }
-    # end
-
-    result = {
-      valid: true
-    }
+    if @code.present?
+      result = ValidateDiscountCodeUsage.new(
+        code: @code,
+        registration: fetch_registration
+      ).perform
+    else
+      result = {
+        success: false,
+        message: "No code was given."
+      }
+    end
 
     respond_to do |format|
       format.json { render json: result }
@@ -31,7 +25,7 @@ class DiscountCodesController < ApplicationController
     @code = DiscountCode.find_by_code(params[:id])
   end
 
-  def find_race
+  def fetch_registration
     @registration = Registration.find(params[:registration_id])
   end
 end

@@ -16,6 +16,7 @@ module Spectrum
       generator.assets false
       generator.view_specs false
       generator.test_framework  false
+      generator.factory_bot suffix: "factory"
     end
   end
 end

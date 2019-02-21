@@ -10,21 +10,22 @@ stripeTokenHandler = (token) ->
   form.submit()
 
 toggleVerifyButton = () ->
-  if $("#registration_discount_code").val().length > 3
+  if $("#registration_discount_code_text").val().length > 3
     $("#CheckDiscountCodeButton").prop("disabled", false)
   else
     $("#CheckDiscountCodeButton").prop("disabled", true)
 
 $ ->
   if $("#PaymentStepForm").length > 0
-    $("#registration_discount_code").on "keyup change", ->
+    $("#registration_discount_code_text").on "keyup change", ->
       toggleVerifyButton()
 
     $("#CheckDiscountCodeButton").click (e) ->
       $(this).prop("disabled", true) # prevent double click
-      code_input = $("#registration_discount_code")
+      code_input = $("#registration_discount_code_text")
       code_input_hint = code_input.parents(".form-group").children("small")
       code = code_input.val()
+      discount_code_input = $("#js-DiscountCodeIdInput")
       check_button = $(this)
       registration_id = $("#CheckDiscountCodeButton").data("registration-id")
 
@@ -45,7 +46,9 @@ $ ->
             code_input_hint.html("Discount code applied!")
             check_button.addClass("btn-success")
             check_button.prop("disabled", true)
+            discount_code_input.val(data["discount_code_id"])
             check_button.html("Valid <i class='far fa-check-circle'></i>")
+
             $("#FinalTotal").text(formatted_new_amount_in_dollars).addClass("text-success")
           else
             check_button.prop("disabled", false)
