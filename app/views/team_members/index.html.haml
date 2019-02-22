@@ -1,3 +1,9 @@
 %section.slice
   .container
-    %h1 Team
+    %h1 Race Team
+
+%section
+  .container
+    .row
+      - @team_members.each do |member|
+        = render member

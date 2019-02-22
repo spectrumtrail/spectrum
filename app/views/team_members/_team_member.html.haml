@@ -1,0 +1,8 @@
+.card.mb-3
+  .row
+    .col-sm-12.col-md-4
+      = image_tag team_member.profile_image.variant(resize: "400x400")
+    .col-sm-12.col-md-8
+      .card-body
+        %h2.card-title= team_member.name
+        .card-text= team_member.bio_html
