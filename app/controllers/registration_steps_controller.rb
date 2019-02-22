@@ -34,7 +34,7 @@ class RegistrationStepsController < ApplicationController
       render_wizard @registration
     else
       @card_errors = result.message
-      flash[result.flash_status] = result.flash_message
+      flash.now[result.flash_status] = result.flash_message
       render_wizard
     end
   end
