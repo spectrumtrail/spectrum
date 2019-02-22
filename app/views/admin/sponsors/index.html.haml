@@ -11,14 +11,7 @@
   .row
     - @sponsors.each do |sponsor|
       .col-sm-12.col-md-4
-        .card
-          %img.card-img-top{:alt => "Card image cap", :src => "holder.js/600x400?auto=yes"}/
-          .card-body
-            %h4.card-title= sponsor.name
-            %p.card-text= sponsor.short_description
-            %a.btn.btn-sm.btn-primary{href: edit_admin_sponsor_path(sponsor)} Edit
-            = link_to admin_sponsor_path(sponsor), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" do
-              %i.fa.fa-trash
+        = render sponsor
 
 - else
   .row.align-items-center
