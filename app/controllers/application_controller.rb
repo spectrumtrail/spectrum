@@ -5,13 +5,8 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def set_time_zone(&block)
-    Time.use_zone("Central Time (US & Canada)", &block)
-  end
-
-  def set_menu_items
-    @menu_events = Event.is_active.order(:name)
-    @menu_series = Series.is_active.order(:name)
+  def after_sign_in_path_for(resource)
+    profile_path
   end
 
   def require_admin!
@@ -21,4 +16,13 @@ class ApplicationController < ActionController::Base
     end
   end
   helper_method :require_admin!
+
+  def set_time_zone(&block)
+    Time.use_zone("Central Time (US & Canada)", &block)
+  end
+
+  def set_menu_items
+    @menu_events = Event.is_active.order(:name)
+    @menu_series = Series.is_active.order(:name)
+  end
 end
