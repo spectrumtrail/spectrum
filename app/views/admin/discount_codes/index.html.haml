@@ -1,0 +1,19 @@
+.row
+  .col
+    %h1 Discount Codes
+  .col
+    .float-right
+      = link_to new_admin_discount_code_path, class: "btn btn-sm btn-success" do
+        New
+%br
+.row
+  .col
+    - if @discount_codes.any?
+      .card
+        = render "table"
+    - else
+      .row
+        .col
+          .text-center
+            %h4.text-muted.p-4
+              No discount codes exist yet.

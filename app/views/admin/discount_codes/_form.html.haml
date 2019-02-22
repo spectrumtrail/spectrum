@@ -1,0 +1,16 @@
+-# frozen_string_literal: true
+= simple_form_for([:admin, @discount_code]) do |f|
+  = f.error_notification
+  - if f.object.errors[:base].present?
+    = f.error_notification message: f.object.errors[:base].to_sentence
+
+  .form-inputs
+    = f.input :id
+    = f.input :percent
+    = f.input :cents
+    = f.input :limit
+    = f.input :expiration_date, as: :datetime
+    = f.input :is_active
+
+  .form-actions.float-right
+    = f.button :submit, class: "btn btn-sm btn-success"

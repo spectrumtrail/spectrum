@@ -1,0 +1,13 @@
+%table.table
+  %thead
+    %tr
+      %th Code
+      %th Description
+      %th Times Used
+      %th Created
+      %th Last Used
+      %th
+
+  %tbody
+    - @discount_codes.each do |discount_code|
+      = render discount_code
