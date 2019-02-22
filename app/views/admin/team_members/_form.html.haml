@@ -1,0 +1,32 @@
+-# frozen_string_literal: true
+= simple_form_for([:admin, @team_member]) do |f|
+  = f.error_notification
+  - if f.object.errors[:base].present?
+    = f.error_notification message: f.object.errors[:base].to_sentence
+
+  .form-inputs
+    %fieldset
+      %legend Basics
+      = f.input :name
+      = f.input :bio_html, as: :text, input_html: { class: "textarea-autosize" }
+    %fieldset
+      %legend Profile Image
+      .form-row
+        .col-sm-12.col-md-4
+          = f.file_field :profile_image,
+            direct_upload: true,
+            class: "custom-input-file",
+            type: 'file',
+            "data-multiple-caption" => "{count} files selected"
+          = f.label :profile_image do
+            %i.fa.fa-upload
+            %span Select Profile Image *
+            %small.text-muted Please select exatly one
+          - if f.object.profile_image.attached?
+            .attachment-wrapper{id: "attachment-wrapper-#{f.object.profile_image.id}"}
+              = image_tag f.object.profile_image,
+                class: "img img-fluid img-thumbnail"
+              = link_to attachment_path(id: f.object.profile_image.id), method: :delete, remote: true, class: "text-danger" do
+                %i.fa.fa-times
+  .form-actions.float-right
+    = f.button :submit, class: "btn btn-success btn-sm"

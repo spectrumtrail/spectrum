@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   root to: "static_pages#home"
+  match '/about' => "static_pages#about", via: [:get]
+  match '/coaching' => "static_pages#coaching", via: [:get]
+  match '/danger' => "static_pages#danger", via: [:get]
   match '/home' => "static_pages#home", via: [:get]
+  match '/store' => "static_pages#store", via: [:get]
   match '/terms' => "static_pages#terms", via: [:get]
   match '/privacy' => "static_pages#privacy", via: [:get]
-  match '/about' => "static_pages#about", via: [:get]
-  match '/danger' => "static_pages#danger", via: [:get]
 
   resources :attachments, only: [:destroy]
   resources :discount_codes do
@@ -18,7 +20,9 @@ Rails.application.routes.draw do
     end
     resources :races
   end
+  resources :sponsors, only: [:index]
   resources :series, only: [:show]
+  resources :team_members, only: [:index]
 
   devise_for :users, controllers: {
     confirmations: "users/confirmations",
@@ -31,11 +35,14 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => redirect('admin/dashboard')
     resource :dashboard, controller: 'dashboard'
+    resources :discount_codes
     resources :events
     resources :locations
     resources :participants
     resources :races
     resources :registrations
     resources :series
+    resources :sponsors
+    resources :team_members
   end
 end

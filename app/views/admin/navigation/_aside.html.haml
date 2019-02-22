@@ -29,17 +29,22 @@
       %li.navigation-item
         %a.navigation-link{href: admin_series_index_path} Series
       %li.navigation-item
-        %a.navigation-link.text-muted{href: "#"} Sponsors (CS)
+        %a.navigation-link{href: admin_sponsors_path} Sponsors
       %li.navigation-item
-        %a.navigation-link.text-muted{href: "#"} Team (CS)
-
+        %a.navigation-link{href: admin_team_members_path} Team
 
       %li.navigation-title
         $
         Financial
       %li.navigation-item
-        %a.navigation-link{href: "#"} Discounts
+        %a.navigation-link{href: admin_discount_codes_path} Discount Codes
       %li.navigation-item
         %a.navigation-link{href: "#"} Payments
       %li.navigation-item
-        %a.navigation-link{href: "#"} Refunds (CS) ww
+        %a.navigation-link{href: "#"} Refunds (CS)
+
+      %li.navigation-title
+        %i.fa.fa-globe
+        Public Pages
+      %li.navigation-item
+        %a.navigation-link{href: root_path} Home

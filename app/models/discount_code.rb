@@ -6,11 +6,19 @@ class DiscountCode < ApplicationRecord
 
   def can_be_used_by?(email:)
     return false if expiration_date < Date.current
-    return false if times_used >= limit
+    return false if registrations_count >= limit
     if valid_emails.present?
       valid_emails.split(",").include? email
     else
       true
     end
+  end
+
+  def used?
+    registrations_count > 0
+  end
+
+  def used_by?(email:)
+    registrations.pluck(:email).include? email
   end
 end
