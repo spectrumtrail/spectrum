@@ -44,5 +44,7 @@ Rails.application.routes.draw do
     resources :series
     resources :sponsors
     resources :team_members
+    resource :profile, controller: "profile", only: [:show, :edit, :update]
+    resources :users
   end
 end

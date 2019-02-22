@@ -2,7 +2,7 @@ class Admin::RacesController < Admin::BaseController
   before_action :set_race, only: [:edit, :update, :show, :destroy]
 
   def index
-    @races = Race.includes(:event).order("events.starts_at ASC")
+    @races = Race.includes(:event).order(:starts_at)
   end
 
   def show
