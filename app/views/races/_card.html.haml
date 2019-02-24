@@ -1,17 +1,18 @@
-.card.bg-dark.alpha-container.text-white.border-0.overflow-hidden.mb-3
+.card.bg-dark.alpha-container.text-white.border-0.overflow-hidden.my-3
   %a{href: new_event_registration_path(race.event, race_id: race.id)}
     - if race.course_map.attached?
       .card-img-bg{:style => "background-image: url(#{url_for(race.course_map)});"}
     %span.mask.bg-dark.alpha-8.alpha-4--hover
     .card-body.px-5.py-5
-      %div{:style => "min-height: 300px;"}
+      %div{style: "min-height: 225px;"}
         %h3.heading.h1.text-white.mb-3= race.name
-        %p.mt-4.mb-1.text-white.lh-180
+        %p.mt-4.mb-2.text-white
           %i.far.fa-clock
-          = race.start_time_with_zone
-        %p.mb-1.text-white.lh-180
+          %strong= race.start_time_with_zone
+        %p.mb-2.text-white
           %i.fas.fa-calendar-day
           = race.start_date
-      %span.text-white.text-uppercase.font-weight-500{href: new_event_registration_path(race.event, race)}
+    .card-footer
+      %button.btn.btn-sm.text-uppercase.alpha-2.alpha-9--hover{href: new_event_registration_path(race.event, race)}
         Register Now
         %i.fas.fa-arrow-right.ml-2
