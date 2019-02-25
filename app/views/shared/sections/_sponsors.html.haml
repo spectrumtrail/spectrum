@@ -2,27 +2,14 @@
   .container
     .mb-md.text-center
       %h3.heading.h2
-        Trusted by over
-        %span.text-primary 4000
-        clients
+        Proudly supported by some
+        %span.text-primary amazing
+        sponsors
       .fluid-paragraph.mt-3
-        %p.lead Start building fast, beautiful and modern looking websites in no time using our theme.
-    .row.cols-xs-space.cols-sm-space.cols-md-space
-      .col-md-2.col-6
-        .px-4.py-4.border.rounded
-          %img.img-fluid{src: asset_path("https://static1.squarespace.com/static/54243c3be4b062fcf1a0dab1/t/5a56826953450ad102431075/1515619098435/ballot-2017.gif")}/
-      .col-md-2.col-6
-        .px-4.py-4.border.rounded
-          %img.img-fluid{src: asset_path("https://static1.squarespace.com/static/54243c3be4b062fcf1a0dab1/t/5a567ea10d92976e0857b482/1515618514476/Best2016.jpg")}/
-      .col-md-2.col-6
-        .px-4.py-4.border.rounded
-          %img.img-fluid{src: asset_path("https://static1.squarespace.com/static/54243c3be4b062fcf1a0dab1/t/5a567e4c53450ad10242192f/1515618544972/BestOf2017.jpg?format=750w")}/
-      .col-md-2.col-6
-        .px-4.py-4.border.rounded
-          %img.img-fluid{src: asset_path("http://texastrailchampionship.com/wp-content/uploads/2014/11/Texas_Trail_Series_TXblueRedWhite_s.png")}/
-      .col-md-2.col-6
-        .px-4.py-4.border.rounded
-          %img.img-fluid{src: asset_path("http://texastrailchampionship.com/wp-content/uploads/2014/11/Texas_Trail_Series_TXblueRedWhite_s.png")}/
-      .col-md-2.col-6
-        .px-4.py-4.border.rounded
-          %img.img-fluid{src: asset_path("http://texastrailchampionship.com/wp-content/uploads/2014/11/Texas_Trail_Series_TXblueRedWhite_s.png")}/
+        %p.lead Support us by supporting them!
+    .row
+      .d-flex.align-content-center.flex-wrap
+        - @sponsors.each do |sponsor|
+          .col-md-2.col-6
+            .px-4.py-4.border.rounded
+              %img.img-fluid{src: sponsor.default_logo_url}

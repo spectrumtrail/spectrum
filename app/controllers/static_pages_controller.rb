@@ -9,7 +9,9 @@ class StaticPagesController < ApplicationController
   end
 
   def home
-    @events = Event.is_active.order(:name)
+    @events = Event.is_active.order(:name).decorate
+    @sponsors = Sponsor.order(:name).decorate
+    @promo_photos = @events.map { |event| event.promo_photos.first(4) }.flatten!
   end
 
   def privacy

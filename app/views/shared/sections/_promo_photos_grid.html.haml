@@ -1,0 +1,23 @@
+%section
+  .container
+    .row.justify-content-center
+      .col-lg-7
+        .text-center.pt-lg-md
+          %h2.heading.h1.mb-4
+            Want a preview?
+          %p.lead
+            See for yourself what makes a Spectrum Race so special.
+%section.slice-lg
+  .container
+    .row.mb-3
+      .col
+        %div{:style => "padding:56.25% 0 0 0;position:relative;"}
+          %iframe{:allowfullscreen => "", :frameborder => "0", :mozallowfullscreen => "", :src => "https://player.vimeo.com/video/318230365?title=0&byline=0&portrait=0", :style => "position:absolute;top:0;left:0;width:100%;height:100%;", :webkitallowfullscreen => ""}
+          %script{:src => "https://player.vimeo.com/api/player.js"}
+
+    .row
+      .card-columns
+        - @promo_photos.each do |promo_photo|
+          .card
+            %a{"data-gallery" => "example-gallery", "data-toggle" => "lightbox", href: url_for(promo_photo)}
+              = image_tag promo_photo, class: "img img-fluid rounded"

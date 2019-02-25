@@ -12,6 +12,6 @@ class EventsController < ApplicationController
 
   private
     def set_event
-      @event = Event.friendly.find(params[:id])
+      @event = Event.friendly.find(params[:id]).decorate
     end
 end

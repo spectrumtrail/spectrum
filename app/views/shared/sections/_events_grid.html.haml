@@ -1,13 +1,27 @@
-%section.slice.slice-xl.pb-5#EventsGrid
+%section.slice
   .container
-    .row.align-items-center.mb-lg-lg
-      .col-lg-4
-        .mb-lg.mb-lg-0.text-center.text-lg-left
-          %h2.heading Our Events
-          %p.mt-3 Register today before we fill up!
+    .row.justify-content-center
+      .col-lg-7
+        .text-center.pt-lg-md
+          %h2.heading.h1.mb-4
+            Our Events
+          %p.lead
+            We pride ourselves on creating some of the most Spectacular trail running events in all of Texas. We've create a collection of beautiful venues, challenging courses, and amazing people that will leave you pining to do another! Check out our current line up here:
+%section.slice.bg-tertiary.bg-cover.bg-size--cover{:style => "background-image: url('https://images.unsplash.com/photo-1486393658811-7168187b08b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2803&q=80')"}
+  %span.mask.bg-tertiary.alpha-5
+  .container
+    .row.cols-xs-space.cols-sm-space.cols-md-space
       - @events.each do |event|
-        .col-md-4.mb-4
-          = render "events/card",
-            event: event.decorate,
-            context_classes: "",
-            show_footer: false
+        .col-sm-12.col-md-6
+          .card.bg-dark.alpha-container.text-white.border-0.overflow-hidden.my-3
+            %a{href: event_path(event)}
+              .card-img-bg{:style => "background-image: url(#{event.default_cover_photo_url});"}
+              %span.mask.bg-dark.alpha-5.alpha-4--hover
+              .card-body.px-5.py-5
+                %div{:style => "min-height: 300px;"}
+                  %h3.heading.h1.text-white.mb-3= event.name
+                  %h4.mt-4.mb-1.h5.text-white= local_time event.starts_at
+                  %h5.mb-1.h5.text-white= event.location.name
+                %span.text-white.text-uppercase.font-weight-500{href: event_path(event)}
+                  Learn More
+                  %i.fas.fa-arrow-right.ml-2

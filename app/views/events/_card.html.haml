@@ -1,24 +1,25 @@
 .card.bg-dark.mb-4{class: context_classes}
   .px-3
     - if event.logo.attached?
-      %img.card-img.z-depth-2{alt: "race name", src: url_for(event.logo), style: "margin-top: -30px;"}
+      %img.card-img.z-depth-2{alt: "race name", src: url_for(event.logo), style: "margin-top: -30px; max-height: 200px;"}
   .card-body.text-white
     %h4.card-title.text-white.mb-2= event.name
-    %p
+    %div.mb-3
       - event.races.each do |race|
-        %span.badge.badge-primary.badge-lg= race.name
-    %p
+        %span.badge.badge-primary.badge-lg.my-2= race.name
+    %div.mb-3
       %i.fa.fa-calendar-day
       = local_time event.starts_at, '%B %e, %Y'
-    %p
+    %div.mb-3
       %a{href: event.location.address_link, target: "_blank"}
         %i.fas.fa-map-marker-alt
         #{event.location.name}
     %p.card-text= event.short_description
   - if show_footer
     .card-footer.bg-dark
-      .row.align-items-center
-        .col-6
-          %a.btn.btn-sm.btn-primary{:href => "#"} Register Now
-        .col-6.text-right
-          %span.text-muted 100 / 1000
+      %a.btn.btn-sm.btn-block.btn-info.text-uppercase{href: event_path(event)}
+        Learn More
+        %i.fas.fa-arrow-right.ml-2
+      %a.btn.btn-sm.btn-block.btn-success.text-uppercase{href: new_event_registration_path(event)}
+        Register Now
+        %i.fas.fa-arrow-right.ml-2

@@ -1,5 +1,5 @@
-.card
-  %img.card-img-top{:alt => "Card image cap", :src => "holder.js/600x400?auto=yes"}/
+.card.border-success
+  %img.card-img-top{alt: "Sponsor Logo", src: url_for(sponsor.logo)}/
   .card-body
     %h4.card-title= sponsor.name
     %p.card-text= sponsor.short_description

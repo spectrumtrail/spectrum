@@ -2,7 +2,7 @@
   .col-lg-6
     .card.bg-dark.alpha-container.text-white.border-1.overflow-hidden
       %a{href: event_path(event), :target => "_blank"}
-        .card-img-bg{:style => "background-image: url(#{url_for(event.cover_photo)});"}
+        .card-img-bg{:style => "background-image: url(#{event.default_cover_photo_url});"}
         %span.mask.bg-dark.alpha-5.alpha-4--hover
         .card-body.px-5.py-5
           %div{:style => "min-height: 300px;"}
