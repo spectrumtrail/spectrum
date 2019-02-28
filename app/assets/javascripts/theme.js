@@ -13,7 +13,7 @@ $(window).scroll(function() {
    }
 });
 
-$(window).on('load resize', function() {
+$(document).ready(function() {
   // Background image holder - Static hero with fullscreen autosize
   if ($('.spotlight').length) {
     $('.spotlight').each(function() {
@@ -106,7 +106,7 @@ $(document).ready(function() {
           class2: "img-fluid"
         },
       })
-    }  
+    }
 
     // NoUI Slider
     if ($(".input-slider-container")[0]) {
