@@ -1,6 +1,7 @@
 class Race < ApplicationRecord
   extend FriendlyId
   friendly_id :generate_slug, use: :slugged
+  default_scope { order(name: :asc) }
 
   belongs_to :event
   has_one :location, through: :event
