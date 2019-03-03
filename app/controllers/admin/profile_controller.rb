@@ -1,10 +1,8 @@
 class Admin::ProfileController < Admin::BaseController
   def show
-    @user = current_user
   end
 
   def edit
-    @user = current_user
   end
 
   def update

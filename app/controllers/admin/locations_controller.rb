@@ -2,7 +2,7 @@ class Admin::LocationsController < Admin::BaseController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
 
   def index
-    @locations = Location.all
+    @locations = Location.order(:name)
   end
 
   def show
