@@ -27,10 +27,12 @@
             .row
               .col-sm-12.col-md-6
                 %ul
-                  %li Early Registration
-                  %li Rapid Registration
-                  %li Exclusive Gear
-                  %li Exclusive Offers
+                  %li Early registration for races
+                  %li Access to race start lists
+                  %li Save your registration details for future races
+                  %li See your race history
+                  %li Connect with other members
+                  %li Exclusive offers & promotions from our generous sponsors
             .row
               .col
                 = simple_form_for(User.new, as: :user, url: registration_path(:user)) do |f|
