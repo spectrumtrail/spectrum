@@ -1,11 +1,11 @@
 %section.slice#CoursesSection
   %h2 Courses
   %ul#RaceNav.nav.nav-pills.nav-fill.flex-column.flex-sm-row.mt-2{role: "tablist"}
-    - @event.races.each_with_index do |race, index|
+    - races.each_with_index do |race, index|
       %li.nav-item
         %a{id: "race-tab-nav-#{race.id}", class: index == 0 ? "nav-link mb-sm-3 active" : "nav-link mb-sm-3", "aria-controls" => "home", "aria-selected" => "true", "data-toggle" => "tab", :href => "#race-tab-content-#{race.id}", role: "tab"}= race.name
   #RaceNavContent.tab-content
-    - @event.races.each_with_index do |race, index|
+    - races.each_with_index do |race, index|
       %div.tab-pane.fade{id: "race-tab-content-#{race.id}", class: index == 0 ? "tab-pane fade show active" : "tab-pane fade", "aria-labelledby" => "race-tab-nav-#{race.id}", role: "tabpanel"}
         .row.mb-3
           .col

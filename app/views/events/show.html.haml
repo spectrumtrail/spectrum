@@ -6,14 +6,16 @@
         = render "events/sections/menu"
       .col-sm-12.col-md-8.col-lg-9.px-3
         .scrollspy-example{"data-spy" => "scroll", "data-target" => "#EventMenu"}
-          = render "events/sections/promo_video"
+          - if @event.video_embed_code.present?
+            = render "events/sections/promo_video"
+            %br
           = render "events/sections/overview"
           = render "events/sections/registration"
           = render "events/sections/schedule"
           = render "events/sections/details"
-          = render "events/sections/courses"
+          = render "events/sections/courses", races: @event.races.decorate
           = render "events/sections/photos"
-          = render "events/sections/location"
+          = render "events/sections/location", location: @event.location.decorate
           = render "events/sections/lodging"
           = render "events/sections/faq"
 
