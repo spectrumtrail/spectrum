@@ -5,7 +5,7 @@ class LocationDecorator < Draper::Decorator
     if cover_photo.attached?
       helpers.url_for(cover_photo)
     else
-      "https://images.unsplash.com/photo-1524150078-1cd6d1eae568?ixlib=rb-1.2.1&auto=format&fit=crop&w=2851&q=80"
+      helpers.asset_path("logo-no-text")
     end
   end
 
