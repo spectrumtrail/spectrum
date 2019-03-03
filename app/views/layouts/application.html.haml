@@ -16,7 +16,7 @@
     = Gon::Base.render_data
   %body{class: "application #{controller_name}", id: "#{controller_name}_#{action_name}"}
     = render "navigation/dark_header"
-    %main.main{style: "min-height: 100vh;"}
+    %main.main
       = render partial: 'flash_messages', flash: flash
       = yield
     = render "navigation/footer"
