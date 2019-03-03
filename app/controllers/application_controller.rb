@@ -6,16 +6,12 @@ class ApplicationController < ActionController::Base
   private
 
   def after_sign_in_path_for(resource)
-    profile_path
+    members_profile_path
   end
 
-  def require_admin!
-    unless current_user && current_user.is_admin?
-      flash[:alert] = "Sorry, only Spectrum Admin users can go here."
-      redirect_to root_path
-    end
+  def current_user
+    UserDecorator.decorate(super) unless super.nil?
   end
-  helper_method :require_admin!
 
   def set_time_zone(&block)
     Time.use_zone("Central Time (US & Canada)", &block)

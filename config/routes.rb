@@ -24,10 +24,10 @@ Rails.application.routes.draw do
   resources :series, only: [:show]
   resources :team_members, only: [:index]
 
-  authenticate :user do
-    match "profile" => "user#show", via: :get, as: "profile"
-    resource :user, only: [:show, :edit, :update]
+  namespace :members do
+    resource :profile, controller: "profile", only: [:show, :edit, :update]
   end
+
   devise_for :users, controllers: {
     confirmations: "users/confirmations",
     passwords: "users/passwords",
