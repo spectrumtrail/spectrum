@@ -1,9 +1,19 @@
-%section.slice
-  .container
-    %h1 Race Team
+%section.spotlight.parallaxy.bg-cover.bg-size--cover.bottom-curvy{"data-spotlight" => "fullscreen", :style => "background-image: url(#{asset_url('https://static1.squarespace.com/static/54243c3be4b062fcf1a0dab1/t/59343851cd0f682b13a0edf3/1539201706560/?format=1500w')})"}
+  %span.mask.bg-dark.alpha-7
+  .spotlight-holder.py-lg.pt-lg-xl
+    .container.d-flex.align-items-center.no-padding
+      .col
+        .row.cols-xs-space.text-center.text-md-left.justify-content-center
+          .col-lg-10
+            .text-center.mt-5
+              %h1.heading.h1.text-white
+                Dream Team Race Team
+              %p.lead.lh-180.text-white.mt-3
+                The Spectrum Trail Racing team is a group of fast, creative, hard-working athletes that serve as ambassadors to our races and the sport of trail racing. You will frequently see them building trails, on the podium, or supporting fellow trail runners at some of the biggest races in the country.
+              .mt-5
+                %a.btn.btn-primary{href: "#TeamGrid"} Meet the Team
 
 %section
   .container
-    .row
-      - @team_members.each do |member|
-        = render member
+    - @team_members.each do |member|
+      = render member

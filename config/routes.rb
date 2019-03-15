@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
   resources :sponsors, only: [:index]
   resources :series, only: [:show]
-  resources :team_members, only: [:index]
+  resources :team_members, path: "team", only: [:index]
 
   namespace :members do
     resource :profile, controller: "profile", only: [:show, :edit, :update]
