@@ -1,14 +1,20 @@
 %h3.heading.h3.text-white.pt-3
   Sign Up
 %h6.text-white.pb-3
-  Creating an account makes it easier to register for future races!
+  Anyone can create an account! It makes it much easier to register for future races, see your historical results, and plan your racing schedule! Account holders are also eligible for early registration when available.
+%hr.border-white
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-tertiary" }) do |f|
   = f.error_notification
   .form-inputs
     = f.input :email,
       required: true,
       autofocus: true,
-      input_html: { autocomplete: "email" }
+      input_html: { autocomplete: "email" },
+      hint: "If you have raced with us before, we recommend using the same email you used when registering in the past! This will help us match historical registrations to your account."
+    = f.input :first_name, required: true
+    = f.input :last_name, required: true
+    = f.input :birth_date, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 12, order: [:month, :day, :year]
+    = f.input :phone, as: :tel, hint: "Used for important updates."
     = f.input :password,
       required: true,
       hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
