@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(version: 2019_02_22_053700) do
     t.string "description"
     t.integer "percent"
     t.integer "cents"
+    t.text "valid_emails"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "valid_emails"
     t.integer "limit"
     t.integer "times_used", default: 0
     t.boolean "is_active", default: true
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2019_02_22_053700) do
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.datetime "starts_at"
+    t.datetime "ends_at"
     t.string "short_description"
     t.text "overview_html"
     t.string "facebook_event_link"
