@@ -1,15 +1,59 @@
+# Docker Compose to build the Spectrum Trail Running developer 
+# environment.
+#
+# Intended Environment: DEVELOPMENT
+#
+# The file contains security violations and developers should change
+# defined passwords prior to using locally
+#
+# DO NOT COMMIT changes to the listed default passwords
+#
+# Build command to run against this docker-compose.tml
+# docker-compose build --build-arg DBPASSWORD='spectrumdevelopment2019'
+#
+# ---------------------------------------------------------------------
 version: '3.5'
 services:
-  db:
-    image: postgres:9.6-alpine
+  postgres:
+    container_name: postgres_db
+    image: postgres:11-alpine
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
-  web:
-    build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+      - "~/datadir/postgres:/var/lib/postgresql/data"
+    ports:
+      - 5432
+    environment:
+    # Default super user is being used. Username is: postgres
+      POSTGRES_PASSWORD: spectrumdevelopment2019
+    networks:
+      - api-network
+  redis:
+    container_name: redis
+    image: redis:alpine
     volumes:
-      - .:/spectrum
+      - "~/datadir/redis:/var/lib/redis"
+    ports:
+      - 6379
+    networks:
+      - api-network
+  spectrum:
+    image: spectrum_app
+    build:
+        context: .
+        dockerfile: Dockerfile
+    environment: 
+        DB_PASSWORD: spectrumdevelopment2019
+    container_name: spectrum_app
+    working_dir: /spectrum
+    volumes:
+      - ".:/spectrum"
     ports:
       - "3000:3000"
     depends_on:
-      - db
+      - postgres
+      - redis
+    networks:  
+      - app-network
+      - api-network
+networks:
+  app-network:
+  api-network:
