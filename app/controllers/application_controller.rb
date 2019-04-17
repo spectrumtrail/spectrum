@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_menu_items
-    @menu_events = Event.is_active.order(:name)
+    @menu_events = Event.is_active.order(:starts_at)
     @menu_series = Series.is_active.order(:name)
   end
 end
