@@ -28,10 +28,14 @@ class ValidateDiscountCodeUsage
   private
 
   def discount_amount_in_cents
-    if code.cents.present?
-      race.price_in_cents - code.cents
-    else
+    code.cents + percent_discount_in_cents
+  end
+
+  def percent_discount_in_cents
+    if code.percent.to_f > 0
       race.price_in_cents * (code.percent.to_f / 100)
+    else
+      0
     end
   end
 

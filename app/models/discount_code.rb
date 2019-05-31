@@ -8,7 +8,7 @@ class DiscountCode < ApplicationRecord
     return false if expiration_date < Date.current
     return false if registrations_count >= limit
     if valid_emails.present?
-      valid_emails.split(",").include? email
+      valid_emails.split(", ").include? email
     else
       true
     end

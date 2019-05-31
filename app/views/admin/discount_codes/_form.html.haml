@@ -5,12 +5,13 @@
     = f.error_notification message: f.object.errors[:base].to_sentence
 
   .form-inputs
-    = f.input :id
-    = f.input :percent
-    = f.input :cents
-    = f.input :limit
-    = f.input :expiration_date, as: :datetime
+    = f.input :code, label: "Code Text", hint: "This is the text that participants will enter."
+    = f.input :percent, hint: "Enter the percent off here as a number (0..100) without the percent symbol. Is additive with cents off."
+    = f.input :cents, hint: "A fixed amount to discount in cents (dollars * 100). Is additive with percent off."
+    = f.input :limit, hint: "Use this to specify home many times this code can be used."
     = f.input :is_active
+    = f.input :valid_emails, as: :string, hint: "Leave this blank to let anyone use this code. Otherwise, input the email address you expect the participant to use when registering. Seperate multiple a comma and a space: colinhagan@gmail.com, malloryalexis@gmail.com"
+    = f.input :expiration_date, as: :datetime, hint: "This code will become unavailable to registrants after this point in time."
 
   .form-actions.float-right
     = f.button :submit, class: "btn btn-sm btn-success"
