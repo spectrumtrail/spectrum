@@ -44,6 +44,6 @@ class ValidateDiscountCodeUsage
   end
 
   def set_race
-    @race = Participant.where(registration_id: registration).first.race
+    @race = registration.race
   end
 end
