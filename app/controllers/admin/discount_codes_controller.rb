@@ -1,5 +1,5 @@
 class Admin::DiscountCodesController < Admin::BaseController
-  before_action :set_registration, only: [:edit, :update, :destroy, :show]
+  before_action :set_discount_code, only: [:edit, :update, :destroy, :show]
 
   def index
     @discount_codes = DiscountCode.order(:code)
@@ -20,8 +20,8 @@ class Admin::DiscountCodesController < Admin::BaseController
 
     if @discount_code.save
       redirect_to(
-        admin_registration_path(@discount_code),
-        notice: "DiscountCode was successfully created."
+        admin_discount_codes_path(@discount_code),
+        notice: "Discount Code was successfully created."
       )
     else
       render :new
@@ -31,8 +31,8 @@ class Admin::DiscountCodesController < Admin::BaseController
   def update
     if @discount_code.update(registration_params)
       redirect_to(
-        admin_registration_path(@discount_code),
-        notice: "DiscountCode was successfully updated."
+        admin_discount_codes_path(@discount_code),
+        notice: "Discount Code was successfully updated."
       )
     else
       render :edit
@@ -42,14 +42,14 @@ class Admin::DiscountCodesController < Admin::BaseController
   def destroy
     @discount_code.destroy
     redirect_to(
-      admin_registrations_path,
-      notice: "DiscountCode was successfully destroyed."
+      admin_discount_codes_path,
+      notice: "Discount Code was successfully destroyed."
     )
   end
 
   private
 
-  def set_registration
+  def set_discount_code
     @discount_code = DiscountCode.find_by_id params[:id]
   end
 

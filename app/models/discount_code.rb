@@ -1,6 +1,7 @@
 class DiscountCode < ApplicationRecord
   has_many :registrations
   validates :code, presence: true, length: { minimum: 4 }
+  validates_uniqueness_of :code
   validates :cents, numericality: true, allow_nil: true
   validates :percent, numericality:  { greater_than: 5, less_than: 101 }, allow_nil: true
 
