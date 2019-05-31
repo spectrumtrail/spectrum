@@ -54,6 +54,6 @@ class Admin::DiscountCodesController < Admin::BaseController
   end
 
   def registration_params
-    params.require(:registration).permit!
+    params.require(:discount_code).permit!
   end
 end
