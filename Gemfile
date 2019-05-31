@@ -31,6 +31,7 @@ gem "wicked"
 
 # email delivery
 gem "sendgrid-ruby"
+gem "sendgrid-actionmailer"
 
 # payments
 gem "stripe"
