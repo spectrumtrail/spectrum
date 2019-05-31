@@ -29,6 +29,9 @@ gem "client_side_validations-simple_form"
 gem "gon"
 gem "wicked"
 
+# email delivery
+gem "sendgrid-ruby"
+
 # payments
 gem "stripe"
 
