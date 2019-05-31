@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   root to: "static_pages#home"
   match '/about' => "static_pages#about", via: [:get]
@@ -37,6 +39,9 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
+    authenticate :user, lambda { |u| u.admin? } do
+      mount Sidekiq::Web => '/sidekiq'
+    end
     get '/' => redirect('admin/dashboard')
     resource :dashboard, controller: 'dashboard'
     resources :discount_codes
