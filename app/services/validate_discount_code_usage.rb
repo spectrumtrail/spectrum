@@ -28,7 +28,7 @@ class ValidateDiscountCodeUsage
   private
 
   def discount_amount_in_cents
-    code.cents + percent_discount_in_cents
+    code.cents.to_i + percent_discount_in_cents
   end
 
   def percent_discount_in_cents
