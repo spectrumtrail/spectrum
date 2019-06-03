@@ -2,7 +2,7 @@ class Admin::EventsController < Admin::BaseController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index
-    @events = Event.order(:name)
+    @events = Event.by_starts_at
   end
 
   def show

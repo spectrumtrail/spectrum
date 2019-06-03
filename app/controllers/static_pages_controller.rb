@@ -9,7 +9,7 @@ class StaticPagesController < ApplicationController
   end
 
   def home
-    @events = Event.is_active.order(:name).decorate
+    @events = Event.is_active.by_starts_at.decorate
     @sponsors = Sponsor.order(:name).decorate
     @promo_photos = @events.map { |event| event.promo_photos.first(4) }.flatten!
   end

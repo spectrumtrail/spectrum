@@ -21,4 +21,5 @@ class Event < ApplicationRecord
   validates :time_zone, presence: true
 
   scope :is_active, -> { where(is_active: true) }
+  scope :by_starts_at, -> { order(starts_at: :asc) }
 end
