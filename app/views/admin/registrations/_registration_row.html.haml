@@ -1,6 +1,10 @@
 %tr
-  %td= registration.id
-  %td= registration.event_name
-  %td= registration.race_name
-  %td= registration.participant_name
-  %td= registration.payment.try(:stripe_charge_id)
+  %td= registration.event_race_name_link
+  %td= registration.participant_name_link
+  %td= registration.payment_details_link
+  %td
+    = mail_to registration.billing_email
+  %td
+    = link_to admin_registration_path(registration) do
+      %i.fas.fa-receipt
+      Receipt

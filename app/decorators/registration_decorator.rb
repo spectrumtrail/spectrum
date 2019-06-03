@@ -5,8 +5,24 @@ class RegistrationDecorator < Draper::Decorator
     event.name
   end
 
+  def event_race_name
+    event.name + " - " + race.name
+  end
+
+  def event_race_name_link
+    h.link_to event_race_name, h.admin_event_path(event)
+  end
+
   def participant_name
     participant.full_name
+  end
+
+  def participant_name_link
+    h.link_to participant_name, h.admin_participant_path(participant)
+  end
+
+  def payment_details_link
+    h.link_to h.number_to_currency(payment.amount_charged_in_dollars), "#coming soon"
   end
 
   def race_day_age
