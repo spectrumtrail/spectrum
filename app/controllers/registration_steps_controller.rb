@@ -12,7 +12,9 @@ class RegistrationStepsController < ApplicationController
   def update
     if step == :payment
       @registration.assign_attributes(registration_params)
-      handle_result_for(process_payment(token: params[:stripe_token]))
+      handle_payment_result_for(
+        process_payment(token: params[:stripe_token])
+      )
     else
       @registration.assign_attributes(registration_params)
       update_steps_completed if @registration.valid?
@@ -28,7 +30,7 @@ class RegistrationStepsController < ApplicationController
     end
   end
 
-  def handle_result_for(result)
+  def handle_payment_result_for(result)
     if result.success?
       update_steps_completed
       render_wizard @registration
