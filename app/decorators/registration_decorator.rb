@@ -22,7 +22,11 @@ class RegistrationDecorator < Draper::Decorator
   end
 
   def payment_details_link
-    h.link_to h.number_to_currency(payment.amount_charged_in_dollars), "#coming soon"
+    if payment.present?
+      h.link_to h.number_to_currency(payment.amount_charged_in_dollars), "#coming soon"
+    else
+      "No Payment"
+    end
   end
 
   def race_day_age
