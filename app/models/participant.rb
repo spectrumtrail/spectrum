@@ -10,7 +10,7 @@ class Participant < ApplicationRecord
     presence: true,
     format: {
       with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i,
-      message: "looks unusual. Please use a different one."
+      message: "This email address looks unusual and may break our system. Please use a different one."
     },
     uniqueness: {
       scope: :event_id,
