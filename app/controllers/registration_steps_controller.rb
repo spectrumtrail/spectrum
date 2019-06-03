@@ -33,6 +33,7 @@ class RegistrationStepsController < ApplicationController
   def handle_payment_result_for(result)
     if result.success?
       update_steps_completed
+      @registration.update(completed_at: Time.now)
       render_wizard @registration
     else
       @card_errors = result.message
