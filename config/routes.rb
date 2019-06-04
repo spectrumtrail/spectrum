@@ -20,7 +20,9 @@ Rails.application.routes.draw do
     resources :registrations, only: [:new, :create, :edit, :update] do
       resources :steps, controller: "registration_steps"
     end
-    resources :races
+    resources :races do
+      resources :participants, only: [:index]
+    end
   end
   resources :sponsors, only: [:index]
   resources :series, only: [:show]

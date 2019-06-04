@@ -1,0 +1,22 @@
+.table-responsive
+  %table.table.table-hover
+    %caption
+      %hr
+      %p.px-2
+        Current as of #{local_time(Time.current)}.
+      %p.px-2
+        If you don't see your name on this list, but you are 100% sure you have
+        registered for this event and race, be sure to
+        %a{href: "mailto:spectrumtrailracing@gmail.com"} let us know
+        ASAP!
+    %thead
+      %tr
+        %th First Name
+        %th Last Name
+        %th Division
+        %th Age
+        %th City
+
+    %tbody
+      - participants.each do |participant|
+        = render "table_row", participant: participant
