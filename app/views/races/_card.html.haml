@@ -1,17 +1,20 @@
 .card.bg-dark.alpha-container.text-white.border-0.overflow-hidden.my-3
-  %a{href: new_event_registration_path(race.event, race_id: race.id)}
-    - if race.course_map.attached?
-      .card-img-bg{:style => "background-image: url(#{url_for(race.course_map)});"}
-    %span.mask.bg-dark.alpha-8.alpha-4--hover
-    .card-body.px-5.py-5
-      %div{style: "min-height: 225px;"}
-        %h3.heading.h1.text-white.mb-3= race.name
-        %p.mt-4.mb-2.text-white
-          %i.far.fa-clock
-          %strong= race.start_time_with_zone
-        %p.mb-2.text-white
-          %i.fas.fa-calendar-day
-          = race.start_date
-      %button.btn.btn-sm.text-uppercase.alpha-2.alpha-9--hover{href: new_event_registration_path(race.event, race)}
-        Register Now
-        %i.fas.fa-arrow-right.ml-2
+  - if race.course_map.attached?
+    .card-img-bg{:style => "background-image: url(#{url_for(race.course_map)});"}
+  %span.mask.bg-dark.alpha-8.alpha-4--hover
+  .card-body.px-5.py-5
+    %div{style: "min-height: 225px;"}
+      %h3.heading.h1.text-white.mb-3= race.name
+      %p.mt-4.mb-2.text-white
+        %i.far.fa-clock
+        %strong= race.start_time_with_zone
+      %p.mb-2.text-white
+        %i.fas.fa-calendar-day
+        = race.start_date
+    %br
+    = link_to new_event_registration_path(race.event, race),
+      class: "m-2 btn btn-sm btn-success" do
+      Register Now
+    = link_to event_race_participants_path(race.event, race.id),
+      class: "m-2 btn btn-sm btn-info" do
+      Start List
