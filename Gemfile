@@ -29,6 +29,9 @@ gem "client_side_validations-simple_form"
 gem "gon"
 gem "wicked"
 
+# ActiveRecord Enhancements
+gem 'by_star', git: "git://github.com/radar/by_star"
+
 # email delivery
 gem "sendgrid-ruby"
 gem "sendgrid-actionmailer"

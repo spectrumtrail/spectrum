@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/radar/by_star
+  revision: 422c06ec1ea8ce633aca014a4403fbac92630057
+  specs:
+    by_star (3.0.0)
+      activesupport (> 3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -346,6 +353,7 @@ DEPENDENCIES
   barnes
   bootsnap (>= 1.1.0)
   bootstrap-select-rails
+  by_star!
   byebug
   capybara (>= 2.15)
   chromedriver-helper

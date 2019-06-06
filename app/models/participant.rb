@@ -29,6 +29,7 @@ class Participant < ApplicationRecord
   delegate :step_to_validate, to: :registration
 
   scope :with_payment, -> { joins(:payment) }
+  scope :created_after, ->(time) { after(time) }
 
   def full_name
     "#{first_name} #{last_name}".titleize
