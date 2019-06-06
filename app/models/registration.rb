@@ -37,6 +37,14 @@ class Registration < ApplicationRecord
     billing_email ||= participant.email
   end
 
+  def last_step_seen
+    steps_seen.last
+  end
+
+  def last_step_completed
+    steps_completed.last
+  end
+
   def paid?
     payment.present?
   end

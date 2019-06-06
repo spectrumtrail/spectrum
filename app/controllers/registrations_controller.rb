@@ -10,13 +10,20 @@ class RegistrationsController < ApplicationController
 
   def create
     @registration = @event.registrations.new(registration_params)
-    if @registration.save
-      @registration.update(steps_completed: ["start"])
+
+    handler = NewRegistrationHandler.new(registration: @registration)
+
+    if handler.existing_registration.present?
       redirect_to(
-        event_registration_steps_path(@event, @registration)
+        event_registration_step_path(
+          @event,
+          handler.existing_registration,
+          handler.existing_registration.last_step_seen
+        ),
+        notice: "We noticed you've already started a registration with this email. Here's the step you left off on!"
       )
     else
-      render :new
+      create_new_registration
     end
   end
 
