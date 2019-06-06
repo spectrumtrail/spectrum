@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_22_053700) do
+ActiveRecord::Schema.define(version: 2019_06_06_182020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(version: 2019_02_22_053700) do
     t.string "description"
     t.integer "percent"
     t.integer "cents"
+    t.text "valid_emails"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "valid_emails"
     t.integer "limit"
     t.integer "times_used", default: 0
     t.boolean "is_active", default: true
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2019_02_22_053700) do
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.datetime "starts_at"
+    t.datetime "ends_at"
     t.string "short_description"
     t.text "overview_html"
     t.string "facebook_event_link"
@@ -72,6 +73,8 @@ ActiveRecord::Schema.define(version: 2019_02_22_053700) do
     t.text "waiver_html"
     t.string "time_zone", default: "Central Time (US & Canada)"
     t.text "refund_policy_html"
+    t.datetime "registration_opens_at"
+    t.datetime "registration_closes_at"
     t.index ["location_id"], name: "index_events_on_location_id"
     t.index ["slug"], name: "index_events_on_slug", unique: true
   end
