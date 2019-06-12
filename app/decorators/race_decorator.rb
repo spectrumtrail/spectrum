@@ -1,6 +1,4 @@
-class RaceDecorator < Draper::Decorator
-  delegate_all
-
+class RaceDecorator < ApplicationDecorator
   def card_image_cap
     h.url_for(event.logo)
   end

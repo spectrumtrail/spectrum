@@ -1,6 +1,4 @@
-class LocationDecorator < Draper::Decorator
-  delegate_all
-
+class LocationDecorator < ApplicationDecorator
   def default_cover_photo_url
     if cover_photo.attached?
       helpers.url_for(cover_photo)

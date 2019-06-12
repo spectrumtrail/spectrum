@@ -1,6 +1,4 @@
-class RegistrationDecorator < Draper::Decorator
-  delegate_all
-
+class RegistrationDecorator < ApplicationDecorator
   def event_name
     event.name
   end
