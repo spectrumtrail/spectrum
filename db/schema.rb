@@ -172,6 +172,8 @@ ActiveRecord::Schema.define(version: 2019_06_12_163151) do
     t.datetime "updated_at", null: false
     t.integer "price_in_cents", default: 100
     t.string "slug"
+    t.integer "participants_count", default: 0
+    t.integer "participants_cap", default: 500
     t.index ["event_id"], name: "index_races_on_event_id"
     t.index ["slug"], name: "index_races_on_slug", unique: true
   end

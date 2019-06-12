@@ -1,7 +1,7 @@
 class Participant < ApplicationRecord
   belongs_to :registration
   belongs_to :event
-  belongs_to :race
+  belongs_to :race, counter_cache: true
   has_one :payment, through: :registration
 
   validates :race, presence: true
