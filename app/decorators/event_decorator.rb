@@ -19,6 +19,12 @@ class EventDecorator < ApplicationDecorator
     location.name
   end
 
+  def starts_at_date_string
+    Time.use_zone(time_zone) do
+      starts_at.strftime("%A %B %d, %Y")
+    end
+  end
+
   def row_thumbnail
     logo.variant(resize: "100x100")
   end

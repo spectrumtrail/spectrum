@@ -1,0 +1,96 @@
+/ BODY
+%span.preheader{:style => "color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;"} #{@race.name_with_event} registration confirmation for #{@participant.full_name}
+%table.body-wrap
+  %tr
+    %td
+    %td.container{:bgcolor => "#FFFFFF"}
+      .content
+        %table
+          %tr
+            %td
+              %img{:src => url_for(@event.logo), style: "max-width: 600px; margin-bottom: 20px;"}/
+          %tr
+            %td
+              %h3 Well, well, well... #{@participant.full_name}
+              %p.lead
+                Congratulations! You’ve just made the best decision ever: to
+                join a bunch of fellow trail runners for the
+                %strong #{@race.name_with_event}
+                on
+                %strong #{@event.starts_at_date_string}
+                at
+                %strong #{@race.start_time_with_zone}
+                hosted at
+                = succeed "." do
+                  %a{href: @event.location.address_link} #{@event.location_name}
+              %p.lead
+                = succeed "." do
+                  This email confirms you have completed your registration,
+                  = succeed "," do
+                    %strong paid in full
+                  and we are now working hard to get everything ready for you! See who else is racing by checking out the
+                  %a{:href => url_for(event_race_participants_url(@event, @race))} start list
+              %p
+                %img{:src => @event.default_cover_photo_url, style: "max-width: 100%;"}/
+              / Callout Panel
+              %p.callout
+                Be sure to check out the
+                %a{href: event_url(@event) + "#LodgingSection"} race lodging information
+                to learn about available lodging options and how to reserve them.
+              / /Callout Panel
+              %h3
+                What now?
+                %small Got questions?
+
+              %p
+                99% of your questions about the race can be answered by carefully reading through the details on the event page on spectrumtrailracing.com, here's a button to take you exactly where you need to go:
+                %br/
+                %br/
+                %a.btn{href: event_url(@event)} Click Me!
+                %br/
+                %br/
+                All other questions can be emailed to
+                %a{href: "mailto:mallory@spectrumtrailracing.com"} mallory@spectrumtrailracing.com
+                but be warned that we will respond with a sarcastic email if your question could have been answered by going to our website.
+                %br/
+              %p
+                For now, do your I-just-registered-for-a-Spectrum-race celebratory dance and then get back to training hard.
+              %p
+                If you have anyone in your posse who would like to volunteer, please connect them with us! We are always looking for aid station crew, and you will appreciate the friendly face out on the course. They will earn a race discount, too!
+              %p
+                We look forward to seeing you out on the trails very soon!
+              %p
+                %i Sincerely,
+                %br/
+                Jason, Mallory, and Paxton
+              %br/
+              %img{:src => asset_url('jason-mallory-paxton.jpeg'), style: "max-width: 100%;"}/
+              %br/
+              %br/
+              / social & contact
+              %table.social{:width => "100%"}
+                %tr
+                  %td
+                    / - column 1
+                    %table.column{:align => "left"}
+                      %tr
+                        %td
+                          %h5 Connect with Us:
+                          %p
+                            %a.soc-btn.fb{:href => "https://www.instagram.com/spectrumtrail/"} Facebook
+                            %a.soc-btn.ig{:href => "https://www.facebook.com/spectrumtrailracing/"} Instagram
+                    / /column 1
+                    / - column 2
+                    %table.column{:align => "left"}
+                      %tr
+                        %td
+                          %h5 Contact Info:
+                          %p
+                            Email:
+                            %strong
+                              %a{:href => "mailto:contact@spectrumtrailrunning.com"} contact@spectrumtrailrunning.com
+                    / /column 2
+                    %span.clear
+              / /social & contact
+/ /BODY
+/ FOOTER
