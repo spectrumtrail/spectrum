@@ -1,8 +1,41 @@
 !!!
-%html
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
   %head
-    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
-    :css
-      /* Email styles need to be inline */
-  %body
-    = yield
+    / If you delete this tag, the sky will fall on your head
+    %meta{:content => "width=device-width", :name => "viewport"}/
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Spectrum Trail Racing Confirmation Email
+    %link{rel: :stylesheet, href: "email.css"}
+  %body{:bgcolor => "#FFFFFF"}
+    / HEADER
+    %table.head-wrap{:bgcolor => "#182B3F"}
+      %tr
+        %td
+        %td.header.container
+          .content
+            %table{:bgcolor => "#182B3F"}
+              %tr
+                %td
+                  %a{href: root_url}
+                    %img{:src => asset_url('logo-text-inside.png'), style: "max-width: 100px;"}/
+                %td{:align => "right"}
+                  %h6.collapse.text-white Race Registration Confirmation
+        %td
+    / /HEADER
+    %br/
+    %br/
+    = yield # this is where the individual mailer kicks in
+    %table.footer-wrap
+      %tr
+        %td
+        %td.container
+          / content
+          .content
+            %table
+              %tr
+                %td{:align => "center"}
+                  %p
+                    This is a one-time email.
+          / /content
+        %td
+    / /FOOTER
