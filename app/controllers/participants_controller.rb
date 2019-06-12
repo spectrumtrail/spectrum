@@ -13,6 +13,6 @@ class ParticipantsController < ApplicationController
   end
 
   def set_race
-    @race = @event.races.find(params[:race_id]).decorate
+    @race = @event.races.friendly.find(params[:race_id]).decorate
   end
 end
