@@ -55,6 +55,11 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    ahoy_email (1.0.3)
+      actionmailer (>= 4.2)
+      addressable (>= 2.3.2)
+      nokogiri
+      safely_block (>= 0.1.1)
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
@@ -114,6 +119,8 @@ GEM
     concurrent-ruby (1.1.4)
     connection_pool (2.2.2)
     crass (1.0.4)
+    css_parser (1.7.0)
+      addressable
     devise (4.6.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -127,6 +134,7 @@ GEM
       activemodel-serializers-xml (~> 1.0)
       activesupport (~> 5.0)
       request_store (~> 1.0)
+    errbase (0.1.1)
     erubi (1.8.0)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -157,6 +165,7 @@ GEM
       haml (>= 4.0, < 6)
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
+    htmlentities (4.3.4)
     i18n (1.5.1)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
@@ -202,6 +211,13 @@ GEM
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     pg (1.1.4)
+    premailer (1.11.1)
+      addressable
+      css_parser (>= 1.6.0)
+      htmlentities (>= 4.0.0)
+    premailer-rails (1.10.2)
+      actionmailer (>= 3, < 6)
+      premailer (~> 1.7, >= 1.7.9)
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.6)
@@ -271,6 +287,8 @@ GEM
     ruby_parser (3.12.0)
       sexp_processor (~> 4.9)
     rubyzip (1.2.2)
+    safely_block (0.2.1)
+      errbase
     sass (3.7.3)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -349,6 +367,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ahoy_email
   aws-sdk-s3
   barnes
   bootsnap (>= 1.1.0)
@@ -371,6 +390,7 @@ DEPENDENCIES
   local_time
   mini_magick (~> 4.8)
   pg (>= 0.18, < 2.0)
+  premailer-rails
   puma (~> 3.11)
   rails (~> 5.2.2)
   redis (~> 4.0)

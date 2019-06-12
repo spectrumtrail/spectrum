@@ -33,6 +33,8 @@ gem "wicked"
 gem 'by_star', git: "git://github.com/radar/by_star"
 
 # email delivery
+gem "ahoy_email"
+gem "premailer-rails"
 gem "sendgrid-ruby"
 gem "sendgrid-actionmailer"
 
