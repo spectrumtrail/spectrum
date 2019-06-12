@@ -7,6 +7,7 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.asset_host = "localhost:3008"
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

@@ -13,6 +13,7 @@ Rails.application.configure do
     api_key: ENV['SENDGRID_API_KEY'],
     raise_delivery_errors: true
   }
+  config.action_mailer.asset_host = ENV['PRODUCTION_EMAIL_HOST']
 
   # Code is not reloaded between requests.
   config.cache_classes = true
