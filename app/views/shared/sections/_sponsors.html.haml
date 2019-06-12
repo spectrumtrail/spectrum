@@ -9,7 +9,7 @@
         %p.lead Support us by supporting them!
     .row
       .d-flex.align-content-center.flex-wrap
-        - @sponsors.each do |sponsor|
-          .col-md-2.col-6
-            .px-4.py-4.border.rounded
+        - sponsors.each do |sponsor|
+          .col
+            .px-4.py-4.rounded
               %img.img-fluid{src: sponsor.default_logo_url}
