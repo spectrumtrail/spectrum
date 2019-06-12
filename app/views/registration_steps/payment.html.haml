@@ -30,6 +30,7 @@
                     %i.fa.fa-check-circle.text-success
           .card-body
             - if @registration.paid?
-              = render @registration.payment
+              %h4 Successfully charged card!
+              = link_to "Show Confirmation Page", event_registration_step_path(@event, @registration, "confirmation")
             - else
               = render "payment_step_form", registration: @registration

@@ -13,24 +13,32 @@ class CreatePayment
 
   def perform
     if registration.invalid?
-      messages = registration.errors.full_messages << "Your card has not been charged!"
-      ServiceResponse.new(
-        message: messages.join(". "),
-        object: registration,
-        success: false
-      )
+      handle_invalid_registration
     elsif registration.paid?
-      ServiceResponse.new(
-        message: "This registration has already been paid!",
-        object: registration,
-        success: false
-      )
+      handle_paid_registration
     else
       create_payment
     end
   end
 
   private
+
+  def handle_invalid_registration
+    messages = registration.errors.full_messages << "Your card has not been charged!"
+    ServiceResponse.new(
+      message: messages.join(". "),
+      object: registration,
+      success: false
+    )
+  end
+
+  def handle_paid_registration
+    ServiceResponse.new(
+      message: "This registration has already been paid!",
+      object: registration,
+      success: false
+    )
+  end
 
   def catch_exception(exception)
     ServiceResponse.new(
