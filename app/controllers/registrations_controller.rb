@@ -14,16 +14,9 @@ class RegistrationsController < ApplicationController
     handler = NewRegistrationHandler.new(registration: @registration)
 
     if handler.existing_registration.present?
-      redirect_to(
-        event_registration_step_path(
-          @event,
-          handler.existing_registration,
-          handler.existing_registration.last_step_seen
-        ),
-        notice: "We noticed you've already started a registration with this email. Here's the step you left off on!"
-      )
+      resume_registration(handler.existing_registration)
     else
-      create_new_registration
+      create_new_registration(handler)
     end
   end
 
@@ -57,12 +50,36 @@ class RegistrationsController < ApplicationController
     end
   end
 
+  def create_new_registration(handler)
+    @registration = handler.create_new_registration
+
+    if @registration.persisted?
+      redirect_to(
+        event_registration_steps_path(@event, @registration),
+        notice: "Registration started! We will save your progress."
+      )
+    else
+      render :new
+    end
+  end
+
   def registration_params
     params.require(:registration).permit!
   end
 
   def registration_token
     params[:id].split("-").last
+  end
+
+  def resume_registration(existing_registration)
+    redirect_to(
+      event_registration_step_path(
+        @event,
+        existing_registration,
+        existing_registration.last_step_seen
+      ),
+      notice: "We noticed you've already started a registration with this email. Here's the step you left off on!"
+    )
   end
 
   def set_event

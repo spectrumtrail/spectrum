@@ -31,13 +31,8 @@ class NewRegistrationHandler
   end
 
   def create_new_registration
-    registration.steps_completed = ["start"]
-
-    if registration.save
-      @created = true
-    else
-      @created = false
-      @registration = registration # set this variable again so errors are good
-    end
+    submitted_registration.steps_completed = ["start"]
+    submitted_registration.save
+    return submitted_registration
   end
 end
