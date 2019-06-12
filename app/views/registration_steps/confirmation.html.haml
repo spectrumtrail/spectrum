@@ -19,37 +19,3 @@
                   %strong.text-tertiary
                     #{@registration.participant.email}
                   shortly!
-            - unless current_user.present?
-              %hr
-              .row
-                .col
-                  %h4.heading.h4.text-center Create an Account
-                  %p.text-center Join the official Spectrum Trail Racing community today to access:
-              .row
-                .col-sm-12.col-md-6
-                  %ul
-                    %li Early registration for races
-                    %li Access to race start lists
-                    %li Save your registration details for future races
-                    %li See your race history
-                    %li Connect with other members
-                    %li Exclusive offers & promotions from our generous sponsors
-              .row
-                .col
-                  = simple_form_for(User.new, as: :user, url: registration_path(:user)) do |f|
-                    = f.error_notification
-                    .form-inputs
-                      = f.input :email,
-                        required: true,
-                        autofocus: true,
-                        hint: "(You can change this later)",
-                        input_html: { autocomplete: "email", value: @registration.participant.email, readonly: true }
-                      = f.input :password,
-                        required: true,
-                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                        input_html: { autocomplete: "new-password" }
-                      = f.input :password_confirmation,
-                        required: true,
-                        input_html: { autocomplete: "new-password" }
-                    .form-actions
-                      = f.button :submit, "Create My Account", class: "btn btn-block btn-success"
