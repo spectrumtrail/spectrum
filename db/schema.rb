@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_12_163151) do
+ActiveRecord::Schema.define(version: 2019_06_13_142717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2019_06_12_163151) do
     t.string "mailer"
     t.text "subject"
     t.datetime "sent_at"
+    t.integer "registration_id"
     t.index ["user_type", "user_id"], name: "index_ahoy_messages_on_user_type_and_user_id"
   end
 

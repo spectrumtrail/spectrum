@@ -1,4 +1,5 @@
 class RaceRegistrationMailer < ApplicationMailer
+  track extra: -> { { registration_id: params[:registration].id } }
   attr_accessor :registration
 
   def confirm
