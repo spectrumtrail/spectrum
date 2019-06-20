@@ -5,17 +5,9 @@
         %h6.h5.font-weight-normal.ml-1
           = location.name
   %td
-    %span.font-weight-normal.text-muted
-      - location.events.each do |event|
-        %a{href: edit_admin_event_path(event)}
-          %span.badge.badge-md.badge-primary= event.name
-  %td
     = link_to location.address_link do
-      %i.fas.fa-map-pin
       = location.address_text
-  %td
-    %i.fa.fa-clock
-    = local_time_ago location.updated_at
+  %td= local_time_ago location.updated_at
   %td
     .btn-group.float-right
       = link_to edit_admin_location_path(location),
