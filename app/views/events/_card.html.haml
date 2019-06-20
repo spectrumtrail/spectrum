@@ -9,7 +9,7 @@
         %span.badge.badge-primary.badge-lg.my-2= race.name
     %div.mb-3
       %i.fa.fa-calendar-day
-      = local_time event.starts_at, '%B %e, %Y'
+      = event.starts_at_date_string
     %div.mb-3
       %a{href: event.location.address_link, target: "_blank"}
         %i.fas.fa-map-marker-alt

@@ -6,7 +6,7 @@
         .row.cols-xs-space.text-center.text-md-left.justify-content-center
           .col-lg-10
             .text-center.mt-5
-              %small.text-muted= local_time(@event.starts_at, '%B %e, %Y')
+              %small.text-muted= @event.starts_at_date_string
               %h1.heading.h1.text-white= @event.name.upcase
               %p.lead.lh-180.text-white.mt-3
                 = @event.short_description
