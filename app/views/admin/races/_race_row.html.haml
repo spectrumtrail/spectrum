@@ -5,7 +5,7 @@
         %h6.h5.font-weight-normal.mb-0
           = race.name
   %td= link_to race.event.name, edit_admin_event_path(race.event)
-  %td= local_time race.starts_at
+  %td= race.start_time_with_zone
   %td= race.participants_count
   %td
     .btn-group.float-right
