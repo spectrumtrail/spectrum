@@ -16,15 +16,15 @@
         hint: "What is the Facebook event link?"
       = f.input :time_zone, priority: /US/
       = f.input :registration_opens_at,
-        as: :date,
+        as: :datetime,
         html5: true,
         label: "When does registration open?"
       = f.input :registration_closes_at,
-        as: :date,
+        as: :datetime,
         html5: true,
         label: "When does registration close?"
       = f.input :starts_at,
-        as: :date,
+        as: :datetime,
         html5: true,
         label: "Starting Date",
         hint: "What day do you want to say this event starts?"
