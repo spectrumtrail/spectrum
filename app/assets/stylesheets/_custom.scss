@@ -8,6 +8,18 @@ html {
   scroll-behavior: smooth;
 }
 
+#RuggedBox {
+  background-color: $spectrum-blue;
+}
+
+#WelcomingBox {
+  background-color: $spectrum-red;
+}
+
+#FestiveBox {
+  background-color: $spectrum-green;
+}
+
 .nowrap {
   flex-wrap: nowrap;
 }
