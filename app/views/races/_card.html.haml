@@ -11,10 +11,10 @@
       %p.mb-2.text-white
         %i.fas.fa-calendar-day
         = race.start_date
-    %br
+  .card-footer.bg-dark.forward-100
     = link_to new_event_registration_path(race.event, race),
       class: "m-2 btn btn-sm btn-success" do
       Register Now
     = link_to event_race_participants_path(race.event, race.id),
       class: "m-2 btn btn-sm btn-info" do
-      Start List
+      See the Start List
