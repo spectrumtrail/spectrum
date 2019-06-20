@@ -11,6 +11,11 @@
               %p.lead.lh-180.text-white.mt-3= @event.short_description
               - if @event.registration_open?(Time.now)
                 %a.btn.btn-primary.btn-md{href: "#RegistrationSection"} REGISTER NOW
+                - if @event.registration_closes_at < 2.weeks.from_now
+                  %br
+                  %p.text-warning.mt-2
+                    Better hurry! Registration closes soon!
+                    You have until #{@event.local_registration_window_closes_text}
               - else
                 %small.text-success
                   Registration opens on:
