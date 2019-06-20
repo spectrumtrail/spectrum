@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    authenticate :user, lambda { |u| u.admin? } do
+    authenticate :user, lambda { |u| u.is_admin? } do
       mount Sidekiq::Web => '/sidekiq'
     end
     get '/' => redirect('admin/dashboard')
