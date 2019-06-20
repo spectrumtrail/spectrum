@@ -37,6 +37,25 @@ class EventDecorator < ApplicationDecorator
     logo.variant(resize: "100x100")
   end
 
+  def registration_window_text
+    "
+      Registration opens on
+      <strong>#{local_registration_window_opens_text}</strong>
+      and closes on
+      <strong>#{local_registration_window_closes_text}</strong>
+    ".html_safe
+  end
+
+  def registerable_race_array
+    races.active.by_starts_at.decorate.map do |race|
+      [
+        race.registration_radio_input_name,
+        race.id,
+        disabled: !race.is_registerable?(Time.current)
+      ]
+    end
+  end
+
   def name_with_location
     "#{name} @ #{location.name}"
   end

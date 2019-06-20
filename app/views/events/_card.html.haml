@@ -1,4 +1,4 @@
-.card.bg-dark.mb-4{class: context_classes}
+.card.event-card.bg-dark.mb-4{class: context_classes}
   .px-3
     - if event.logo.attached?
       %img.card-img.z-depth-2{alt: "race name", src: url_for(event.logo), style: "margin-top: -30px; max-height: 200px;"}
@@ -17,9 +17,13 @@
     %p.card-text= event.short_description
   - if show_footer
     .card-footer.bg-dark
-      %a.btn.btn-sm.btn-block.btn-info.text-uppercase{href: event_path(event)}
-        Learn More
-        %i.fas.fa-arrow-right.ml-2
-      %a.btn.btn-sm.btn-block.btn-success.text-uppercase{href: new_event_registration_path(event)}
-        Register Now
-        %i.fas.fa-arrow-right.ml-2
+      - if event.registration_open?(Time.current)
+        %a.btn.btn-sm.btn-block.btn-info.text-uppercase{href: event_path(event)}
+          Learn More
+          %i.fas.fa-arrow-right.ml-2
+        %a.btn.btn-sm.btn-block.btn-success.text-uppercase{href: new_event_registration_path(event)}
+          Register Now
+          %i.fas.fa-arrow-right.ml-2
+      - else
+        %small.text-success
+          = @event.registration_window_text

@@ -22,16 +22,8 @@ class Race < ApplicationRecord
 
   delegate :time_zone, to: :event
 
-  def is_open?
-    true
-  end
-
   def name_with_event
     "#{event.name} #{name}"
-  end
-
-  def name_with_event_and_price
-    "#{name_with_event} - ( $#{price_in_cents / 100} )"
   end
 
   def generate_slug
@@ -44,5 +36,20 @@ class Race < ApplicationRecord
     return true if event_id_changed?
     return true if starts_at_changed?
     false
+  end
+
+  def paid_participants_count
+    participants.with_payment.size
+  end
+
+  def is_full?
+    paid_participants_count >= participants_cap
+  end
+
+  def is_registerable?(time)
+    return false unless event.registration_open?(time)
+    return false unless is_active?
+    return false if is_full?
+    true
   end
 end

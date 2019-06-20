@@ -6,7 +6,9 @@
           = race.name
   %td= link_to race.event.name, edit_admin_event_path(race.event)
   %td= race.start_time_with_zone
-  %td= race.participants_count
+  %td
+    Complete:
+    = race.paid_participants_count.to_s + ' / ' + race.participants_cap.to_s
   %td
     .btn-group.float-right
       = link_to edit_admin_race_path(race),

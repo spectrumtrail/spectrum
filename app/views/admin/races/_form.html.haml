@@ -24,11 +24,14 @@
         hint: "What is special about this race? Elevator pitch."
     %fieldset
       %legend Registration Settings
+      = f.input :is_active,
+        hint: "Master switch for registerability!"
       = f.input :registration_opens_at,
         as: :datetime,
         html5: true,
         hint: "When does Registration Open?"
-      = f.input :is_active
+      = f.input :participants_cap,
+        hint: "What is the maximum number of participants in this race?"
     %fieldset
       %legend Strava Stuff
       = f.input :strava_segment_link

@@ -23,6 +23,20 @@ class RaceDecorator < ApplicationDecorator
     "#{event.name} #{name}"
   end
 
+  def name_with_event_and_price
+    "#{name_with_event} - ( $#{price_in_cents / 100} )"
+  end
+
+  def registration_radio_input_name
+    string = name_with_event
+    if is_full?
+      string += " <em class='text-danger'>(Sold Out)</em>"
+    else
+      string += " - ( $#{price_in_cents / 100} )"
+    end
+    string.html_safe
+  end
+
   def participants_count
     participants.size
   end

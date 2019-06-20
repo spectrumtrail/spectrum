@@ -12,9 +12,17 @@
         %i.fas.fa-calendar-day
         = race.start_date
   .card-footer.bg-dark.forward-100
-    = link_to new_event_registration_path(race.event, race),
-      class: "m-2 btn btn-sm btn-success" do
-      Register Now
-    = link_to event_race_participants_path(race.event, race.id),
-      class: "m-2 btn btn-sm btn-info" do
-      See the Start List
+    - if race.event.registration_open?(Time.current)
+      - if race.is_registerable?(Time.current)
+        = link_to new_event_registration_path(race.event, race_id: race.id),
+          class: "m-2 btn btn-sm btn-success" do
+          Register Now!
+      - else
+        = link_to "#", class: "m-2 btn btn-sm btn-success disabled" do
+          Registration Unavailable
+      = link_to event_race_participants_path(race.event, race_id: race.id),
+        class: "m-2 btn btn-sm btn-info" do
+        See the Start List
+    - else
+      %small.text-success
+        = @event.registration_window_text

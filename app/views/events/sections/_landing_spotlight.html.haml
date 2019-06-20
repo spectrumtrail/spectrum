@@ -17,8 +17,5 @@
                     Better hurry! Registration closes soon!
                     You have until #{@event.local_registration_window_closes_text}
               - else
-                %small.text-success
-                  Registration opens on:
-                  = @event.local_registration_window_opens_text
-                  and closes on:
-                  = @event.local_registration_window_closes_text
+                %div.alert.alert-warning
+                  = @event.registration_window_text

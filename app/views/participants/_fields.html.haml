@@ -1,8 +1,7 @@
 %fieldset
-  = f.association :race,
-    collection: @event.races.active,
+  = ff.association :race,
+    collection: @event.registerable_race_array,
     as: :radio_buttons,
-    label_method: :name_with_event_and_price,
     label: "Select a Race"
   = f.input :first_name, label: "Your First Name"
   = f.input :last_name, label: "Your Last Name"
