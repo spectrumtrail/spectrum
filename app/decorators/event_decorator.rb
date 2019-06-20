@@ -25,6 +25,14 @@ class EventDecorator < ApplicationDecorator
     end
   end
 
+  def local_registration_window_opens_text
+    helpers.local_time(registration_opens_at, '%B %e, %Y %l:%M%P %Z')
+  end
+
+  def local_registration_window_closes_text
+    helpers.local_time(registration_closes_at, '%B %e, %Y %l:%M%P %Z')
+  end
+
   def row_thumbnail
     logo.variant(resize: "100x100")
   end

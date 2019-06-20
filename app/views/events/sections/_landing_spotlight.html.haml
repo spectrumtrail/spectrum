@@ -8,6 +8,12 @@
             .text-center.mt-5
               %small.text-muted= @event.starts_at_date_string
               %h1.heading.h1.text-white= @event.name.upcase
-              %p.lead.lh-180.text-white.mt-3
-                = @event.short_description
-              %a.btn.btn-primary.btn-md{href: "#RegistrationSection"} REGISTER
+              %p.lead.lh-180.text-white.mt-3= @event.short_description
+              - if @event.registration_open?(Time.now)
+                %a.btn.btn-primary.btn-md{href: "#RegistrationSection"} REGISTER NOW
+              - else
+                %small.text-success
+                  Registration opens on:
+                  = local_time @event.registration_opens_at
+                  and closes on:
+                  = local_time @event.registration_closes_at

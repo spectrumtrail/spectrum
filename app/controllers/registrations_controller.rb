@@ -4,8 +4,15 @@ class RegistrationsController < ApplicationController
   before_action :check_token, only: [:edit, :update]
 
   def new
-    @registration = build_new_registration
-    @participant = build_new_participant_for(@registration)
+    if @event.registration_open?(Time.now)
+      @registration = build_new_registration
+      @participant = build_new_participant_for(@registration)
+    else
+      redirect_to(
+        event_path(@event),
+        notice: "Registration is not open at this time!"
+      )
+    end
   end
 
   def create
@@ -27,7 +34,8 @@ class RegistrationsController < ApplicationController
     @registration.step_to_validate = "start"
     if @registration.update(registration_params)
       redirect_to(
-        event_registration_steps_path(@event, @registration)
+        event_registration_steps_path(@event, @registration),
+        notice: "Registration progress saved!"
       )
     else
       render :edit

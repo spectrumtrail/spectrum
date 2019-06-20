@@ -19,7 +19,17 @@ class Event < ApplicationRecord
   validates :short_description, presence: true
   validates :starts_at, presence: true
   validates :time_zone, presence: true
+  validates :registration_opens_at, presence: true
+  validates :registration_closes_at, presence: true
 
   scope :is_active, -> { where(is_active: true) }
   scope :by_starts_at, -> { order(starts_at: :asc) }
+
+  def registration_open?(time)
+    return false unless is_active?
+    return false if registration_opens_at > time # before window
+    return false if registration_closes_at < time # after window
+    return true
+  end
+
 end

@@ -14,6 +14,12 @@
     %i.fas.fa-map-pin
     = link_to event.location_name, edit_admin_location_path(event.location)
   %td
+    %strong Opens:
+    = event.local_registration_window_opens_text
+    %br
+    %strong Closes
+    = event.local_registration_window_closes_text
+  %td
     .btn-group.float-right
       = link_to edit_admin_event_path(event),
         class: "btn btn-sm btn-outline-primary" do
