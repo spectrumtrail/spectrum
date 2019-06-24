@@ -63,6 +63,14 @@
                     = ff.input :city, validate: true
                     = ff.input :state, collection: states_list, class: "form-control selectpicker", prompt: "Select A State"
                     = ff.input :zip, validate: true
+                  - if @event.allows_teams?
+                    %fieldset
+                      %legend Team Settings
+                      = ff.input :team_name,
+                        label: "Team Name",
+                        validate: false,
+                        hint: "Are you doing this race as part of a team? Enter your team name here!",
+                        required: @registration.race.requires_team_name?
               .form-actions.d-flex.justify-content-between.align-content-center
                 = link_to "Back", edit_event_registration_path(@event, @registration), class: "btn btn-md btn-secondary"
                 = f.button :submit, "Next", class: "btn btn-success btn-md"

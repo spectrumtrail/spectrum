@@ -1,7 +1,10 @@
 %tr
   %td= link_to registration.event_name, admin_event_path(registration.event)
   %td= link_to registration.race_name, admin_race_path(registration.race)
-  %td= registration.full_name
+  %td
+    = registration.full_name
+    - if registration.participant.team_name.present?
+      " (#{registration.participant.team_name})"
   %td= mail_to registration.email
   %td= registration.division
   %td= registration.mobile_phone

@@ -10,8 +10,13 @@
         hint: "The full name of the event. 'The Game', 'Sky Island'"
       = f.error :name
       - if f.object.persisted?
-        = f.input :slug, disabled: true, hint: "Unique identifier. Used in URLs. Auto-generated."
-      = f.input :is_active, as: :radio_buttons, label: "Is Active? - Master Switch", hint: "This is the MASTER SWITCH! If this is set to inactive, it will be hidden everywhere except the admin."
+        = f.input :slug,
+          disabled: true,
+          hint: "Unique identifier. Used in URLs. Auto-generated."
+      = f.input :is_active,
+        as: :radio_buttons,
+        label: "Is Active? - Master Switch",
+        hint: "This is the MASTER SWITCH! If this is set to inactive, it will be hidden everywhere except the admin."
       = f.association :location, prompt: "Please select a Location"
       = f.input :facebook_event_link,
         hint: "What is the Facebook event link?"
@@ -24,6 +29,9 @@
         as: :datetime,
         html5: true,
         label: "When does registration close?"
+      = f.input :allows_teams,
+        as: :radio_buttons,
+        label: "Does the event allow registrants to input team names?"
       = f.input :starts_at,
         as: :datetime,
         html5: true,

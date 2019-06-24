@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_13_142717) do
+ActiveRecord::Schema.define(version: 2019_06_24_223013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_142717) do
     t.text "refund_policy_html"
     t.datetime "registration_opens_at"
     t.datetime "registration_closes_at"
+    t.boolean "allows_teams", default: false
     t.index ["location_id"], name: "index_events_on_location_id"
     t.index ["slug"], name: "index_events_on_slug", unique: true
   end
@@ -138,6 +139,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_142717) do
     t.string "emergency_contact_phone"
     t.boolean "accepts_waiver"
     t.bigint "event_id"
+    t.string "team_name"
     t.index ["event_id"], name: "index_participants_on_event_id"
     t.index ["race_id"], name: "index_participants_on_race_id"
     t.index ["registration_id"], name: "index_participants_on_registration_id"
@@ -175,6 +177,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_142717) do
     t.string "slug"
     t.integer "participants_count", default: 0
     t.integer "participants_cap", default: 500
+    t.boolean "requires_team_name", default: false
     t.index ["event_id"], name: "index_races_on_event_id"
     t.index ["slug"], name: "index_races_on_slug", unique: true
   end

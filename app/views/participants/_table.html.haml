@@ -16,6 +16,8 @@
         %th Division
         %th Age
         %th City
+        - if event.allows_teams?
+          %th Team Name
 
     %tbody
       - participants.each do |participant|

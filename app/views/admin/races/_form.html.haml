@@ -32,6 +32,10 @@
         hint: "When does Registration Open?"
       = f.input :participants_cap,
         hint: "What is the maximum number of participants in this race?"
+      = f.input :requires_team_name,
+        label: "Require a Team?",
+        as: :radio_buttons,
+        hint: "Does this race require participants to submit a team name?"
     %fieldset
       %legend Strava Stuff
       = f.input :strava_segment_link
