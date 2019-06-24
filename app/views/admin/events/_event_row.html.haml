@@ -3,6 +3,10 @@
     .media.align-items-center
       .media-body
         %h6.h5.font-weight-normal.mb-0
+          - if event.is_active?
+            %i.fa.fa-check.text-success
+          - else
+            %i.fa.fa-times.text-danger
           = event.name
         %span.font-weight-normal.text-muted
           - event.races.each do |race|

@@ -1,17 +1,25 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, except: [:index]
 
   def index
-    @events = Event.all
+    redirect_to root_path(anchor: 'EventsGrid')
   end
 
   def show
-    @location = @event.location
-    @races = @event.races.active.order(starts_at: :asc)
+    if @event.present? && @event.is_active?
+      @location = @event.location
+      @races = @event.races.active.order(starts_at: :asc)
+    else
+      redirect_to(
+        root_path,
+        notice: "This event is no longer active."
+      )
+    end
   end
 
   private
-    def set_event
-      @event = Event.friendly.find(params[:id]).decorate
-    end
+
+  def set_event
+    @event = Event.friendly.find(params[:id]).try(:decorate)
+  end
 end
