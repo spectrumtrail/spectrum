@@ -1,11 +1,6 @@
 %ul.navbar-nav.ml-auto.align-items-lg-center
   %h6.dropdown-header.font-weight-600.d-lg-none.px-0 Menu
   %li.nav-item.dropdown
-    %a#navbar_series_dropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", href: "#", role: "button"} Series
-    .dropdown-menu{"aria-labelledby" => "navbar_series_dropdown"}
-      - @menu_series.each do |series|
-        %a.dropdown-item{href: series_path(series)}= series.name
-  %li.nav-item.dropdown
     %a#navbar_events_dropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", href: "#", role: "button"} Events
     .dropdown-menu{"aria-labelledby" => "navbar_events_dropdown"}
       - @menu_events.each do |event|
