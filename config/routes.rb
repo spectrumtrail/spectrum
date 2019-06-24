@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   match '/store' => "static_pages#store", via: [:get]
   match '/terms' => "static_pages#terms", via: [:get]
   match '/privacy' => "static_pages#privacy", via: [:get]
+  match 'policies' => "static_pages#policies", via: [:get]
 
   resources :attachments, only: [:destroy]
   resources :discount_codes do
