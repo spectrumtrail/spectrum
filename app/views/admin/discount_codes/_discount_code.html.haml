@@ -11,5 +11,5 @@
       .dropdown-menu
         = link_to "Show", admin_discount_code_path(discount_code), class: "dropdown-item"
         = link_to "Change", edit_admin_discount_code_path(discount_code), class: "dropdown-item text-warning"
-        - if discount_code.used?
+        - unless discount_code.used?
           = link_to "Cancel", admin_discount_code_path(discount_code), method: :delete, data: { confirm: "Are you sure?" }, class: "dropdown-item text-danger"

@@ -4,11 +4,15 @@
 require 'stripe'
 
 class CreatePayment
-  attr_accessor :registration, :token
+  attr_accessor :charge_calculator, :customer, :registration, :token
 
   def initialize(registration:, token:)
     @registration = registration
     @token = token
+    @charge_calculator = CalculatesAmountToCharge.new(
+      registration: registration,
+      discount_code: registration.discount_code
+    )
   end
 
   def perform
@@ -48,21 +52,47 @@ class CreatePayment
     )
   end
 
-  def create_charge_for(customer)
-    CreateCharge.new(customer: customer, registration: registration, token: token).perform
+  def create_charge
+    CreateCharge.new(
+      amount_in_cents: charge_calculator.amount_to_charge_in_integer_cents,
+      customer: customer,
+      registration: registration,
+      token: token
+    ).perform
   end
 
-  def create_customer
+  def customer
     CreateCustomer.new(email: registration.billing_email, token: token).perform
   end
 
   def create_payment
+    if charge_calculator.amount_to_charge_in_integer_cents > 0
+      create_payment_with_charge
+    else
+      create_payment_without_charge
+    end
+  end
+
+  def create_payment_without_charge
+    payment = Payment.create!(
+      registration: registration,
+      amount_charged_in_cents: 0
+    )
+
+    ServiceResponse.new(
+      message: "Successfully processed your free race registration! Your card was not charged.",
+      object: payment,
+      success: true
+    )
+  end
+
+  def create_payment_with_charge
     customer = create_customer
-    charge = create_charge_for(customer)
+    charge = create_charge
 
     payment = Payment.create!(
       registration: registration,
-      stripe_charge_id: charge.id,
+      stripe_charge_id: charge.try(:id),
       stripe_customer_id: customer.id,
       amount_charged_in_cents: charge.amount
     )

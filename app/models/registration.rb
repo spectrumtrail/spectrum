@@ -21,22 +21,6 @@ class Registration < ApplicationRecord
   scope :incomplete, -> { where(completed_at: nil) }
   scope :cancelled, -> { where.not(cancelled_at: nil) }
 
-  def amount_to_charge
-    if discount_code.present? && discount_code.can_be_used_by?(email: billing_email)
-      race.price_in_cents - discount_amount_in_cents
-    else
-      race.price_in_cents
-    end
-  end
-
-  def discount_amount_in_cents
-    if discount_code.cents.present?
-      race.price_in_cents - discount_code.cents
-    else
-      race.price_in_cents * (discount_code.percent.to_f / 100)
-    end
-  end
-
   def default_billing_email
     billing_email ||= participant.email
   end

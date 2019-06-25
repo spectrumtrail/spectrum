@@ -39,7 +39,7 @@
         input_html: { value: registration.default_billing_email }
     %h4
       Your final total will be:
-      %span.float-right#FinalTotal= number_to_currency @registration.amount_to_charge.to_i / 100
+      %span.float-right#FinalTotal= number_to_currency(CalculatesAmountToCharge.new(registration: @registration).amount_to_charge_in_dollars_decimal)
 
     %br
     .form-actions

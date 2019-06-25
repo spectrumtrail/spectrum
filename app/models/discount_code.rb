@@ -5,14 +5,24 @@ class DiscountCode < ApplicationRecord
   validates :cents, numericality: true, allow_nil: true
   validates :percent, numericality:  { greater_than: 5, less_than: 101 }, allow_nil: true
 
-  def can_be_used_by?(email:)
-    return false if expiration_date < Date.current
-    return false if registrations_count >= limit
-    if valid_emails.present?
-      valid_emails.split(", ").include? email
+  def expired?
+    expiration_date < Date.current
+  end
+
+  def exhausted?
+    registrations_count >= limit
+  end
+
+  def allowed_for?(email:)
+    if allowed_emails.any?
+      allowed_emails.include? email
     else
       true
     end
+  end
+
+  def allowed_emails
+    valid_emails.split(", ").uniq.sort
   end
 
   def used?
