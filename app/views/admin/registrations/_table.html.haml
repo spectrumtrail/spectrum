@@ -8,5 +8,9 @@
       %th
 
   %tbody
-    - @registrations.each do |registration|
-      = render "registration_row", registration: registration.decorate
+    - if @registrations.any?
+      - @registrations.each do |registration|
+        = render "registration_row", registration: registration.decorate
+    - else
+      %tr
+        %td{colspan: 5} No registrations match this filter criteria.

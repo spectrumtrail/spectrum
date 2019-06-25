@@ -2,7 +2,11 @@ class Admin::RegistrationsController < Admin::BaseController
   before_action :set_registration, only: [:edit, :update, :destroy, :show]
 
   def index
-    @registrations = Registration.includes(:payment, :participant)
+    @registrations = Registration.includes(
+      :payment, :participant
+    ).send(
+      params.fetch(:filter_scope, :all)
+    )
   end
 
   def show

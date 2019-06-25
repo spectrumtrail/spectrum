@@ -17,6 +17,10 @@ class Registration < ApplicationRecord
 
   validates :accepts_refund_terms, acceptance: true, if: :validate_payment?
 
+  scope :completed, -> { where.not(completed_at: nil) }
+  scope :incomplete, -> { where(completed_at: nil) }
+  scope :cancelled, -> { where.not(cancelled_at: nil) }
+
   def amount_to_charge
     if discount_code.present? && discount_code.can_be_used_by?(email: billing_email)
       race.price_in_cents - discount_amount_in_cents

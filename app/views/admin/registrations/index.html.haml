@@ -5,27 +5,9 @@
     .float-right
       = link_to new_admin_registration_path, class: "btn btn-sm btn-success" do
         New
-.row.mb-5
-  .col
-    .btn-group
-      %button.btn.btn-outline-primary{:type => "button"}
-        %i.fas.fa-hand-holding-usd
-        Complete
-      %button.btn.btn-outline-primary{:type => "button"}
-        %i.fas.fa-circle-notch
-        In-Progress
-      %button.btn.btn-outline-primary{:type => "button"}
-        %i.fa.fa-ban
-        Cancelled
+= render "admin/registrations/filter_button_group"
 
 .row
   .col
-    - if @registrations.any?
-      .card
-        = render "table"
-    - else
-      .row
-        .col
-          .text-center
-            %h4.text-muted.p-4
-              No registrations exist yet.
+    .card
+      = render "table"

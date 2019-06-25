@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_24_223013) do
+ActiveRecord::Schema.define(version: 2019_06_24_234546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -198,6 +198,10 @@ ActiveRecord::Schema.define(version: 2019_06_24_223013) do
     t.text "steps_completed"
     t.boolean "accepts_refund_terms"
     t.bigint "discount_code_id"
+    t.datetime "cancelled_at"
+    t.string "cancelled_by"
+    t.string "cancellation_reason"
+    t.string "admin_notes"
     t.index ["discount_code_id"], name: "index_registrations_on_discount_code_id"
     t.index ["event_id"], name: "index_registrations_on_event_id"
     t.index ["token"], name: "index_registrations_on_token", unique: true
