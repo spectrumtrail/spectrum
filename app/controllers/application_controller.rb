@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :error
   before_action :set_menu_items
+  before_action :set_temporary_message
   around_action :set_time_zone
 
   private
@@ -17,12 +18,15 @@ class ApplicationController < ActionController::Base
     UserDecorator.decorate(super) unless super.nil?
   end
 
+  def set_temporary_message
+    flash[:warning] = "Welcome to our new site! We are still in the process of implementing this big change, so worry not if something doesn't look right, or if your name is missing from a race start list. It will all get added soon!"
+  end
+
   def set_time_zone(&block)
     Time.use_zone("Central Time (US & Canada)", &block)
   end
 
   def set_menu_items
     @menu_events = Event.is_active.order(:starts_at)
-    @menu_series = Series.is_active.order(:name)
   end
 end
