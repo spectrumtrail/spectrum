@@ -2,15 +2,15 @@
 .row.mb-5
   .col
     .btn-group
-      %a.btn.btn-outline-primary{href: admin_registrations_path(filter_scope: :completed), class: selected == 'completed' ? "active" : nil}
+      %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path(filter_scope: :completed), class: selected == 'completed' ? "active" : nil}
         %i.fas.fa-hand-holding-usd
         Complete
-      %a.btn.btn-outline-primary{href: admin_registrations_path(filter_scope: :incomplete), class: selected == 'incomplete' ? "active" : nil}
+      %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path(filter_scope: :incomplete), class: selected == 'incomplete' ? "active" : nil}
         %i.fas.fa-circle-notch
         In-Progress
-      %a.btn.btn-outline-primary{href: admin_registrations_path(filter_scope: :cancelled), class: selected == 'cancelled' ? "active" : nil}
+      %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path(filter_scope: :cancelled), class: selected == 'cancelled' ? "active" : nil}
         %i.fa.fa-ban
         Cancelled
-      %a.btn.btn-outline-primary{href: admin_registrations_path, class: selected == nil ? "active" : nil}
+      %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path, class: selected == nil ? "active" : nil}
         %i.fa.fa-list
         ALL
