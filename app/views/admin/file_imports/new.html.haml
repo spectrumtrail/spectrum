@@ -1,0 +1,25 @@
+.row
+  .col
+    %h2 File Imports
+    %p This is a temporary solutoin for getting existing registration records on production. It will be removed shortly after MVP is released because it is not a full-fledged importer.
+
+.row
+  .col
+    = simple_form_for([:admin, @file_import], multipart: true) do |f|
+      = f.error_notification
+      - if f.object.errors[:base].present?
+        = f.error_notification message: f.object.errors[:base].to_sentence
+      .form-inputs
+        %fieldset
+          = f.input :name
+          = f.file_field :csv_file_to_import,
+            direct_upload: true,
+            class: "custom-input-file custom-input-file--2",
+            type: 'file'
+          = f.label :csv_file_to_import do
+            %i.fa.fa-upload
+            %span Select the File to be Imported
+      .form-actions
+        = f.button :submit,
+          class: "btn btn-md btn-outline-success",
+          data: { disable_with: "Submitting..." }

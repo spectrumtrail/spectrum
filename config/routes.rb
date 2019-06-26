@@ -49,6 +49,7 @@ Rails.application.routes.draw do
     resource :dashboard, controller: 'dashboard'
     resources :discount_codes
     resources :events
+    resources :file_imports
     resources :locations
     resources :participants
     resources :races
