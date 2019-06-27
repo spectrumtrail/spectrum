@@ -44,7 +44,6 @@ class ImportExistingRegistration
       event_id: event.id,
       accepts_waiver: true,
       registration_id: registration.id,
-      event_id: event.id,
       race_id: race.id,
       first_name: line.first,
       last_name: line.last,
