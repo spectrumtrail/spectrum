@@ -9,7 +9,6 @@ gem "bootsnap", ">= 1.4.3", require: false
 gem "puma", "~> 3.11"
 gem "devise"
 gem "barnes"
-gem "smarter_csv"
 
 # Asset Storage
 gem "aws-sdk-s3", require: false
