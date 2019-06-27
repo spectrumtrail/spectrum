@@ -19,7 +19,9 @@ class ApplicationController < ActionController::Base
   end
 
   def set_temporary_message
-    flash[:warning] = "Welcome to our new site! We are still in the process of implementing this big change, so worry not if something doesn't look right, or if your name is missing from a race start list. It will all get added soon!"
+    unless current_user.present? || Rails.env.development?
+      flash[:warning] = "Welcome to our new site! We are still in the process of implementing this big change, so worry not if something doesn't look right, or if your name is missing from a race start list. It will all get added soon!"
+    end
   end
 
   def set_time_zone(&block)
