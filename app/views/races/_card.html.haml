@@ -20,9 +20,9 @@
       - else
         = link_to "#", class: "m-2 btn btn-sm btn-success disabled" do
           Registration Unavailable
-      = link_to event_race_participants_path(race.event, race_id: race.id),
-        class: "m-2 btn btn-sm btn-info" do
-        See the Start List
     - else
       %small.text-success
         = @event.registration_window_text
+    = link_to event_race_participants_path(race.event, race_id: race.id),
+      class: "m-2 btn btn-sm btn-info" do
+      See the Start List
