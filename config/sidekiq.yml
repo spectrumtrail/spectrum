@@ -1,8 +1,8 @@
 :concurrency: 5
 staging:
-  :concurrency: 10
+  :concurrency: 5
 production:
-  :concurrency: 12
+  :concurrency: 5
 :queues:
   - mailers
   - critical
