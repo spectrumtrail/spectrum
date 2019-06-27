@@ -3,7 +3,7 @@ class ParticipantsController < ApplicationController
   before_action :set_race
 
   def index
-    @participants = @race.participants.with_payment.order(:first_name)
+    @participants = @race.participants.with_payment.order(:first_name).decorate
   end
 
   private
