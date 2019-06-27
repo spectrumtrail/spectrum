@@ -55,7 +55,7 @@ class ImportExistingRegistration
       zip: line.zip,
       phone: line.phone,
       medical_conditions: line.medical_text,
-      birth_date: line.dob,
+      birth_date: Date.strptime(line.dob, "%m/%d/%Y"),
       emergency_contact_name: line.emergency_name,
       emergency_contact_phone: line.emergency_phone,
     )
