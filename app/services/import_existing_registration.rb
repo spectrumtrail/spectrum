@@ -1,4 +1,4 @@
-require 'CSV'
+require 'csv'
 
 class ImportExistingRegistration
   attr_accessor :file_import, :file_to_import
