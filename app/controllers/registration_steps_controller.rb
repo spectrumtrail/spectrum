@@ -57,7 +57,7 @@ class RegistrationStepsController < ApplicationController
     if result.success?
       update_steps_completed
       @registration.update(completed_at: Time.now)
-      RaceRegistrationMailer.with(registration: @registration).confirm.deliver_now
+      # RaceRegistrationMailer.with(registration: @registration).confirm.deliver_now
       render_wizard @registration
     else
       @card_errors = result.message

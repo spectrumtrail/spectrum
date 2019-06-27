@@ -1,9 +1,15 @@
 %tr
-  %td= registration.event_race_name_link
-  %td= registration.participant_name_link
-  %td= registration.payment_details_link
+  %td= registration.id
   %td
-    = mail_to registration.billing_email
+    - if registration.complete?
+      %i.fas.fa-check-circle.text-success
+      = local_time_ago registration.completed_at
+    - else
+      %i.fas.fa-circle-notch.text-warning
+      = local_time_ago registration.updated_at
+  %td= registration.event_race_name_link
+  %td= registration.participant_name
+  %td= mail_to registration.default_billing_email
   %td
     = link_to admin_registration_path(registration) do
       %i.fas.fa-receipt

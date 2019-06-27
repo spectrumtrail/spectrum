@@ -15,10 +15,6 @@ class RegistrationDecorator < ApplicationDecorator
     participant.full_name
   end
 
-  def participant_name_link
-    h.link_to participant_name, h.admin_participant_path(participant)
-  end
-
   def payment_details_link
     if payment.present?
       h.link_to h.number_to_currency(payment.amount_charged_in_dollars), "#coming soon"
@@ -27,11 +23,15 @@ class RegistrationDecorator < ApplicationDecorator
     end
   end
 
-  def race_day_age
-    h.distance_of_time_in_words(participant.birth_date, event.starts_at)
-  end
-
   def race_name
     participant.race.name
+  end
+
+  def discount_code_used
+    if discount_code.present?
+      discount_code.code
+    else
+      none
+    end
   end
 end

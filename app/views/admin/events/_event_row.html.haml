@@ -32,6 +32,9 @@
       %button.btn.btn-sm.btn-outline-primary.dropdown-toggle.dropdown-toggle-split{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
         %span.sr-only Toggle Dropdown
       .dropdown-menu
+        = link_to admin_registrations_path(event_id: event.id), class: "dropdown-item" do
+          %i.fa.fa-users
+          Registrations
         = link_to admin_event_path(event), class: "dropdown-item" do
           %i.fa.fa-tachometer-alt
           Dashboard

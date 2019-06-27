@@ -1,9 +1,10 @@
 %table.table
   %thead
     %tr
+      %th ID
+      %th Status
       %th Race
-      %th Participant
-      %th Amount Paid
+      %th Name
       %th Email
       %th
 
@@ -13,4 +14,4 @@
         = render "registration_row", registration: registration.decorate
     - else
       %tr
-        %td{colspan: 5} No registrations match this filter criteria.
+        %td{colspan: 6} No registrations match this filter criteria.

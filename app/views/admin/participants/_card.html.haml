@@ -1,0 +1,48 @@
+.card.border-dark
+  .card-header.bg-dark
+    %h5.text-white Participant Details
+  %ul.list-group
+    %li.list-group-item
+      %strong.text-uppercase id
+      %br
+      = participant.id
+    %li.list-group-item
+      %strong.text-uppercase Race
+      %br
+      = participant.race_name
+    %li.list-group-item
+      %strong.text-uppercase Name
+      %br
+      = participant.full_name
+      - if participant.accepts_waiver
+        %i.fa.fa-check-circle.text-success{"data-placement" => "right", "data-toggle" => "tooltip", :title => "Accepts Waiver Terms"}
+
+    %li.list-group-item
+      %strong.text-uppercase Email
+      %br
+      = mail_to participant.email
+    %li.list-group-item
+      %strong.text-uppercase Division
+      %br
+      = participant.division
+    %li.list-group-item
+      %strong.text-uppercase Race Day Age
+      %br
+      = participant.race_day_age
+    %li.list-group-item
+      %strong.text-uppercase Phone
+      %br
+      = participant.phone
+    %li.list-group-item
+      %strong.text-uppercase Emergency Contact
+      %br
+      = participant.emergency_contact_name
+      = participant.emergency_contact_phone
+    %li.list-group-item
+      %strong.text-uppercase Medical Conditions
+      %br
+      = participant.medical_conditions
+    %li.list-group-item
+      %strong.text-uppercase Address
+      %br
+      = participant.address_html.html_safe

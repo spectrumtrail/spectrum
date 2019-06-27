@@ -2,7 +2,7 @@
   %td= participant.first_name
   %td= participant.last_name
   %td= participant.division[0].upcase
-  %td= distance_of_time_in(:year, Time.current, participant.birth_date)
+  %td= participant.race_age
   %td #{participant.city}, #{participant.state}
   - if @event.present && @event.allows_teams?
     %td= participant.team_name

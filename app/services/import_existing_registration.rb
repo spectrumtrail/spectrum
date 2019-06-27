@@ -57,7 +57,7 @@ class ImportExistingRegistration
       medical_conditions: line.medical_text,
       birth_date: line.dob,
       emergency_contact_name: line.emergency_name,
-      emergency_contact_phone: line.emergency_contact_phone,
+      emergency_contact_phone: line.emergency_phone,
     )
 
     payment = Payment.create!(

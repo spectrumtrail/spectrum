@@ -1,0 +1,45 @@
+.card.border-dark
+  .card-header.bg-dark
+    %h5.text-white Payment Details
+  %ul.list-group
+    %li.list-group-item
+      %strong.text-uppercase id
+      %br
+      = payment.id
+    %li.list-group-item
+      %strong.text-uppercase created
+      %br
+      = local_time payment.created_at
+    %li.list-group-item
+      %strong.text-uppercase Accepts Refund Terms
+      %br
+      .text-uppercase= payment.registration.accepts_refund_terms
+    %li.list-group-item
+      %strong.text-uppercase Amount
+      %br
+      = number_to_currency payment.amount_in_dollars
+    %li.list-group-item
+      %strong.text-uppercase Charge
+      %br
+      - if payment.stripe_charge_id.present?
+        = link_to payment.stripe_charge_link_address, target: "_blank" do
+          %i.fab.fa-stripe
+          = payment.stripe_charge_id
+      - else
+        %span.text-warning Stripe Charge ID not set.
+    %li.list-group-item
+      %strong.text-uppercase Customer
+      %br
+      - if payment.stripe_customer_id.present?
+        = link_to payment.stripe_customer_link_address, target: "_blank" do
+          %i.fab.fa-stripe
+          = payment.stripe_customer_id
+      - else
+        %span.text-warning Stripe Customer ID not set.
+    %li.list-group-item
+      %strong.text-uppercase Discount Code
+      %br
+        - if discount_code.present?
+          = link_to discount_code.code, admin_discount_code_path(discount_code)
+        - else
+          None.

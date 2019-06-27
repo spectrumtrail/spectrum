@@ -1,1 +1,53 @@
-%p Registration Confirmation Card
+.card.border-dark
+  .card-header.bg-dark
+    %h5.text-white Registration Details
+  %ul.list-group
+    %li.list-group-item
+      %strong.text-uppercase id
+      %br
+      = registration.id
+    %li.list-group-item
+      %strong.text-uppercase Event
+      %br
+      = registration.event_name
+    %li.list-group-item
+      %strong.text-uppercase completed
+      %br
+      - if registration.completed_at.present?
+        %i.fa.fa-check-circle.text-success
+        = local_time registration.completed_at
+      - else
+        %i.fa.fa-times.text-danger
+    - if registration.cancelled?
+      %li.list-group-item
+        %strong.text-uppercase cancelled at
+        %br
+        = local_time registration.cancelled_at
+      %li.list-group-item
+        %strong.text-uppercase cancellation reason
+        %br
+        = local_time registration.cancellation_reason
+    %li.list-group-item
+      %strong.text-uppercase billing email
+      %br
+      = mail_to registration.default_billing_email
+    %li.list-group-item
+      %strong.text-uppercase.text-uppercase admin notes
+      %br
+      = registration.admin_notes
+    %li.list-group-item
+      %strong.text-uppercase started
+      %br
+      = local_time registration.started_at
+    %li.list-group-item
+      %strong.text-uppercase updated
+      %br
+      = local_time_ago registration.updated_at
+    %li.list-group-item
+      %strong.text-uppercase steps seen
+      %br
+      = registration.steps_seen.to_sentence
+    %li.list-group-item
+      %strong.text-uppercase steps completed
+      %br
+      = registration.steps_completed.to_sentence

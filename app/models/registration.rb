@@ -21,6 +21,14 @@ class Registration < ApplicationRecord
   scope :incomplete, -> { where(completed_at: nil) }
   scope :cancelled, -> { where.not(cancelled_at: nil) }
 
+  def complete?
+    completed_at.present? && paid?
+  end
+
+  def incomplete?
+    completed_at.nil? || payment.nil?
+  end
+
   def default_billing_email
     billing_email ||= participant.email
   end
@@ -35,6 +43,10 @@ class Registration < ApplicationRecord
 
   def paid?
     payment.present?
+  end
+
+  def cancelled?
+    cancelled_at.present?
   end
 
   def to_param

@@ -2,14 +2,14 @@ class Admin::RegistrationsController < Admin::BaseController
   before_action :set_registration, only: [:edit, :update, :destroy, :show]
 
   def index
-    @registrations = Registration.includes(
-      :payment, :participant
-    ).send(
-      params.fetch(:filter_scope, :all)
-    )
+    @registrations = Registration.includes(:payment, :participant)
+    @registrations = @registrations.where(event_id: params[:event_id]) if params[:event_id].present?
+    @registrations = @registrations.send(params.fetch(:filter_scope, :all)).order(created_at: :desc)
   end
 
   def show
+    @participant = @registration.participant.decorate
+    @payment = @registration.payment.try(:decorate)
   end
 
   def new
@@ -54,7 +54,7 @@ class Admin::RegistrationsController < Admin::BaseController
   private
 
   def set_registration
-    @registration = Registration.find_by_id params[:id]
+    @registration = Registration.find(params[:id]).decorate
   end
 
   def registration_params
