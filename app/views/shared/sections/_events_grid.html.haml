@@ -19,7 +19,7 @@
                 %div{:style => "min-height: 300px;"}
                   %h3.heading.h1.text-white.mb-3= event.name
                   %div.mb-3
-                    - event.races.each do |race|
+                    - event.races.active.order(:name).each do |race|
                       %span.badge.badge-primary.badge-lg.my-2= race.name
                   %h4.mt-4.mb-1.h5.text-white= event.starts_at_date_string
                   %h5.mb-1.h5.text-white= event.location.name
