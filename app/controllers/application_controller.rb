@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :error
   before_action :set_menu_items
-  before_action :set_temporary_message
   around_action :set_time_zone
 
   private
@@ -16,12 +15,6 @@ class ApplicationController < ActionController::Base
 
   def current_user
     UserDecorator.decorate(super) unless super.nil?
-  end
-
-  def set_temporary_message
-    unless current_user.present? || Rails.env.development?
-      flash[:warning] = "Welcome to our new site! We are still in the process of implementing this big change, so worry not if something doesn't look right, or if your name is missing from a race start list. It will all get added soon!"
-    end
   end
 
   def set_time_zone(&block)
