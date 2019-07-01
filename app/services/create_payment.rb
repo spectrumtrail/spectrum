@@ -52,7 +52,7 @@ class CreatePayment
     )
   end
 
-  def create_charge
+  def create_charge(customer)
     CreateCharge.new(
       amount_in_cents: charge_calculator.amount_to_charge_in_integer_cents,
       customer: customer,
@@ -88,7 +88,7 @@ class CreatePayment
 
   def create_payment_with_charge
     customer = create_customer
-    charge = create_charge
+    charge = create_charge(customer)
 
     payment = Payment.create!(
       registration: registration,
