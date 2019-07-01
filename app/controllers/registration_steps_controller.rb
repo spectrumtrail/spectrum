@@ -79,8 +79,7 @@ class RegistrationStepsController < ApplicationController
   end
 
   def set_stripe_key
-    credentials = Rails.application.credentials.send(Rails.env)
-    gon.stripe_publishable_key = credentials.fetch(:stripe_publishable_key)
+    gon.stripe_publishable_key = ENV["STRIPE_PUBLIC_KEY"]
   end
 
   def set_registration
