@@ -61,7 +61,7 @@ class CreatePayment
     ).perform
   end
 
-  def customer
+  def create_customer
     CreateCustomer.new(email: registration.billing_email, token: token).perform
   end
 
