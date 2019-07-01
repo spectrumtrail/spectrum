@@ -4,7 +4,7 @@ class RegistrationsController < ApplicationController
   before_action :check_token, only: [:edit, :update]
 
   def new
-    if @event.registration_open?(Time.now)
+    if @event.registration_open?(Time.current)
       @registration = build_new_registration
       @participant = build_new_participant_for(@registration)
     else

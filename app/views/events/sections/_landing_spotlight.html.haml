@@ -9,7 +9,7 @@
               %small.text-muted= @event.starts_at_date_string
               %h1.heading.h1.text-white= @event.name.upcase
               %p.lead.lh-180.text-white.mt-3= @event.short_description
-              - if @event.registration_open?(Time.now)
+              - if @event.registration_open?(Time.current)
                 %a.btn.btn-primary.btn-md{href: "#RegistrationSection"} REGISTER NOW
                 - if @event.registration_closes_at < 2.weeks.from_now
                   %br

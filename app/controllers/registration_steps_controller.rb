@@ -36,7 +36,7 @@ class RegistrationStepsController < ApplicationController
   end
 
   def check_registration_window
-    unless @event.registration_open?(1.hour.ago) # giving an hour to finish once started
+    unless @event.registration_open?(Time.current) # giving an hour to finish once started
       redirect_to(
         event_path(@event),
         alert: "The time window to register for this event has closed before you could finish your registration. Please try again next year! If you're seeing this message, rest assured your credit card has NOT been charged."
