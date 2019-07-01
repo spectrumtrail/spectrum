@@ -45,7 +45,7 @@ class RegistrationStepsController < ApplicationController
   end
 
   def check_participant_count
-    unless @registration.race.is_registerable?(Time.now)
+    unless @registration.race.is_registerable?(Time.current)
       redirect_to(
         event_path(@event),
         alert: "This race is no longer available for registration. It has either been cancelled; or, has filled up. Please pick a different race, or, try again next year! If you're seeing this message, rest assured your credit card has NOT been charged."
@@ -57,7 +57,7 @@ class RegistrationStepsController < ApplicationController
     if result.success?
       update_steps_completed
       @registration.update(completed_at: Time.now)
-      # RaceRegistrationMailer.with(registration: @registration).confirm.deliver_now
+      RaceRegistrationMailer.with(registration: @registration).confirm.deliver_now
       render_wizard @registration
     else
       @card_errors = result.message
