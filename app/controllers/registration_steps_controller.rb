@@ -79,7 +79,10 @@ class RegistrationStepsController < ApplicationController
   end
 
   def set_stripe_key
-    gon.stripe_publishable_key = ENV["STRIPE_PUBLIC_KEY"]
+    gon.stripe_publishable_key = Rails.application.credentials.send(Rails.env.to_sym).fetch(
+      :stripe_public_key,
+      ENV["STRIPE_PUBLIC_KEY"]
+    )
   end
 
   def set_registration
