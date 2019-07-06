@@ -8,6 +8,8 @@
           context_classes: "sticky-top sticky-top-offset-6",
           show_footer: false
       .col-sm-12.col-md-8.col-lg-6
+        %noscript
+          = render 'shared/no_script_warning'
         .card.border-primary
           .card-header.bg-primary
             %ul.nav.nav-tabs.card-header-tabs.nav-fill.nowrap

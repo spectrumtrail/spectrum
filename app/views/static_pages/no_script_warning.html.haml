@@ -2,9 +2,4 @@
   .container
     .row
       .col-sm-12
-        %div.alert.alert-danger
-          For full functionality of this site it is necessary to enable JavaScript.
-          Here are
-          = succeed "." do
-            %a{href: "https://www.enable-javascript.com/", target: "_blank"} instructions
-            for how to enable JavaScript in your web browser.
+        = render 'shared/no_script_warning'
