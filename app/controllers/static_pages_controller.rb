@@ -20,6 +20,9 @@ class StaticPagesController < ApplicationController
   def terms
   end
 
+  def no_script_warning
+  end
+
   private
 
   def resolve_layout
