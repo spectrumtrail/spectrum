@@ -12,6 +12,6 @@ class ParticipantDecorator < ApplicationDecorator
   end
 
   def race_day_age
-    h.distance_of_time_in(:year, Time.current, birth_date)
+    h.distance_of_time_in(:year, Time.current, birth_date) rescue 0
   end
 end
