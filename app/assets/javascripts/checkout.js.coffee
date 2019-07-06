@@ -29,7 +29,7 @@ $ ->
       check_button = $(this)
       registration_id = $("#CheckDiscountCodeButton").data("registration-id")
 
-      if code
+      if code.length > 0
         $.get "/discount_codes/" + code + "/validate?registration_id=" + registration_id, (data) ->
           if data["success"]
             new_amount_in_dollars = data["new_total_in_cents"] / 100
@@ -61,7 +61,6 @@ $ ->
     submit_button = $("#stripe_button")
     terms_radio_inputs = $(".registration_accepts_refund_terms")
     terms_radio_yes = $("#js-refund-terms-radio-input")
-
     terms_radio_inputs.change ->
       submit_button.prop("disabled", !terms_radio_yes.is(":checked"))
 
@@ -81,6 +80,7 @@ $ ->
       invalid:
         color: '#ff0033'
         iconColor: '#ff0033'
+
     # Create an instance of the card Element
     card = elements.create('card', style: style)
     # Add an instance of the card Element into the `card-element` <div>
@@ -93,7 +93,7 @@ $ ->
       else
         $('input[type="submit"]').removeAttr('disabled')
         displayError.textContent = ''
-      return
+
     # Handle form submission
     form.addEventListener 'submit', (event) ->
       event.preventDefault()
@@ -106,5 +106,3 @@ $ ->
         else
           # Send the token to your server
           stripeTokenHandler result.token
-        return
-      return
