@@ -16,7 +16,9 @@
       = participant.full_name
       - if participant.accepts_waiver
         %i.fa.fa-check-circle.text-success{"data-placement" => "right", "data-toggle" => "tooltip", :title => "Accepts Waiver Terms"}
-
+      - if participant.team_name.present?
+        %i.fa.fa-users.text-info
+        = participant.team_name
     %li.list-group-item
       %strong.text-uppercase Email
       %br
