@@ -16,7 +16,7 @@
     = javascript_include_tag "application"
     %script{:src => "https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/js/froala_editor.pkgd.min.js", :type => "text/javascript"}
   %body
-    = render "admin/navigation/aside"
+    = render "admin/navigation/sidebar"
     %section.content
       = render "admin/navigation/header"
       = render partial: 'flash_messages', flash: flash
