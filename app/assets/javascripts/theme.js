@@ -176,11 +176,14 @@ $(document).ready(function() {
 // Listener for anything with a data-action attribute.
 $(document).ready(function() {
   $("body").on("click", "[data-action]", function(e) {
+    console.log("Seeing click");
     e.preventDefault();
 
     var $this = $(this);
     var action = $this.data('action');
     var target = '';
+
+    console.log("action is " + action);
 
     switch (action) {
       case "offcanvas-open":
@@ -193,7 +196,6 @@ $(document).ready(function() {
 
       case 'aside-open':
           target = $this.data('target');
-          $this.data('action', 'aside-close');
           $this.addClass('toggled');
           $(target).addClass('toggled');
           $('.content').append('<div class="body-backdrop" data-action="aside-close" data-target='+target+' />');
@@ -202,7 +204,7 @@ $(document).ready(function() {
       case 'aside-close':
           target = $this.data('target');
           $this.data('action', 'aside-open');
-          $('[data-action="aside-open"], '+target).removeClass('toggled');
+          $('[data-action="aside-open"], '+ target).removeClass('toggled');
           $('.content, .header').find('.body-backdrop').remove();
           break;
       }
