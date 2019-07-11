@@ -187,26 +187,26 @@ $(document).ready(function() {
 
     switch (action) {
       case "offcanvas-open":
-          target = $this.data("target"), $(target).addClass("open"), $("body").append('<div class="body-backdrop" data-action="offcanvas-close" data-target=' + target + " />");
-          break;
+        target = $this.data("target"), $(target).addClass("open"), $("body").append('<div class="body-backdrop" data-action="offcanvas-close" data-target=' + target + " />");
+        break;
+
       case "offcanvas-close":
-          console.log("Seeing request to close the sidebar");
-          target = $this.data("target"), $(target).removeClass("open"), $("body").find(".body-backdrop").remove();
-          break;
+        target = $this.data("target"), $(target).removeClass("open"), $("body").find(".body-backdrop").remove();
+        break;
 
       case 'aside-open':
-          target = $this.data('target');
-          $this.addClass('toggled');
-          $(target).addClass('toggled');
-          $('.content').append('<div class="body-backdrop" data-action="aside-close" data-target='+target+' />');
-          break;
+        target = $this.data('target');
+        $this.addClass('toggled');
+        $(target).addClass('toggled');
+        $('.content').append('<div class="body-backdrop" data-action="aside-close" data-target='+target+' />');
+        break;
 
       case 'aside-close':
-          target = $this.data('target');
-          $this.data('action', 'aside-open');
-          $('[data-action="aside-open"], '+ target).removeClass('toggled');
-          $('.content, .header').find('.body-backdrop').remove();
-          break;
+        target = $this.data('target');
+        $this.data('action', 'aside-open');
+        $('[data-action="aside-open"], '+ target).removeClass('toggled');
+        $('.content, .header').find('.body-backdrop').remove();
+        break;
       }
   })
 });

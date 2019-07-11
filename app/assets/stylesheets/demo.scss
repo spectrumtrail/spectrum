@@ -203,15 +203,15 @@
 
 // Sidebar
 .sidebar {
-    width: 240px;
-    position: fixed;
-    left: 0;
-    padding: 0 0.5rem 0.5rem 1.5rem;
-    height: 100%;
-    overflow: hidden;
-    z-index: 1050;
-    background-color: $white;
-    border-right: 1px solid $border-color;
+  width: 240px;
+  position: fixed;
+  left: 0;
+  padding: 0 0.5rem 0.5rem 1.5rem;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1050;
+  background-color: $white;
+  border-right: 1px solid $border-color;
 }
 
 @media (max-width: 1199px) {
