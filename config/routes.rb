@@ -52,6 +52,7 @@ Rails.application.routes.draw do
     resources :events
     resources :file_imports
     resources :locations
+    resources :mailings
     resources :participants
     resources :races
     resources :registrations

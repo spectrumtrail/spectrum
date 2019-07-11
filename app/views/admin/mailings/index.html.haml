@@ -1,0 +1,41 @@
+= content_for :admin_area_title do
+  %h2 Mailings
+.row
+  .col-12
+    .card
+      %table.table
+        %thead
+          %tr
+            %th Sent
+            %th Mailer
+            %th To
+            %th Subject
+            %th Opened
+            %th Clicked
+        %tbody
+          - if @mailings.any?
+            - @mailings.each do |mailing|
+              %tr
+                %td= local_time_ago mailing.sent_at
+                %td= mailing.mailer.titleize
+                %td= mail_to mailing.to
+                %td= mailing.subject
+                %td.text-center
+                  - if mailing.opened_at
+                    %i.fa.fa-check-circle.text-success
+                    = local_time mailing.opened_at
+                  - else
+                    %i.fa.fa-times.text-danger
+                %td.text-center
+                  - if mailing.clicked_at
+                    %i.fa.fa-check-circle.text-success
+                    = local_time mailing.clicked_at
+                  - else
+                    %i.fa.fa-times.text-danger
+          - else
+            %tr
+              %td{colspan: 7} No mailings match these criteria.
+
+.row.mt-3
+  .col
+    = paginate @mailings
