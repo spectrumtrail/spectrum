@@ -5,6 +5,8 @@ class Admin::RegistrationsController < Admin::BaseController
     @registrations = Registration.includes(:payment, :participant)
     @registrations = @registrations.where(event_id: params[:event_id]) if params[:event_id].present?
     @registrations = @registrations.send(params.fetch(:filter_scope, :all)).order(created_at: :desc)
+
+    @registrations = @registrations.page(params[:page]).per(50)
   end
 
   def show

@@ -1,15 +1,14 @@
 .row
-  .col
+  .col-8
     %h1 Registrations
-  .col
+  .col-4
     .float-right
-      = link_to new_admin_registration_path, class: "btn btn-sm btn-success" do
-        New
-.row
-  .col-12
-    = render "admin/registrations/filter_button_group"
+      = render "admin/registrations/filter_button_group"
 
 .row
   .col
     .card
       = render "table"
+.row.mt-3
+  .col
+    = paginate @registrations
