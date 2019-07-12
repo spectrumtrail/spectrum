@@ -6,7 +6,7 @@
           - if event.is_active?
             %i.fa.fa-check.text-success
           - else
-            %i.fa.fa-times.text-danger
+            %i.fa.fa-times.text-danger{"data-placement" => "right", "data-toggle" => "tooltip", :title => "Event is not active. It will not be displayed anywhere public, and is not registerable."}
           = event.name
         %span.font-weight-normal.text-muted
           - event.races.each do |race|

@@ -1,10 +1,11 @@
-%table.table.align-items-center
-  %thead
-    %tr
-      %th{scope: "col"} Name
-      %th{scope: "col"} Starts
-      %th{scope: "col"} Window
-      %th{scope: "col"}
-  %tbody
-    - @events.each do |event|
-      = render "event_row", event: event.decorate
+.card.mb-4
+  %table.table.table-responsive-md
+    %thead.thead-light
+      %tr
+        %th{scope: "col"} Name
+        %th{scope: "col"} Starts
+        %th{scope: "col"} Window
+        %th{scope: "col"}
+    %tbody
+      - @events.each do |event|
+        = render "event_row", event: event.decorate
