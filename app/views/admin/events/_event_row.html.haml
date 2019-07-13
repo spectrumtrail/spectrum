@@ -1,20 +1,12 @@
-%tr
+%tr{class: !event.is_active? ? "table-danger" : ""}
+  %td= event.name
+  %td= event.starts_at_date_string
   %td
-    .media.align-items-center
-      .media-body
-        %h6.h5.font-weight-normal.mb-0
-          - if event.is_active?
-            %i.fa.fa-check.text-success
-          - else
-            %i.fa.fa-times.text-danger{"data-placement" => "right", "data-toggle" => "tooltip", :title => "Event is not active. It will not be displayed anywhere public, and is not registerable."}
-          = event.name
-        %span.font-weight-normal.text-muted
-          - event.races.each do |race|
-            %a{href: admin_race_path(race)}
-              %span.badge.badge-md.badge-primary= race.name
+    - event.races.each do |race|
+      %a{href: admin_race_path(race)}
+        %span.badge.badge-md.badge-primary= race.name
+      .clear
   %td
-    = event.starts_at_date_string
-    %br
     %i.fas.fa-map-pin
     = link_to event.location_name, edit_admin_location_path(event.location)
   %td
@@ -47,4 +39,3 @@
             = link_to admin_event_path(event), method: :delete, data: { confirm: "Are you sure?" }, class: "dropdown-item text-danger" do
               %i.fas.fa-exclamation-triangle
               Remove
-%tr.table-divider

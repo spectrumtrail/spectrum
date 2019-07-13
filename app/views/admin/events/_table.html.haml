@@ -3,9 +3,11 @@
     %thead.thead-light
       %tr
         %th{scope: "col"} Name
-        %th{scope: "col"} Starts
+        %th{scope: "col"} Date
+        %th{scope: "col"} Races
+        %th{scope: "col"} Location
         %th{scope: "col"} Window
         %th{scope: "col"}
     %tbody
       - @events.each do |event|
-        = render "event_row", event: event.decorate
+        = render "event_row", event: event
