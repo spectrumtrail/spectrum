@@ -2,13 +2,13 @@
 .row.mb-1
   .col
     .btn-group
-      %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path(filter_scope: :completed), class: selected == 'completed' ? "active" : nil}
+      %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path(request.params.merge(filter_scope: :completed)), class: selected == 'completed' ? "active" : nil}
         %i.fas.fa-check-circle.text-success
         Complete
-      %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path(filter_scope: :incomplete), class: selected == 'incomplete' ? "active" : nil}
+      %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path(request.params.merge(filter_scope: :incomplete)), class: selected == 'incomplete' ? "active" : nil}
         %i.fas.fa-circle-notch.text-warning
         In-Progress
-      %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path(filter_scope: :cancelled), class: selected == 'cancelled' ? "active" : nil}
+      %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path(request.params.merge(filter_scope: :cancelled)), class: selected == 'cancelled' ? "active" : nil}
         %i.fa.fa-ban.text-danger
         Cancelled
       %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path, class: selected == nil ? "active" : nil}
