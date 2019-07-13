@@ -1,19 +1,11 @@
+= content_for :admin_area_title do
+  Discount Codes
 .row
   .col
-    %h1 Discount Codes
-  .col
+    = render "table"
+.row.mt-3
+  .col-12
     .float-right
       = link_to new_admin_discount_code_path, class: "btn btn-sm btn-success" do
-        New
-%br
-.row
-  .col
-    - if @discount_codes.any?
-      .card
-        = render "table"
-    - else
-      .row
-        .col
-          .text-center
-            %h4.text-muted.p-4
-              No discount codes exist yet.
+        %i.fa.fa-plus
+        Create New Discount Code

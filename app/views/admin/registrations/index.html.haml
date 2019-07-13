@@ -1,12 +1,10 @@
+= content_for :admin_area_title do
+  Registrations
 .row
-  .col-8
-    %h1 Registrations
-  .col-4
-    .float-right
-      = render "admin/registrations/filter_button_group"
-
+  .col-12
+    = render "admin/registrations/filter_button_group"
 .row
-  .col
+  .col-12
     .card
       = render "table"
 .row.mt-3

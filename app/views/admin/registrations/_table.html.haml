@@ -1,17 +1,18 @@
-%table.table
-  %thead
-    %tr
-      %th ID
-      %th Status
-      %th Race
-      %th Name
-      %th Email
-      %th
-
-  %tbody
-    - if @registrations.any?
-      - @registrations.each do |registration|
-        = render "registration_row", registration: registration.decorate
-    - else
+.card
+  %table.table.table-responsive-md
+    %thead.thead-light
       %tr
-        %td{colspan: 6} No registrations match this filter criteria.
+        %th ID
+        %th Status
+        %th Race
+        %th Name
+        %th Email
+        %th
+
+    %tbody
+      - if @registrations.any?
+        - @registrations.each do |registration|
+          = render "registration_row", registration: registration.decorate
+      - else
+        %tr
+          %td{colspan: 6} No registrations match this filter criteria.

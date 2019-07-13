@@ -1,27 +1,19 @@
+= content_for :admin_area_title do
+  Team
 .row
-  .col
-    %h1 Team
-  .col
+  - @team_members.each do |team_member|
+    .col-sm-12.col-md-4
+      .card
+        %img.card-img-top{alt: "member image", src: url_for(team_member.profile_image)}/
+        .card-body
+          %h4.card-title= team_member.name
+          %p.card-text= team_member.bio_html.truncate(200)
+          %a.btn.btn-sm.btn-primary{href: edit_admin_team_member_path(team_member)} Edit
+          = link_to admin_team_member_path(team_member), method: :delete, title: "Cancel", data: { toggle: "tooltip", placement: "right", confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" do
+            %i.fa.fa-ban
+.row
+  .col-12
     .float-right
-      = link_to "New",
+      = link_to "Create New Team Member",
         new_admin_team_member_path,
         class: "btn btn-sm btn-success"
-%br
-- if @team_members.any?
-  .row
-    - @team_members.each do |team_member|
-      .col-sm-12.col-md-4
-        .card
-          %img.card-img-top{alt: "member image", src: url_for(team_member.profile_image)}/
-          .card-body
-            %h4.card-title= team_member.name
-            %p.card-text= team_member.bio_html.truncate(200)
-            %a.btn.btn-sm.btn-primary{href: edit_admin_team_member_path(team_member)} Edit
-            = link_to admin_team_member_path(team_member), method: :delete, title: "Cancel", data: { toggle: "tooltip", placement: "right", confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" do
-              %i.fa.fa-ban
-
-- else
-  .row.align-items-center
-    .col
-      %h4.text-muted.p-4
-        No team members exist yet.

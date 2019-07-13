@@ -1,11 +1,12 @@
-%table.table.align-items-center
-  %thead
-    %tr
-      %th{scope: "col"} Name
-      %th{scope: "col"} Event
-      %th{scope: "col"} Starts
-      %th{scope: "col"} Participants
-      %th{scope: "col"}
-  %tbody
-    - @races.each do |race|
-      = render "race_row", race: race.decorate
+.card
+  %table.table.table-responsive-md
+    %thead.thead-light
+      %tr
+        %th{scope: "col"} Name
+        %th{scope: "col"} Event
+        %th{scope: "col"} Starts
+        %th{scope: "col"} Participants
+        %th{scope: "col"}
+    %tbody
+      - @races.each do |race|
+        = render "race_row", race: race.decorate
