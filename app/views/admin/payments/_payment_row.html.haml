@@ -1,0 +1,16 @@
+%tr{class: payment.refunded? ? "bg-danger text-white" : ""}
+  %td= payment.created_at_with_zone
+  %td= number_to_currency payment.amount_in_dollars
+  %td
+    = link_to admin_registration_path(payment.registration) do
+      %i.fa.fa-link
+      = payment.id
+  %td
+    - if payment.stripe_charge_id.present?
+      = link_to payment.stripe_charge_link_address, target: "_blank" do
+        %i.fab.fa-stripe
+        = payment.stripe_charge_id
+    - else
+      %span.text-warning Stripe Charge ID not set.
+  %td
+    %i.fa.fa-times.text-danger

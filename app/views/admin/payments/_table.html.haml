@@ -1,0 +1,13 @@
+.card
+  %table.table.table-responsive-md
+    %thead.thead-light
+      %tr
+        %th{scope: "col"} Created
+        %th{scope: "col"} Amount
+        %th{scope: "col"} Registration
+        %th{scope: "col"} Stripe
+        %th{scope: "col"} Refunded?
+        %th{scope: "col"}
+    %tbody
+      - @payments.each do |payment|
+        = render "payment_row", payment: payment

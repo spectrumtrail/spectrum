@@ -54,6 +54,7 @@ Rails.application.routes.draw do
     resources :locations
     resources :mailings
     resources :participants
+    resources :payments
     resources :races
     resources :registrations
     resources :series

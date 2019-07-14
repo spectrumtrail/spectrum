@@ -7,4 +7,8 @@ class Payment < ApplicationRecord
   def amount_charged_in_dollars
     amount_charged_in_cents.to_f / 100
   end
+
+  def refunded?
+    false
+  end
 end
