@@ -1,9 +1,7 @@
 %tr
   %td
-    .media.align-items-center
-      .media-body
-        %h6.h5.font-weight-normal.ml-1
-          = location.name
+    %img.avatar.avatar-sm{src: location.row_thumbnail}
+    = location.name
   %td
     = link_to location.address_link do
       = location.address_text

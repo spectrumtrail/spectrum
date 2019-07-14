@@ -1,14 +1,8 @@
-%tr.align-items-center
-  %th{scope: "row"}
-    .media.align-items-center
-      .media-body
-        %h6.h5.font-weight-normal.mb-0
-          = race.name
+%tr{class: race.is_active? ? '' : "bg-danger text-white"}
+  %td= race.name
   %td= link_to race.event.name, edit_admin_event_path(race.event)
   %td= race.start_time_with_zone
-  %td
-    Complete:
-    = race.paid_participants_count.to_s + ' / ' + race.participants_cap.to_s
+  %td= race.paid_participants_count.to_s + ' / ' + race.participants_cap.to_s
   %td
     .btn-group.float-right
       = link_to edit_admin_race_path(race),
@@ -18,9 +12,10 @@
       %button.btn.btn-sm.btn-outline-primary.dropdown-toggle.dropdown-toggle-split{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
         %span.sr-only Toggle Dropdown
       .dropdown-menu
-        = link_to "#", class: "dropdown-item" do
+        = link_to event_race_participants_path(race.event, race_id: race.id),
+          class: "dropdown-item" do
           %i.fa.fa-list
-          Registrations
+          Participants
         = link_to event_race_path(race.event, race),
           class: "dropdown-item" do
           %i.fa.fa-star

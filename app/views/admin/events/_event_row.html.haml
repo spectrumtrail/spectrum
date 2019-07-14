@@ -1,5 +1,7 @@
 %tr{class: !event.is_active? ? "table-danger" : ""}
-  %td= event.name
+  %td
+    %img.avatar.avatar-sm{src: event.row_thumbnail}
+    = event.name
   %td= event.starts_at_date_string
   %td
     - event.races.each do |race|

@@ -2,7 +2,7 @@ class Admin::SeriesController < Admin::BaseController
   before_action :set_series, only: [:show, :edit, :update, :destroy]
 
   def index
-    @series = Series.all
+    @series = Series.order(:name).decorate
   end
 
   def show

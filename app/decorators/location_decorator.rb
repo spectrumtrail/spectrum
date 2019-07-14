@@ -20,6 +20,10 @@ class LocationDecorator < ApplicationDecorator
   end
 
   def row_thumbnail
-    location.cover_photo.variant(resize: "100x100")
+    if location.cover_photo.attached?
+      helpers.url_for(location.cover_photo.variant(resize: "100x100"))
+    else
+      helpers.asset_path("logo-no-text")
+    end
   end
 end

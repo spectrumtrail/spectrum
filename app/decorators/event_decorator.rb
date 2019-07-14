@@ -34,7 +34,7 @@ class EventDecorator < ApplicationDecorator
   end
 
   def row_thumbnail
-    logo.variant(resize: "100x100")
+    helpers.url_for(logo.variant(resize: "100x100"))
   end
 
   def registration_window_text
