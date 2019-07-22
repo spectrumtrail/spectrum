@@ -34,7 +34,11 @@ class EventDecorator < ApplicationDecorator
   end
 
   def row_thumbnail
-    helpers.url_for(logo.variant(resize: "100x100"))
+    if logo.attached?
+      helpers.url_for(logo.variant(resize: "100x100"))
+    else
+      helpers.asset_path("logo-no-text")
+    end
   end
 
   def registration_window_text
