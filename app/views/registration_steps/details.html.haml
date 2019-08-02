@@ -39,7 +39,7 @@
                   %a.nav-link.disabled.gray-100{"aria-disabled" => "true", :tabindex => "-1"} Payment
           .card-body
             %h4 Registration Details
-            %p Tell us a little more about yourself.
+            %p Tell us a little more about yourself, #{@registration.participant.first_name}!
             %hr
             = simple_form_for(@registration, url: wizard_path, method: :put, validate: true) do |f|
               = hidden_field_tag(:token, @registration.token)
