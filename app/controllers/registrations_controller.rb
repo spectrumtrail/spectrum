@@ -80,13 +80,15 @@ class RegistrationsController < ApplicationController
   end
 
   def resume_registration(existing_registration)
+    existing_registration.update(registration_params) # use the newly submitted params in case the race changed!
+
     redirect_to(
       event_registration_step_path(
         @event,
         existing_registration,
         existing_registration.last_step_seen
       ),
-      notice: "We noticed you've already started a registration with this email. Here's the step you left off on!"
+      notice: "We noticed you've already started a registration with this email. We updated your info with what you just submitted, and brought you to the step you left off on!"
     )
   end
 
