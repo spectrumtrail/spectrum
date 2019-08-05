@@ -10,4 +10,4 @@
         %p.mx-auto.text-danger No registrations yet!
   .col-6
     .card.border-info
-      = geo_chart @event.participants.group(:city).count
+      = geo_chart @event.participants.group(:city, :state).count
