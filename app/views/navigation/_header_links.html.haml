@@ -9,8 +9,10 @@
     %a.nav-link{href: "https://store.spectrumtrailracing.com", target: "_blank"} Store
   %li.nav-item
     - if current_user
+      %a.nav-link.d-lg-none{href: admin_dashboard_path} Admin Dashboard
+      %a.btn.btn-sm.bg-primary.text-white.d-none.d-lg-inline-flex{href: admin_dashboard_path} Admin Dashboard
       %a.nav-link.d-lg-none{href: destroy_user_session_path} Sign Out
-      %a.btn.btn-sm.bg-white.d-none.d-lg-inline-flex{href: destroy_user_session_path} Sign Out
+      %a.btn.btn-sm.bg-danger.text-white.d-none.d-lg-inline-flex{href: destroy_user_session_path} Sign Out
     - else
       %a.nav-link.d-lg-none{href: new_user_session_path} Sign In
       %a.btn.btn-sm.bg-white.d-none.d-lg-inline-flex{href: new_user_session_path} Sign In
