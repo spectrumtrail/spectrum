@@ -1,0 +1,10 @@
+= content_for :admin_area_title do
+  Participant ##{@participant.id}
+%nav{"aria-label" => "breadcrumb"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      %a{href: admin_participants_path} Participants
+    %li.breadcrumb-item.active{"aria-current" => "page"} ##{@participant.id}
+.row
+  .col-12
+    = render "card", participant: @participant.decorate

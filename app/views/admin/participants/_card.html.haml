@@ -1,6 +1,9 @@
 .card.border-dark
   .card-header.bg-dark
-    %h5.text-white Participant Details
+    %h5.text-white.float-left Participant
+    .float-right
+      = link_to edit_admin_participant_path(participant), class: "btn btn-sm btn-warning" do
+        Edit
   %ul.list-group
     %li.list-group-item
       %strong.text-uppercase id

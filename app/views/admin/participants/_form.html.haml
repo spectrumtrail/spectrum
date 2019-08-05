@@ -1,0 +1,20 @@
+-# frozen_string_literal: true
+= simple_form_for([:admin, @participant.decorate]) do |f|
+  = f.error_notification
+  - if f.object.errors[:base].present?
+    = f.error_notification message: f.object.errors[:base].to_sentence
+
+  .form-inputs
+    = f.association :race,
+      collection: @participant.event.races,
+      label_method: :name_with_event,
+      value_method: :id,
+      prompt: "Which race does this Person want to do? Changing it will not affect payment in any way."
+    = f.input :first_name, label: 'First Name'
+    = f.input :last_name, label: 'Last Name'
+    = f.input :team_name,
+      label: "Team Name",
+      hint: 'If changing participant to a race that requires one, be sure to put it here!'
+
+  .form-actions
+    = f.button :submit, class: "btn btn-md btn-success"

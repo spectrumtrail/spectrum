@@ -1,5 +1,5 @@
 class Admin::ParticipantsController < Admin::BaseController
-  before_action :set_registration, only: [:edit, :update, :destroy, :show]
+  before_action :set_participant, only: [:edit, :update, :destroy, :show]
 
   def index
     @participants = Participant.includes(:registration, :race)
@@ -16,11 +16,11 @@ class Admin::ParticipantsController < Admin::BaseController
   end
 
   def create
-    @participant = Participant.new(registration_params)
+    @participant = Participant.new(participant_params)
 
     if @participant.save
       redirect_to(
-        admin_registration_path(@participant),
+        admin_participant_path(@participant),
         notice: "Participant was successfully created."
       )
     else
@@ -29,9 +29,9 @@ class Admin::ParticipantsController < Admin::BaseController
   end
 
   def update
-    if @participant.update(registration_params)
+    if @participant.update(participant_params)
       redirect_to(
-        admin_registration_path(@participant),
+        admin_participant_path(@participant),
         notice: "Participant was successfully updated."
       )
     else
@@ -49,11 +49,11 @@ class Admin::ParticipantsController < Admin::BaseController
 
   private
 
-  def set_registration
+  def set_participant
     @participant = Participant.find_by_id params[:id]
   end
 
-  def registration_params
-    params.require(:registration).permit!
+  def participant_params
+    params.require(:participant).permit!
   end
 end

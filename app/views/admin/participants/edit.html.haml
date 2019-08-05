@@ -1,0 +1,16 @@
+= content_for :admin_area_title do
+  Participant ##{@participant.id}
+
+.row
+  .col-12
+    %nav{"aria-label" => "breadcrumb"}
+      %ol.breadcrumb
+        %li.breadcrumb-item
+          %a{:href => "#", :onclick => admin_participants_path} Particpants
+        %li.breadcrumb-item{"aria-current" => "page"}
+          %a{:href => "#", :onclick => admin_participant_path(@participant)} #{@participant.id}
+        %li.breadcrumb-item.active Edit
+
+.row
+  .col-12
+    = render 'form'
