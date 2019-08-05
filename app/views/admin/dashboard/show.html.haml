@@ -6,11 +6,12 @@
     .card
       .card-header
         %h4.text-dark Participants
-      = column_chart Participant.with_payment.group_by_day(:created_at, range: 1.month.ago.beginning_of_day..Time.now).count
-
+      = column_chart Participant.with_payment.group_by_week(:created_at, range: 5.weeks.ago..Time.now).count
+      .card-footer
+        %p.text-muted Shows new paid-up participants (race-signups) grouped by week for the 5 weeks.
 .row.mt-2
   .col-12
     .card
       .card-header
         %h4.text-dark Payments
-      = line_chart Payment.group_by_day(:created_at, range: 1.month.ago.beginning_of_day..Time.now).sum('amount_charged_in_cents / 100')
+      = line_chart Payment.group_by_week(:created_at, range: 5.weeks.ago.beginning_of_day..Time.now).sum('amount_charged_in_cents / 100')
