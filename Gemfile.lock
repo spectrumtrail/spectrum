@@ -101,6 +101,7 @@ GEM
       regexp_parser (~> 1.2)
       xpath (~> 3.2)
     character_set (1.1.2)
+    chartkick (3.2.1)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     chromedriver-helper (2.1.0)
@@ -155,6 +156,8 @@ GEM
       actionpack (>= 3.0)
       multi_json
       request_store (>= 1.0)
+    groupdate (4.1.2)
+      activesupport (>= 4.2)
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
@@ -393,6 +396,7 @@ DEPENDENCIES
   by_star!
   byebug
   capybara (>= 2.15)
+  chartkick
   chromedriver-helper
   client_side_validations
   client_side_validations-simple_form
@@ -402,6 +406,7 @@ DEPENDENCIES
   factory_bot
   friendly_id (~> 5.2.4)
   gon
+  groupdate
   haml-rails (~> 1.0)
   kaminari
   letter_opener

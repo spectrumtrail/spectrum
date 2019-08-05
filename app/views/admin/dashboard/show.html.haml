@@ -1,4 +1,17 @@
 = content_for :admin_area_title do
   Dashboard
 
-%h1.text-warning Coming soon!
+
+.row
+  .col-12
+    .card
+      .card-header
+        %h4.text-dark Participants
+      = column_chart Participant.with_payment.group_by_day(:created_at, range: 1.month.ago.beginning_of_day..Time.now).count
+
+.row.mt-2
+  .col-12
+    .card
+      .card-header
+        %h4.text-dark Payments
+      = line_chart Payment.group_by_day(:created_at, range: 1.month.ago.beginning_of_day..Time.now).sum('amount_charged_in_cents / 100')

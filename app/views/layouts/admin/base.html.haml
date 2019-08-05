@@ -13,7 +13,9 @@
     = csrf_meta_tag
     = favicon_link_tag asset_path("favicon")
     = stylesheet_link_tag "application", media: "all"
+    = Gon::Base.render_data
     = javascript_include_tag "application"
+    = javascript_include_tag "https://www.gstatic.com/charts/loader.js"
     %script{:src => "https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/js/froala_editor.pkgd.min.js", :type => "text/javascript"}
   %body
     = render "admin/navigation/sidebar"

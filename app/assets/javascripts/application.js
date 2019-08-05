@@ -35,5 +35,7 @@
 //= require ie10-viewport-bug-workaround.js
 //= require toastr.min.js
 //= require ekko_lightbox.min.js
+//= require chartkick
+Chartkick.configure({mapsApiKey: gon.maps_key})
 
 //= require_tree .

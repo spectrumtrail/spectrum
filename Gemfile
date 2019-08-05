@@ -30,9 +30,11 @@ gem "client_side_validations-simple_form"
 gem "gon"
 gem "wicked"
 gem "kaminari"
+gem "chartkick"
 
 # ActiveRecord Enhancements
 gem 'by_star', git: "git://github.com/radar/by_star"
+gem 'groupdate'
 
 # email delivery
 gem "ahoy_email"

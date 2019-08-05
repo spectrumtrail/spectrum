@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :error
-  before_action :set_menu_items
+  before_action :set_menu_items, :set_maps_key
   around_action :set_time_zone
 
   private
@@ -23,5 +23,12 @@ class ApplicationController < ActionController::Base
 
   def set_menu_items
     @menu_events = Event.is_active.order(:starts_at)
+  end
+
+  def set_maps_key
+    gon.maps_key = Rails.application.credentials.send(Rails.env.to_sym).fetch(
+      :google_maps_key,
+      ENV["GOOGLE_MAPS_KEY"]
+    )
   end
 end

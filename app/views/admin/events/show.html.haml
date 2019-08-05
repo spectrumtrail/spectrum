@@ -1,1 +1,13 @@
-%h1 This will be the events dashboard
+= content_for :admin_area_title do
+  #{@event.name} Dashboard
+
+.row
+  .col-6
+    .card{style: 'min-height: 300px;'}
+      - if @event.registrations.any?
+        = line_chart @event.registrations.completed.group(:completed_at).count
+      - else
+        %p.mx-auto.text-danger No registrations yet!
+  .col-6
+    .card.border-info
+      = geo_chart @event.participants.group(:city).count
