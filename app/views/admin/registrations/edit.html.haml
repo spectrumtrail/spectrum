@@ -1,7 +1,12 @@
-%h1 Edit Registration
-
-= render 'form'
-
-= link_to 'Show', admin_event_race_registration_path(@event, @race, @registration)
-\|
-= link_to 'Back', admin_event_race_registrations_path(@event, @race)
+= content_for :admin_area_title do
+  Registration ##{@registration.id}
+%nav{"aria-label" => "breadcrumb"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      %a{:href => "#", :onclick => "history.back(2);"} Registrations
+    %li.breadcrumb-item{"aria-current" => "page"}
+      %a{href: admin_registration_path(@registration)} #{@registration.id}
+    %li.breadcrumb-item.active Cancel
+.row
+  .col-12
+    = render 'form'

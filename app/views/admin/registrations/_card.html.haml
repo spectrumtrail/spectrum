@@ -1,6 +1,9 @@
 .card.border-dark
   .card-header.bg-dark
-    %h5.text-white Registration Details
+    %h5.text-white.float-left Registration
+    .float-right
+      = link_to edit_admin_registration_path(registration), class: "btn btn-sm btn-danger" do
+        Cancel
   %ul.list-group
     %li.list-group-item
       %strong.text-uppercase id
@@ -26,7 +29,7 @@
       %li.list-group-item
         %strong.text-uppercase cancellation reason
         %br
-        = local_time registration.cancellation_reason
+        = registration.cancellation_reason
     %li.list-group-item
       %strong.text-uppercase billing email
       %br

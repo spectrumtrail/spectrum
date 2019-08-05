@@ -1,9 +1,10 @@
+= content_for :admin_area_title do
+  Registration ##{@registration.id}
 %nav{"aria-label" => "breadcrumb"}
   %ol.breadcrumb
     %li.breadcrumb-item
       %a{:href => "#", :onclick => "history.back();"} Registrations
     %li.breadcrumb-item.active{"aria-current" => "page"} ##{@registration.id}
-
 .row
   .col-4
     = render "admin/registrations/card", registration: @registration

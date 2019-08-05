@@ -1,29 +1,14 @@
 -# frozen_string_literal: true
-= simple_form_for([:admin, @event, @race, @registration]) do |f|
+= simple_form_for([:admin, @registration]) do |f|
   = f.error_notification
   - if f.object.errors[:base].present?
     = f.error_notification message: f.object.errors[:base].to_sentence
 
   .form-inputs
-    = f.association :race,
-      label_method: :name_with_event,
-      value_method: :id,
-      prompt: "Which race does this Person want to do?"
-    = f.input :first_name, class: "col-6"
-    = f.input :last_name
-    = f.input :date_of_birth
-    = f.input :email
-    = f.input :division
-    = f.input :mobile_phone
-    = f.input :opted_in_for_communication
-    = f.input :emergency_contact_name
-    = f.input :emergency_contact_phone
-    = f.input :medical_conditions_description
-    = f.input :legal_guardian_name
-    = f.input :legal_guardian_phone_string
-    = f.input :legal_guardian_initials
-    = f.input :accepted_refund_policy
-    = f.input :accepted_waiver
+    = f.input :cancelled_at
+    = f.input :cancellation_reason, as: :text, hint: "For reference, why is this person cancelling their registration? Put any notes related to the circumstances here."
 
   .form-actions
-    = f.button :submit, class: "btn btn-md btn-success"
+    = f.button :submit, 'Cancel this registration!', class: "btn btn-md btn-danger", data: { confirm: "Once cancelled, this Registration's participant will be removed from the start list. They will NOT be able to re-register with this email address. Are you sure you want to proceed? Undoing this will require calling Colin." }
+    .mt-4
+      = link_to 'Nevermmind, take me back!', :back
