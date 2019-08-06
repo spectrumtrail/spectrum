@@ -1,6 +1,9 @@
 .card.border-dark
   .card-header.bg-dark
-    %h5.text-white Payment Details
+    %h5.text-white.float-left Payment
+    .float-right
+      = link_to new_admin_refund_path(payment_id: payment.id), class: "btn btn-sm btn-warning" do
+        Create Refund
   %ul.list-group
     %li.list-group-item
       %strong.text-uppercase id
@@ -43,3 +46,12 @@
           = link_to discount_code.code, admin_discount_code_path(discount_code)
         - else
           None.
+    %li.list-group-item
+      %strong.text-uppercase Refunded?
+      %br
+        - if payment.refunded?
+          - payment.refunds.each do |refund|
+            = link_to admin_refund_path(refund) do
+              = number_to_currency(refund.amount_in_cents / 100)
+        - else
+          %i.fa.fa-times.text-danger

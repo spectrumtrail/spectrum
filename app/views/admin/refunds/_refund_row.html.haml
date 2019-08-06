@@ -1,0 +1,8 @@
+%tr
+  %td= refund.id
+  %td= refund.created_at_with_zone
+  %td= refund.amount_in_formatted_dollars
+  %td= link_to refund.payment_id, admin_payment_path(refund.payment)
+  %td= refund.admin_reason.titleize
+  %td
+    = link_to 'Show', admin_refund_path(refund)

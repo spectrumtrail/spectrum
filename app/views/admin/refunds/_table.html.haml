@@ -1,0 +1,13 @@
+.card
+  %table.table.table-responsive-md
+    %thead.thead-light
+      %tr
+        %th{scope: "col"} ID
+        %th{scope: "col"} Created
+        %th{scope: "col"} Amount
+        %th{scope: "col"} Payment
+        %th{scope: "col"} Reason
+        %th{scope: "col"}
+    %tbody
+      - @refunds.each do |refund|
+        = render "refund_row", refund: refund

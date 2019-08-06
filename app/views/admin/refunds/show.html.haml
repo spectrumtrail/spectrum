@@ -1,0 +1,6 @@
+= content_for :admin_area_title do
+  Refund #{@refund.id}
+
+.row
+  .col-12
+    = render "card", refund: @refund.decorate, status: @stripe_refund.status

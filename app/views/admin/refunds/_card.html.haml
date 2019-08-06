@@ -1,0 +1,34 @@
+.card.border-dark
+  .card-header.bg-dark
+    %h5.text-white Refund Details
+  %ul.list-group
+    %li.list-group-item
+      %strong.text-uppercase id
+      %br
+      = refund.id
+    %li.list-group-item
+      %strong.text-uppercase stripe status
+      %br
+      = status.try(:titleize)
+    %li.list-group-item
+      %strong.text-uppercase payment
+      %br
+      = link_to admin_payment_path(refund.payment) do
+        %i.far.fa-money-bill-alt
+        = refund.payment_id
+    %li.list-group-item
+      %strong.text-uppercase created
+      %br
+      = refund.created_at_with_zone
+    %li.list-group-item
+      %strong.text-uppercase Amount
+      %br
+      = refund.amount_in_formatted_dollars
+    %li.list-group-item
+      %strong.text-uppercase Admin Reason
+      %br
+      = refund.admin_reason.titleize
+    %li.list-group-item
+      %strong.text-uppercase Admin Notes
+      %br
+      = refund.admin_notes

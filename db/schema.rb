@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_11_220829) do
+ActiveRecord::Schema.define(version: 2019_08_05_230949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -163,6 +163,7 @@ ActiveRecord::Schema.define(version: 2019_07_11_220829) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "registration_id"
+    t.integer "refunds_count", default: 0
     t.index ["registration_id"], name: "index_payments_on_registration_id"
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
@@ -190,6 +191,17 @@ ActiveRecord::Schema.define(version: 2019_07_11_220829) do
     t.boolean "requires_team_name", default: false
     t.index ["event_id"], name: "index_races_on_event_id"
     t.index ["slug"], name: "index_races_on_slug", unique: true
+  end
+
+  create_table "refunds", force: :cascade do |t|
+    t.bigint "payment_id"
+    t.integer "amount_in_cents"
+    t.string "admin_reason"
+    t.string "admin_notes"
+    t.string "stripe_refund_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payment_id"], name: "index_refunds_on_payment_id"
   end
 
   create_table "registrations", force: :cascade do |t|
@@ -289,6 +301,7 @@ ActiveRecord::Schema.define(version: 2019_07_11_220829) do
   add_foreign_key "payments", "registrations"
   add_foreign_key "payments", "users"
   add_foreign_key "races", "events"
+  add_foreign_key "refunds", "payments"
   add_foreign_key "registrations", "discount_codes"
   add_foreign_key "registrations", "events"
 end

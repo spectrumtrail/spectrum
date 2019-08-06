@@ -1,0 +1,15 @@
+-# frozen_string_literal: true
+= simple_form_for([:admin, @refund]) do |f|
+  = f.error_notification
+  - if f.object.errors[:base].present?
+    = f.error_notification message: f.object.errors[:base].to_sentence
+
+  .form-inputs
+    = f.input :payment_id, input_html: { value: params[:payment_id] }, hint: 'The ID of the payment being refunded.', readonly: true
+    = f.input :admin_reason, as: :select, collection: [['Requested by Customer', :requested_by_customer], ['Fraudulent', :fradulent]], include_blank: false, hint: 'This information will be reported to stripe.'
+    = f.input :admin_notes, as: :text, hint: 'Why are you refunding this payment?'
+    .form-group
+      %strong= "Amount (in cents) currently available to refund is: #{@payment.amount_refundable_in_cents}"
+      = f.input :amount_in_cents, label: "Amount you wish to refund (in cents).", input_html: { min: 100, max: @payment.amount_charged_in_cents, step: 'any' }, hint: 'Should not be more than the available balance to refund in cents. Get help from Colin or Jason if you are not sure how much this is.'
+  .form-actions.float-right
+    = f.button :submit, class: "btn btn-sm btn-success", data: { confirm: 'Are you sure? This will do some un-fixable shit.' }

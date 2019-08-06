@@ -56,6 +56,7 @@ Rails.application.routes.draw do
     resources :participants
     resources :payments
     resources :races
+    resources :refunds
     resources :registrations
     resources :series
     resources :sponsors

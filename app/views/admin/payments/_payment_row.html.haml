@@ -1,4 +1,4 @@
-%tr{class: payment.refunded? ? "bg-danger text-white" : ""}
+%tr{class: payment.refunded? ? "bg-warning text-white" : ""}
   %td= payment.created_at_with_zone
   %td= number_to_currency payment.amount_in_dollars
   %td
@@ -13,4 +13,17 @@
     - else
       %span.text-warning Stripe Charge ID not set.
   %td
-    %i.fa.fa-times.text-danger
+    - if payment.refunded?
+      %i.fa.fa-check.text-success
+      - payment.refunds.each do |refund|
+        = link_to admin_refund_path(refund) do
+          = refund.id
+          -
+          = number_to_currency(refund.amount_in_cents / 100)
+    - else
+      %i.fa.fa-times.text-danger
+  %td
+    = link_to 'Show', admin_payment_path(payment)
+    - unless payment.refunded?
+      |
+      = link_to 'Refund', new_admin_refund_path(payment_id: payment.id)
