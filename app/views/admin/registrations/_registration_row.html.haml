@@ -1,12 +1,12 @@
 %tr
   %td= registration.id
   %td
-    - if registration.complete?
-      %i.fas.fa-check-circle.text-success
-      = local_time registration.completed_at
-    - elsif registration.cancelled?
+    - if registration.cancelled?
       %i.fa.fa-ban.text-danger
       = local_time registration.cancelled_at
+    - elsif registration.complete?
+      %i.fas.fa-check-circle.text-success
+      = local_time registration.completed_at
     - else
       %i.fas.fa-circle-notch.text-warning
       = local_time_ago registration.updated_at
