@@ -16,7 +16,7 @@ class Admin::DiscountCodesController < Admin::BaseController
   end
 
   def create
-    @discount_code = DiscountCode.new(registration_params)
+    @discount_code = DiscountCode.new(discount_code_params)
 
     if @discount_code.save
       redirect_to(
@@ -29,7 +29,7 @@ class Admin::DiscountCodesController < Admin::BaseController
   end
 
   def update
-    if @discount_code.update(registration_params)
+    if @discount_code.update(discount_code_params)
       redirect_to(
         admin_discount_codes_path(@discount_code),
         notice: "Discount Code was successfully updated."
@@ -53,7 +53,7 @@ class Admin::DiscountCodesController < Admin::BaseController
     @discount_code = DiscountCode.find_by_id params[:id]
   end
 
-  def registration_params
+  def discount_code_params
     params.require(:discount_code).permit!
   end
 end
