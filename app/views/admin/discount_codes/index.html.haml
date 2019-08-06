@@ -1,11 +1,13 @@
 = content_for :admin_area_title do
   Discount Codes
+  = link_to new_admin_discount_code_path, class: "ml-4 btn btn-sm btn-success" do
+    %i.fa.fa-plus
+    New
 .row
   .col
+    .card
+      .card-header
+        Usage Summary
+      = column_chart Registration.joins(:discount_code).group('discount_codes.code').count
+
     = render "table"
-.row.mt-3
-  .col-12
-    .float-right
-      = link_to new_admin_discount_code_path, class: "btn btn-sm btn-success" do
-        %i.fa.fa-plus
-        Create New Discount Code

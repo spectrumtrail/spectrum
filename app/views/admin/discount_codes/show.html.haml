@@ -1,1 +1,10 @@
-= render "admin/registrations/card", registration: @registration.decorate
+= content_for :admin_area_title do
+  Discount Code ##{@discount_code.id}
+%nav{"aria-label" => "breadcrumb"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      %a{href: admin_discount_codes_path} Discount Codes
+    %li.breadcrumb-item.active{"aria-current" => "page"} ##{@discount_code.id}
+.row
+  .col-12
+    = render "card", discount_code: @discount_code

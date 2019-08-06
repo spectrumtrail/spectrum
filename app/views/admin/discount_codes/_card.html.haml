@@ -1,0 +1,6 @@
+.row
+  .col-12
+    .card
+      .card-header Usage
+      .card-body
+        = bar_chart Registration.where(id: discount_code.registrations.pluck(:id)).joins(:participant).group('participants.email').count
