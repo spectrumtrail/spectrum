@@ -3,6 +3,10 @@ class ParticipantDecorator < ApplicationDecorator
     "#{address}<br />#{city}, #{state}, #{zip}"
   end
 
+  def city_and_state
+    "#{participant.city.try(:titleize)}, #{participant.state.try(:upcase)}"
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end

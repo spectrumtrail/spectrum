@@ -3,6 +3,6 @@
   %td= participant.last_name
   %td= participant.division[0].upcase
   %td= participant.race_day_age
-  %td #{participant.city}, #{participant.state}
+  %td= participant.city_and_state
   - if participant.event.allows_teams?
     %td= participant.team_name
