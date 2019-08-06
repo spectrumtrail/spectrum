@@ -1,0 +1,2 @@
+class DiscountCodeDecorator < ApplicationDecorator
+end
