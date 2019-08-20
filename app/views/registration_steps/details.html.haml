@@ -57,14 +57,15 @@
                       collection: [["Men's Open", :male], ["Women's Open", :female]],
                       item_wrapper_class: "inline custom-control custom-radio",
                       label: "In which division would you like to compete?",
-                      validate: true
+                      validate: true,
+                      required: true
                     %hr
                   %fieldset
                     %legend Address
-                    = ff.input :address, label: "Full Street Address", validate: true
-                    = ff.input :city, validate: true
-                    = ff.input :state, collection: states_list, class: "form-control selectpicker", prompt: "Select A State"
-                    = ff.input :zip, validate: true
+                    = ff.input :address, label: "Full Street Address", validate: true, required: true
+                    = ff.input :city, validate: true, required: true
+                    = ff.input :state, collection: states_list, class: "form-control selectpicker", prompt: "Select A State", required: true
+                    = ff.input :zip, validate: true, required: true
                   - if @event.allows_teams?
                     %fieldset
                       %legend Team Settings
