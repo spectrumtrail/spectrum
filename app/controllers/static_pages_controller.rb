@@ -17,6 +17,10 @@ class StaticPagesController < ApplicationController
   def privacy
   end
 
+  def store
+    redirect_to("https://store.spectrumtrailracing.com")
+  end
+
   def terms
   end
 
