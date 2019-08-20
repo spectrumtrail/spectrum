@@ -1,8 +1,5 @@
-.row
-  .col
-    %h1 Create a New Event
-    %p Events belong to locations and have at least one race.
-
+= content_for :admin_area_title do
+  Creating Event
 .row
   .col
     = render 'form'
