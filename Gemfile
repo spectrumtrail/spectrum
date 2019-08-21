@@ -13,7 +13,7 @@ gem "airbrake"
 
 # Asset Storage
 gem "aws-sdk-s3", require: false
-gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.9'
 
 # Front End
 gem "draper"
