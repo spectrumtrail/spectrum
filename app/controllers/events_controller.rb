@@ -20,6 +20,6 @@ class EventsController < ApplicationController
   private
 
   def set_event
-    @event = Event.friendly.find(params[:id]).try(:decorate)
+    @event = Event.with_attachments.friendly.find(params[:id]).try(:decorate)
   end
 end
