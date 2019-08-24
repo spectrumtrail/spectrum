@@ -1,0 +1,10 @@
+.card
+  %table.table.table-responsive-md
+    %thead.bg-light
+      %tr
+        %th{scope: "col"} Name
+        %th{scope: "col"} Last Updated
+        %th{scope: "col"}
+    %tbody
+      - @team_members.each do |team_member|
+        = render team_member.decorate

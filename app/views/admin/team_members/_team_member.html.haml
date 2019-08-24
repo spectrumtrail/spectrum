@@ -1,0 +1,11 @@
+%tr
+  %td
+    %img.avatar.avatar-sm{src: team_member.row_thumbnail}
+    = team_member.name
+  %td= local_time_ago team_member.updated_at
+  %td
+    .btn-group.float-right
+      = link_to edit_admin_team_member_path(team_member),
+        class: "btn btn-sm btn-outline-primary" do
+        %i.fa.fa-edit
+        Edit

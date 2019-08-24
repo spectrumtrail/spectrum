@@ -1,2 +1,5 @@
-%h1 Edit #{@team_member.name}
-= render 'form'
+= content_for :admin_area_title do
+  Updating #{@team_member.name}
+.row
+  .col
+    = render 'form'
