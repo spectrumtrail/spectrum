@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_05_230949) do
+ActiveRecord::Schema.define(version: 2019_08_24_203352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -254,6 +254,8 @@ ActiveRecord::Schema.define(version: 2019_08_05_230949) do
     t.text "bio_html"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "strava_link"
+    t.string "instagram_link"
   end
 
   create_table "users", force: :cascade do |t|
