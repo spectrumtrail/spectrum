@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :visits, class_name: "Ahoy::Visit"
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :trackable

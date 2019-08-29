@@ -1,4 +1,5 @@
 class Registration < ApplicationRecord
+  visitable :ahoy_visit
   attr_accessor :discount_code_text
 
   serialize :steps_seen, Array

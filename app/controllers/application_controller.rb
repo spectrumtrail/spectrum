@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :error
   before_action :set_menu_items, :set_maps_key
   around_action :set_time_zone
+  after_action :track_action
 
   private
 
@@ -30,5 +31,14 @@ class ApplicationController < ActionController::Base
       :google_maps_key,
       ENV["GOOGLE_MAPS_KEY"]
     )
+  end
+
+  def track_action
+    unless request.xhr?
+      ahoy.track(
+        "#{controller_name} ##{action_name}",
+        request.path_parameters
+      )
+    end
   end
 end
