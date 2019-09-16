@@ -12,6 +12,14 @@ html {
   font-family: 'Nanum Pen Script', cursive !important;
 }
 
+.invalid-feedback {
+  background-color: $spectrum-red;
+  border-radius: 5px;
+  padding: 5px;
+  color: $white;
+  font-size: 20px;
+}
+
 #RuggedBox {
   background-color: $spectrum-blue;
 }
