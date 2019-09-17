@@ -53,9 +53,10 @@ class Participant < ApplicationRecord
     CSV.generate(headers: true) do |csv|
       csv << ['First Name', 'Last Name', 'Age', 'Gender', 'Race', 'Location']
 
-      scope = where(event_id: event_id).
+      scope = includes(:race).
+              where(event_id: event_id).
               for_start_list.
-              order(:first_name)
+              reorder('races.name ASC')
 
       scope.decorate.each do |participant|
         csv << [
