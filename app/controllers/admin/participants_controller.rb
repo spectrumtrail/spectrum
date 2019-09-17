@@ -3,6 +3,17 @@ class Admin::ParticipantsController < Admin::BaseController
 
   def index
     @participants = Participant.includes(:registration, :race)
+
+    respond_to do |format|
+      format.html
+      format.csv {
+        event = Event.find params[:event_id]
+        send_data(
+          @participants.to_event_start_list_csv(event_id: params[:event_id]),
+          filename: "#{event.name}-participants-#{Time.now.to_i}.csv"
+        )
+      }
+    end
   end
 
   def show

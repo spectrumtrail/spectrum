@@ -1,3 +1,5 @@
+require 'CSV'
+
 class Participant < ApplicationRecord
   belongs_to :registration
   belongs_to :event
@@ -45,5 +47,26 @@ class Participant < ApplicationRecord
 
   def validate_waiver?
     ["completed", "waiver"].include? registration.step_to_validate
+  end
+
+  def self.to_event_start_list_csv(event_id:)
+    CSV.generate(headers: true) do |csv|
+      csv << ['First Name', 'Last Name', 'Age', 'Gender', 'Race', 'Location']
+
+      scope = where(event_id: event_id).
+              for_start_list.
+              order(:first_name)
+
+      scope.decorate.each do |participant|
+        csv << [
+          participant.first_name.titleize,
+          participant.last_name.titleize,
+          participant.race_day_age,
+          participant.division,
+          participant.race_name,
+          participant.city_and_state
+        ]
+      end
+    end
   end
 end
