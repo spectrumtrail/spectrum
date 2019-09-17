@@ -1,4 +1,4 @@
-require 'CSV'
+require 'csv'
 
 class Participant < ApplicationRecord
   belongs_to :registration
