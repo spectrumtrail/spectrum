@@ -65,9 +65,9 @@ GEM
       device_detector
       geocoder (>= 1.4.5)
       safely_block (>= 0.2.1)
-    airbrake (9.3.0)
-      airbrake-ruby (~> 4.5)
-    airbrake-ruby (4.5.0)
+    airbrake (9.4.3)
+      airbrake-ruby (~> 4.6)
+    airbrake-ruby (4.6.0)
       rbtree3 (~> 0.5)
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
