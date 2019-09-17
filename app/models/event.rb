@@ -34,4 +34,11 @@ class Event < ApplicationRecord
     return true
   end
 
+  def sold_out?
+    races.each do |race|
+      return false if race.is_full? == false
+    end
+
+    true
+  end
 end
