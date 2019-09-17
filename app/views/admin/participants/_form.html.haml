@@ -9,9 +9,34 @@
       collection: @participant.event.races,
       label_method: :name_with_event,
       value_method: :id,
-      prompt: "Which race does this Person want to do? Changing it will not affect payment in any way."
+      prompt: "Which race does this Person want to do? <b>Changing it will not affect payment in any way.</b>".html_safe
     = f.input :first_name, label: 'First Name'
     = f.input :last_name, label: 'Last Name'
+    = f.input :email, as: :email
+    = f.input :phone, as: :tel, hint: "Used for important Race updates."
+    = f.input :address
+    = f.input :city
+    = f.input :state,
+      collection: states_list,
+      class: "form-control selectpicker",
+      prompt: "Select A State"
+    = f.input :zip
+    = f.input :birth_date,
+      as: :string,
+      label: "Birthdate",
+      placeholder: "mm/dd/yyyy",
+      input_html: { class: "date masked-date" }
+    = f.input :division,
+      as: :radio_buttons,
+      collection: ["Male", "Female", "Open"],
+      item_wrapper_class: "inline custom-control custom-radio",
+      label: "Gender"
+    = f.input :emergency_contact_name
+    = f.input :emergency_contact_phone, as: :tel
+    = f.input :medical_conditions,
+      as: :text,
+      input_html: { class: "textarea-autosize" },
+      hint: "Do you have any medical conditions that might affect first aid?"
     = f.input :team_name,
       label: "Team Name",
       hint: 'If changing participant to a race that requires one, be sure to put it here!'
