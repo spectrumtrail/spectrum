@@ -2,16 +2,40 @@
   Dashboard
 
 .row
-  .col-12
+  .col-6
     .card
-      .card-header
-        %h4.text-dark Participants
-      = column_chart Participant.with_payment.group_by_week(:created_at, range: 5.weeks.ago..Time.now).count
+      .card-header.bg-primary
+        %h4.text-white Participants
+      = column_chart Participant.with_payment.group_by_week(:created_at, range: 3.weeks.ago..Time.now).count
       .card-footer
-        %p.text-muted Shows new paid-up participants (race-signups) grouped by week for the 5 weeks.
+        %p.text-muted Shows new paid-up participants (race-signups) grouped by week from 3 weeks ago.
+  .col-6
+    .card
+      .card-header.bg-success
+        %h4.text-white Payments
+      = line_chart Payment.group_by_week(:created_at, range: 3.weeks.ago.beginning_of_day..Time.now).sum('amount_charged_in_cents / 100')
+      .card-footer
+        %p.text-muted Shows payments made during the last 3 weeks ago.
 .row.mt-2
   .col-12
     .card
-      .card-header
-        %h4.text-dark Payments
-      = line_chart Payment.group_by_week(:created_at, range: 5.weeks.ago.beginning_of_day..Time.now).sum('amount_charged_in_cents / 100')
+      .card-header.bg-primary
+        %h4.text-white Participation
+      %table.table.table-condensed
+        %thead
+          %th Race
+          %th Paid Participants
+          %th Participant Cap
+          %th Spots Remaining
+          %th Pending Participants
+        %tbody
+          - @races.each do |race|
+            %tr
+              %td
+                = link_to event_race_participants_path(race.event, race), target: "_blank" do
+                  %i.fa.fa-external-link-alt{"data-placement" => "right", "data-toggle" => "tooltip", :title => "See the start list"}
+                  = race.name_with_event
+              %td= race.paid_participants_count
+              %td= race.participants_cap
+              %td= race.participants_cap - race.paid_participants_count
+              %td= race.participants.size - race.paid_participants_count
