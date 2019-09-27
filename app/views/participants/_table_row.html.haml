@@ -1,7 +1,7 @@
 %tr
   %td= participant.first_name
   %td= participant.last_name
-  %td= participant.division.try(:upcase)
+  %td= participant.division.try(:to_s).try(:humanize).try(:titleize)
   %td= participant.race_day_age
   %td= participant.city_and_state
   - if participant.event.allows_teams?

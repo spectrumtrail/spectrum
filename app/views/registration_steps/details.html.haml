@@ -54,9 +54,9 @@
                     = ff.input :birth_date, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 12, order: [:month, :day, :year], validate: true
                     = ff.input :division,
                       as: :radio_buttons,
-                      collection: [["Men's Open", :male], ["Women's Open", :female]],
+                      collection: [["Men's Open", :male], ["Women's Open", :female], ["Non-binary/Other", :non_binary]],
                       item_wrapper_class: "inline custom-control custom-radio",
-                      label: "In which division would you like to compete?",
+                      label: "Gender Identity",
                       validate: true,
                       required: true
                     %hr
