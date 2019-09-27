@@ -11,11 +11,12 @@
           .col
             = raw race.overview_html
         .row
+          - if race.strava_embed_code
+            %div.strava-embed-code.my-2
+              = raw race.strava_embed_code
           - if race.course_map.attached?
-            .col
-              %a{"data-gallery" => "example-gallery", "data-toggle" => "lightbox", "data-type" => "image", :href => url_for(race.course_map)}
-                = image_tag race.course_map, class: "img img-fluid rounded"
+            %a{"data-gallery" => "example-gallery", "data-toggle" => "lightbox", "data-type" => "image", :href => url_for(race.course_map)}
+              = image_tag race.course_map, class: "img img-fluid rounded"
           - if race.elevation_profile.attached?
-            .col
-              %a{"data-gallery" => "example-gallery", "data-toggle" => "lightbox", "data-type" => "image", :href => url_for(race.elevation_profile)}
-                = image_tag race.elevation_profile, class: "img img-fluid rounded"
+            %a{"data-gallery" => "example-gallery", "data-toggle" => "lightbox", "data-type" => "image", :href => url_for(race.elevation_profile)}
+              = image_tag race.elevation_profile, class: "img img-fluid rounded"
