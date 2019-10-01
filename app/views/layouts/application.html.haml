@@ -14,6 +14,7 @@
     = javascript_include_tag "application", "data-turbolinks-track": "reload"
     // SVG Animation script // temporary
     %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"}
+    = render partial: "shared/drift_script"
   %body{class: "application #{controller_name}", id: "#{controller_name}_#{action_name}"}
     = render "navigation/dark_header"
     %main.main
