@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :error
-  before_action :set_menu_items, :set_maps_key
+  before_action :set_menu_items, :set_drift_key
   around_action :set_time_zone
   after_action :track_action
 
@@ -26,10 +26,10 @@ class ApplicationController < ActionController::Base
     @menu_events = Event.with_attachments.is_active.order(:starts_at)
   end
 
-  def set_maps_key
-    gon.maps_key = Rails.application.credentials.send(Rails.env.to_sym).fetch(
-      :google_maps_key,
-      ENV["GOOGLE_MAPS_KEY"]
+  def set_drift_key
+    gon.drift_key = Rails.application.credentials.send(Rails.env.to_sym).fetch(
+      :drift_id,
+      ENV["DRIFT_ID"]
     )
   end
 
