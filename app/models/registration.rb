@@ -12,9 +12,9 @@ class Registration < ApplicationRecord
   has_one :location, through: :event
   has_one :participant, dependent: :destroy
   has_one :race, through: :participant
-  accepts_nested_attributes_for :participant, allow_destroy: :true
+  accepts_nested_attributes_for :participant, allow_destroy: :true, update_only: true
   has_one :payment
-  accepts_nested_attributes_for :payment
+  accepts_nested_attributes_for :payment, update_only: true
 
   validates :accepts_refund_terms, acceptance: true, if: :validate_payment?
 
