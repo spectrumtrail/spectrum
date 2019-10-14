@@ -37,13 +37,17 @@
         validate: true,
         hint: "Where do you want the receipt to go?",
         input_html: { value: registration.default_billing_email }
+    %hr
+    %h4 Registration Summary
+    = render "registration_steps/preview", participant: registration.participant.decorate
     %h4
       Your final total will be:
       %span.float-right#FinalTotal= number_to_currency(CalculatesAmountToCharge.new(registration: @registration).amount_to_charge_in_dollars_decimal)
 
     %br
     .form-actions
-      = f.input :discount_code_id, as: :hidden, input_html: { id: "js-DiscountCodeIdInput" }
+      = f.input :discount_code_id, as: :hidden,
+        input_html: { id: "js-DiscountCodeIdInput" }
       = f.button :submit,
         "Complete my registration and pay now!",
         id: 'stripe_button',

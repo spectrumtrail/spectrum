@@ -1,0 +1,25 @@
+%ul
+  %li
+    %strong Race Selected:&nbsp
+    = participant.race_name
+  %li
+    %strong Name:&nbsp
+    = participant.full_name
+  %li
+    %strong Email:&nbsp
+    = participant.email
+  %li
+    %strong Age on Race Day:&nbsp
+    = participant.race_day_age
+  %li
+    %strong Gender:&nbsp
+    = participant.division
+  %li
+    %strong From:
+    = participant.city_and_state
+
+%p.text-tertiary
+  This is the information that will appear in the starting list for your race,
+  as well as our timing software. If any of this information is incorrect, please
+  = link_to "go back", wizard_path(:details)
+  and correct it before submitting!
