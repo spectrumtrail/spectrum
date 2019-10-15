@@ -80,7 +80,9 @@ class RegistrationsController < ApplicationController
   end
 
   def resume_registration(existing_registration)
-    existing_registration.update(registration_params) # use the newly submitted params in case the race changed!
+    unless existing_registration.complete?
+      existing_registration.update(registration_params) # use the newly submitted params in case the race changed!
+    end
 
     redirect_to(
       event_registration_step_path(
