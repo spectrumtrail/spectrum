@@ -27,10 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_drift_key
-    gon.drift_key = Rails.application.credentials.send(Rails.env.to_sym).fetch(
-      :drift_id,
-      ENV["DRIFT_ID"]
-    )
+    gon.drift_key = ENV["DRIFT_ID"]
   end
 
   def track_action
