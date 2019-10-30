@@ -1,8 +1,18 @@
-.card.border-primary.flex-row.flex-wrap.my-3
-  .row.no-gutters
-    .col-auto
-      %img.img-fluid.card-img.z-depth-2{alt: team_member.name + " image", src: url_for(team_member.profile_image)}/
-    .col
-      .card-block.p-3
-        %h4.card-title= team_member.name
-        %p.card-text= team_member.bio_html.html_safe
+.card.border-primary.bg-tertiary.my-3.team-card
+  %img.card-img-top.img-fluid.team-member-image{alt: team_member.name + " image", src: url_for(team_member.profile_image)}/
+  .card-body.text-center.p-3
+    %h4.card-title.text-white= team_member.name
+    %h5.card-text.text-white
+      Best advice for new trail runners
+    %hr.bg-white
+    - if team_member.best_advice?
+      %q.card-text.text-white= team_member.best_advice
+  .card-footer.bg-tertiary
+    %span
+      %ul.nav.mx-auto
+        %li.nav-item
+          %a.nav-link{href: team_member.strava_link, target: "_blank"}
+            %i.fab.fa-strava.fa-2x.text-white
+        %li.nav-item
+          %a.nav-link{href: team_member.instagram_link, target: "_blank"}
+            %i.fab.fa-instagram.fa-2x.text-white

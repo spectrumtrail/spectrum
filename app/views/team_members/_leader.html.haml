@@ -1,0 +1,6 @@
+.card.border-primary.bg-tertiary.my-3.team-card
+  %img.card-img-top.img-fluid.team-member-image{alt: team_member.name + " image", src: url_for(team_member.profile_image)}/
+  .card-body.text-center.p-3
+    %h4.card-title.text-white= team_member.name
+    %hr.bg-white
+    %h6.card-title.text-white= team_member.title
