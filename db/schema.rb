@@ -300,6 +300,9 @@ ActiveRecord::Schema.define(version: 2019_11_30_214356) do
     t.datetime "updated_at", null: false
     t.string "strava_link"
     t.string "instagram_link"
+    t.boolean "is_leader", default: false
+    t.string "title"
+    t.string "best_advice"
   end
 
   create_table "users", force: :cascade do |t|
