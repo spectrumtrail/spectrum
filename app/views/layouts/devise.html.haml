@@ -8,6 +8,8 @@
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload"
     = javascript_include_tag "application", "data-turbolinks-track": "reload"
     = Gon::Base.render_data
+    = render partial: "shared/drift_script"
+    = render partial: "shared/google_analytics_script"
   %body{class: "application #{controller_name}", id: "#{controller_name}_#{action_name}"}
     %main.main.with-topo-background{style: "min-height: 100vh; background-color: linen"}
       = render partial: 'flash_messages', flash: flash
