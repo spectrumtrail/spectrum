@@ -176,14 +176,11 @@ $(document).ready(function() {
 // Listener for anything with a data-action attribute.
 $(document).ready(function() {
   $("body").on("click", "[data-action]", function(e) {
-    console.log("Seeing click");
     e.preventDefault();
 
     var $this = $(this);
     var action = $this.data('action');
     var target = '';
-
-    console.log("action is " + action);
 
     switch (action) {
       case "offcanvas-open":
