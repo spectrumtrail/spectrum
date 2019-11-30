@@ -4,7 +4,7 @@ class RegistrationDecorator < ApplicationDecorator
   end
 
   def event_race_name
-    event.name + " - " + race.name
+    event.name + " - " + race.name.truncate(10)
   end
 
   def event_race_name_link
