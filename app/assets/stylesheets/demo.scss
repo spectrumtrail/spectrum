@@ -24,7 +24,7 @@
 // Main content section
 @media (min-width: 1200px) {
     .content:not(.content--boxed):not(.content--full) {
-        padding: 0 0 0 240px;
+        padding: 0 0 0 200px;
     }
 }
 
@@ -203,7 +203,7 @@
 
 // Sidebar
 .sidebar {
-  width: 240px;
+  width: 200px;
   position: fixed;
   left: 0;
   padding: 0 0.5rem 0.5rem 1.5rem;
