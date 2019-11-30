@@ -35,6 +35,7 @@ gem "chartkick"
 # ActiveRecord Enhancements
 gem 'by_star', git: "git://github.com/radar/by_star"
 gem 'groupdate'
+gem 'ransack'
 
 # email delivery
 gem "ahoy_email"

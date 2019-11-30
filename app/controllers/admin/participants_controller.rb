@@ -2,7 +2,8 @@ class Admin::ParticipantsController < Admin::BaseController
   before_action :set_participant, only: [:edit, :update, :destroy, :show]
 
   def index
-    @participants = Participant.includes(:registration, :race)
+    @q = Participant.includes(:registration, :race).ransack(params[:q])
+    @participants = @q.result.page(params[:page])
 
     respond_to do |format|
       format.html

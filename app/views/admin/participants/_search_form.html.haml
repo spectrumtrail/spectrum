@@ -1,0 +1,19 @@
+.card.mb-2
+  .card-header.bg-tertiary
+    %h4.text-white Search Form
+  .card-body
+    = search_form_for @q, url: admin_participants_path, html: { class: 'form' } do |f|
+      .row.form-group
+        .col-6
+          = f.label :first_name_or_last_name_cont
+          %br
+          = f.search_field :first_name_or_last_name_cont, class: "form-control field"
+        .col-6
+          = f.label :email_cont
+          %br
+          = f.search_field :email_cont, class: "form-control field"
+      .row
+        .col-12
+          .float-right
+            = link_to 'Reset', admin_participants_path, class: "text-danger"
+            = f.submit 'Search', data: { disable_with: "Searching..." }, class: "btn btn-sm btn-primary"

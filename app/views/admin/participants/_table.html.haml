@@ -1,0 +1,18 @@
+.card
+  %table.table.table-responsive-md
+    %thead.thead-light
+      %tr
+        %th ID
+        %th Status
+        %th Race
+        %th Name
+        %th Email
+        %th
+
+    %tbody
+      - if @participants.any?
+        - @participants.each do |participant|
+          = render "participant_row", participant: participant.decorate
+      - else
+        %tr
+          %td{colspan: 6} No participants match this filter criteria.

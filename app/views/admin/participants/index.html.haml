@@ -1,0 +1,12 @@
+= content_for :admin_area_title do
+  Participants
+.row
+  .col-12
+    = render "admin/participants/search_form"
+.row
+  .col-12
+    .card
+      = render "table"
+.row.mt-3
+  .col
+    = paginate @participants

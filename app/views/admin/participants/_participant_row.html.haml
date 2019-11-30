@@ -1,0 +1,20 @@
+- registration = participant.registration.decorate
+%tr
+  %td
+    = link_to "##{participant.id}", admin_participant_path(participant)
+  %td= registration.status
+  %td
+    = link_to registration.event_name, admin_event_path(registration.event)
+    = link_to registration.race_name.truncate(10), admin_race_path(registration.race)
+  %td
+    = participant.full_name.titleize
+    - if participant.team_name.present?
+      " (#{participant.team_name})"
+  %td= mail_to participant.email
+  %td
+    .dropdown
+      %button.btn.btn-sm.btn-outline-tertiary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+        Actions
+      .dropdown-menu
+        = link_to "Show Registration", admin_registration_path(participant.registration), class: "dropdown-item"
+        = link_to "Change", edit_admin_registration_path(participant.registration), class: "dropdown-item text-warning"

@@ -34,4 +34,28 @@ class RegistrationDecorator < ApplicationDecorator
       none
     end
   end
+
+  def status_icon
+    if registration.cancelled?
+      h.content_tag(:i, '', class: 'fa fa-ban text-danger')
+    elsif registration.complete?
+      h.content_tag(:i, '', class: 'fas fa-check-circle text-success')
+    else
+      h.content_tag(:i, '', class: 'fas fa-circle-notch text-warning')
+    end
+  end
+
+  def status_text
+    if registration.cancelled?
+      h.local_time registration.cancelled_at
+    elsif registration.complete?
+      h.local_time registration.completed_at
+    else
+      h.local_time_ago registration.updated_at
+    end
+  end
+
+  def status
+    status_icon + ' ' + status_text
+  end
 end

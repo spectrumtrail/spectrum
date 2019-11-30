@@ -241,6 +241,8 @@ GEM
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     pg (1.1.4)
+    polyamorous (2.3.0)
+      activerecord (>= 5.0)
     premailer (1.11.1)
       addressable
       css_parser (>= 1.6.0)
@@ -280,6 +282,12 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
     rake (12.3.3)
+    ransack (2.3.0)
+      actionpack (>= 5.0)
+      activerecord (>= 5.0)
+      activesupport (>= 5.0)
+      i18n
+      polyamorous (= 2.3.0)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
@@ -430,6 +438,7 @@ DEPENDENCIES
   premailer-rails
   puma (~> 3.11)
   rails (~> 5.2.2)
+  ransack
   redis (~> 4.0)
   rspec
   rspec-rails (~> 3.8)
