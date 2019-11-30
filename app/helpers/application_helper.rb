@@ -79,7 +79,16 @@ module ApplicationHelper
       ["Washington", "WA"],
       ["West Virginia", "WV"],
       ["Wisconsin", "WI"],
-      ["Wyoming", "WY"]
+      ["Wyoming", "WY"],
+      ["-------", "--"],
+      ["Australia", "Australia"],
+      ["Canada", "Canada"],
+      ["France", "France"],
+      ["Germany", "Germany"],
+      ["Mexico", "Mexico"],
+      ["New Zealand", "New Zealand"],
+      ["South Africa", "South Africa"],
+      ["United Kingdom", "United Kingdom"],
     ]
   end
 

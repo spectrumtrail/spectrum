@@ -22,7 +22,6 @@ class Participant < ApplicationRecord
   validates :address, presence: true, if: :validate_details?
   validates :city, presence: true, if: :validate_details?
   validates :state, presence: true, if: :validate_details?
-  validates :zip, presence: true, if: :validate_details?
 
   validates :emergency_contact_name, presence: true, if: :validate_waiver?
   validates :emergency_contact_phone, presence: true, if: :validate_waiver?
