@@ -1,4 +1,4 @@
-%tr{class: race.is_active? ? '' : "bg-danger text-white"}
+%tr{class: !race.is_active? || race.archived? ? 'bg-danger text-white' : ''}
   %td= race.name
   %td= link_to race.event.name, edit_admin_event_path(race.event)
   %td= race.start_time_with_zone
@@ -20,7 +20,14 @@
           class: "dropdown-item" do
           %i.fa.fa-star
           Registration Page
-        - unless race.registrations.any?
+        - if Time.current > race.starts_at
+          = link_to archive_admin_race_path(race),
+            method: :put,
+            data: { confirm: 'Are you sure? This cannot easily be undone.' },
+            class: "dropdown-item text-warning" do
+            %i.fa.fa-clock
+            Archive
+        - unless race.participants.any?
           .dropdown-divider
             = link_to admin_race_path(race),
               method: :delete, data: { confirm: "Are you sure?" },

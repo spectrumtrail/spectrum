@@ -1,5 +1,5 @@
 class Admin::RacesController < Admin::BaseController
-  before_action :set_race, only: [:edit, :update, :show, :destroy]
+  before_action :set_race, except: [:index, :new, :create]
 
   def index
     @races = Race.by_starts_at
@@ -49,7 +49,20 @@ class Admin::RacesController < Admin::BaseController
     )
   end
 
+  def archive
+    if archive_race.success?
+      redirect_to(
+        admin_races_path,
+        success: "Race and its registrations successfully archived!"
+      )
+    end
+  end
+
   private
+
+  def archive_race
+    ArchivesRace.new(race_id: @race.id).perform
+  end
 
   def set_race
     @race = Race.friendly.find(params[:id]).decorate

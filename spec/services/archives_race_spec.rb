@@ -23,8 +23,8 @@ RSpec.describe ArchivesRace do
       service = ArchivesRace.new(race_id: race.id)
 
       expect { service.perform }.to change {
-        race.reload.registrations.archived.count
-      }.by(race.reload.registrations.count)
+        Registration.archived.count
+      }.by(race.reload.participants.count)
     end
   end
 end

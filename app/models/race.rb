@@ -4,7 +4,6 @@ class Race < ApplicationRecord
 
   belongs_to :event
   has_one :location, through: :event
-  has_many :registrations, through: :event
   has_many :participants
 
   has_one_attached :course_map

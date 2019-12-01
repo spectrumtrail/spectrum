@@ -55,7 +55,11 @@ Rails.application.routes.draw do
     resources :mailings
     resources :participants
     resources :payments
-    resources :races
+    resources :races do
+      member do
+        put :archive
+      end
+    end
     resources :refunds
     resources :registrations
     resources :series

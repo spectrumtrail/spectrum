@@ -20,6 +20,10 @@ class ArchivesRace
   private
 
   def update_race_registrations
-    race.registrations.update_all(archived_at: Time.current)
+    registrations.update_all(archived_at: Time.current)
+  end
+
+  def registrations
+    Registration.joins(:participant).where(participants: { race_id: race.id })
   end
 end
