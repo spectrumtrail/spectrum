@@ -61,7 +61,11 @@ Rails.application.routes.draw do
       end
     end
     resources :refunds
-    resources :registrations
+    resources :registrations do
+      collection do
+        get :archived
+      end
+    end
     resources :series
     resources :sponsors
     resources :team_members

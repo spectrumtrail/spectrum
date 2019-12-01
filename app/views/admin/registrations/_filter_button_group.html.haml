@@ -1,5 +1,5 @@
 - selected = params[:filter_scope]
-.row.mb-1
+.row.mb-2
   .col
     .btn-group
       %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path(request.params.merge(filter_scope: :completed)), class: selected == 'completed' ? "active" : nil}
@@ -14,3 +14,4 @@
       %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path, class: selected == nil ? "active" : nil}
         %i.fa.fa-list
         ALL
+    = link_to "See archived", archived_admin_registrations_path, class: 'text-tertiary'

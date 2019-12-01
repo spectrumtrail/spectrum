@@ -1,9 +1,10 @@
 .card.border-dark
   .card-header.bg-dark
     %h5.text-white.float-left Registration
-    .float-right
-      = link_to edit_admin_registration_path(registration), class: "btn btn-sm btn-danger" do
-        Cancel
+    - unless registration.archived?
+      .float-right
+        = link_to edit_admin_registration_path(registration), class: "btn btn-sm btn-danger" do
+          Cancel
   %ul.list-group
     %li.list-group-item
       %strong.text-uppercase id

@@ -5,6 +5,10 @@
     %li.breadcrumb-item
       %a{:href => "#", :onclick => "history.back();"} Registrations
     %li.breadcrumb-item.active{"aria-current" => "page"} ##{@registration.id}
+- if @registration.archived?
+  %div.alert.alert-warning
+    %h3.text-white HEADS UP!
+    This registration was archived #{local_time(@registration.archived_at)}
 .row
   .col-4
     = render "admin/registrations/card", registration: @registration

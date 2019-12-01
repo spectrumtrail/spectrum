@@ -2,11 +2,13 @@ class Admin::RegistrationsController < Admin::BaseController
   before_action :set_registration, only: [:edit, :update, :destroy, :show]
 
   def index
-    @registrations = Registration.includes(:payment, :participant)
-    @registrations = @registrations.where(event_id: params[:event_id]) if params[:event_id].present?
-    @registrations = @registrations.send(params.fetch(:filter_scope, :all)).order(created_at: :desc)
+    @registrations = fetch_registrations
+    @registrations = @registrations.not_archived.page(params[:page])
+  end
 
-    @registrations = @registrations.page(params[:page]).per(50)
+  def archived
+    @registrations = fetch_registrations
+    @registrations = @registrations.archived.page(params[:page])
   end
 
   def show
@@ -54,6 +56,18 @@ class Admin::RegistrationsController < Admin::BaseController
   end
 
   private
+
+  def fetch_registrations
+    registrations = Registration.includes(:payment, :participant, :race, :event)
+
+    if params[:event_id].present?
+      registrations = registrations.where(event_id: params[:event_id])
+    end
+
+    registrations.send(
+      params.fetch(:filter_scope, :all)
+    )
+  end
 
   def set_registration
     @registration = Registration.find(params[:id]).decorate
