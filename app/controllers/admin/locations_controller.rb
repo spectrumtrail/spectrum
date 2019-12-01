@@ -2,7 +2,7 @@ class Admin::LocationsController < Admin::BaseController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
 
   def index
-    @locations = Location.order(:name).decorate
+    @locations = Location.includes(:events, :cover_photo_attachment).order(:name).decorate
   end
 
   def show

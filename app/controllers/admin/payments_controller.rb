@@ -2,8 +2,10 @@ class Admin::PaymentsController < Admin::BaseController
   before_action :set_payment, only: [:edit, :update, :destroy, :show]
 
   def index
-    @payments = Payment.order(created_at: :desc)
-    @payments = @payments.page(params[:page]).per(50).decorate
+    @payments = Payment.includes(:registration).
+                        order(created_at: :desc).
+                        page(params[:page]).
+                        decorate
   end
 
   def show
