@@ -1,6 +1,11 @@
 %section.slice#RegistrationSection
   %h2 Registration
   .row
-    - @races.each do |race|
-      .col-sm-12.col-md-6
-        = render "races/card", race: race.decorate
+    - if @races.any?
+      - @races.each do |race|
+        .col-sm-12.col-md-6
+          = render "races/card", race: race.decorate
+    - else
+      %p
+        We are working on setting up race distances for next year's event.
+        Please check back soon!

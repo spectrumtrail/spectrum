@@ -1,7 +1,9 @@
 %tr{class: !race.is_active? || race.archived? ? 'bg-danger text-white' : ''}
   %td= race.name
   %td= link_to race.event.name, edit_admin_event_path(race.event)
-  %td= race.start_time_with_zone
+  %td
+    = race.start_date
+    = race.start_time_with_zone
   %td= race.paid_participants_count.to_s + ' / ' + race.participants_cap.to_s
   %td
     .btn-group.float-right
@@ -20,13 +22,19 @@
           class: "dropdown-item" do
           %i.fa.fa-star
           Registration Page
-        - if Time.current > race.starts_at
+        - if Time.current > race.starts_at && !race.archived?
           = link_to archive_admin_race_path(race),
             method: :put,
             data: { confirm: 'Are you sure? This cannot easily be undone.' },
             class: "dropdown-item text-warning" do
             %i.fa.fa-clock
             Archive
+        - if race.archived?
+          = link_to new_admin_race_path(race: race.attributes),
+            data: { confirm: 'This duplicates the archived race so you can create a new one for next year. This is how we make sure start lists make sense, and for the sake of historical accuracy! You will need to simply update the dates on the next page if you want everything to stay the same for next year. Please be sure to update the event appropriately as well (move the registration windows forward to the next year!)' },
+            class: "dropdown-item text-success" do
+            %i.fa.fa-copy
+            Duplicate for Next Year
         - unless race.participants.any?
           .dropdown-divider
             = link_to admin_race_path(race),
