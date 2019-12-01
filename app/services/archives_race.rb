@@ -11,10 +11,6 @@ class ArchivesRace
       race.update(archived_at: Time.current)
       update_race_registrations
     end
-
-    OpenStruct.new(
-      success?: true
-    )
   end
 
   private

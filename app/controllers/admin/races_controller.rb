@@ -50,17 +50,16 @@ class Admin::RacesController < Admin::BaseController
   end
 
   def archive
-    if archive_race.success?
-      redirect_to(
-        admin_races_path,
-        success: "Race and its registrations successfully archived!"
-      )
-    end
+    archive_race!
+    redirect_to(
+      admin_races_path,
+      success: "Race and its registrations successfully archived!"
+    )
   end
 
   private
 
-  def archive_race
+  def archive_race!
     ArchivesRace.new(race_id: @race.id).perform
   end
 
