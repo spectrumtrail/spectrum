@@ -21,9 +21,26 @@ class NewRegistrationHandler
   end
 
   def existing_participant
-    @existing_participant ||= event.participants.created_after(
+    # This controls whether or not someone can create a new registration
+    # for a race belonging to this event. This prevents users from creating
+    # registrations for different, active, not-archived, races belonging to the
+    # same running of this event (example: the 2019 Sky Island vs 2020 Sky Island)
+
+    @existing_participant ||= event.participants.where(
+      race_id: registerable_race_ids
+    ).created_after(
+      # Important: this scope relies on the 'registration opens at' setting to
+      # be accurate.
       event.registration_opens_at
     ).where(email: submitted_participant.email).first
+  end
+
+  def registerable_race_ids
+    # Important: this is to prevent past registrations for races belonging to
+    # the same event from being retrieved at signup for the next years' races
+    # belonging to that event.
+
+    @event.races.active.not_archived.pluck(:id)
   end
 
   def existing_registration
