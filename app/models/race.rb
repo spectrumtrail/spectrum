@@ -54,6 +54,7 @@ class Race < ApplicationRecord
   def is_registerable?(time)
     return false unless event.registration_open?(time)
     return false unless is_active?
+    return false if archived?
     return false if is_full?
     true
   end
