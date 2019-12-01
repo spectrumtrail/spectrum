@@ -22,6 +22,10 @@ class Race < ApplicationRecord
 
   delegate :time_zone, to: :event
 
+  def archived?
+    archived_at.present?
+  end
+
   def name_with_event
     "#{event.name} #{name}"
   end

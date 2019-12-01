@@ -21,6 +21,11 @@ class Registration < ApplicationRecord
   scope :completed, -> { where.not(completed_at: nil) }
   scope :incomplete, -> { where(completed_at: nil) }
   scope :cancelled, -> { where.not(cancelled_at: nil) }
+  scope :archived, -> { where.not(archived_at: nil) }
+
+  def archived?
+    archived_at.present?
+  end
 
   def complete?
     completed_at.present? && paid?

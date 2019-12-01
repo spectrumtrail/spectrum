@@ -27,6 +27,10 @@ class Event < ApplicationRecord
   scope :is_active, -> { where(is_active: true) }
   scope :by_starts_at, -> { order(starts_at: :asc) }
 
+  def archived?
+    archived_at.present?
+  end
+
   def registration_open?(time)
     return false unless is_active?
     return false if registration_opens_at > time # before window
