@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_menu_items
-    @menu_events = Event.with_attachments.is_active.order(:starts_at)
+    @menu_events = Event.is_active.order(:starts_at)
   end
 
   def set_drift_key

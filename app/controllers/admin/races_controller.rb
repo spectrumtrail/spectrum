@@ -2,7 +2,7 @@ class Admin::RacesController < Admin::BaseController
   before_action :set_race, except: [:index, :new, :create]
 
   def index
-    @races = Race.by_starts_at
+    @races = Race.includes(:event, :participants).by_starts_at
   end
 
   def show

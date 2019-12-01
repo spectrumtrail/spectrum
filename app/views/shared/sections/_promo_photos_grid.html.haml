@@ -18,6 +18,7 @@
     .row
       .card-columns
         - @promo_photos.each do |promo_photo|
-          .card
-            %a{"data-gallery" => "example-gallery", "data-toggle" => "lightbox", href: url_for(promo_photo)}
-              = image_tag promo_photo, class: "img img-fluid rounded"
+          - cache promo_photo do
+            .card
+              %a{"data-gallery" => "example-gallery", "data-toggle" => "lightbox", href: url_for(promo_photo)}
+                = image_tag promo_photo, class: "img img-fluid rounded"

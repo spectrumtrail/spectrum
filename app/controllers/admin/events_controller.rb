@@ -2,7 +2,7 @@ class Admin::EventsController < Admin::BaseController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index
-    @events = Event.with_attachments.by_starts_at.decorate
+    @events = Event.includes(:location, :races, :logo_attachment).by_starts_at.decorate
   end
 
   def show

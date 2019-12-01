@@ -9,4 +9,5 @@
         %th{scope: "col"}
     %tbody
       - @races.each do |race|
-        = render "race_row", race: race.decorate
+        - cache race do
+          = render "race_row", race: race.decorate
