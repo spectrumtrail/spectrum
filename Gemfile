@@ -59,7 +59,7 @@ gem 'ahoy_matey'
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails', groups: [:development, :test]
-  gem "factory_bot"
+  gem 'factory_bot_rails'
   gem "rspec"
   gem "rspec-rails", "~> 3.8"
 end
