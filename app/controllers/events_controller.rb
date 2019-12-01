@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   def show
     if @event.present? && @event.is_active?
       @location = @event.location
-      @races = @event.races.active.order(starts_at: :asc)
+      @races = @event.races.active.not_archived.order(starts_at: :asc)
     else
       redirect_to(
         root_path,

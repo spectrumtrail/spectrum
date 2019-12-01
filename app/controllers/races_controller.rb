@@ -3,7 +3,7 @@ class RacesController < ApplicationController
   before_action :set_race, only: [:show, :edit, :update, :destroy]
 
   def index
-    @races = @event.races.active.order(starts_at: :asc)
+    @races = @event.races.active.not_archived.order(starts_at: :asc)
   end
 
   def show

@@ -18,6 +18,8 @@ class Race < ApplicationRecord
   scope :by_starts_at, -> { order(starts_at: :asc) }
   scope :upcoming, -> { where("starts_at > NOW()") }
   scope :past, -> { where("starts_at < NOW()") }
+  scope :archived, -> { where.not(archived_at: nil) }
+  scope :not_archived, -> { where(archived_at: nil) }
 
   delegate :time_zone, to: :event
 
