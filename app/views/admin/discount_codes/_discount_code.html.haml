@@ -1,9 +1,8 @@
 %tr{class: discount_code.is_active? ? '' : 'table-danger text-white'}
   %td= discount_code.code
   %td= discount_code.description
-  %td= discount_code.registrations_count
+  %td= number_with_delimiter discount_code.registrations_count
   %td= local_time_ago discount_code.created_at
-  %td= number_with_delimiter discount_code.registrations.size
   %td
     .btn-group.float-right
       = link_to edit_admin_discount_code_path(discount_code),

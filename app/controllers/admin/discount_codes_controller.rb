@@ -2,7 +2,11 @@ class Admin::DiscountCodesController < Admin::BaseController
   before_action :set_discount_code, only: [:edit, :update, :destroy, :show]
 
   def index
-    @discount_codes = DiscountCode.order(:code)
+    @discount_codes = DiscountCode.order(registrations_count: :desc)
+    @registrations = Registration.joins(:discount_code).
+                                  group('discount_codes.code').
+                                  order('count_id desc').
+                                  count('id')
   end
 
   def show

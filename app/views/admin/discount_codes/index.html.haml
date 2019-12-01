@@ -8,6 +8,6 @@
     .card
       .card-header
         Usage Summary
-      = column_chart Registration.joins(:discount_code).group('discount_codes.code').count
+      = column_chart @registrations
 
     = render "table"
