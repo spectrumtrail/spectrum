@@ -9,7 +9,7 @@ gem "bootsnap", ">= 1.4.3", require: false
 gem "puma", "~> 3.11"
 gem "devise"
 gem "barnes"
-gem "airbrake"
+gem "airbrake", '~> 9.5'
 
 # Asset Storage
 gem "aws-sdk-s3", require: false
@@ -65,6 +65,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "bullet"
   gem "letter_opener"
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "spring"
