@@ -2,8 +2,11 @@ class Admin::ParticipantsController < Admin::BaseController
   before_action :set_participant, only: [:edit, :update, :destroy, :show]
 
   def index
-    @q = Participant.includes(registration: [:payment, :race, :event]).ransack(params[:q])
-    @participants = @q.result.page(params[:page])
+    @q = Participant.includes(
+      registration: [:payment, :race, :event]
+    ).ransack(params[:q])
+
+    @participants = @q.result.order(created_at: :desc).page(params[:page])
 
     respond_to do |format|
       format.html
