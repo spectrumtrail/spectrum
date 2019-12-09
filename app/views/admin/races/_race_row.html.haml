@@ -1,4 +1,4 @@
-%tr{class: !race.is_active? || race.archived? ? 'bg-danger text-white' : ''}
+%tr{class: !race.is_active? || race.archived? ? 'table-danger text-white' : ''}
   %td= race.name
   %td= link_to race.event.name, edit_admin_event_path(race.event)
   %td
@@ -18,10 +18,11 @@
           class: "dropdown-item" do
           %i.fa.fa-list
           Participants
-        = link_to event_race_path(race.event, race),
-          class: "dropdown-item" do
-          %i.fa.fa-star
-          Registration Page
+        - unless race.archived?
+          = link_to event_race_path(race.event, race),
+            class: "dropdown-item" do
+            %i.fa.fa-star
+            Registration Page
         - if Time.current > race.starts_at && !race.archived?
           = link_to archive_admin_race_path(race),
             method: :put,

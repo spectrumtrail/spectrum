@@ -1,8 +1,12 @@
 class Admin::RacesController < Admin::BaseController
-  before_action :set_race, except: [:index, :new, :create]
+  before_action :set_race, except: [:index, :new, :create, :archived]
 
   def index
-    @races = Race.includes(:event).by_starts_at
+    @races = Race.includes(:event).not_archived.by_starts_at.page(params[:page])
+  end
+
+  def archived
+    @races = Race.includes(:event).archived.by_starts_at.page(params[:page])
   end
 
   def show

@@ -56,6 +56,10 @@ Rails.application.routes.draw do
     resources :participants
     resources :payments
     resources :races do
+      collection do
+        get :archived
+      end
+
       member do
         put :archive
       end
