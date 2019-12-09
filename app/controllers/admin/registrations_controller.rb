@@ -66,7 +66,7 @@ class Admin::RegistrationsController < Admin::BaseController
 
     registrations.send(
       params.fetch(:filter_scope, :all)
-    )
+    ).order(created_at: :desc)
   end
 
   def set_registration
