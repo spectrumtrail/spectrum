@@ -18,19 +18,22 @@
       We are ambassadors to the sport. We are mentors. We are competitors. We are family. Come run with us!
 
 %section.bg-tertiary.pt-2.pb-2
-  .container-fluid.p-5
+  .container.p-5
     %h1.text-center.text-white
       Leadership
-    .row.card-deck
-      - @leaders.each do |leader|
-        .col-sm-4
-          = render 'leader', team_member: leader
+    - @leaders.in_groups_of(3, false).each do |leader_group|
+      .row
+        .col
+          .card-deck
+            - leader_group.each do |leader|
+              = render 'leader', team_member: leader
 
-%section.bg-tertiary.pt-2.pb-2
-  .container-fluid.p-5
+  .container.p-5
     %h1.text-center.text-white
       Trail Blazers
-    .row.card-deck
-      - @blazers.each do |member|
-        .col-sm-3
-          = render member
+    - @blazers.in_groups_of(4, false).each do |blazer_group|
+      .row
+        .col
+          .card-deck
+            - blazer_group.each do |blazer|
+              = render blazer
