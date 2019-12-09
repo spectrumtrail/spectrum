@@ -23,6 +23,10 @@ class RaceDecorator < ApplicationDecorator
     "#{event.name} #{name}"
   end
 
+  def name_with_event_and_year
+    "#{event.name} #{name} (#{created_at.year})"
+  end
+
   def name_with_event_and_price
     "#{name_with_event} - ( $#{price_in_cents / 100} )"
   end

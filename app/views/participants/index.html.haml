@@ -9,5 +9,5 @@
       .col-sm-12.col-md-8.col-lg-9
         .card.border-primary.mb-4
           .card-header.bg-primary
-            %h4.text-white Participants for #{@race.name_with_event}
+            %h4.text-white Participants for #{@race.name_with_event_and_year}
           = render "table", participants: @participants, event: @event
