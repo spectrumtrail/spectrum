@@ -11,7 +11,7 @@
 
 %section
   .container.d-flex.align-items-center.mt-5.mb-5
-    %h1.display-4.text-tertiary
+    %h1.text-tertiary
       The people who run with Spectrum not only share the vision and values of our community, they embody it.
   .container.d-flex.align-items-center.mb-5
     %h2.text-tertiary
@@ -23,7 +23,7 @@
       Leadership
     .row.card-deck
       - @leaders.each do |leader|
-        .col-4
+        .col-sm-4
           = render 'leader', team_member: leader
 
 %section.bg-tertiary.pt-2.pb-2
@@ -32,5 +32,5 @@
       Trail Blazers
     .row.card-deck
       - @blazers.each do |member|
-        .col-3
+        .col-sm-3
           = render member
