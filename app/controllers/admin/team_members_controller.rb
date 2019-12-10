@@ -49,7 +49,7 @@ class Admin::TeamMembersController < Admin::BaseController
   private
 
   def set_team_member
-    @team_member = TeamMember.find(params[:id])
+    @team_member = TeamMember.friendly.find(params[:id])
   end
 
   def team_member_params
