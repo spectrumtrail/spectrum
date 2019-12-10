@@ -9,7 +9,9 @@
       %q.card-text.text-white= team_member.best_advice
   .card-footer.bg-tertiary
     .text-center
-      %a{href: team_member.strava_link, target: "_blank"}
-        %i.fab.fa-strava.fa-2x.text-white.mr-2
-      %a{href: team_member.instagram_link, target: "_blank"}
-        %i.fab.fa-instagram.fa-2x.text-white
+      - if team_member.strava_link.present?
+        %a{href: team_member.strava_link, target: "_blank"}
+          %i.fab.fa-strava.fa-2x.text-white.mr-2
+      - if team_member.instagram_link.present?
+        %a{href: team_member.instagram_link, target: "_blank"}
+          %i.fab.fa-instagram.fa-2x.text-white
