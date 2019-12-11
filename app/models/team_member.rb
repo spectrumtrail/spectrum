@@ -9,4 +9,8 @@ class TeamMember < ApplicationRecord
   def should_generate_new_friendly_id?
     slug.blank? || name_changed?
   end
+
+  def social?
+    instagram_link.present? || strava_link.present?
+  end
 end
