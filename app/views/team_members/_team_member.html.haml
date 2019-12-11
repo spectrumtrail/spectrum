@@ -15,3 +15,7 @@
       - if team_member.instagram_link.present?
         %a{href: team_member.instagram_link, target: "_blank"}
           %i.fab.fa-instagram.fa-2x.text-white
+      %br
+      %div.m-3
+        = link_to team_member_path(team_member), class: "btn btn-md border-white text-white bg-dark" do
+          Profile
