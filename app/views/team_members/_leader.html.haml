@@ -4,3 +4,10 @@
     %h4.card-title.text-white= team_member.name
     %hr.bg-white
     %h6.card-title.text-white= team_member.title
+    - if team_member.best_advice?
+      %q.card-text.text-white= team_member.best_advice
+    %br
+  .card-footer.bg-tertiary
+    %div.text-center
+      = link_to team_member_path(team_member), class: "btn btn-md border-white text-white bg-dark" do
+        PROFILE
