@@ -1,0 +1,34 @@
+%section.spotlight.parallaxy.bg-cover.bg-size--cover{"data-spotlight" => "fullscreen", style: "background-image: url(#{@team_member.default_cover_photo_url})"}
+  %span.mask.bg-dark.alpha-7
+  .spotlight-holder.py-lg.pt-lg-xl
+    .container.d-flex.align-items-center.no-padding
+      .col
+        .row.cols-xs-space.text-center.text-md-left.justify-content-center
+          .col-lg-10
+            .text-center.mt-5
+              %h1.heading.h1.text-white= @team_member.name
+              - if @team_member.is_leader?
+                %p.lead.lh-180.text-white.mt-3= @team_member.title
+
+%section.slice
+  .container
+    .row
+      .col-12
+        = @team_member.bio_html.html_safe
+
+- if @team_member.social?
+  %section.slice
+    .container
+      .row
+        .col-12
+          .text-center
+            %h4.h4 Keep up with #{@team_member.name}!
+      .row
+        .col-12
+          .text-center
+            - if @team_member.strava_link.present?
+              %a{href: @team_member.strava_link, target: "_blank"}
+                %i.fab.fa-strava.fa-4x.text-warning.mr-3
+            - if @team_member.instagram_link.present?
+              %a{href: @team_member.instagram_link, target: "_blank"}
+                %i.fab.fa-instagram.fa-4x.text-tertiary

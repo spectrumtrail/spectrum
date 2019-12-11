@@ -6,4 +6,12 @@ class TeamMemberDecorator < ApplicationDecorator
       helpers.asset_path("logo-no-text")
     end
   end
+
+  def default_cover_photo_url
+    if cover_image.attached?
+      helpers.url_for(cover_image)
+    else
+      helpers.asset_path("logo-no-text")
+    end
+  end
 end

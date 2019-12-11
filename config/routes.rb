@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
   resources :sponsors, only: [:index]
   resources :series, only: [:show]
-  resources :team_members, path: "team", only: [:index]
+  resources :team_members, path: "team", only: [:index, :show]
 
   namespace :members do
     resource :profile, controller: "profile", only: [:show, :edit, :update]
