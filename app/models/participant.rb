@@ -27,7 +27,7 @@ class Participant < ApplicationRecord
   validates :emergency_contact_phone, presence: true, if: :validate_waiver?
   validates :accepts_waiver, acceptance: true, if: :validate_waiver?
 
-  delegate :archived?, :step_to_validate, to: :registration
+  delegate :archived?, :step_to_validate, :user, to: :registration
 
   scope :with_payment, -> { joins(:payment) }
   scope :created_after, ->(time) { after(time) }
