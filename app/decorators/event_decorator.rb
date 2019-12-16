@@ -51,7 +51,7 @@ class EventDecorator < ApplicationDecorator
   end
 
   def registerable_race_array
-    races.active.by_starts_at.decorate.map do |race|
+    races.active.not_archived.by_starts_at.decorate.map do |race|
       [
         race.registration_radio_input_name,
         race.id,

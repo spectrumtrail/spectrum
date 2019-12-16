@@ -10,7 +10,7 @@
             %p.mt-4.mb-1.h5.text-white.lh-180
               = event.short_description
             %p.mb-1.h5.lh-180
-              - event.races.active.each do |race|
+              - event.races.active.not_archived.each do |race|
                 %span.badge.badge-lg.badge-primary.badge-uppercase= race.name
           %span.text-white.text-uppercase.font-weight-500{href: event_races_path(event)}
             Register Now
