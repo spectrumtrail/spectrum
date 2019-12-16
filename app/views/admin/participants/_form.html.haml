@@ -6,7 +6,7 @@
 
   .form-inputs
     = f.association :race,
-      collection: @participant.event.races,
+      collection: @participant.event.races.active.not_archived,
       label_method: :name_with_event,
       value_method: :id,
       prompt: "Which race does this Person want to do? <b>Changing it will not affect payment in any way.</b>".html_safe

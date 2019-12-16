@@ -24,7 +24,7 @@ class ImportExistingRegistration
   def process_line(line)
     puts line.inspect
     event = Event.where('name ILIKE ?', "%#{line.event_name}%").first!
-    race = event.races.where('name ILIKE ?', "%#{line.race_name}%").first
+    race = event.races.not_archived.where('name ILIKE ?', "%#{line.race_name}%").first
     discount_code = DiscountCode.find_by_code line.discount_code_used
 
     registration = Registration.create!(

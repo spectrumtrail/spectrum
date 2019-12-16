@@ -13,7 +13,7 @@
           = render "events/sections/registration"
           = render "events/sections/schedule"
           = render "events/sections/details"
-          = render "events/sections/courses", races: @event.races.decorate
+          = render "events/sections/courses", races: @event.races.active.not_archived.decorate
           = render "events/sections/photos"
           = render "events/sections/location", location: @event.location.decorate
           = render "events/sections/lodging"
