@@ -9,6 +9,7 @@ class Registration < ApplicationRecord
 
   belongs_to :event
   belongs_to :discount_code, counter_cache: true, optional: true
+  belongs_to :user, optional: true
   has_one :location, through: :event
   has_one :participant, dependent: :destroy
   has_one :race, through: :participant

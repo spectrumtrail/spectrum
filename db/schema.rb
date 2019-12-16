@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_171651) do
+ActiveRecord::Schema.define(version: 2019_12_15_184705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -268,9 +268,11 @@ ActiveRecord::Schema.define(version: 2019_12_10_171651) do
     t.string "admin_notes"
     t.bigint "ahoy_visit_id"
     t.datetime "archived_at"
+    t.bigint "user_id"
     t.index ["discount_code_id"], name: "index_registrations_on_discount_code_id"
     t.index ["event_id"], name: "index_registrations_on_event_id"
     t.index ["token"], name: "index_registrations_on_token", unique: true
+    t.index ["user_id"], name: "index_registrations_on_user_id"
   end
 
   create_table "series", force: :cascade do |t|
@@ -355,4 +357,5 @@ ActiveRecord::Schema.define(version: 2019_12_10_171651) do
   add_foreign_key "refunds", "payments"
   add_foreign_key "registrations", "discount_codes"
   add_foreign_key "registrations", "events"
+  add_foreign_key "registrations", "users"
 end
