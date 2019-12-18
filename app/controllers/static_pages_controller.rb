@@ -21,6 +21,9 @@ class StaticPagesController < ApplicationController
     redirect_to("https://store.spectrumtrailracing.com")
   end
 
+  def results_path
+  end
+
   def terms
   end
 
