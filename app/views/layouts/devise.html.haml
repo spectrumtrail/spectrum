@@ -10,8 +10,6 @@
     = Gon::Base.render_data
     - if Rails.env.production?
       = render partial: "shared/drift_script"
-    - if Rails.env.production?
-      = render partial: "shared/google_analytics_script"
   %body{class: "application #{controller_name}", id: "#{controller_name}_#{action_name}"}
     %main.main.with-topo-background{style: "min-height: 100vh; background-color: linen"}
       = render partial: 'flash_messages', flash: flash

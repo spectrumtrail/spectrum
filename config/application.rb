@@ -20,5 +20,10 @@ module Spectrum
       generator.test_framework  false
       generator.factory_bot suffix: "factory"
     end
+
+    config.middleware.use(Rack::Tracker) do
+      handler :google_analytics, { tracker: ENV['GOOGLE_ANALYTICS_ID'], ecommerce: true, position: :body }
+      handler :facebook_pixel, { id: ENV['PIXEL_ID'], position: :body }
+    end
   end
 end
