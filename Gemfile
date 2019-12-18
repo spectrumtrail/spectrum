@@ -56,6 +56,9 @@ gem 'scout_apm'
 # Built-in Analytics
 gem 'ahoy_matey'
 
+# Ecommerce Tracking
+gem 'rack-tracker'
+
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails', groups: [:development, :test]
