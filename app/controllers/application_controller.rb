@@ -30,6 +30,10 @@ class ApplicationController < ActionController::Base
     gon.drift_key = ENV["DRIFT_ID"]
   end
 
+  def set_froala_key
+    gon.froala_key = ENV["FROALA_KEY"]
+  end
+
   def track_action
     unless request.xhr?
       ahoy.track(
