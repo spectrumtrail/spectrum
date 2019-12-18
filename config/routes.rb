@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   match '/privacy' => "static_pages#privacy", via: [:get]
   match 'policies' => "static_pages#policies", via: [:get]
   match '/no-script-warning' => 'static_pages#no_script_warning', via: [:get]
+  match '/results' => 'static_pages#results', via: [:get]
 
   resources :attachments, only: [:destroy]
   resources :discount_codes do

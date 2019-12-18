@@ -6,6 +6,8 @@
       - @menu_events.each do |event|
         %a.dropdown-item{href: event_path(event)}= event.name
   %li.nav-item
+    %a.nav-link{href: results_path} Results
+  %li.nav-item
     %a.nav-link{href: "https://store.spectrumtrailracing.com/store", target: "_blank"} Store
   %li.nav-item
     %a.nav-link{href: "https://www.roguerunning.com/trail", target: "_blank"} Training
