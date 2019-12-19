@@ -31,8 +31,15 @@ class Participant < ApplicationRecord
 
   scope :with_payment, -> { joins(:payment) }
   scope :created_after, ->(time) { after(time) }
-  scope :not_cancelled, -> { joins(:registration).where(registrations: { cancelled_at: nil }) }
-  scope :for_start_list, -> { includes(:event).with_payment.not_cancelled }
+  scope :not_cancelled, -> do
+    joins(:registration).where(registrations: { cancelled_at: nil })
+  end
+  scope :not_archived, -> do
+    joins(:registration).where(registrations: { archived_at: nil })
+  end
+  scope :for_start_list, -> do
+    includes(:event).with_payment.not_cancelled.not_archived.order(:first_name)
+  end
 
   def full_name
     "#{first_name} #{last_name}".titleize

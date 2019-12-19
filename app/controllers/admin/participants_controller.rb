@@ -13,7 +13,7 @@ class Admin::ParticipantsController < Admin::BaseController
       format.csv {
         event = Event.find params[:event_id]
         send_data(
-          @participants.to_event_start_list_csv(event_id: params[:event_id]),
+          start_list_participants,
           filename: "#{event.name}-participants-#{Time.now.to_i}.csv"
         )
       }
@@ -70,5 +70,9 @@ class Admin::ParticipantsController < Admin::BaseController
 
   def participant_params
     params.require(:participant).permit!
+  end
+
+  def start_list_participants
+    @participants.to_event_start_list_csv(event_id: params[:event_id])
   end
 end
