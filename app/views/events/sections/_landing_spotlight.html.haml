@@ -16,10 +16,12 @@
                 - if @event.registration_open?(Time.current)
                   %a.btn.btn-primary.btn-md{href: "#RegistrationSection"} REGISTER NOW
                   - if @event.registration_closes_at < 2.weeks.from_now
-                    %br
-                    %p.text-warning.mt-2
-                      Better hurry! Registration closes soon!
-                      You have until #{@event.local_registration_window_closes_text}
+                    .row
+                      .col-6.mx-auto.mt-3
+                        %div.alert.bg-warning
+                          %p.text-white
+                            Better hurry! Registration closes soon!
+                            You have until #{@event.local_registration_window_closes_text}
                 - else
                   %div.alert.alert-warning
                     = @event.registration_window_text
