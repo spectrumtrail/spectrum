@@ -25,5 +25,7 @@ module Spectrum
       handler :google_analytics, { tracker: ENV['GOOGLE_ANALYTICS_ID'], ecommerce: true, position: :body }
       handler :facebook_pixel, { id: ENV['PIXEL_ID'], position: :body }
     end
+
+    config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end
