@@ -23,7 +23,9 @@ class ApplicationController < ActionController::Base
   end
 
   def set_menu_items
-    @menu_events = Event.is_active.order(:starts_at)
+    @menu_events ||= Event.includes(:location, :logo_attachment).
+                           is_active.
+                           order(:starts_at)
   end
 
   def set_drift_key
