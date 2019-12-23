@@ -1,4 +1,7 @@
-= simple_form_for(registration, url: wizard_path, validate: true, html: { id: "PaymentStepForm" }) do |f|
+= simple_form_for registration,
+  url: wizard_path,
+  validate: true,
+  html: { id: "PaymentStepForm" } do |f|
   = f.error_notification
   - if f.object.errors[:base].present?
     = f.error_notification message: f.object.errors[:base].to_sentence
@@ -22,7 +25,9 @@
         label: "Discount Code",
         hint: "If you have been given a discount code, enter it here!",
         wrapper: :vertical_input_group do
-        = f.input_field :discount_code_text, class: "form-control", input_html: { default: "" }
+        = f.input_field :discount_code_text,
+          class: "form-control",
+            input_html: { default: "" }
         .input-group-append
           %button.btn.btn-sm.btn-primary#CheckDiscountCodeButton{disabled: true, type: "button", data: { registration_id: @registration.id }} Check
       .form-group{class: @card_errors.present? ? "border-danger" : ""}
@@ -39,10 +44,12 @@
         input_html: { value: registration.default_billing_email }
     %hr
     %h4 Registration Summary
-    = render "registration_steps/preview", participant: registration.participant.decorate
+    = render "registration_steps/preview",
+      participant: registration.participant.decorate
     %h4
       Your final total will be:
-      %span.float-right#FinalTotal= number_to_currency(CalculatesAmountToCharge.new(registration: @registration).amount_to_charge_in_dollars_decimal)
+      %span.float-right#FinalTotal
+        = number_to_currency(CalculatesAmountToCharge.new(registration: @registration).amount_to_charge_in_dollars_decimal)
 
     %br
     .form-actions
@@ -54,5 +61,11 @@
         class: 'btn btn-md btn-success btn-block',
         disabled: true
     .text-center.text-muted.my-3
-      %i.fa.fa-lock.text-success
-      %i.fab.fa-stripe
+      %div
+        Charges are securely processed through
+        = link_to 'https://stripe.com/docs/security/stripe', target: '_blank' do
+          %i.fa.fa-lock.text-success
+          %i.fab.fa-stripe
+      %div
+        %code Spectrum Trail Racing
+        will appear on your Credit Card statement.

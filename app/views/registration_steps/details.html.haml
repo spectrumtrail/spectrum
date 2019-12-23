@@ -11,69 +11,13 @@
           = render 'shared/no_script_warning'
         .card.border-primary
           .card-header.bg-primary
-            %ul.nav.nav-tabs.card-header-tabs.nav-fill{style: "flex-wrap: no-wrap;"}
-              %li.nav-item
-                %a.nav-link.text-white{href: edit_event_registration_path(@event, @registration)}
-                  Start
-                  %i.fa.fa-check-circle.text-success
-              %li.nav-item
-                %a.nav-link.active{href: "#"}
-                  Details
-                  - if @registration.steps_completed.include?("details")
-                    %i.fa.fa-check-circle.text-success
-              %li.nav-item
-                - if @registration.steps_seen.include?("waiver")
-                  %a.nav-link.text-white{href: wizard_path(:waiver)}
-                    Waiver
-                    - if @registration.steps_completed.include?("waiver")
-                      %i.fa.fa-check-circle.text-success
-                - else
-                  %a.nav-link.disabled.gray-100{"aria-disabled" => "true", :tabindex => "-1"} Waiver
-              %li.nav-item
-                - if @registration.steps_seen.include?("payment")
-                  %a.nav-link.text-white{href: wizard_path(:payment)}
-                    Payment
-                    - if @registration.paid?
-                      %i.fa.fa-check-circle.text-success
-                - else
-                  %a.nav-link.disabled.gray-100{"aria-disabled" => "true", :tabindex => "-1"} Payment
+            = render "registration_steps/card_headers/details",
+              event: @event,
+              registration: @registration
           .card-body
             %h4 Registration Details
             %p Tell us a little more about yourself, #{@registration.participant.first_name}!
             %hr
-            = simple_form_for(@registration, url: wizard_path, method: :put, validate: true) do |f|
-              = hidden_field_tag(:token, @registration.token)
-              = f.error_notification
-              - if f.object.errors[:base].present?
-                = f.error_notification message: f.object.errors[:base].to_sentence
-
-              .form-inputs
-                = f.simple_fields_for :participant do |ff|
-                  %fieldset
-                    = ff.input :phone, as: :tel, hint: "Used for important Race updates.", validate: true
-                    = ff.input :birth_date, as: :date, start_year: Date.today.year - 90, end_year: Date.today.year - 12, order: [:month, :day, :year], validate: true
-                    = ff.input :division,
-                      as: :radio_buttons,
-                      collection: [["Male", :male], ["Female", :female], ["Non-binary/Other", :non_binary]],
-                      item_wrapper_class: "inline custom-control custom-radio",
-                      label: "Gender Identity",
-                      validate: true,
-                      required: true
-                    %hr
-                  %fieldset
-                    %legend Address
-                    = ff.input :address, label: "Full Street Address", validate: true, required: true
-                    = ff.input :city, validate: true, required: true
-                    = ff.input :state, label: "State/Country", collection: states_list, class: "form-control selectpicker", prompt: "Select A State", required: true
-                    = ff.input :zip
-                  - if @event.allows_teams?
-                    %fieldset
-                      %legend Team Settings
-                      = ff.input :team_name,
-                        label: "Team Name",
-                        validate: false,
-                        hint: "Are you doing this race as part of a team? Enter your team name here!",
-                        required: @registration.race.requires_team_name?
-              .form-actions.d-flex.justify-content-between.align-content-center
-                = link_to "Back", edit_event_registration_path(@event, @registration), class: "btn btn-md btn-secondary"
-                = f.button :submit, "Next", class: "btn btn-success btn-md"
+            = render "registration_steps/forms/details",
+              event: @event,
+              registration: @registration

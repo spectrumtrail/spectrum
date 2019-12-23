@@ -26,6 +26,22 @@ module ApplicationHelper
     end
   end
 
+  def start_year_selection
+    Date.today.year - 90
+  end
+
+  def end_year_selection
+    Date.today.year - 12
+  end
+
+  def gender_selection_array
+    [
+      ["Male", :male],
+      ["Female", :female],
+      ["Non-binary/Other", :non_binary]
+    ]
+  end
+
   def states_list
     [
       ["Alabama", "AL"],

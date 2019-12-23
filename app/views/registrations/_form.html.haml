@@ -1,8 +1,13 @@
 -# frozen_string_literal: true
 = simple_form_for([@event, @registration], validate: true) do |f|
-  = f.input :started_at, as: :hidden, input_html: { value: @registration.started_at }
-  = f.input :step_to_validate, as: :hidden, input_html: { value: "start" }
-  = f.input :user_id, as: :hidden, input_html: { value: current_user.try(:id) }
+  = f.input :started_at, as: :hidden,
+    input_html: { value: @registration.started_at }
+  = f.input :step_to_validate,
+    as: :hidden,
+    input_html: { value: "start" }
+  = f.input :user_id,
+    as: :hidden,
+    input_html: { value: current_user.try(:id) }
   = f.error_notification
   - if f.object.errors[:base].present?
     = f.error_notification message: f.object.errors[:base].to_sentence

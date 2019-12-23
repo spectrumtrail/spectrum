@@ -11,28 +11,14 @@
         %noscript
           = render 'shared/no_script_warning'
         .card.border-primary
-          .card-header.bg-primary
-            %ul.nav.nav-tabs.card-header-tabs.nav-fill.nowrap
-              %li.nav-item
-                %a.nav-link.text-white{href: edit_event_registration_path(@event, @registration)}
-                  Start
-                  %i.fa.fa-check-circle.text-success
-              %li.nav-item
-                %a.nav-link.text-white{href: wizard_path(:details)}
-                  Details
-                  %i.fa.fa-check-circle.text-success
-              %li.nav-item
-                %a.nav-link.text-white{href: wizard_path(:waiver)}
-                  Waiver
-                  %i.fa.fa-check-circle.text-success
-              %li.nav-item
-                %a.nav-link.active{href: "#"}
-                  Payment
-                  - if @registration.paid?
-                    %i.fa.fa-check-circle.text-success
+          = render 'registration_steps/card_headers/payment',
+            event: @event,
+            registration: @registration
           .card-body
             - if @registration.paid?
               %h4 Successfully charged card!
-              = link_to "Show Confirmation Page", event_registration_step_path(@event, @registration, "confirmation")
+              = link_to "Show Confirmation Page",
+                event_registration_step_path(@event, @registration, "confirmation")
             - else
-              = render "payment_step_form", registration: @registration
+              = render 'registration_steps/forms/payment',
+                registration: @registration

@@ -10,33 +10,7 @@
         %noscript
           = render 'shared/no_script_warning'
         .card.border-primary
-          .card-header.bg-primary
-            %ul.nav.nav-tabs.card-header-tabs.nav-fill.nowrap
-              %li.nav-item
-                %a.nav-link.active{href: "#"}
-                  Start
-                  %i.fa.fa-check-circle.text-success
-              %li.nav-item
-                %a.nav-link.text-white{href: event_registration_steps_path(@event, @registration)}
-                  Details
-                  - if @registration.steps_completed.include?("details")
-                    %i.fa.fa-check-circle.text-success
-              %li.nav-item
-                - if @registration.steps_seen.include?("waiver")
-                  %a.nav-link.text-white{href: event_registration_steps_path(@event, @registration, id: :waiver)}
-                    Waiver
-                    - if @registration.steps_completed.include?("waiver")
-                      %i.fa.fa-check-circle.text-success
-                - else
-                  %a.nav-link.disabled.gray-100{"aria-disabled" => "true", :tabindex => "-1"} Waiver
-              %li.nav-item
-                - if @registration.steps_seen.include?("payment")
-                  %a.nav-link.text-white{href: event_registration_steps_path(@event, @registration, id: :payment)}
-                    Payment
-                    - if @registration.paid?
-                      %i.fa.fa-check-circle.text-success
-                - else
-                  %a.nav-link.disabled.gray-100{"aria-disabled" => "true", :tabindex => "-1"} Payment
+          = render 'header', event: @event, registration: @registration
           .card-body
             %h4 Start your Registration for #{@event.name}
             %p

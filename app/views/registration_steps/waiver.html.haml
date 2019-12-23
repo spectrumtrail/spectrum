@@ -10,57 +10,12 @@
         %noscript
           = render 'shared/no_script_warning'
         .card.border-primary
-          .card-header.bg-primary
-            %ul.nav.nav-tabs.card-header-tabs.nav-fill.nowrap
-              %li.nav-item
-                %a.nav-link.text-white{href: edit_event_registration_path(@event, @registration)}
-                  Start
-                  %i.fa.fa-check-circle.text-success
-              %li.nav-item
-                %a.nav-link.text-white{href: wizard_path(:details)}
-                  Details
-                  %i.fa.fa-check-circle.text-success
-              %li.nav-item
-                %a.nav-link.active{href: "#"}
-                  Waiver
-                  - if @registration.steps_completed.include?("waiver")
-                    %i.fa.fa-check-circle.text-success
-              %li.nav-item
-                - if @registration.steps_seen.include?("payment")
-                  %a.nav-link.text-white{href: wizard_path(:payment)}
-                    Payment
-                    - if @registration.paid?
-                      %i.fa.fa-check-circle.text-success
-                - else
-                  %a.nav-link.disabled.gray-100{"aria-disabled" => "true", :tabindex => "-1"} Payment
+          = render 'registration_steps/card_headers/waiver',
+            event: @event,
+            registration: @registration
           .card-body
             %h4 Waiver for #{@event.name}
             %p This information helps keep you safe!
             %hr
-            = simple_form_for(@registration, url: wizard_path, validate: true) do |f|
-              = f.error_notification
-              - if f.object.errors[:base].present?
-                = f.error_notification message: f.object.errors[:base].to_sentence
-
-              .form-inputs
-                = f.simple_fields_for :participant do |ff|
-                  %fieldset
-                    = ff.input :emergency_contact_name, validate: true
-                    = ff.input :emergency_contact_phone, as: :tel, validate: true
-                    = ff.input :medical_conditions,
-                      as: :text,
-                      input_html: { class: "textarea-autosize" },
-                      hint: "Do you have any medical conditions that might affect first aid?"
-                    %h5 Waiver
-                    %div.text-muted.waiver-container
-                      %span= @event.waiver_html.html_safe
-                    %small.text-danger Please scroll to read the entire term set.
-                    %b
-                    = ff.input :accepts_waiver,
-                      as: :radio_buttons,
-                      required: true,
-                      label: "I have read, understood, and accept the agreement above. My submission of this form shall act as my legal signature."
-
-              .form-actions.d-flex.justify-content-between.align-content-center
-                = link_to "Back", wizard_path(:details), class: "btn btn-md btn-secondary"
-                = f.button :submit, "Next", class: "btn btn-success btn-md"
+            = render 'registration_steps/forms/waiver',
+              registration: @registration

@@ -1,7 +1,8 @@
+- race = participant.race.decorate
 %ul
   %li
     %strong Race Selected:&nbsp
-    = participant.race_name
+    #{race.name_with_event} on #{race.start_date_and_time_with_zone}
   %li
     %strong Name:&nbsp
     = participant.full_name

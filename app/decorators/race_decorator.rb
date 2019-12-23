@@ -49,6 +49,10 @@ class RaceDecorator < ApplicationDecorator
     event.decorate.row_thumbnail
   end
 
+  def start_date_and_time_with_zone
+    start_date + ' ' + start_time_with_zone
+  end
+
   def start_time_with_zone
     Time.use_zone(time_zone) do
       starts_at.strftime("%I:%M %p (%Z)")

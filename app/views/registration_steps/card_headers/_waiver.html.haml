@@ -1,0 +1,24 @@
+.card-header.bg-primary
+  %ul.nav.nav-tabs.card-header-tabs.nav-fill.nowrap
+    %li.nav-item
+      %a.nav-link.text-white{href: edit_event_registration_path(event, registration)}
+        Start
+        %i.fa.fa-check-circle.text-success
+    %li.nav-item
+      %a.nav-link.text-white{href: wizard_path(:details)}
+        Details
+        %i.fa.fa-check-circle.text-success
+    %li.nav-item
+      %a.nav-link.active{href: "#"}
+        Waiver
+        - if registration.steps_completed.include?("waiver")
+          %i.fa.fa-check-circle.text-success
+    %li.nav-item
+      - if registration.steps_seen.include?("payment")
+        %a.nav-link.text-white{href: wizard_path(:payment)}
+          Payment
+          - if registration.paid?
+            %i.fa.fa-check-circle.text-success
+      - else
+        %a.nav-link.disabled.gray-100{"aria-disabled" => "true", :tabindex => "-1"}
+          Payment
