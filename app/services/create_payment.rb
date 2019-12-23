@@ -94,7 +94,8 @@ class CreatePayment
       registration: registration,
       stripe_charge_id: charge.try(:id),
       stripe_customer_id: customer.id,
-      amount_charged_in_cents: charge.amount
+      amount_charged_in_cents: charge.amount,
+      user_id: registration.try(:user_id)
     )
 
     ServiceResponse.new(
