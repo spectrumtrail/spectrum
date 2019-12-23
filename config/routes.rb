@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   match 'policies' => "static_pages#policies", via: [:get]
   match '/no-script-warning' => 'static_pages#no_script_warning', via: [:get]
   match '/results' => 'static_pages#results', via: [:get]
-  match '/events/vagabond-time-trials-2019' => 'static_pages#home', via: [:get]
+  match '/events/vagabond-time-trials-2019', to: redirect("/events/vagabond-time-trials"), via: [:get]
 
   resources :attachments, only: [:destroy]
   resources :discount_codes do
