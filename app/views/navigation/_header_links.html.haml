@@ -14,14 +14,11 @@
   %li.nav-item
     %a.nav-link{href: "https://medium.com/spectrum-trail-racing", target: "_blank"} Blog
   %li.nav-item
-    - if current_user
+    - if current_user&.is_admin?
       %a.nav-link.d-lg-none{href: admin_dashboard_path} Admin Dashboard
       %a.btn.btn-sm.bg-primary.text-white.d-none.d-lg-inline-flex{href: admin_dashboard_path} Admin Dashboard
       %a.nav-link.d-lg-none{href: destroy_user_session_path} Sign Out
       %a.btn.btn-sm.bg-danger.text-white.d-none.d-lg-inline-flex{href: destroy_user_session_path} Sign Out
-    - else
-      %a.nav-link.d-lg-none{href: new_user_session_path} Sign In
-      %a.btn.btn-sm.bg-white.d-none.d-lg-inline-flex{href: new_user_session_path} Sign In
   .dropdown-divider.d-lg-none.my-4
   %h6.dropdown-header.font-weight-600.d-lg-none.px-0 Social Media
   %li.nav-item.d-lg-none
