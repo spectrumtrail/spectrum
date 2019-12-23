@@ -72,6 +72,6 @@ class Admin::RacesController < Admin::BaseController
   end
 
   def race_params
-    params.require(:race).permit!
+    params.fetch(:race, {}).permit!
   end
 end
