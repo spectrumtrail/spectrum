@@ -4,7 +4,7 @@
     .container.d-flex.align-items-center.no-padding
       .col
         = link_to team_members_path, class: "btn btn-md border-white text-white bg-dark" do
-          Back to roster
+          Back to team
         .row.cols-xs-space.text-center.text-md-left.justify-content-center
           .col-lg-10
             .text-center.mt-5
@@ -39,7 +39,7 @@
   .col-12.d-inline-flex.justify-content-center
     .text-center
       = link_to team_member_path(@team_member.prev), class: "btn btn-md border-white text-white bg-dark" do
-        Previous
+        <
     .text-center
       = link_to team_member_path(@team_member.next), class: "btn btn-md border-white text-white bg-dark" do
-        Next
+        >
