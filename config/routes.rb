@@ -77,5 +77,6 @@ Rails.application.routes.draw do
     resources :team_members
     resource :profile, controller: "profile", only: [:show, :edit, :update]
     resources :users
+    resources :home_page_images, only: [:index, :new, :create, :destroy]
   end
 end
