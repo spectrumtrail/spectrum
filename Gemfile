@@ -10,6 +10,7 @@ gem "puma", "~> 4.3"
 gem "devise"
 gem "barnes"
 gem "airbrake", '~> 9.5'
+gem 'ranked-model'
 
 # Asset Storage
 gem "aws-sdk-s3", require: false
