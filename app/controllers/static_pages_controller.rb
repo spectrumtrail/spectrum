@@ -9,9 +9,17 @@ class StaticPagesController < ApplicationController
   end
 
   def home
-    @events = Event.includes(:location, :cover_photo_attachment).is_active.by_starts_at.decorate
+    @events = Event.includes(:location, :cover_photo_attachment).
+                    is_active.
+                    by_starts_at.
+                    decorate
+
+
+    @home_page_images = HomePageImage.includes(:image_attachment).
+                                      not_hidden.
+                                      rank(:display_order)
+
     @sponsors = Sponsor.includes(:logo_attachment).order(:name).decorate
-    @promo_photos = @events.map { |event| event.promo_photos.first(4) }.flatten!
   end
 
   def privacy
