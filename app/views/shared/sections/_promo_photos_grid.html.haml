@@ -17,8 +17,9 @@
 
     .row
       .card-columns
-        - @promo_photos.each do |promo_photo|
-          - cache promo_photo do
+        - @home_page_images.each do |home_page_image|
+          - cache home_page_image do
             .card
-              %a{"data-gallery" => "example-gallery", "data-toggle" => "lightbox", href: url_for(promo_photo)}
-                = image_tag promo_photo, class: "img img-fluid rounded"
+              %a{"data-gallery" => "example-gallery", "data-toggle" => "lightbox", href: url_for(home_page_image.image)}
+                = image_tag home_page_image.image,
+                  class: "img img-fluid rounded"
