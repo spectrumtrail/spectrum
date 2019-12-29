@@ -4,7 +4,7 @@ class TeamMember < ApplicationRecord
   has_one_attached :profile_image
   has_one_attached :cover_image
 
-  def prev
+  def previous
     TeamMember.where("id < ?", id).order("id DESC").first || TeamMember.last
   end
 
