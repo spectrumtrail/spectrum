@@ -3,6 +3,8 @@
   .spotlight-holder.py-lg.pt-lg-xl
     .container.d-flex.align-items-center.no-padding
       .col
+        = link_to team_members_path, class: "btn btn-md border-white text-white bg-dark" do
+          Back to Team
         .row.cols-xs-space.text-center.text-md-left.justify-content-center
           .col-lg-10
             .text-center.mt-5
@@ -32,3 +34,12 @@
             - if @team_member.instagram_link.present?
               %a{href: @team_member.instagram_link, target: "_blank"}
                 %i.fab.fa-instagram.fa-4x.text-tertiary
+
+.row.mb-2
+  .col-12.d-inline-flex.justify-content-center
+    .text-center
+      = link_to team_member_path(@team_member.previous), class: "btn btn-md border-white text-white bg-dark" do
+        <i class="fas fa-chevron-left"></i> Previous
+    .text-center
+      = link_to team_member_path(@team_member.next), class: "btn btn-md border-white text-white bg-dark" do
+        Next <i class="fas fa-chevron-right"></i>
