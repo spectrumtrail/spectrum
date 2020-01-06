@@ -14,7 +14,7 @@
             %th
         %tbody
           - @home_page_images.each do |home_page_image|
-            %tr
+            %tr.attachment-wrapper{id: "attachment-wrapper-#{home_page_image.id}"}
               %td
                 %a{"data-gallery" => "home-page-image-gallery", "data-toggle" => "lightbox", href: url_for(home_page_image.image)}
                   = image_tag url_for(home_page_image.image),
@@ -24,6 +24,10 @@
               %td= local_time_ago home_page_image.created_at
               %td
                 .btn-group.float-right
+                  = link_to rails_blob_path(home_page_image.image, disposition: 'attachment'),
+                    class: 'btn btn-sm btn-outline-tertiary' do
+                    %i.fa.fa-download
+                    Download
                   = link_to edit_admin_home_page_image_path(home_page_image),
                     class: "btn btn-sm btn-outline-primary" do
                     %i.fa.fa-edit

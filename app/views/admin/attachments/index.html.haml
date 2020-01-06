@@ -15,7 +15,7 @@
             %th
         %tbody
           - @attachments.each do |attachment|
-            %tr
+            %tr.attachment-wrapper{id: "attachment-wrapper-#{attachment.id}"}
               %td
                 %a{"data-gallery" => "example-gallery", "data-toggle" => "lightbox", href: url_for(attachment.blob)}
                   = image_tag url_for(attachment.blob),
@@ -26,11 +26,17 @@
               %td= attachment.blob.key.upcase
               %td= local_time_ago attachment.created_at
               %td
-                = link_to attachment_path(id: attachment.id),
-                  method: :delete,
-                  remote: true,
-                  class: "text-danger" do
-                  %i.fa.fa-times
+                .btn-group
+                  = link_to rails_blob_path(attachment, disposition: 'attachment'),
+                    class: 'btn btn-sm btn-outline-tertiary' do
+                    %i.fa.fa-download
+                    Download
+                  = link_to attachment_path(id: attachment.id),
+                    method: :delete,
+                    remote: true,
+                    class: "btn btn-sm btn-outline-danger" do
+                    %i.fa.fa-trash
+                    Remove
 .row.mt-3
   .col
     = paginate @attachments
