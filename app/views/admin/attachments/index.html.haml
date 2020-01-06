@@ -17,10 +17,9 @@
           - @attachments.each do |attachment|
             %tr
               %td
-                - cache do
-                  %a{"data-gallery" => "example-gallery", "data-toggle" => "lightbox", href: url_for(attachment.blob)}
-                    = image_tag url_for(attachment.blob),
-                      class: "img-fluid avatar avatar-md"
+                %a{"data-gallery" => "example-gallery", "data-toggle" => "lightbox", href: url_for(attachment.blob)}
+                  = image_tag url_for(attachment.blob),
+                    class: "img-fluid avatar avatar-md"
               %td= attachment.record_type + ' ' + attachment.record_id.to_s + ' ' + attachment.name.humanize
               %td= attachment.blob.filename
               %td= (attachment.blob.byte_size / 1.0.megabyte).round(2).to_s + 'MB'
