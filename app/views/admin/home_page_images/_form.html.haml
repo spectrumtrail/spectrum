@@ -1,0 +1,39 @@
+= simple_form_for([:admin, @home_page_image], multipart: true) do |f|
+  = f.error_notification
+  - if f.object.errors[:base].present?
+    = f.error_notification message: f.object.errors[:base].to_sentence
+  .form-inputs
+    %fieldset
+      = f.input :short_name, hint: 'Used in SEO tagging.'
+      = f.input :display_order,
+        hint: "Guides display order. Responsive styling may override."
+    %fieldset
+      %legend Image
+      %strong.text-danger It is extremely important that you OPTIMIZE the image BEFORE uploading it for the sake of page load speed.
+      %p Landscape images will look the best, generally speaking, especially on mobile.
+      .form-row
+        = f.file_field :image,
+          direct_upload: true,
+          class: "custom-input-file",
+          type: 'file',
+          "data-multiple-caption" => "{count} files selected"
+        = f.label :image do
+          %i.fa.fa-upload
+          %span Select a Web Optimized Image
+        - if f.object.image.attached?
+          .attachment-wrapper{id: "attachment-wrapper-#{f.object.image.id}"}
+            = image_tag f.object.image,
+              class: "img img-fluid img-thumbnail"
+            = link_to attachment_path(id: f.object.image.id), method: :delete, remote: true, class: "text-danger" do
+              %i.fa.fa-times
+
+  %br
+  .form-actions
+    = link_to admin_home_page_images_path,
+      class: "btn btn-md btn-outline-secondary mr-2",
+      data: { confirm: "Careful! You will lose any progress you made on this form."} do
+      %i.fas.fa-arrow-left
+      Go Back
+    = f.button :submit,
+      class: "btn btn-md btn-outline-success",
+      data: { disable_with: "Submitting..." }
