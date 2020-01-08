@@ -17,6 +17,9 @@
         = link_to new_event_registration_path(race.event, race_id: race.id),
           class: "m-2 btn btn-sm btn-success" do
           Register Now!
+      - elsif race.is_full?
+        = link_to "#", class: "m-2 btn btn-sm btn-success disabled" do
+          Sold Out
       - else
         = link_to "#", class: "m-2 btn btn-sm btn-success disabled" do
           Registration Unavailable
