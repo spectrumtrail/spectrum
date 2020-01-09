@@ -57,7 +57,15 @@ class Participant < ApplicationRecord
 
   def self.to_event_start_list_csv(event_id:)
     CSV.generate(headers: true) do |csv|
-      csv << ['First Name', 'Last Name', 'Age', 'Gender', 'Race', 'Location']
+      csv << [
+        'First Name',
+        'Last Name',
+        'Email',
+        'Age',
+        'Gender',
+        'Race',
+        'Location'
+      ]
 
       scope = includes(:race).
               where(event_id: event_id).
@@ -66,12 +74,13 @@ class Participant < ApplicationRecord
 
       scope.decorate.each do |participant|
         csv << [
-          participant.first_name.titleize,
-          participant.last_name.titleize,
+          participant.first_name.titleize.gsub(/[\s,]/ ,""),
+          participant.last_name.titleize.gsub(/[\s,]/ ,""),
+          participant.email.gsub(/[\s,]/ ,""),
           participant.race_day_age,
           participant.division,
-          participant.race_name,
-          participant.city_and_state
+          participant.race_name.gsub(/[\s,]/ ,""),
+          participant.city_and_state.gsub(/[\s,]/ ,"")
         ]
       end
     end
