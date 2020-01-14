@@ -36,7 +36,7 @@
           class: "dropdown-item" do
           %i.fa.fa-star
           Promo Page
-        = link_to admin_participants_path(event_id: event.id, format: :csv),
+        = link_to admin_participants_path(event_id: event.id, per_page: 1000, format: :csv),
           class: "dropdown-item" do
           %i.fa.fa-list
           Start List
