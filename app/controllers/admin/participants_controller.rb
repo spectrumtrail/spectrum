@@ -14,7 +14,7 @@ class Admin::ParticipantsController < Admin::BaseController
       format.csv do
         send_data(
           event_start_list_participants(event_id: params[:event_id]),
-          filename: "#{event.name}-participants-#{Time.now.to_i}.csv"
+          filename: "#{params[:event_id]}-participants-#{Time.current.to_i}.csv"
         )
       end
     end
