@@ -22,6 +22,8 @@
       = f.input :price_in_cents
       = f.input :short_description,
         hint: "What is special about this race? Elevator pitch."
+      = f.input :external_results_link,
+        hint: "Where can participants find their results for this race?"
     %fieldset
       %legend Registration Settings
       = f.input :is_active,
