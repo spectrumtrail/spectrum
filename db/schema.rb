@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_24_162923) do
+ActiveRecord::Schema.define(version: 2020_02_17_164731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -239,6 +239,7 @@ ActiveRecord::Schema.define(version: 2019_12_24_162923) do
     t.integer "participants_count", default: 0
     t.integer "participants_cap", default: 500
     t.boolean "requires_team_name", default: false
+    t.string "external_results_link"
     t.index ["event_id"], name: "index_races_on_event_id"
     t.index ["slug"], name: "index_races_on_slug", unique: true
   end
