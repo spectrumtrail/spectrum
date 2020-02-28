@@ -24,7 +24,7 @@ class RaceDecorator < ApplicationDecorator
   end
 
   def name_with_event_and_year
-    "#{event.name} #{name} (#{created_at.year})"
+    "#{event.name} #{name} (#{starts_at.year})"
   end
 
   def name_with_event_and_price
