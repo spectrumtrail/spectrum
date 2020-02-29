@@ -1,6 +1,6 @@
 %tr
-  %td= participant.first_name
-  %td= participant.last_name
+  %td= participant.first_name.titleize
+  %td= participant.last_name.titleize
   %td= participant.division.try(:to_s).try(:humanize).try(:titleize)
   %td= participant.race_day_age
   %td= participant.city_and_state
