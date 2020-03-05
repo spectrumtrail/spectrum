@@ -2,7 +2,7 @@
   - if race.course_map.attached?
     .card-img-bg{:style => "background-image: url(#{url_for(race.course_map)});"}
   %span.mask.bg-dark.alpha-8.alpha-4--hover
-  .card-body.px-5.py-5
+  .card-body.px-4.py-4
     %div{style: "min-height: 225px;"}
       %h3.heading.h1.text-white.mb-3= race.name
       %p.mt-4.mb-2.text-white
@@ -11,21 +11,27 @@
       %p.mb-2.text-white
         %i.fas.fa-calendar-day
         = race.start_date
+        %h4.badge.badge-success.badge-lg
+          = race.price_in_dollars
   .card-footer.bg-dark.forward-100
     - if race.event.registration_open?(Time.current)
       - if race.is_registerable?(Time.current)
         = link_to new_event_registration_path(race.event, race_id: race.id),
           class: "m-2 btn btn-sm btn-success" do
           Register Now!
+        = link_to event_race_participants_path(race.event, race_id: race.id),
+          class: "m-2 btn btn-sm btn-info" do
+          See the Start List
       - elsif race.is_full?
         = link_to "#", class: "m-2 btn btn-sm btn-success disabled" do
           Sold Out
+        = link_to event_race_participants_path(race.event, race_id: race.id),
+          class: "m-2 btn btn-sm btn-info" do
+          See the Start List
       - else
         = link_to "#", class: "m-2 btn btn-sm btn-success disabled" do
           Registration Unavailable
     - else
       %small.text-success
         = @event.registration_window_text
-    = link_to event_race_participants_path(race.event, race_id: race.id),
-      class: "m-2 btn btn-sm btn-info" do
-      See the Start List
+        %br

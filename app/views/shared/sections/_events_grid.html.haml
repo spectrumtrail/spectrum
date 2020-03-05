@@ -19,8 +19,8 @@
                 %div{:style => "min-height: 300px;"}
                   %h3.heading.h1.text-white.mb-3= event.name
                   %div.mb-3
-                    - event.races.not_archived.active.order(:name).each do |race|
-                      %span.badge.badge-primary.badge-lg.my-2= race.name
+                    - event.races.not_archived.active.order(:name).decorate.each do |race|
+                      %span.badge.badge-primary.badge-lg.my-2= race.name_with_price.html_safe
                   %h4.mt-4.mb-1.h5.text-white= event.starts_at_date_string
                   %h5.mb-1.h5.text-white= event.location.name
                 %span.text-white.text-uppercase.font-weight-500{href: event_path(event)}

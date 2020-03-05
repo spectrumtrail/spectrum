@@ -5,8 +5,8 @@
   .card-body.text-white
     %h4.card-title.text-white.mb-2= event.name
     %div.mb-3
-      - event.races.active.not_archived.each do |race|
-        %span.badge.badge-primary.badge-lg.my-2= race.name
+      - event.races.active.not_archived.decorate.each do |race|
+        %span.badge.badge-primary.badge-lg.my-2= race.name_with_price.html_safe
     %div.mb-3
       %i.fa.fa-calendar-day
       = event.starts_at_date_string
