@@ -9,8 +9,8 @@
           - if @event.video_embed_code.present?
             = render "events/sections/promo_video"
             %br
-          = render "events/sections/overview"
           = render "events/sections/registration"
+          = render "events/sections/overview"
           = render "events/sections/schedule"
           = render "events/sections/details"
           = render "events/sections/courses", races: @event.races.active.not_archived.decorate
