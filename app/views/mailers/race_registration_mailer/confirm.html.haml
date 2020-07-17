@@ -21,22 +21,22 @@
                 at
                 %strong #{@race.start_time_with_zone}
                 hosted at
-                = succeed "." do
-                  %a{href: @event.location.address_link} #{@event.location_name}
+                -# = succeed "." do
+                -#   %a{href: @event.location.address_link} #{@event.location_name}
               %p.lead
                 = succeed "." do
                   This email confirms you have completed your registration,
                   = succeed "," do
                     %strong paid in full
                   and we are now working hard to get everything ready for you! See who else is racing by checking out the
-                  %a{:href => url_for(event_race_participants_url(@event, @race))} start list
+                  -# %a{:href => url_for(event_race_participants_url(@event, @race))} start list
               %p
                 %img{:src => @event.default_cover_photo_url, style: "max-width: 100%;"}/
               / Callout Panel
               %p.callout
                 Be sure to check out the
-                %a{href: event_url(@event) + "#LodgingSection"} race lodging information
-                to learn about available lodging options and how to reserve them.
+                -# %a{href: event_url(@event) + "#LodgingSection"} race lodging information
+                -# to learn about available lodging options and how to reserve them.
               / /Callout Panel
               %h3
                 What now?
@@ -46,11 +46,11 @@
                 99% of your questions about the race can be answered by carefully reading through the details on the event page on spectrumtrailracing.com, here's a button to take you exactly where you need to go:
                 %br/
                 %br/
-                %a.btn{href: event_url(@event)} Click Me!
+                -# %a.btn{href: event_url(@event)} Click Me!
                 %br/
                 %br/
                 All other questions can be emailed to
-                %a{href: "mailto:mallory@spectrumtrailracing.com"} mallory@spectrumtrailracing.com
+                -# %a{href: "mailto:mallory@spectrumtrailracing.com"} mallory@spectrumtrailracing.com
                 but be warned that we will respond with a sarcastic email if your question could have been answered by going to our website.
                 %br/
               %p
@@ -77,8 +77,8 @@
                         %td
                           %h5 Connect with Us:
                           %p
-                            %a.soc-btn.fb{:href => "https://www.instagram.com/spectrumtrail/"} Facebook
-                            %a.soc-btn.ig{:href => "https://www.facebook.com/spectrumtrailracing/"} Instagram
+                            -# %a.soc-btn.fb{:href => "https://www.instagram.com/spectrumtrail/"} Facebook
+                            -# %a.soc-btn.ig{:href => "https://www.facebook.com/spectrumtrailracing/"} Instagram
                     / /column 1
                     / - column 2
                     %table.column{:align => "left"}
@@ -92,5 +92,7 @@
                     / /column 2
                     %span.clear
               / /social & contact
+              %br/
+              = render partial: "shared/sections/newsletter_signup"
 / /BODY
 / FOOTER
