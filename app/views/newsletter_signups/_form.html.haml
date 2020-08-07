@@ -1,0 +1,21 @@
+%section
+  .container
+    .row.mt-5.mb-5.justify-content-center
+      .col
+        = simple_form_for :newsletter_signup,
+          url: 'newsletter_signup',
+          method: 'put',
+          html: { :id => 'newsletter_signup' } do |f|
+          %h2.text-white Signup for our newsletter...
+          %p So you can keep up with all the cool shit we're doing.
+          .form-inputs
+            = f.input :first_name,
+              placeholder: 'Please enter your first name.',
+              label: 'First Name'
+            = f.input :last_name,
+              placeholder: 'Please enter your last name.',
+              label: 'Last Name'
+            = f.input :email,
+              placeholder: 'Please enter your email address.'
+          .form-actions
+            = f.button :submit, 'Submit'
