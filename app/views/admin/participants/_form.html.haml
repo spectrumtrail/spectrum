@@ -22,15 +22,17 @@
       prompt: "Select A State"
     = f.input :zip
     = f.input :birth_date,
-      as: :string,
-      label: "Birthdate",
-      placeholder: "mm/dd/yyyy",
-      input_html: { class: "date masked-date" }
+      as: :date,
+      start_year: start_year_selection,
+      end_year: end_year_selection,
+      order: [:month, :day, :year],
+      validate: true
     = f.input :division,
       as: :radio_buttons,
-      collection: ["Male", "Female", "Open"],
+      collection: gender_selection_array,
       item_wrapper_class: "inline custom-control custom-radio",
-      label: "Gender"
+      label: "Gender Identity",
+      required: true
     = f.input :emergency_contact_name
     = f.input :emergency_contact_phone, as: :tel
     = f.input :medical_conditions,
