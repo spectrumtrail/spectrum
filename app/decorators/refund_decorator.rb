@@ -10,4 +10,12 @@ class RefundDecorator < ApplicationDecorator
   def amount_in_dollars
     amount_in_cents / 100 rescue 0
   end
+
+  def participant_name
+    registration.participant.full_name
+  end
+
+  def participant_email
+    registration.participant.email
+  end
 end
