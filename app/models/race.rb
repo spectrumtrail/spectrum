@@ -48,7 +48,7 @@ class Race < ApplicationRecord
   end
 
   def is_full?
-    paid_participants_count >= participants_cap
+    participants.for_start_list >= participants_cap
   end
 
   def is_registerable?(time)
