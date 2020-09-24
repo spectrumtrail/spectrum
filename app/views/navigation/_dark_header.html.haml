@@ -1,9 +1,12 @@
-%nav.navbar.navbar-expand-lg.navbar-dark.bg-tertiary.fixed-top
-  .container
-    %a.navbar-brand{href: root_path}
-      %img.img-fluid{src: asset_path("logo-no-text"), style: "max-width: 4rem;"}
-      %span.text-white Spectrum Trail Racing
-    %button.navbar-toggler{"aria-controls" => "navbar_main", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-action" => "offcanvas-open", "data-target" => "#navbar_main", :type => "button"}
-      %span.navbar-toggler-icon
-    #navbar_main.navbar-collapse.offcanvas-collapse
-      = render "navigation/header_links"
+.fixed-top
+  %nav.navbar.navbar-expand-lg.navbar-dark.bg-tertiary
+    .container
+      %a.navbar-brand{href: root_path}
+        %img.img-fluid{src: asset_path("logo-no-text"), style: "max-width: 4rem;"}
+        %span.text-white Spectrum Trail Racing
+      %button.navbar-toggler{"aria-controls" => "navbar_main", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-action" => "offcanvas-open", "data-target" => "#navbar_main", :type => "button"}
+        %span.navbar-toggler-icon
+      #navbar_main.navbar-collapse.offcanvas-collapse
+        = render "navigation/header_links"
+  - if !current_page?(covid_path)
+    = render "navigation/covid_banner"
