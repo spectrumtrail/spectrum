@@ -36,5 +36,6 @@
 //= require toastr.min.js
 //= require ekko_lightbox.min.js
 //= require chartkick
+//= require Chart.bundle
 
 //= require_tree .
