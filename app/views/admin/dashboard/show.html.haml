@@ -6,16 +6,16 @@
     .card
       .card-header.bg-primary
         %h4.text-white Participants
-      = column_chart Participant.with_payment.group_by_week(:created_at, range: 3.weeks.ago..Time.now).count
+      = column_chart Participant.with_payment.not_cancelled.not_archived.group_by_week(:created_at, range: 9.months.ago..Time.now).count
       .card-footer
-        %p.text-muted Shows new paid-up participants (race-signups) grouped by week from 3 weeks ago.
+        %p.text-muted Shows new paid-up participants (race-signups) net of cancellations grouped by week from 9 months ago.
   .col-6
     .card
       .card-header.bg-success
         %h4.text-white Payments
-      = line_chart Payment.group_by_week(:created_at, range: 3.weeks.ago.beginning_of_day..Time.now).sum('amount_charged_in_cents / 100')
+      = line_chart [{ name: "Payments", data: Payment.group_by_week(:created_at, range: 9.months.ago.beginning_of_day..Time.now).sum('amount_charged_in_cents / 100') }, { name: "Refunds", data: Refund.group_by_week(:created_at, range: 9.months.ago.beginning_of_day..Time.now).sum('amount_in_cents / 100') }], prefix: "$"
       .card-footer
-        %p.text-muted Shows payments made during the last 3 weeks ago.
+        %p.text-muted Shows payments and refunds made during the last 9 months ago.
 .row.mt-2
   .col-12
     .card
