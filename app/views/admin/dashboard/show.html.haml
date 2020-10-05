@@ -35,7 +35,7 @@
                 = link_to event_race_participants_path(race.event, race), target: "_blank" do
                   %i.fa.fa-external-link-alt{"data-placement" => "right", "data-toggle" => "tooltip", :title => "See the start list"}
                   = race.name_with_event
-              %td= race.paid_participants_count
+              %td= race.participants.for_start_list.size
               %td= race.participants_cap
-              %td= race.participants_cap - race.paid_participants_count
+              %td= race.participants_cap - race.participants.for_start_list.size
               %td= race.participants.size - race.paid_participants_count
