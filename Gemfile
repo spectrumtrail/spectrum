@@ -12,6 +12,9 @@ gem "barnes"
 gem "airbrake", '~> 9.5'
 gem 'ranked-model'
 
+# Parsing
+gem "redcarpet", "~> 3.5"
+
 # Asset Storage
 gem "aws-sdk-s3", require: false
 gem 'mini_magick', '~> 4.9'
