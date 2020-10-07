@@ -11,8 +11,9 @@
       %p.mb-2.text-white
         %i.fas.fa-calendar-day
         = race.start_date
-        %h4.badge.badge-success.badge-lg
-          = race.price_in_dollars
+        %h4
+          %span.badge.badge-success.badge-lg
+            = race.price_in_dollars
   .card-footer.bg-dark.forward-100
     - if race.event.registration_open?(Time.current)
       - if race.is_registerable?(Time.current)
