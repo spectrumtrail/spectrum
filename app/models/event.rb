@@ -9,6 +9,7 @@ class Event < ApplicationRecord
   has_many :races, dependent: :destroy
   has_many :registrations, counter_cache: true
   has_many :participants
+  has_many :volunteers
 
   # attachments
   has_one_attached :logo
@@ -26,6 +27,7 @@ class Event < ApplicationRecord
 
   scope :is_active, -> { where(is_active: true) }
   scope :by_starts_at, -> { order(starts_at: :asc) }
+  scope :volunteers, -> { joins(:volunteers) }
 
   def archived?
     archived_at.present?
