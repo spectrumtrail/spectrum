@@ -6,12 +6,15 @@ class VolunteersController < ApplicationController
 
   def create
     @volunteer = Volunteer.create(volunteer_params)
-    if @volunteer
+    if @volunteer.errors.messages[:email]
+      flash[:error] = @volunteer.errors.messages[:email][0]
+      redirect_to new_volunteer_path
+    elsif @volunteer.errors
+      flash[:error] = @volunteer.errors.messages
+      redirect_to new_volunteer_path
+    else
       flash[:success] = 'Thank you for volunteering!'
       redirect_to root_path
-    else
-      flash[:error] = 'Error saving volunteer registration, please try again.'
-      redirect_to new_volunteer_path
     end
   end
 
