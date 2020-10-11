@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   resources :series, only: [:show]
   resources :team_members, path: "team", only: [:index, :show]
 
+  resources :volunteers, only: [:new, :create, :edit, :update]
+
   namespace :members do
     resource :profile, controller: "profile", only: [:show, :edit, :update]
   end
