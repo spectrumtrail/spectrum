@@ -1,0 +1,15 @@
+%section
+  .container
+    .row.mt-5.mb-5.justify-content-center
+      .col
+        = simple_form_for @volunteer do |f|
+          .form-inputs
+            = f.association :event
+            = f.input :first_name, label: "First Name"
+            = f.input :last_name, label: "Last Name"
+            = f.input :phone, label: "Phone"
+            = f.input :email, label: "Email"
+            = f.input :position, label: "Preferred Position"
+            = f.input :time, :collection => %w[AM PM All\ Day]
+          .form-actions
+            = f.button :submit, "Submit", class: "btn btn-success btn-md"
