@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     end
     get '/' => redirect('admin/main_dashboard')
     resource :main_dashboard, controller: 'main_dashboard'
+    resource :analytics_dashboard, controller: 'analytics_dashboard'
     resources :attachments, only: [:index]
     resources :discount_codes
     resources :events
