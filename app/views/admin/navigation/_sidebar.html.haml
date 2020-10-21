@@ -1,7 +1,7 @@
 %aside#AdminSidebar.sidebar
   .sidebar-brand
     %h1
-      %a{href: admin_dashboard_path}
+      %a{href: admin_main_dashboard_path}
         %img.img-fluid{src: asset_path("logo-no-text"), style: "max-width: 2rem;"}
         %span.text-primary.font-weight-900 Spectrum
         %small.font-weight-100 Admin
@@ -11,7 +11,7 @@
         %i.fas.fa-columns
         Dashboards
       %li.navigation-item
-        %a.navigation-link{class: active_by_path(admin_dashboard_path), href: admin_dashboard_path} Main
+        %a.navigation-link{class: active_by_path(admin_main_dashboard_path), href: admin_main_dashboard_path} Main
       %hr
       %li.navigation-title
         %i.fab.fa-ethereum
