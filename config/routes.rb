@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: "static_pages#home"
   match '/about' => "static_pages#about", via: [:get]
   match '/coaching' => "static_pages#coaching", via: [:get]
+  match '/covid' => "static_pages#covid_procedures", via: [:get]
   match '/danger' => "static_pages#danger", via: [:get]
   match '/home' => "static_pages#home", via: [:get]
   match '/store' => "static_pages#store", via: [:get]

@@ -1,0 +1,39 @@
+.covid-procedures-markdown h1 {
+  text-align: left;
+  color: #FFFFFF;
+  margin-top: $spacer * 3;
+}
+
+.covid-procedures-markdown h2 {
+  text-align: center;
+  color: #FFFFFF;
+  margin-top: $spacer * 3;
+}
+
+.covid-procedures-markdown p {
+  color: #FFFFFF;
+  font-size: $lead-font-size;
+  font-weight: $lead-font-weight;
+  line-height: 1.8;
+  margin-top: $spacer;
+}
+
+.covid-procedures-markdown li {
+  color: #FFFFFF;
+  font-size: $lead-font-size;
+  font-weight: $lead-font-weight;
+  line-height: 1.8;
+}
+
+.covid-procedures-markdown a:link {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+.covid-procedures-markdown a:visited {
+  color: #800080;
+}
+
+.covid-procedures-markdown a:hover {
+    color: #0000FF;
+}
