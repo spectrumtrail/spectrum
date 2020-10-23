@@ -84,7 +84,8 @@ group :test do
   gem "capybara", ">= 2.15"
   gem "chromedriver-helper"
   gem "selenium-webdriver"
-  gem "webmock", "~> 3.8"
 end
+
+gem "webmock", "~> 3.8"
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
