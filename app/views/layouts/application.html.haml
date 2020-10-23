@@ -12,6 +12,7 @@
     = favicon_link_tag asset_path("favicon")
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload"
     = javascript_include_tag "application", "data-turbolinks-track": "reload"
+    = csrf_meta_tags
     // SVG Animation script // temporary
     %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"}
     - if Rails.env.production?
@@ -21,4 +22,5 @@
     %main.main
       = render partial: 'flash_messages', flash: flash
       = yield
+    = render partial: "newsletter_signups/form"
     = render "navigation/footer"
