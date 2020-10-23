@@ -52,8 +52,9 @@ Rails.application.routes.draw do
     authenticate :user, lambda { |u| u.is_admin? } do
       mount Sidekiq::Web => '/sidekiq'
     end
-    get '/' => redirect('admin/dashboard')
-    resource :dashboard, controller: 'dashboard'
+    get '/' => redirect('admin/main_dashboard')
+    resource :main_dashboard, controller: 'main_dashboard'
+    resource :analytics_dashboard, controller: 'analytics_dashboard'
     resources :attachments, only: [:index]
     resources :discount_codes
     resources :events
