@@ -8,6 +8,9 @@
       %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path(request.params.merge(filter_scope: :incomplete)), class: selected == 'incomplete' ? "active" : nil}
         %i.fas.fa-circle-notch.text-warning
         In-Progress
+      %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path(request.params.merge(filter_scope: :abandoned)), class: selected == 'abandoned' ? "active" : nil}
+        %i.fas.fa-circle-notch.text-warning
+        Abandoned
       %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path(request.params.merge(filter_scope: :cancelled)), class: selected == 'cancelled' ? "active" : nil}
         %i.fa.fa-ban.text-danger
         Cancelled
