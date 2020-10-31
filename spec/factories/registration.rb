@@ -10,5 +10,12 @@ FactoryBot.define do
         create(:payment, registration: registration)
       end
     end
+    trait :incomplete do
+      completed_at { nil }
+
+      after(:create) do |registration, evaluator|
+        create(:payment, registration: registration)
+      end
+    end
   end
 end
