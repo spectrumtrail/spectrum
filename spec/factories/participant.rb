@@ -9,6 +9,7 @@ FactoryBot.define do
     email { "foobar@gmail.com" }
     phone { "3162588774" }
     birth_date { 30.years.ago }
+    division { "Male" }
     address { "3426 W Elizabeth St" }
     city { "Fort Collins" }
     state { "CO" }
