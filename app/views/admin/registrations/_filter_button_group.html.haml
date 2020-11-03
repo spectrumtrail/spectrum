@@ -2,7 +2,7 @@
 .row.mb-2
   .col
     .btn-group
-      %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path(request.params.merge(filter_scope: :completed)), class: selected == 'completed' ? "active" : nil}
+      %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path(request.params.merge(filter_scope: :complete)), class: selected == 'completed' ? "active" : nil}
         %i.fas.fa-check-circle.text-success
         Complete
       %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path(request.params.merge(filter_scope: :in_progress)), class: selected == 'incomplete' ? "active" : nil}

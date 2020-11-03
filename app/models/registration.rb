@@ -27,8 +27,9 @@ class Registration < ApplicationRecord
   scope :not_archived, -> { where(archived_at: nil) }
   scope :last_thirty_days, -> { where(started_at: 30.days.ago..Time.now) }
   scope :over_twenty_four_hours, -> { where("started_at <= ?", 24.hours.ago) }
-  scope :abandoned, -> { incomplete.not_cancelled.last_thirty_days.over_twenty_four_hours }
+  scope :complete, -> { completed.not_cancelled }
   scope :in_progress, -> { incomplete.not_cancelled }
+  scope :abandoned, -> { incomplete.not_cancelled.last_thirty_days.over_twenty_four_hours }
 
   def archived?
     archived_at.present?
