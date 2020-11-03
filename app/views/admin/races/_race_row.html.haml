@@ -4,7 +4,7 @@
   %td
     = race.start_date
     = race.start_time_with_zone
-  %td= race.paid_participants_count.to_s + ' / ' + race.participants_cap.to_s
+  %td= race.paid_not_cancelled_count.to_s + ' / ' + race.participants_cap.to_s
   %td= number_to_currency(race.pending_revenue)
   %td
     .btn-group.float-right
