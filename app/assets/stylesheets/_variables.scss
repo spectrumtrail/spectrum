@@ -147,7 +147,7 @@ $spacers: map-merge((
   'sm': ($spacer * 2),
   'md': ($spacer * 4),
   'lg': ($spacer * 6),
-  'xl': ($spacer * 8)
+  'xl': ($spacer * 8),
 ), $spacers);
 
 // This variable affects the `.h-*` and `.w-*` classes.
