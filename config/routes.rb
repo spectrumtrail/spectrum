@@ -29,12 +29,12 @@ Rails.application.routes.draw do
       resources :participants, only: [:index]
     end
   end
+  put "newsletter_signup", to: "newsletter_signups#create"
+  match "*path/newsletter_signup", to: "newsletter_signups#create", via: :put
   resources :sponsors, only: [:index]
   resources :series, only: [:show]
   resources :team_members, path: "team", only: [:index, :show]
-
-  put "newsletter_signup", to: "newsletter_signups#create"
-  match "*path/newsletter_signup", to: "newsletter_signups#create", via: :put
+  resources :volunteers, only: [:new, :create, :edit, :update]
 
   namespace :members do
     resource :profile, controller: "profile", only: [:show, :edit, :update]
