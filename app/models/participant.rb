@@ -40,6 +40,16 @@ class Participant < ApplicationRecord
   scope :for_start_list, -> do
     includes(:event).with_payment.not_cancelled.not_archived.order(:first_name)
   end
+  scope :incomplete_registrations, -> do
+    joins(:registration).where(registrations: { completed_at: nil })
+  end
+  scope :last_thirty_days, -> do
+    joins(:registration).where(registrations: { started_at: 30.days.ago..Time.now })
+  end
+  scope :over_twenty_four_hours, -> do
+    joins(:registration).where("started_at <= ?", 24.hours.ago)
+  end
+  scope :abandoned_registrations, -> { not_archived.incomplete_registrations.not_cancelled.last_thirty_days.over_twenty_four_hours }
 
   def full_name
     "#{first_name} #{last_name}".titleize

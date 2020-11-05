@@ -76,4 +76,12 @@ class RaceDecorator < ApplicationDecorator
       starts_at.strftime("%A %B %d, %Y")
     end
   end
+
+  def pending_revenue
+    race.participants.not_archived.abandoned_registrations.size * (race.price_in_cents / 100)
+  end
+
+  def paid_not_cancelled_count
+    participants.not_archived.with_payment.not_cancelled.size
+  end
 end
