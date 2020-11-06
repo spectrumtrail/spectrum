@@ -20,8 +20,9 @@ html {
   font-size: 20px;
 }
 
-.header-with-covid-banner-spacer {
-  margin-top: ($spacer * 7.25);
+.fixed-header-spacer {
+  height: ($spacer * 7.25);
+  width: 100%;
 }
 
 #RuggedBox {
