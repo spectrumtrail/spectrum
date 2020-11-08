@@ -17,7 +17,7 @@
 
 @include media-breakpoint-up(md) {
   .parallaxy {
-    background-position: center center;
+    background-position: center top;
     background-attachment: fixed; // makes it parallaxy
   }
 }
