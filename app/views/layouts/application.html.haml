@@ -18,8 +18,9 @@
     - if Rails.env.production?
       = render partial: "shared/drift_script"
   %body{class: "application #{controller_name}", id: "#{controller_name}_#{action_name}"}
+    = render "navigation/fixed_header_spacer"
     = render "navigation/dark_header"
-    %main.main{ :class => ("header-with-covid-banner-spacer" unless current_page?(covid_path)) }
+    %main.main
       = render partial: 'flash_messages', flash: flash
       = yield
     = render partial: "newsletter_signups/form"
