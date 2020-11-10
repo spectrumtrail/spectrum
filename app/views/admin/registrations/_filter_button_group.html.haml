@@ -11,7 +11,7 @@
       %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path(request.params.merge(filter_scope: :abandoned)), class: selected == 'abandoned' ? "active" : nil}
         %i.fas.fa-circle-notch.text-warning
         Abandoned
-      %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path(request.params.merge(filter_scope: :cancelled)), class: selected == 'cancelled' ? "active" : nil}
+      %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path(request.params.merge(filter_scope: :cancelled_ordered_by_cancelled_at)), class: selected == 'cancelled_ordered_by_cancelled_at' ? "active" : nil}
         %i.fa.fa-ban.text-danger
         Cancelled
       %a.btn.btn-sm.btn-outline-primary{href: admin_registrations_path, class: selected == nil ? "active" : nil}
