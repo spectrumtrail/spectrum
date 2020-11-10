@@ -30,6 +30,7 @@ class Registration < ApplicationRecord
   scope :complete, -> { completed.not_cancelled }
   scope :in_progress, -> { incomplete.not_cancelled }
   scope :abandoned, -> { incomplete.not_cancelled.last_thirty_days.over_twenty_four_hours }
+  scope :cancelled_ordered_by_cancelled_at, -> { cancelled.order(cancelled_at: :desc) }
 
   def archived?
     archived_at.present?
