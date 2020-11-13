@@ -29,3 +29,6 @@
 
 # Ignore temp stuff
 /temp
+
+# Ignore SimpleCov coverage/ directory
+/coverage/*
