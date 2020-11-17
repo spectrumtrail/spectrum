@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_174945) do
+ActiveRecord::Schema.define(version: 2020_11_18_021935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -356,17 +356,24 @@ ActiveRecord::Schema.define(version: 2020_11_10_174945) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "volunteer_positions", force: :cascade do |t|
+    t.bigint "event_id"
+    t.string "name"
+    t.index ["event_id"], name: "index_volunteer_positions_on_event_id"
+  end
+
   create_table "volunteers", force: :cascade do |t|
     t.bigint "event_id"
     t.string "first_name"
     t.string "last_name"
     t.string "phone"
     t.string "email"
-    t.string "position"
     t.string "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "volunteer_position_id"
     t.index ["event_id"], name: "index_volunteers_on_event_id"
+    t.index ["volunteer_position_id"], name: "index_volunteers_on_volunteer_position_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -381,5 +388,7 @@ ActiveRecord::Schema.define(version: 2020_11_10_174945) do
   add_foreign_key "registrations", "discount_codes"
   add_foreign_key "registrations", "events"
   add_foreign_key "registrations", "users"
+  add_foreign_key "volunteer_positions", "events"
   add_foreign_key "volunteers", "events"
+  add_foreign_key "volunteers", "volunteer_positions"
 end
