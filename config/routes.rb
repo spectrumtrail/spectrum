@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   resources :sponsors, only: [:index]
   resources :series, only: [:show]
   resources :team_members, path: "team", only: [:index, :show]
+  get "/volunteer", to: "volunteers#new"
+  resources :volunteers, only: [:create, :show]
 
   put "newsletter_signup", to: "newsletter_signups#create"
   match "*path/newsletter_signup", to: "newsletter_signups#create", via: :put
