@@ -9,6 +9,8 @@ class Event < ApplicationRecord
   has_many :races, dependent: :destroy
   has_many :registrations, counter_cache: true
   has_many :participants
+  has_many :volunteer_positions
+  has_many :volunteers, through: :volunteer_position
 
   # attachments
   has_one_attached :logo
