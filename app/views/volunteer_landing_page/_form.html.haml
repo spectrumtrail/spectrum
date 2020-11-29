@@ -1,0 +1,18 @@
+%section
+  .container
+    .row.mt-5.mb-5.justify-content-center
+      .col
+        .form-inputs
+          = select("event", "event_id", Event.all.collect {|e| [e.name]},
+          :prompt => "Select an event")
+          <br>
+          .mt-5
+          %button{:class => "btn btn-success btn-md", :id => "event-select"}Next Step
+
+          %script
+            :plain
+            $("#event-select").click(function() {
+            var event = $("#event_event_id").val();
+            event = event.replace(/\s+/g, '-').toLowerCase();
+            window.location.assign("/events/" + event + "/volunteers/new")
+            });
