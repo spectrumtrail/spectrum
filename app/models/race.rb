@@ -32,7 +32,7 @@ class Race < ApplicationRecord
   end
 
   def generate_slug
-    "#{starts_at.year} #{event.name} #{name}".parameterize
+    "#{starts_at&.year} #{event&.name} #{name}".parameterize
   end
 
   def should_generate_new_friendly_id?
