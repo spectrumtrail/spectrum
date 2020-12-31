@@ -9,7 +9,7 @@ class VolunteersController < ApplicationController
     @volunteer = Volunteer.new(volunteer_params)
     result = CreateVolunteer.new(volunteer: @volunteer).call
     if result.success
-      redirect_to(root_path, success: result.message)
+      redirect_to(event_volunteer_path(id: result.object.id), success: result.message)
     else
       flash[:error] = result.message
       redirect_back(fallback_location: new_event_volunteer_path, error: result.message)
