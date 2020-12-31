@@ -1,0 +1,16 @@
+%section.slice.slice-lg
+  .container
+    .row
+      .col-sm-12.col-md-4.col-lg-3.d-none.d-md-block
+        = render "events/card",
+          event: @event.decorate,
+          context_classes: "sticky-top sticky-top-offset-8",
+          show_footer: false
+      .col-sm-12.col-md-8.col-lg-6
+        .card.border-primary
+          .card-body
+            %h4 Volunteer Details
+            %p
+              Tell us a little more about yourself so we know who you are and how you want to help.
+            %hr
+            = render "form", event: @event

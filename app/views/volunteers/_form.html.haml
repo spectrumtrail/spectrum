@@ -1,0 +1,15 @@
+%section
+  .container
+    .row.mt-5.mb-5.justify-content-center
+      .col
+        = simple_form_for :volunteer, url: event_volunteers_path do |f|
+          .form-inputs
+            = f.input :event_id, as: :hidden, input_html: { value: event.id }
+            = f.input :volunteer_position_id, label: "Preferred Position", collection: event.volunteer_positions, prompt: "select a position"
+            = f.input :time, collection: %w[AM PM All\ Day], prompt: "select a time"
+            = f.input :first_name, label: "First Name"
+            = f.input :last_name, label: "Last Name"
+            = f.input :phone, label: "Phone"
+            = f.input :email, label: "Email"
+            .form-actions
+            = f.button :submit, "Submit", class: "btn btn-success btn-md"
