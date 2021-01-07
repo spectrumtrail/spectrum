@@ -1,0 +1,41 @@
+%span.preheader{:style => "color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;"} #{@event.name} volunteer notification for #{@volunteer.first_name}
+%table.body-wrap
+  %tr
+    %td.container{:bgcolor => "#FFFFFF"}
+      .content
+        %table{:style=>"margin-bottom:20px;"}
+          %tr
+            %td
+              %img{:src => url_for(@event.logo), style: "width:100%, max-width: 600px; margin-bottom: 20px;"}
+          %tr
+            %td
+              %p.lead
+              Hi Mallory,
+              %p.lead
+              We have a new volunteer registration for
+              %strong #{@event.name}
+              on
+              %strong #{@event.starts_at_date_string}
+              at
+              %strong #{@event.location_name}.
+
+        %table{:width=>"100%", :border=>"1", :stye=>"margin-botttom:20px;"}
+          %thead{:style=>"background-color:#E9ECEF;"}
+            %tr
+              %th{width: "auto"} Event
+              %th{width: "auto"} Position
+              %th{width: "auto"} First Name
+              %th{width: "auto"} Last Name
+              %th{width: "auto"} Email
+              %th{width: "auto"} Time
+              %th{width: "auto"} Entered
+
+          %tbody
+            %tr
+              %td{:style=>"padding-left: 4px"} #{@volunteer.event.name}
+              %td{:style=>"padding-left: 4px"} #{@volunteer.volunteer_position.name}
+              %td{:style=>"padding-left: 4px"} #{@volunteer.first_name}
+              %td{:style=>"padding-left: 4px"} #{@volunteer.last_name}
+              %td{:style=>"padding-left: 4px"} #{@volunteer.email}
+              %td{:style=>"padding-left: 4px"} #{@volunteer.time}
+              %td{:style=>"padding-left: 4px"} #{@volunteer.created_at.localtime.strftime("%m/%d/%Y %I:%M %p")}
