@@ -1,0 +1,26 @@
+%section.slice.slice-lg
+  .container
+    .row
+      .col-sm-12.col-md-4.col-lg-3.d-none.d-md-block
+
+      .col-sm-12.col-md-8.col-lg-6
+        .card.border-success
+          .card-body
+            .row
+              .col.text-center
+                = animated_check_icon
+                %h4.heading.h4.text-success Volunteer Registration Confirmed
+                %h5.lead We are so excited you decided to help at #{@event.name}, #{@volunteer.first_name}! Watch out for an email with all the details you will need for your volunteer day. Please review the info you entered below.
+                %hr
+                %h5 Event: #{@volunteer.event.name}
+                %h5 Position: #{@volunteer.volunteer_position.name}
+                %h5 First Name: #{@volunteer.first_name}
+                %h5 Last Name: #{@volunteer.last_name}
+                %h5 Email: #{@volunteer.email}
+                %h5 Time: #{@volunteer.time}
+                %br
+                %p.text-left
+                  *We will send a confirmation email to
+                  %strong.text-tertiary
+                    #{@volunteer.email}
+                  shortly!
