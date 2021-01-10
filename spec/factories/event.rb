@@ -8,6 +8,7 @@ FactoryBot.define do
     time_zone { "Central Time (US & Canada)" }
     registration_opens_at { 1.day.from_now }
     registration_closes_at { 2.months.from_now - 1.day }
+    logo { Rack::Test::UploadedFile.new('spec/support/images/event_logo.jpeg', 'image/jpeg') }
 
     trait :is_active do
       is_active { true }
