@@ -1,5 +1,9 @@
-class VolunteerNotification::MailerPreview < ActionMailer::Preview
+class VolunteerRegistration::MailerPreview < ActionMailer::Preview
+  def confirm
+    VolunteerRegistrationMailer.with(volunteer: Volunteer.all.sample).confirm
+  end
+
   def notify
-    VolunteerNotificationMailer.with(volunteer: Volunteer.all.sample).notify
+    VolunteerAdminNotificationMailer.with(volunteer: Volunteer.all.sample).notify
   end
 end
