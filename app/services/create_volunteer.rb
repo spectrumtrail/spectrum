@@ -7,6 +7,7 @@ class CreateVolunteer
 
   def call
     if volunteer.save
+      confirmation_email
       admin_notification_email
       success_result
     else
@@ -34,5 +35,9 @@ class CreateVolunteer
 
   def admin_notification_email
     VolunteerAdminNotificationMailer.with(volunteer: @volunteer).notify.deliver_now
+  end
+
+  def confirmation_email
+    VolunteerRegistrationMailer.with(volunteer: @volunteer).confirm.deliver_now
   end
 end
