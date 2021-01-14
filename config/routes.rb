@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :registrations, only: [:new, :create, :edit, :update] do
       resources :steps, controller: "registration_steps"
     end
-    resources :volunteers, only: [:show, :new, :create]
+    resources :volunteers, only: [:new, :create, :show]
     resources :races do
       resources :participants, only: [:index]
     end
@@ -36,9 +36,6 @@ Rails.application.routes.draw do
   resources :series, only: [:show]
   resources :team_members, path: "team", only: [:index, :show]
   get "/volunteer", to: "volunteer_landing_page#get_event"
-  resources :volunteer, controller: "volunteer_registrations" do
-    resources :steps, controller: "volunteer_registrations_steps"
-  end
 
   namespace :members do
     resource :profile, controller: "profile", only: [:show, :edit, :update]
