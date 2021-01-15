@@ -1,0 +1,26 @@
+%tr{class: !volunteer.active? ? "table-danger" : ""}
+  %td
+    -# %img.avatar.avatar-sm{src: volunteer.event.row_thumbnail}
+    = volunteer.event.name
+  %td
+    = volunteer.volunteer_position.name
+  %td
+    = volunteer.time
+  %td
+    = volunteer.first_name
+  %td
+    = volunteer.last_name
+  %td
+    = volunteer.email
+  %td
+    .btn-group.float-right
+      = link_to edit_admin_volunteer_path(volunteer),
+        class: "btn btn-sm btn-outline-primary" do
+        %i.fa.fa-edit
+        Edit
+      = link_to admin_volunteer_path(volunteer),
+        method: :delete,
+        data: { confirm: "Are you sure?" },
+        class: "btn btn-sm btn-outline-danger" do
+        %i.fas.fa-trash
+        Delete

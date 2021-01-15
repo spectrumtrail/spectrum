@@ -1,0 +1,14 @@
+.card.mb-4
+  %table.table.table-responsive-md
+    %thead.thead-light
+      %tr
+        %th{scope: "col"} Event
+        %th{scope: "col"} Position
+        %th{scope: "col"} Time
+        %th{scope: "col"} First Name
+        %th{scope: "col"} Last Name
+        %th{scope: "col"} Email
+        %th{scope: "col"}
+    %tbody
+      - @volunteers.each do |volunteer|
+        = render "volunteer_row", volunteer: volunteer

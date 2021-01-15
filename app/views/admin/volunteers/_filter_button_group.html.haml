@@ -1,0 +1,13 @@
+- selected = params[:filter_scope]
+.row.mb-2
+  .col
+    .btn-group
+      %a.btn.btn-sm.btn-outline-primary{href: admin_volunteers_path(request.params.merge(filter_scope: :active)), class: selected == 'active' ? "active" : nil}
+        %i.fas.fa-check-circle.text-success
+        Active
+      %a.btn.btn-sm.btn-outline-primary{href: admin_volunteers_path(request.params.merge(filter_scope: :inactive)), class: selected == 'inactive' ? "active" : nil}
+        %i.fas.fa-ban.text-warning
+        Inactive
+      %a.btn.btn-sm.btn-outline-primary{href: admin_volunteers_path, class: selected == nil ? "active" : nil}
+        %i.fa.fa-list
+        ALL
