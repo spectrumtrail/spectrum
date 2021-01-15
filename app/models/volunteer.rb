@@ -7,4 +7,7 @@ class Volunteer < ApplicationRecord
   validates :phone, presence: true
   validates :email, presence: true, uniqueness: { scope: :event }
   validates :time, presence: true
+
+  scope :active, -> { where(active: true) }
+  scope :inactive, -> { where(active: false) }
 end
