@@ -54,16 +54,18 @@ Rails.application.routes.draw do
       mount Sidekiq::Web => '/sidekiq'
     end
     get '/' => redirect('admin/main_dashboard')
-    resource :main_dashboard, controller: 'main_dashboard'
     resource :analytics_dashboard, controller: 'analytics_dashboard'
     resources :attachments, only: [:index]
     resources :discount_codes
     resources :events
     resources :file_imports
+    resources :home_page_images
     resources :locations
     resources :mailings
+    resource :main_dashboard, controller: 'main_dashboard'
     resources :participants
     resources :payments
+    resource :profile, controller: "profile", only: [:show, :edit, :update]
     resources :races do
       collection do
         get :archived
@@ -82,8 +84,7 @@ Rails.application.routes.draw do
     resources :series
     resources :sponsors
     resources :team_members
-    resource :profile, controller: "profile", only: [:show, :edit, :update]
     resources :users
-    resources :home_page_images
+    resources :volunteers
   end
 end
