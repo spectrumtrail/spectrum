@@ -1,5 +1,5 @@
-class VolunteerNotificationMailer < ApplicationMailer
-  layout 'volunteer_notification'
+class VolunteerAdminNotificationMailer < ApplicationMailer
+  layout 'volunteer_admin_notification'
   attr_accessor :volunteer
 
   def notify

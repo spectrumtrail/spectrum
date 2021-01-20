@@ -1,0 +1,35 @@
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{:content => "width=device-width", :name => "viewport"}/
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Spectrum Trail Racing Notification Email
+    %link{rel: :stylesheet, href: "email.css"}
+
+  %body{:bgcolor => "#FFFFFF"}
+    %table.head-wrap{:bgcolor => "#182B3F"}
+      %tr
+        %td
+        %td.header.container
+          .content
+            %table{:bgcolor => "#182B3F"}
+              %tr
+                %td
+                  %a{href: root_url}
+                    %img{:src => asset_path('logo-text-inside.png'), style: "max-width: 100px;"}/
+                %td{:align => "right"}
+                  %h6.collapse.text-white Volunteer Registration Notification
+        %td
+    %br/
+    %br/
+    = yield
+    %table.footer-wrap
+      %tr
+        %td
+        %td.container
+          .content
+            %table
+              %tr
+                %td{:align => "center"}
+                  %p
+                    This is a one-time email.

@@ -7,7 +7,8 @@ class CreateVolunteer
 
   def call
     if volunteer.save
-      admin_email_notification
+      confirmation_email
+      admin_notification_email
       success_result
     else
       fail_result
@@ -32,7 +33,11 @@ class CreateVolunteer
     "Aw, snap! Something went wrong. Please try to submit your form again."
   end
 
-  def admin_email_notification
-    VolunteerNotificationMailer.with(volunteer: @volunteer).notify.deliver_now
+  def admin_notification_email
+    VolunteerAdminNotificationMailer.with(volunteer: @volunteer).notify.deliver_now
+  end
+
+  def confirmation_email
+    VolunteerRegistrationMailer.with(volunteer: @volunteer).confirm.deliver_now
   end
 end
