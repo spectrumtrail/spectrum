@@ -1,0 +1,38 @@
+-# frozen_string_literal: true
+= simple_form_for([:admin, @volunteer], validate: true, html: { id: "AdminVolunteersForm" }) do |f|
+  = f.error_notification
+  - if f.object.errors[:base].present?
+    = f.error_notification message: f.object.errors[:base].to_sentence
+  .form-inputs
+    %fieldset
+      %legend Active
+      = f.input :active,
+        as: :radio_buttons,
+        label: "Is Active?",
+        hint: "Inactive volunteers are highlighted in red"
+
+    %fieldset
+      %legend Details
+      %p.text-muted If you need to change the event please delete this volunteer and create a new one under the correct event
+      = f.input :volunteer_position_id, label: "Position", collection: @volunteer.event.volunteer_positions, prompt: "select a position",
+        input_html: { class: "editor textarea-autosize" },
+        hint: "If you don't see the position you need you can manage them from the events admin space"
+      = f.input :time, label: "Time", collection: %w[AM PM All\ Day],
+        input_html: { class: "editor textarea-autosize" }
+      = f.input :first_name,
+        input_html: { class: "editor textarea-autosize" }
+      = f.input :last_name,
+        input_html: { class: "editor textarea-autosize" }
+      = f.input :email,
+        input_html: { class: "editor textarea-autosize" }
+
+  %br
+  .form-actions
+    = link_to admin_volunteers_path,
+      class: "mr-2 btn btn-md btn-outline-secondary",
+      data: { confirm: "Careful! You will lose any progress you made on this form."} do
+      %i.fas.fa-arrow-left
+      Go Back
+    = f.button :submit,
+      class: "btn btn-md btn-outline-success",
+      data: { disable_with: "Submitting..." }
