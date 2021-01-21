@@ -57,7 +57,9 @@ Rails.application.routes.draw do
     resource :analytics_dashboard, controller: 'analytics_dashboard'
     resources :attachments, only: [:index]
     resources :discount_codes
-    resources :events
+    resources :events do
+      resources :volunteer_positions
+    end
     resources :file_imports
     resources :home_page_images
     resources :locations
@@ -86,5 +88,6 @@ Rails.application.routes.draw do
     resources :team_members
     resources :users
     resources :volunteers
+    resources :volunteer_positions, only: [:index, :new, :create, :update]
   end
 end

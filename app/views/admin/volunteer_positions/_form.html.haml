@@ -1,0 +1,23 @@
+-# frozen_string_literal: true
+= simple_form_for([:admin, @volunteer_position], validate: true, html: { id: "AdminVolunteerPositionsForm" }) do |f|
+  = f.error_notification
+  - if f.object.errors[:base].present?
+    = f.error_notification message: f.object.errors[:base].to_sentence
+  .form-inputs
+    %fieldset
+      %legend Details
+      = f.association :event, prompt: "select an event",
+        input_html: { class: "editor textarea-autosize", value: f.object.event }
+      = f.input :name,
+        input_html: { class: "editor textarea-autosize" }
+
+  %br
+  .form-actions
+    = link_to admin_volunteer_positions_path,
+      class: "mr-2 btn btn-md btn-outline-secondary",
+      data: { confirm: "Careful! You will lose any progress you made on this form."} do
+      %i.fas.fa-arrow-left
+      Go Back
+    = f.button :submit,
+      class: "btn btn-md btn-outline-success",
+      data: { disable_with: "Submitting..." }

@@ -1,0 +1,10 @@
+.card.mb-4
+  %table.table.table-responsive-md
+    %thead.thead-light
+      %tr
+        %th{scope: "col"} Event
+        %th{scope: "col"} Name
+        %th{scope: "col"}
+    %tbody
+      - @volunteer_positions.each do |volunteer_position|
+        = render "volunteer_position_row", volunteer_position: volunteer_position

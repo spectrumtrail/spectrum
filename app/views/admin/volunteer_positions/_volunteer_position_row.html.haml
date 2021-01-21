@@ -1,0 +1,17 @@
+%tr
+  %td
+    = volunteer_position.event.name
+  %td
+    = volunteer_position.name
+  %td
+    .btn-group.float-right
+      = link_to edit_admin_event_volunteer_position_path(volunteer_position, event_id: volunteer_position.event.id),
+        class: "btn btn-sm btn-outline-primary" do
+        %i.fa.fa-edit
+        Edit
+      = link_to admin_event_volunteer_position_path(volunteer_position, event_id: volunteer_position.event.id),
+        method: :delete,
+        data: { confirm: "Are you sure?" },
+        class: "btn btn-sm btn-outline-danger" do
+        %i.fas.fa-trash
+        Delete

@@ -1,0 +1,12 @@
+= content_for :admin_area_title do
+  Volunteer Positions
+.row
+  .col
+    %p.text-muted The events dropdown menu link displays only the positions that belong to that event
+    = render "table"
+.row
+  .col
+    .float-right
+      = link_to "Create New Volunteer Position",
+        new_admin_volunteer_position_path,
+        class: "btn btn-sm btn-success"
