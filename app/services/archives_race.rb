@@ -8,7 +8,7 @@ class ArchivesRace
 
   def perform
     ActiveRecord::Base.transaction do
-      race.update(archived_at: Time.current)
+      race.update(archived_at: Time.current, is_active: false)
       update_race_registrations
     end
   end
