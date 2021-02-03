@@ -41,10 +41,6 @@ class Event < ApplicationRecord
   end
 
   def sold_out?
-    races.each do |race|
-      return false if race.is_full? == false
-    end
-
-    true
+    races.active.upcoming.not_archived.all? { |race| race.is_full? }
   end
 end
