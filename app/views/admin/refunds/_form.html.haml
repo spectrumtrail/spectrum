@@ -10,6 +10,6 @@
     = f.input :admin_notes, as: :text, hint: 'Why are you refunding this payment?'
     .form-group
       %strong= "Amount (in cents) currently available to refund is: #{@payment.amount_refundable_in_cents}"
-      = f.input :amount_in_cents, label: "Amount you wish to refund (in cents).", input_html: { min: 100, max: @payment.amount_charged_in_cents, step: 'any' }, hint: 'Should not be more than the available balance to refund in cents. Get help from Colin or Jason if you are not sure how much this is.'
+      = f.input :amount_in_cents, label: "Amount you wish to refund (in cents).", input_html: { min: 100, max: @payment.amount_charged_in_cents, step: 'any' }, hint: 'Should not be more than the available balance to refund in cents. Get help if you are not sure how much this is. THIS COSTS MONEY. REFUNDS ARE SUBJECT TO TRANSACTION FEES ON STRIPE.'
   .form-actions.float-right
     = f.button :submit, class: "btn btn-sm btn-success", data: { confirm: 'Are you sure? This will do some un-fixable shit.' }
