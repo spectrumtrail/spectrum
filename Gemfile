@@ -6,7 +6,7 @@ ruby "2.5.3"
 gem "rails", "~> 5.2.2"
 gem "pg", ">= 0.18", "< 2.0"
 gem "bootsnap", ">= 1.4.3", require: false
-gem "puma", "~> 4.3"
+gem "puma", "~> 5.6"
 gem "devise"
 gem "barnes"
 gem "airbrake", '~> 9.5'
